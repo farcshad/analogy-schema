@@ -11,7 +11,7 @@ from analogy_schema.pipeline.stage_d_goals import run_stage_d_goal_outcome_ident
 from analogy_schema.pipeline.stage_e_backward_trace import run_stage_e_backward_causal_tracing
 from analogy_schema.pipeline.stage_f_backbone import run_stage_f_backbone_selection
 from analogy_schema.pipeline.stage_g_macro import run_stage_g_and_h_macro_and_abstraction
-from analogy_schema.utils.graph_utils import validate_dag_consistency
+from analogy_schema.utils.graph_utils import validate_dag_consistency, backbone_to_nx
 
 
 @dataclass
@@ -22,43 +22,44 @@ class SingleStoryPipelineResult:
     backward_trace_info: Dict[str, Any]
     backbone: CausalBackbone
     dag_validation: Dict[str, Any]
+    validation_warnings: list
 
 
 class SingleStoryPipeline:
     """
-    End-to-end discrete pipeline for single story causal-event graph induction.
-    Strictly independent processing with explicit provenance at every layer.
+    Scientifically stabilized discrete pipeline for single story causal-event graph induction.
+    Strictly independent processing with explicit provenance and deterministic edge lifting.
     """
 
     def __init__(self, llm: BaseLLMProvider):
         self.llm = llm
 
     def run(self, story: Story) -> SingleStoryPipelineResult:
-        # Stage A: Atomic extraction
+        # Stage A: Atomic event extraction
         atomic_events = run_stage_a_atomic_extraction(story, self.llm)
 
-        # Stage B: Semantic normalization
+        # Stage B: Semantic predicate normalization with temporal phase tagging
         normalized_events = run_stage_b_semantic_normalization(story, atomic_events, self.llm)
 
-        # Stage C: Typed relation extraction
+        # Stage C: Typed evidence-grounded relation extraction
         rich_graph = run_stage_c_relation_extraction(story, atomic_events, normalized_events, self.llm)
 
-        # Stage D: Goal & outcome identification
+        # Stage D: Structured narrative anchor identification (focal vs contingent vs downstream reactions)
         anchors = run_stage_d_goal_outcome_identification(story, normalized_events, self.llm)
 
-        # Stage E: Backward causal tracing (deterministic graph traversal)
+        # Stage E: Multi-track backward causal and intervention tracing
         backward_trace_info = run_stage_e_backward_causal_tracing(rich_graph, anchors)
 
-        # Stage F: Backbone selection & counterfactual pruning
+        # Stage F: Counterfactual backbone selection & pruning (ancestors are candidates; focal anchors protected)
         backbone_selection_result = run_stage_f_backbone_selection(
             story=story,
             graph=rich_graph,
             anchors=anchors,
             llm=self.llm,
-            backward_trace_candidates=backward_trace_info.get("explanatory_ancestors", [])
+            candidate_ancestors=backward_trace_info.get("candidate_ancestors", [])
         )
 
-        # Stages G & H: Macro-node formation and 4-Level Abstraction Ladder induction
+        # Stages G & H: Functional Macro-node grouping and deterministic Rich-Relation edge lifting
         backbone = run_stage_g_and_h_macro_and_abstraction(
             story=story,
             graph=rich_graph,
@@ -70,9 +71,9 @@ class SingleStoryPipeline:
         )
 
         # DAG Validation
-        from analogy_schema.utils.graph_utils import backbone_to_nx
         nx_bb = backbone_to_nx(backbone)
         dag_validation = validate_dag_consistency(nx_bb)
+        warnings = backbone.validate_invariants()
 
         return SingleStoryPipelineResult(
             story=story,
@@ -80,5 +81,6 @@ class SingleStoryPipeline:
             anchors=anchors,
             backward_trace_info=backward_trace_info,
             backbone=backbone,
-            dag_validation=dag_validation
+            dag_validation=dag_validation,
+            validation_warnings=warnings
         )

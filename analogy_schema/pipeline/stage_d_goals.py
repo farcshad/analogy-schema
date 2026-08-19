@@ -10,9 +10,11 @@ from analogy_schema.prompts.registry import PromptRegistry
 class GoalOutcomeOutput(BaseModel):
     central_problem: Optional[str] = None
     central_goal: Optional[str] = None
-    intervention: Optional[str] = None
-    terminal_outcomes: List[str] = Field(default_factory=list)
-    anchor_event_ids: List[str] = Field(default_factory=list)
+    intervention_event_ids: List[str] = Field(default_factory=list)
+    focal_outcome_ids: List[str] = Field(default_factory=list)
+    contingent_outcome_ids: List[str] = Field(default_factory=list)
+    downstream_reaction_ids: List[str] = Field(default_factory=list)
+    explanation: Optional[str] = None
 
 
 def run_stage_d_goal_outcome_identification(
@@ -21,14 +23,14 @@ def run_stage_d_goal_outcome_identification(
     llm: BaseLLMProvider
 ) -> NarrativeAnchors:
     """
-    Stage D: Identify narrative problem, goal, intervention, and terminal outcomes.
+    Stage D: Identify narrative problem, goal, intervention, focal/contingent outcomes, and downstream reactions.
     """
     prompt = PromptRegistry.render(
         "goal_outcome",
         story=story,
         normalized_events=normalized_events
     )
-    system_prompt = "You are a narrative goal and outcome analyzer."
+    system_prompt = "You are a narrative anchor analyzer distinguishing focal outcomes from downstream reactions."
     
     result = llm.generate_structured(
         prompt=prompt,
@@ -39,7 +41,9 @@ def run_stage_d_goal_outcome_identification(
     return NarrativeAnchors(
         central_problem=result.central_problem,
         central_goal=result.central_goal,
-        intervention=result.intervention,
-        terminal_outcomes=result.terminal_outcomes,
-        anchor_event_ids=result.anchor_event_ids
+        intervention_event_ids=result.intervention_event_ids,
+        focal_outcome_ids=result.focal_outcome_ids,
+        contingent_outcome_ids=result.contingent_outcome_ids,
+        downstream_reaction_ids=result.downstream_reaction_ids,
+        explanation=result.explanation
     )

@@ -1,18 +1,19 @@
 from typing import Dict, Any
 from jinja2 import Template
 
-ATOMIC_EXTRACTION_PROMPT = """You are a scientific NLP extractor specializing in causal narrative analysis.
+ATOMIC_EXTRACTION_PROMPT = """You are a scientific NLP system specializing in causal narrative extraction.
 
 Extract all atomic events, states, actions, goals, constraints, and consequential outcomes from the narrative.
-Guidelines:
-1. Prefer high-recall over premature pruning.
-2. Maintain strict provenance: every event must be grounded in an exact `text_span` from the story.
-3. Distinguish explicitness: "explicit" vs "strongly_inferred" vs "speculative".
-4. Identify participants and event type (action, state, event, goal, constraint, outcome, emotion_reaction).
-5. Assign a coarse `temporal_rank` based on narrative occurrence order.
+
+Methodological Guidelines:
+1. High recall: Extract all propositions and states rather than pre-filtering.
+2. Textual Grounding: Every event must have an exact or near-exact `text_span` directly from the narrative.
+3. Explicitness: Label as "explicit" (directly asserted), "strongly_inferred" (necessary presupposition), or "speculative".
+4. Identify participants, event_type (action, state, event, goal, constraint, outcome, emotion_reaction), polarity (positive, negative), and narrative temporal order (`temporal_rank`).
 
 Story ID: {{ story.story_id }}
-Full Narrative:
+
+Narrative Text:
 \"\"\"
 {{ story.text }}
 \"\"\"
@@ -23,15 +24,28 @@ Numbered Sentences:
 {% endfor %}
 """
 
-SEMANTIC_NORMALIZATION_PROMPT = """You are a semantic parser for causal event graphs.
+SEMANTIC_NORMALIZATION_PROMPT = """You are a semantic parser for causal narrative analysis.
 
-Convert the following atomic events into normalized semantic predicates with structured arguments.
-Guidelines:
-1. Do not abstract too aggressively yet (e.g., maintain domain specificity like `clean_room`, `gingerbread`, `room_inspection`).
-2. Retain direct provenance by citing the `atomic_event_ids` mapped to each normalized event.
-3. Standardize predicate names (e.g., `NEGLECT_TASK`, `INSUFFICIENT_TIME`, `OFFER_INCENTIVE`, `FAIL_REQUIREMENT`, `WITHHOLD_REWARD`).
+Convert the extracted atomic events into normalized semantic predicate-argument representations.
+
+Methodological Guidelines:
+1. Maintain direct provenance by listing the `atomic_event_ids` that comprise each normalized event.
+2. Retain story-specific arguments in `arguments` (e.g., actor, object, task, target).
+3. Standardize predicate names into standardized uppercase predicates (e.g., `DEFICIT_STATE`, `INITIATE_PLAN`, `INTRODUCE_INCENTIVE`, `RESOURCE_SHORTAGE`, `FAIL_CRITERIA`, `CONSEQUENCE_ENACTED`).
+4. Identify if a state is persistent across story events (`is_persistent_state`).
+5. Temporal Grounding: If an external intervention or plan is present, assign the occurrence or persistence relative to it:
+   - `PRE_INTERVENTION`: Occurred or initiated strictly before the intervention.
+   - `AT_INTERVENTION`: Part of the intervention event itself.
+   - `POST_INTERVENTION`: Initiated after the intervention.
+   - `SPANS_INTERVENTION`: Began prior to the intervention and persisted through or past it.
+   - `UNANCHORED`: Contextual setting or stories without an intervention.
 
 Story ID: {{ story.story_id }}
+
+Narrative Text:
+\"\"\"
+{{ story.text }}
+\"\"\"
 
 Atomic Events:
 {% for e in atomic_events %}
@@ -39,27 +53,28 @@ Atomic Events:
 {% endfor %}
 """
 
-RELATION_EXTRACTION_PROMPT = """You are a narrative causal analyst constructing an evidence-grounded typed relation graph.
+RELATION_EXTRACTION_PROMPT = """You are a causal relation analyst. Extract evidence-grounded typed relations between the normalized events.
 
-Given the normalized events of a story, extract typed relations between them.
-Allowed relation types:
-- CAUSES: Source directly brings about or causes target.
-- BEFORE: Source occurs strictly before target in story time (pure temporal, NOT causal).
-- ENABLES: Source creates necessary preconditions for target.
-- BLOCKS: Source prevents or obstructs target from succeeding.
-- MOTIVATES: Source gives an agent a goal/incentive to attempt target.
-- CONDITIONAL_ON: Target is contingent upon source condition being met.
-- RESULTS_IN: Target is the consequential outcome or resulting state of source.
-- PREVENTS: Source counteracts or stops target.
+Allowed Relation Types and Directional Semantics:
+- `CAUSES`: Source brings about or causes Target (e.g., Server Overload --CAUSES--> Request Latency).
+- `BEFORE`: Source occurs strictly before Target in narrative time, but Source did NOT causally produce Target (e.g., System Update --BEFORE--> Hardware Fault).
+- `ENABLES`: Source creates necessary preconditions making Target possible (e.g., Security Clearance --ENABLES--> Server Room Access).
+- `BLOCKS`: Source prevents, obstructs, or renders impossible Target (e.g., Network Partition --BLOCKS--> Database Replication).
+- `MOTIVATES`: Source provides reason, goal, or incentive for an agent to attempt Target (e.g., Financial Audit Notice --MOTIVATES--> Reconciliation Attempt).
+- `REQUIRES`: Source requires condition Target to be fulfilled in order to succeed/occur (e.g., Firmware Upgrade --REQUIRES--> System Reboot).
+- `CONDITIONAL_ON`: Source outcome depends on Target condition being satisfied (e.g., Bonus Payout --CONDITIONAL_ON--> Exceeding Performance Quota).
+- `RESULTS_IN`: Source directly produces consequential outcome Target (e.g., Missing Compliance Deadline --RESULTS_IN--> License Revocation).
+- `PREVENTS`: Source actively stops or counteracts Target (e.g., Circuit Breaker Trip --PREVENTS--> Transformer Damage).
 
-CRITICAL METHODOLOGICAL RULES:
-1. Keep temporal order and causality STRICTLY DISTINCT. Do not mark an edge as CAUSES if it is merely BEFORE.
-2. For example, an incentive offered does not cause an agent to already be behind; prior inaction does.
-3. Provide clear `evidence` explaining the causal/relational justification.
-4. Distinguish `explicitness`: explicit, strongly_inferred, or speculative.
+CRITICAL METHODOLOGICAL INVARIANTS:
+1. Temporal order vs. True Causality: Never use `CAUSES` for events that merely precede each other temporally. If event A existed prior to an intervention B, B does not cause A.
+2. Directionality: Strictly adhere to the defined `source_id` -> `target_id` conventions.
+3. Explicitness: Assign explicit, strongly_inferred, or speculative.
+4. Ground each relation with an `evidence` explanation citing the narrative mechanism.
 
 Story ID: {{ story.story_id }}
-Narrative:
+
+Narrative Text:
 \"\"\"
 {{ story.text }}
 \"\"\"
@@ -70,87 +85,100 @@ Normalized Events:
 {% endfor %}
 """
 
-GOAL_OUTCOME_PROMPT = """You are a narrative goal and outcome analyzer.
+GOAL_OUTCOME_PROMPT = """You are a narrative structure and anchor analyzer.
 
-Analyze the narrative to identify:
-1. Central Problem: The core obstacle, failure, or deficit faced.
-2. Central Goal: The target objective or requirement.
-3. Intervention: Any external incentive, help, nudge, or plan introduced to alter the outcome.
-4. Terminal Outcomes: The final consequential outcomes and states.
-5. Anchor Event IDs: The normalized event IDs corresponding directly to these anchors.
+Identify the central narrative anchors:
+1. `central_problem`: The primary difficulty, failure, deficit, or obstacle described.
+2. `central_goal`: The focal objective, standard, or requirement to be achieved.
+3. `intervention_event_ids`: Event IDs of any external incentive, assistance, nudge, or plan introduced to alter the trajectory.
+4. `focal_outcome_ids`: Event IDs of the primary success or failure of the central goal/requirement.
+5. `contingent_outcome_ids`: Event IDs of consequences contingent upon the focal outcome (e.g., reward granted, reward withheld, penalty applied).
+6. `downstream_reaction_ids`: Event IDs of secondary emotional outbursts, reactions, or incidental collateral actions that do NOT explain why the focal outcome occurred.
 
 Story ID: {{ story.story_id }}
-Narrative:
-\"\"\"
-{{ story.text }}
-\"\"\"
-
-Normalized Events:
-{% for ne in normalized_events %}
-- {{ ne.norm_id }}: {{ ne.summary_label }} [{{ ne.predicate_name }}]
-{% endfor %}
-"""
-
-BACKBONE_SELECTION_PROMPT = """You are an expert causal reasoning system performing causal backbone extraction.
-
-Your objective is to identify the minimal causal backbone required to explain the story's problem, intervention, and terminal outcomes.
-
-CRITERIA FOR RETENTION:
-- Keep events that are causally necessary to explain:
-  1. The central problem / backlog / neglect.
-  2. How the intervention (incentive/help) entered the timeline.
-  3. Why the requirement failed or succeeded (e.g. insufficient time / obstruction).
-  4. The final outcome (requirement failure, reward withheld/received).
-
-CRITERIA FOR PRUNING:
-- Prune narrative decorations, emotional reactions, and incidental physical details that do not explain the core causal mechanism (e.g., sulking, slamming doors, cracking plaster, room decor).
-- Provide an explicit reason for every pruned event.
-
-Narrative:
-\"\"\"
-{{ story.text }}
-\"\"\"
-
-Normalized Events:
-{% for ne in normalized_events %}
-- {{ ne.norm_id }}: {{ ne.summary_label }} [{{ ne.predicate_name }}]
-{% endfor %}
-
-Anchors:
-- Central Problem: {{ anchors.central_problem }}
-- Central Goal: {{ anchors.central_goal }}
-- Intervention: {{ anchors.intervention }}
-- Terminal Outcomes: {{ anchors.terminal_outcomes }}
-"""
-
-MACRO_ABSTRACTION_PROMPT = """You are an abstract schema induction engineer.
-
-Convert the causal backbone into Macro-Nodes with 4-Level Abstraction Ladders and typed backbone edges.
-
-Guidelines:
-1. Merge events that belong to the exact same causal stage into a single MacroNode (e.g., "daydreams" + "does not clean" -> "task neglect / inaction"). Do NOT merge events across different causal stages.
-2. For each node, construct an Abstraction Ladder:
-   - Level 0 (Raw): Exact story-grounded phrasing.
-   - Level 1 (Domain): Domain-specific semantic predicate.
-   - Level 2 (Functional): Functional causal role / relational label (target operating level).
-   - Level 3 (Schema): High-level abstract schema label.
-3. Connect the backbone nodes with typed edges (CAUSES, BEFORE, ENABLES, BLOCKS, MOTIVATES, CONDITIONAL_ON, RESULTS_IN, PREVENTS).
-4. Maintain strict provenance to source normalized and atomic event IDs.
-
-Backbone Retained Events:
-{% for e in retained_events %}
-- {{ e.norm_id }}: {{ e.summary_label }} [{{ e.predicate_name }}] (Atomic IDs: {{ e.atomic_event_ids }})
-{% endfor %}
 
 Narrative Text:
 \"\"\"
 {{ story.text }}
 \"\"\"
+
+Normalized Events:
+{% for ne in normalized_events %}
+- {{ ne.norm_id }}: {{ ne.summary_label }} [{{ ne.predicate_name }}]
+{% endfor %}
+"""
+
+BACKBONE_SELECTION_PROMPT = """You are a causal reasoning engine performing explanatory backbone selection.
+
+Your objective is to identify which normalized events are causally necessary to explain the narrative's central problem, intervention, and focal/contingent outcomes.
+
+Retention Principles:
+- Retain events that form the explanatory mechanism of:
+  1. How the problem or deficit originated.
+  2. The introduction of any intervention or plan.
+  3. The immediate causal or blocking condition preventing/enabling goal fulfillment.
+  4. The focal outcome (success/failure) and direct contingent consequences.
+
+Pruning Principles:
+- Prune background setting details, static character descriptions, secondary emotional reactions, and incidental collateral actions that do not causally explain the focal outcome.
+- For every pruned event, provide a clear counterfactual reason explaining why its removal does not break the causal explanation of the focal outcome.
+
+Narrative Text:
+\"\"\"
+{{ story.text }}
+\"\"\"
+
+Normalized Events:
+{% for ne in normalized_events %}
+- {{ ne.norm_id }}: {{ ne.summary_label }} [{{ ne.predicate_name }}] (Phase: {{ ne.temporal_phase }})
+{% endfor %}
+
+Anchors:
+- Central Problem: {{ anchors.central_problem }}
+- Central Goal: {{ anchors.central_goal }}
+- Interventions: {{ anchors.intervention_event_ids }}
+- Focal Outcomes: {{ anchors.focal_outcome_ids }}
+- Contingent Outcomes: {{ anchors.contingent_outcome_ids }}
+- Downstream Reactions: {{ anchors.downstream_reaction_ids }}
+"""
+
+MACRO_GROUPING_PROMPT = """You are an abstract schema induction parser.
+
+Group the retained normalized events into functional Macro-Nodes and assign 4-Level Abstraction Ladders.
+
+Methodological Constraints:
+1. Macro-Node Grouping:
+   - Merge events ONLY if they occupy the same functional stage in the narrative progression.
+   - DO NOT merge a causal antecedent and its resulting deficit into a single node (e.g., keep the triggering action separate from the resulting state).
+   - Node labels must describe states or events, NOT embedded causal relations (e.g., prefer "deferred maintenance" or "insufficient buffer" over "lack of time causes failure").
+2. Assign a controlled functional role from the generic ontology:
+   `BACKGROUND`, `CAUSAL_ANTECEDENT`, `PROBLEM_STATE`, `GOAL`, `INTERVENTION`, `ACTION_RESPONSE`, `CONSTRAINT`, `FOCAL_OUTCOME`, `CONTINGENT_OUTCOME`, `DOWNSTREAM_REACTION`.
+3. Assign the story-grounded temporal phase relative to any intervention:
+   `PRE_INTERVENTION`, `AT_INTERVENTION`, `POST_INTERVENTION`, `SPANS_INTERVENTION`, `UNANCHORED`.
+4. Construct the 4-Level Abstraction Ladder for each MacroNode:
+   - Level 0 (Raw): Exact narrative phrasing.
+   - Level 1 (Domain): Domain-specific semantic predicate.
+   - Level 2 (Functional): Functional causal role / relational state (target operating level).
+   - Level 3 (Schema): High-level abstract schema label.
+
+Note: DO NOT generate graph edges here. Graph edges are derived deterministically from the underlying rich relations.
+
+Story ID: {{ story.story_id }}
+
+Narrative Text:
+\"\"\"
+{{ story.text }}
+\"\"\"
+
+Retained Normalized Events:
+{% for e in retained_events %}
+- {{ e.norm_id }}: {{ e.summary_label }} [{{ e.predicate_name }}] (Phase: {{ ne_phase_map.get(e.norm_id, 'UNANCHORED') }})
+{% endfor %}
 """
 
 
 class PromptRegistry:
-    """Manages prompt templates and rendering."""
+    """Manages versioned, domain-neutral prompt templates."""
 
     _TEMPLATES: Dict[str, str] = {
         "atomic_extraction": ATOMIC_EXTRACTION_PROMPT,
@@ -158,7 +186,7 @@ class PromptRegistry:
         "relation_extraction": RELATION_EXTRACTION_PROMPT,
         "goal_outcome": GOAL_OUTCOME_PROMPT,
         "backbone_selection": BACKBONE_SELECTION_PROMPT,
-        "macro_abstraction": MACRO_ABSTRACTION_PROMPT,
+        "macro_grouping": MACRO_GROUPING_PROMPT,
     }
 
     @classmethod

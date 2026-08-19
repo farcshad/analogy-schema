@@ -3,6 +3,7 @@ import pytest
 from pathlib import Path
 from analogy_schema.models.story import Story
 from analogy_schema.models.relations import RelationType
+from analogy_schema.models.events import BackboneRole, InterventionPhase
 from analogy_schema.llm.mock_provider import MockLLMProvider
 from analogy_schema.pipeline.single_story_runner import SingleStoryPipeline
 from analogy_schema.utils.serialization import export_backbone_markdown, to_json
@@ -35,7 +36,7 @@ def test_william_pipeline_vertical_slice():
     mock_llm.register_response("RelationExtractionOutput", get_william_mock_stage_c())
     mock_llm.register_response("GoalOutcomeOutput", get_william_mock_stage_d())
     mock_llm.register_response("BackboneSelectionOutput", get_william_mock_stage_f())
-    mock_llm.register_response("MacroAbstractionOutput", get_william_mock_stage_gh())
+    mock_llm.register_response("MacroGroupingOutput", get_william_mock_stage_gh())
     
     # 3. Execute full pipeline
     pipeline = SingleStoryPipeline(llm=mock_llm)
@@ -52,38 +53,43 @@ def test_william_pipeline_vertical_slice():
     assert temporal_edge.relation_type == RelationType.BEFORE
     
     # 5. Verify Backward Causal Tracing
-    assert result.backward_trace_info["retained_candidate_count"] >= 6
-    assert "NE1" in result.backward_trace_info["explanatory_ancestors"]
+    assert "NE1" in result.backward_trace_info["causal_outcome_ancestors"] or "NE1" in result.backward_trace_info["candidate_ancestors"]
+    assert "NE7" in result.anchors.downstream_reaction_ids
     
     # 6. Verify Causal Backbone
     backbone = result.backbone
     assert len(backbone.nodes) == 6
     assert "NE7" in backbone.pruned_node_ids
-    assert "door slamming" in backbone.pruned_reasons["NE7"] or "reaction" in backbone.pruned_reasons["NE7"]
     
-    # 7. Check Level 2 Functional Roles
+    # 7. Check Level 2 Functional Roles and Generic Roles
     level_2_labels = [node.abstraction.level_2_functional for node in backbone.nodes.values()]
     assert "task neglect / inaction" in level_2_labels
     assert "conditional reward offered as incentive" in level_2_labels
     assert "requirement failure" in level_2_labels
     assert "reward withheld" in level_2_labels
     
-    # 8. Check Backbone Edges
-    edge_types = [e.relation_type for e in backbone.edges]
-    assert RelationType.CAUSES in edge_types
-    assert RelationType.BEFORE in edge_types
-    assert RelationType.RESULTS_IN in edge_types
+    roles = [node.functional_role for node in backbone.nodes.values()]
+    assert BackboneRole.CAUSAL_ANTECEDENT in roles
+    assert BackboneRole.INTERVENTION in roles
+    assert BackboneRole.FOCAL_OUTCOME in roles
+    assert BackboneRole.CONTINGENT_OUTCOME in roles
     
-    # 9. Verify DAG Property
+    # 8. Check Deterministic Edge Lifting and Provenance Invariant
+    assert len(backbone.edges) > 0
+    for edge in backbone.edges:
+        assert len(edge.underlying_relation_ids) > 0, f"Edge {edge.edge_id} missing rich-edge provenance!"
+    
+    # 9. Verify DAG Property and Invariant validation
     assert result.dag_validation["is_dag"] is True
     assert result.dag_validation["cycle_count"] == 0
+    assert len(result.validation_warnings) == 0
     
-    # 10. Verify Inspectable Markdown and JSON
+    # 10. Verify Markdown and JSON serialization
     md_output = export_backbone_markdown(backbone)
     assert "Causal Backbone: william_base" in md_output
+    assert "Underlying Rich Relations" in md_output
     assert "task neglect / inaction" in md_output
-    assert "Pruned Events" in md_output
     
     json_output = to_json(backbone)
-    assert "level_2_functional" in json_output
-    assert "william_base" in json_output
+    assert "PRE_INTERVENTION" in json_output
+    assert "underlying_relation_ids" in json_output

@@ -1,6 +1,6 @@
 import pytest
 from analogy_schema.models.story import Story
-from analogy_schema.models.events import AtomicEvent, NormalizedEvent, EventType, Polarity, Explicitness
+from analogy_schema.models.events import AtomicEvent, NormalizedEvent, EventType, Polarity, Explicitness, InterventionPhase, BackboneRole
 from analogy_schema.models.relations import EventRelation, RelationType
 from analogy_schema.models.graph import RichEventGraph
 from analogy_schema.models.backbone import AbstractionLadder, MacroNode, BackboneNode, BackboneEdge, CausalBackbone, NarrativeAnchors
@@ -32,9 +32,11 @@ def test_atomic_and_normalized_events():
         predicate_name="NEGLECT_TASK",
         arguments={"actor": "William", "task": "cleaning"},
         atomic_event_ids=["E1"],
-        summary_label="William neglects cleaning"
+        summary_label="William neglects cleaning",
+        temporal_phase=InterventionPhase.PRE_INTERVENTION
     )
     assert norm.norm_id == "NE1"
+    assert norm.temporal_phase == InterventionPhase.PRE_INTERVENTION
     assert "E1" in norm.atomic_event_ids
 
 
@@ -49,24 +51,27 @@ def test_relations_and_backbone_serialization():
         macro_id="M1",
         label="Daydreaming",
         source_normalized_ids=["NE1"],
-        functional_role="cause"
+        functional_role=BackboneRole.CAUSAL_ANTECEDENT,
+        temporal_phase=InterventionPhase.PRE_INTERVENTION
     )
     node = BackboneNode(
         node_id="N1",
         macro_node=macro,
         abstraction=ladder,
-        functional_role="cause"
+        functional_role=BackboneRole.CAUSAL_ANTECEDENT,
+        temporal_phase=InterventionPhase.PRE_INTERVENTION
     )
     edge = BackboneEdge(
         edge_id="BE1",
         source_id="N1",
         target_id="N2",
-        relation_type=RelationType.CAUSES
+        relation_type=RelationType.CAUSES,
+        underlying_relation_ids=["R1"]
     )
     backbone = CausalBackbone(
         backbone_id="bb_1",
         story_id="test_1",
-        nodes={"N1": node},
+        nodes={"N1": node, "N2": node.model_copy(update={"node_id": "N2"})},
         edges=[edge],
         anchors=NarrativeAnchors(central_problem="problem")
     )
@@ -74,3 +79,8 @@ def test_relations_and_backbone_serialization():
     json_str = to_json(backbone)
     assert "task neglect / inaction" in json_str
     assert "CAUSES" in json_str
+    assert "PRE_INTERVENTION" in json_str
+    
+    # Invariant checks
+    warnings = backbone.validate_invariants()
+    assert len(warnings) == 0

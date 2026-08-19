@@ -24,41 +24,52 @@ def load_json(cls, filepath: str):
 
 
 def export_backbone_markdown(backbone: CausalBackbone) -> str:
-    """Generates an inspectable markdown summary of the causal backbone with provenance."""
+    """Generates an inspectable markdown summary of the causal backbone with provenance and temporal phases."""
     lines = [
         f"# Causal Backbone: {backbone.story_id}",
         "",
         "## Narrative Anchors",
         f"- **Central Problem**: {backbone.anchors.central_problem}",
         f"- **Central Goal**: {backbone.anchors.central_goal}",
-        f"- **Intervention**: {backbone.anchors.intervention}",
-        f"- **Terminal Outcomes**: {', '.join(backbone.anchors.terminal_outcomes)}",
+        f"- **Intervention Events**: {backbone.anchors.intervention_event_ids}",
+        f"- **Focal Outcomes**: {backbone.anchors.focal_outcome_ids}",
+        f"- **Contingent Outcomes**: {backbone.anchors.contingent_outcome_ids}",
+        f"- **Downstream Reactions (Excluded from Anchoring)**: {backbone.anchors.downstream_reaction_ids}",
         "",
-        "## Backbone Nodes (Level 2 Functional Roles)",
+        "## Backbone Nodes (Level 2 Functional Roles & Temporal Phases)",
     ]
     
     for nid, node in backbone.nodes.items():
+        role_val = node.functional_role.value if hasattr(node.functional_role, "value") else str(node.functional_role)
+        phase_val = node.temporal_phase.value if hasattr(node.temporal_phase, "value") else str(node.temporal_phase)
+        
         intervention_tag = " `[INTERVENTION]`" if node.is_intervention else ""
-        outcome_tag = " `[OUTCOME]`" if node.is_terminal_outcome else ""
-        lines.append(f"### {nid}: {node.abstraction.level_2_functional}{intervention_tag}{outcome_tag}")
-        lines.append(f"- **Role**: {node.functional_role}")
+        focal_tag = " `[FOCAL_OUTCOME]`" if node.is_focal_outcome else ""
+        contingent_tag = " `[CONTINGENT_OUTCOME]`" if node.is_contingent_outcome else ""
+        
+        lines.append(f"### {nid}: {node.abstraction.level_2_functional}{intervention_tag}{focal_tag}{contingent_tag}")
+        lines.append(f"- **Role**: `{role_val}`")
+        lines.append(f"- **Intervention Phase**: `{phase_val}`")
         lines.append(f"- **Abstraction Ladder**:")
         lines.append(f"  - *Level 0 (Raw)*: {node.abstraction.level_0_raw}")
         lines.append(f"  - *Level 1 (Domain)*: {node.abstraction.level_1_domain}")
         lines.append(f"  - *Level 2 (Functional)*: {node.abstraction.level_2_functional}")
         lines.append(f"  - *Level 3 (Schema)*: {node.abstraction.level_3_schema}")
         lines.append(f"- **Underlying Macro-Node**: `{node.macro_node.macro_id}` ({node.macro_node.label})")
-        lines.append(f"- **Source Events**: {node.macro_node.source_normalized_ids or node.macro_node.source_atomic_ids}")
+        lines.append(f"- **Source Normalized Events**: {node.macro_node.source_normalized_ids}")
         lines.append(f"- **Textual Provenance Spans**: {node.provenance_text_spans}")
         lines.append("")
         
-    lines.append("## Backbone Edges (Typed Relational Backbone)")
+    lines.append("## Backbone Edges (Typed Relational Backbone with Provenance)")
     for edge in backbone.edges:
         src = backbone.nodes.get(edge.source_id)
         dst = backbone.nodes.get(edge.target_id)
         src_lbl = src.abstraction.level_2_functional if src else edge.source_id
         dst_lbl = dst.abstraction.level_2_functional if dst else edge.target_id
-        lines.append(f"- **`{edge.source_id}` ({src_lbl})** `--{edge.relation_type.value}-->` **`{edge.target_id}` ({dst_lbl})**")
+        rel_val = edge.relation_type.value if hasattr(edge.relation_type, "value") else str(edge.relation_type)
+        
+        lines.append(f"- **`{edge.source_id}` ({src_lbl})** `--{rel_val}-->` **`{edge.target_id}` ({dst_lbl})**")
+        lines.append(f"  - *Underlying Rich Relations*: `{edge.underlying_relation_ids}`")
         if edge.justification:
             lines.append(f"  - *Justification*: {edge.justification}")
             
@@ -68,5 +79,12 @@ def export_backbone_markdown(backbone: CausalBackbone) -> str:
         for pid in backbone.pruned_node_ids:
             reason = backbone.pruned_reasons.get(pid, "Non-essential narrative decoration / non-explanatory")
             lines.append(f"- **`{pid}`**: {reason}")
+            
+    warnings = backbone.metadata.get("validation_warnings", [])
+    if warnings:
+        lines.append("")
+        lines.append("## Validation Warnings")
+        for w in warnings:
+            lines.append(f"- ⚠️ {w}")
             
     return "\n".join(lines)

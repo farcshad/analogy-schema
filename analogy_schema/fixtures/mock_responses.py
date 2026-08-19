@@ -1,4 +1,12 @@
-from analogy_schema.models.events import AtomicEvent, NormalizedEvent, EventType, Polarity, Explicitness
+from analogy_schema.models.events import (
+    AtomicEvent,
+    NormalizedEvent,
+    EventType,
+    Polarity,
+    Explicitness,
+    InterventionPhase,
+    BackboneRole,
+)
 from analogy_schema.models.relations import EventRelation, RelationType
 from analogy_schema.pipeline.stage_a_atomic import AtomicExtractionOutput
 from analogy_schema.pipeline.stage_b_normalize import NormalizationOutput
@@ -6,9 +14,8 @@ from analogy_schema.pipeline.stage_c_relations import RelationExtractionOutput
 from analogy_schema.pipeline.stage_d_goals import GoalOutcomeOutput
 from analogy_schema.pipeline.stage_f_backbone import BackboneSelectionOutput, PrunedEventAudit
 from analogy_schema.pipeline.stage_g_macro import (
-    MacroAbstractionOutput,
+    MacroGroupingOutput,
     GeneratedMacroNode,
-    GeneratedBackboneEdge,
 )
 
 
@@ -150,48 +157,62 @@ def get_william_mock_stage_b() -> NormalizationOutput:
                 arguments={"actor": "William", "task": "clean_room", "reason": "daydreaming"},
                 atomic_event_ids=["E4", "E6"],
                 summary_label="William neglects cleaning his room due to daydreaming",
+                temporal_phase=InterventionPhase.PRE_INTERVENTION,
+                is_persistent_state=False,
             ),
             NormalizedEvent(
                 norm_id="NE2",
-                predicate_name="INSUFFICIENT_PROGRESS",
+                predicate_name="DEFICIT_STATE",
                 arguments={"actor": "William", "state": "room_is_mess"},
                 atomic_event_ids=["E5"],
-                summary_label="Room remains messy and uncleaned before inspection",
+                summary_label="Room remains in an accumulated deficit backlog state",
+                temporal_phase=InterventionPhase.SPANS_INTERVENTION,
+                is_persistent_state=True,
             ),
             NormalizedEvent(
                 norm_id="NE3",
-                predicate_name="OFFER_CONDITIONAL_INCENTIVE",
+                predicate_name="INTRODUCE_INCENTIVE",
                 arguments={"provider": "nurse", "recipient": "William", "reward": "gingerbread", "condition": "clean_room"},
                 atomic_event_ids=["E7"],
-                summary_label="Nurse offers gingerbread incentive conditional on cleaning room",
+                summary_label="Nurse introduces conditional incentive to motivate cleaning",
+                temporal_phase=InterventionPhase.AT_INTERVENTION,
+                is_persistent_state=False,
             ),
             NormalizedEvent(
                 norm_id="NE4",
-                predicate_name="INSUFFICIENT_REMAINING_TIME",
+                predicate_name="INSUFFICIENT_TIME_BUFFER",
                 arguments={"actor": "William", "target": "complete_cleaning"},
                 atomic_event_ids=["E9"],
-                summary_label="There is insufficient remaining time to complete the task",
+                summary_label="Insufficient time remaining to overcome backlog",
+                temporal_phase=InterventionPhase.SPANS_INTERVENTION,
+                is_persistent_state=True,
             ),
             NormalizedEvent(
                 norm_id="NE5",
                 predicate_name="FAIL_REQUIREMENT",
                 arguments={"actor": "William", "requirement": "room_inspection"},
                 atomic_event_ids=["E2", "E10"],
-                summary_label="William fails the room inspection requirement",
+                summary_label="William fails the room inspection standard",
+                temporal_phase=InterventionPhase.POST_INTERVENTION,
+                is_persistent_state=False,
             ),
             NormalizedEvent(
                 norm_id="NE6",
                 predicate_name="WITHHOLD_REWARD",
                 arguments={"recipient": "William", "reward": "gingerbread"},
                 atomic_event_ids=["E11"],
-                summary_label="Gingerbread reward is withheld",
+                summary_label="Gingerbread reward is withheld due to unmet requirement",
+                temporal_phase=InterventionPhase.POST_INTERVENTION,
+                is_persistent_state=False,
             ),
             NormalizedEvent(
                 norm_id="NE7",
-                predicate_name="EMOTIONAL_FRUSTRATION",
-                arguments={"actor": "William", "actions": ["sulk", "slam_door"]},
+                predicate_name="EMOTIONAL_OUTBURST",
+                arguments={"actor": "William", "actions": ["sulk", "slam_door", "crack_plaster"]},
                 atomic_event_ids=["E3", "E8", "E12"],
-                summary_label="William reacts with frustration and slams door",
+                summary_label="William reacts with frustration and door slamming",
+                temporal_phase=InterventionPhase.POST_INTERVENTION,
+                is_persistent_state=False,
             ),
         ]
     )
@@ -205,7 +226,7 @@ def get_william_mock_stage_c() -> RelationExtractionOutput:
                 source_id="NE1",
                 target_id="NE2",
                 relation_type=RelationType.CAUSES,
-                evidence="William doing nothing but daydreaming directly caused the room to remain a mess.",
+                evidence="Habitual daydreaming and inaction directly brought about the accumulated backlog.",
                 explicitness=Explicitness.EXPLICIT,
             ),
             EventRelation(
@@ -213,7 +234,7 @@ def get_william_mock_stage_c() -> RelationExtractionOutput:
                 source_id="NE2",
                 target_id="NE4",
                 relation_type=RelationType.CAUSES,
-                evidence="Accumulated backlog and messiness led to insufficient remaining time to finish.",
+                evidence="The accumulated backlog created an insuperable shortage of remaining time.",
                 explicitness=Explicitness.STRONGLY_INFERRED,
             ),
             EventRelation(
@@ -221,15 +242,15 @@ def get_william_mock_stage_c() -> RelationExtractionOutput:
                 source_id="NE2",
                 target_id="NE3",
                 relation_type=RelationType.BEFORE,
-                evidence="The backlog and messy room existed before the nurse intervened with an incentive.",
+                evidence="The room backlog already existed before the incentive was introduced.",
                 explicitness=Explicitness.EXPLICIT,
             ),
             EventRelation(
                 relation_id="R4",
                 source_id="NE3",
                 target_id="NE5",
-                relation_type=RelationType.CONDITIONAL_ON,
-                evidence="Receiving the reward offered in NE3 was conditional on passing the requirement NE5.",
+                relation_type=RelationType.REQUIRES,
+                evidence="Receiving the offered reward requires meeting the inspection standard.",
                 explicitness=Explicitness.EXPLICIT,
             ),
             EventRelation(
@@ -237,7 +258,7 @@ def get_william_mock_stage_c() -> RelationExtractionOutput:
                 source_id="NE4",
                 target_id="NE5",
                 relation_type=RelationType.RESULTS_IN,
-                evidence="Having insufficient time to finish resulted in William failing the inspection.",
+                evidence="Having insufficient time to finish resulted directly in inspection failure.",
                 explicitness=Explicitness.EXPLICIT,
             ),
             EventRelation(
@@ -245,7 +266,7 @@ def get_william_mock_stage_c() -> RelationExtractionOutput:
                 source_id="NE5",
                 target_id="NE6",
                 relation_type=RelationType.RESULTS_IN,
-                evidence="Failing the room inspection resulted in the gingerbread reward being withheld.",
+                evidence="Failing the inspection directly triggered the withholding of the reward.",
                 explicitness=Explicitness.EXPLICIT,
             ),
             EventRelation(
@@ -253,7 +274,7 @@ def get_william_mock_stage_c() -> RelationExtractionOutput:
                 source_id="NE6",
                 target_id="NE7",
                 relation_type=RelationType.RESULTS_IN,
-                evidence="Reward withholding triggered William's emotional frustration.",
+                evidence="Reward withholding triggered downstream emotional frustration.",
                 explicitness=Explicitness.EXPLICIT,
             ),
         ]
@@ -262,11 +283,13 @@ def get_william_mock_stage_c() -> RelationExtractionOutput:
 
 def get_william_mock_stage_d() -> GoalOutcomeOutput:
     return GoalOutcomeOutput(
-        central_problem="William neglects cleaning and falls too far behind to recover",
-        central_goal="Clean room and pass room inspection",
-        intervention="Nurse offers gingerbread incentive to motivate room cleaning",
-        terminal_outcomes=["Fails room inspection", "Gingerbread reward withheld"],
-        anchor_event_ids=["NE1", "NE2", "NE3", "NE4", "NE5", "NE6"]
+        central_problem="Accumulated task backlog caused by inaction makes recovery impossible",
+        central_goal="Pass inspection standard and earn incentive reward",
+        intervention_event_ids=["NE3"],
+        focal_outcome_ids=["NE5"],
+        contingent_outcome_ids=["NE6"],
+        downstream_reaction_ids=["NE7"],
+        explanation="NE5 is the primary focal failure; NE6 is the direct contingent consequence; NE7 is a downstream reaction."
     )
 
 
@@ -276,129 +299,86 @@ def get_william_mock_stage_f() -> BackboneSelectionOutput:
         pruned_events=[
             PrunedEventAudit(
                 norm_id="NE7",
-                reason="Emotional reaction / door slamming does not explain why the inspection failed or how the incentive functioned."
+                reason="Downstream emotional reaction and door slamming do not causally explain why the inspection failed."
             )
         ]
     )
 
 
-def get_william_mock_stage_gh() -> MacroAbstractionOutput:
-    return MacroAbstractionOutput(
+def get_william_mock_stage_gh() -> MacroGroupingOutput:
+    return MacroGroupingOutput(
         macro_nodes=[
             GeneratedMacroNode(
                 macro_id="M1",
-                label="Task neglect and daydreaming",
+                label="Task neglect and inaction",
                 source_normalized_ids=["NE1"],
-                functional_role="primary_neglect",
+                functional_role=BackboneRole.CAUSAL_ANTECEDENT,
+                temporal_phase=InterventionPhase.PRE_INTERVENTION,
                 temporal_order=1,
                 abstraction_level_0="William spends his time daydreaming about food instead of cleaning",
-                abstraction_level_1="William neglects cleaning his hospital room",
+                abstraction_level_1="William neglects cleaning his room",
                 abstraction_level_2="task neglect / inaction",
                 abstraction_level_3="failure to pursue primary task",
-                is_intervention=False,
-                is_terminal_outcome=False,
             ),
             GeneratedMacroNode(
                 macro_id="M2",
-                label="Accumulated backlog / insufficient progress",
+                label="Accumulated deficit backlog",
                 source_normalized_ids=["NE2"],
-                functional_role="accumulated_deficit",
+                functional_role=BackboneRole.PROBLEM_STATE,
+                temporal_phase=InterventionPhase.SPANS_INTERVENTION,
                 temporal_order=2,
                 abstraction_level_0="The room remains messy a few days before inspection",
                 abstraction_level_1="Room is in an uncleaned backlog state",
-                abstraction_level_2="insufficient task progress / accumulated deficit",
+                abstraction_level_2="accumulated deficit / backlog",
                 abstraction_level_3="deficit condition",
-                is_intervention=False,
-                is_terminal_outcome=False,
             ),
             GeneratedMacroNode(
                 macro_id="M3",
-                label="Conditional incentive offered",
+                label="Conditional incentive introduced",
                 source_normalized_ids=["NE3"],
-                functional_role="intervention",
+                functional_role=BackboneRole.INTERVENTION,
+                temporal_phase=InterventionPhase.AT_INTERVENTION,
                 temporal_order=3,
                 abstraction_level_0="Nurse promises gingerbread if William scrubs the room",
                 abstraction_level_1="Authority offers food reward for completing room cleaning",
                 abstraction_level_2="conditional reward offered as incentive",
                 abstraction_level_3="external motivation intervention",
-                is_intervention=True,
-                is_terminal_outcome=False,
             ),
             GeneratedMacroNode(
                 macro_id="M4",
-                label="Inability to recover due to deficit",
+                label="Inability to recover in remaining time",
                 source_normalized_ids=["NE4"],
-                functional_role="irrecoverable_state",
+                functional_role=BackboneRole.CONSTRAINT,
+                temporal_phase=InterventionPhase.SPANS_INTERVENTION,
                 temporal_order=4,
                 abstraction_level_0="There was no longer enough time for him to put it in order",
                 abstraction_level_1="Insufficient remaining time to clean room",
                 abstraction_level_2="insufficient remaining time / inability to recover",
                 abstraction_level_3="irreversible task obstruction",
-                is_intervention=False,
-                is_terminal_outcome=False,
             ),
             GeneratedMacroNode(
                 macro_id="M5",
                 label="Requirement failure",
                 source_normalized_ids=["NE5"],
-                functional_role="requirement_failure",
+                functional_role=BackboneRole.FOCAL_OUTCOME,
+                temporal_phase=InterventionPhase.POST_INTERVENTION,
                 temporal_order=5,
                 abstraction_level_0="William does not pass the monthly room inspection",
                 abstraction_level_1="Fails room inspection standard",
                 abstraction_level_2="requirement failure",
                 abstraction_level_3="task objective failure",
-                is_intervention=False,
-                is_terminal_outcome=True,
             ),
             GeneratedMacroNode(
                 macro_id="M6",
                 label="Reward withheld",
                 source_normalized_ids=["NE6"],
-                functional_role="consequential_penalty",
+                functional_role=BackboneRole.CONTINGENT_OUTCOME,
+                temporal_phase=InterventionPhase.POST_INTERVENTION,
                 temporal_order=6,
                 abstraction_level_0="William does not get any gingerbread",
                 abstraction_level_1="Gingerbread treat is withheld",
                 abstraction_level_2="reward withheld",
                 abstraction_level_3="incentive withholding",
-                is_intervention=False,
-                is_terminal_outcome=True,
-            ),
-        ],
-        backbone_edges=[
-            GeneratedBackboneEdge(
-                edge_id="BE1",
-                source_macro_id="M1",
-                target_macro_id="M2",
-                relation_type=RelationType.CAUSES,
-                justification="Neglect and daydreaming directly caused the deficit backlog.",
-            ),
-            GeneratedBackboneEdge(
-                edge_id="BE2",
-                source_macro_id="M2",
-                target_macro_id="M4",
-                relation_type=RelationType.CAUSES,
-                justification="The accumulated deficit caused an irrecoverable shortage of remaining time.",
-            ),
-            GeneratedBackboneEdge(
-                edge_id="BE3",
-                source_macro_id="M2",
-                target_macro_id="M3",
-                relation_type=RelationType.BEFORE,
-                justification="The deficit existed before the incentive was introduced; incentive did not cause the backlog.",
-            ),
-            GeneratedBackboneEdge(
-                edge_id="BE4",
-                source_macro_id="M4",
-                target_macro_id="M5",
-                relation_type=RelationType.RESULTS_IN,
-                justification="Inability to recover in time resulted directly in inspection failure.",
-            ),
-            GeneratedBackboneEdge(
-                edge_id="BE5",
-                source_macro_id="M5",
-                target_macro_id="M6",
-                relation_type=RelationType.RESULTS_IN,
-                justification="Failing the requirement caused the promised reward to be withheld.",
             ),
         ]
     )

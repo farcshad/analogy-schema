@@ -5,19 +5,20 @@ from analogy_schema.models.events import Explicitness
 
 
 class RelationType(str, Enum):
-    CAUSES = "CAUSES"               # A brings about B (mechanistic or direct causal)
-    BEFORE = "BEFORE"               # A occurs strictly before B (pure temporal, not necessarily causal)
-    ENABLES = "ENABLES"             # A creates conditions making B possible
-    BLOCKS = "BLOCKS"               # A prevents or obstructs B from happening
-    MOTIVATES = "MOTIVATES"         # A gives agent reason/goal to attempt B
-    CONDITIONAL_ON = "CONDITIONAL_ON" # B depends on condition A being met
-    RESULTS_IN = "RESULTS_IN"       # Consequential outcome / terminal state of A
-    PREVENTS = "PREVENTS"           # Direct counteraction
+    CAUSES = "CAUSES"                   # Source brings about or causes Target (mechanistic/causal)
+    BEFORE = "BEFORE"                   # Source occurs strictly before Target in narrative time (pure temporal)
+    ENABLES = "ENABLES"                 # Source creates necessary preconditions making Target possible
+    BLOCKS = "BLOCKS"                   # Source prevents, obstructs, or renders impossible Target
+    MOTIVATES = "MOTIVATES"             # Source gives agent reason/goal/incentive to attempt Target
+    REQUIRES = "REQUIRES"               # Source requires condition Target to be fulfilled/satisfied
+    CONDITIONAL_ON = "CONDITIONAL_ON"   # Source outcome depends on Target condition being met
+    RESULTS_IN = "RESULTS_IN"           # Source directly produces consequential outcome Target
+    PREVENTS = "PREVENTS"               # Source directly counteracts or stops Target
 
 
 class EventRelation(BaseModel):
     relation_id: str = Field(description="Unique relation ID, e.g., R1, R2")
-    source_id: str = Field(description="Source event ID (atomic, normalized, or macro)")
+    source_id: str = Field(description="Source event ID (norm_id or event_id)")
     target_id: str = Field(description="Target event ID")
     relation_type: RelationType = Field(description="Typed ontological relation")
     confidence: float = Field(default=1.0, ge=0.0, le=1.0)

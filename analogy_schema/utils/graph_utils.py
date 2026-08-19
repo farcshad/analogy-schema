@@ -1,15 +1,14 @@
-from typing import List, Set, Dict, Any, Optional
+from typing import List, Set, Dict, Any, Optional, Tuple
 import networkx as nx
 from analogy_schema.models.graph import RichEventGraph
-from analogy_schema.models.backbone import CausalBackbone, BackboneNode, BackboneEdge
+from analogy_schema.models.backbone import CausalBackbone, BackboneNode, BackboneEdge, MacroNode
 from analogy_schema.models.relations import RelationType
 
 
 def rich_graph_to_nx(graph: RichEventGraph) -> nx.DiGraph:
-    """Converts a RichEventGraph into a NetworkX DiGraph for graph-theoretic algorithms."""
+    """Converts a RichEventGraph into a NetworkX DiGraph for graph algorithms."""
     G = nx.DiGraph()
     
-    # Add nodes (prefer normalized events, fall back to atomic)
     if graph.normalized_events:
         for nid, ne in graph.normalized_events.items():
             G.add_node(
@@ -18,7 +17,8 @@ def rich_graph_to_nx(graph: RichEventGraph) -> nx.DiGraph:
                 predicate=ne.predicate_name,
                 arguments=ne.arguments,
                 atomic_ids=ne.atomic_event_ids,
-                confidence=ne.confidence
+                confidence=ne.confidence,
+                phase=ne.temporal_phase.value if hasattr(ne.temporal_phase, "value") else str(ne.temporal_phase)
             )
     else:
         for eid, ae in graph.atomic_events.items():
@@ -34,6 +34,7 @@ def rich_graph_to_nx(graph: RichEventGraph) -> nx.DiGraph:
         G.add_edge(
             rel.source_id,
             rel.target_id,
+            relation_id=rel.relation_id,
             relation_type=rel.relation_type.value if hasattr(rel.relation_type, "value") else str(rel.relation_type),
             confidence=rel.confidence,
             explicitness=rel.explicitness.value if hasattr(rel.explicitness, "value") else str(rel.explicitness),
@@ -54,9 +55,11 @@ def backbone_to_nx(backbone: CausalBackbone) -> nx.DiGraph:
             level_1=node.abstraction.level_1_domain,
             level_2=node.abstraction.level_2_functional,
             level_3=node.abstraction.level_3_schema,
-            role=node.functional_role,
+            role=node.functional_role.value if hasattr(node.functional_role, "value") else str(node.functional_role),
+            temporal_phase=node.temporal_phase.value if hasattr(node.temporal_phase, "value") else str(node.temporal_phase),
             is_intervention=node.is_intervention,
-            is_terminal_outcome=node.is_terminal_outcome,
+            is_focal_outcome=node.is_focal_outcome,
+            is_contingent_outcome=node.is_contingent_outcome,
             provenance_spans=node.provenance_text_spans
         )
         
@@ -64,9 +67,11 @@ def backbone_to_nx(backbone: CausalBackbone) -> nx.DiGraph:
         G.add_edge(
             edge.source_id,
             edge.target_id,
+            edge_id=edge.edge_id,
             relation_type=edge.relation_type.value if hasattr(edge.relation_type, "value") else str(edge.relation_type),
             confidence=edge.confidence,
-            justification=edge.justification
+            justification=edge.justification,
+            underlying_relation_ids=edge.underlying_relation_ids
         )
     return G
 
@@ -78,19 +83,17 @@ def get_backward_causal_ancestors(
 ) -> Set[str]:
     """
     Traces backward along explanatory edges from target outcome nodes.
-    By default, considers CAUSES, RESULTS_IN, ENABLES, BLOCKS, MOTIVATES, CONDITIONAL_ON.
+    By default, considers strictly causal/explanatory relations: CAUSES, RESULTS_IN, BLOCKS, PREVENTS, ENABLES.
     """
     if allowed_relations is None:
         allowed_relations = {
             RelationType.CAUSES.value,
             RelationType.RESULTS_IN.value,
-            RelationType.ENABLES.value,
             RelationType.BLOCKS.value,
-            RelationType.MOTIVATES.value,
-            RelationType.CONDITIONAL_ON.value,
+            RelationType.PREVENTS.value,
+            RelationType.ENABLES.value,
         }
         
-    # Subgraph with only explanatory relations
     explanatory_edges = [
         (u, v) for u, v, d in G.edges(data=True)
         if d.get("relation_type") in allowed_relations

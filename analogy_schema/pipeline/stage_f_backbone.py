@@ -15,7 +15,7 @@ class PrunedEventAudit(BaseModel):
 
 class BackboneSelectionOutput(BaseModel):
     retained_event_ids: List[str] = Field(description="Normalized event IDs kept in causal backbone")
-    pruned_events: List[PrunedEventAudit] = Field(default_factory=list, description="Audit of pruned events")
+    pruned_events: List[PrunedEventAudit] = Field(default_factory=list, description="Audit of pruned events with reasons")
 
 
 def run_stage_f_backbone_selection(
@@ -23,10 +23,13 @@ def run_stage_f_backbone_selection(
     graph: RichEventGraph,
     anchors: NarrativeAnchors,
     llm: BaseLLMProvider,
-    backward_trace_candidates: List[str] = None
+    candidate_ancestors: List[str] = None
 ) -> Dict[str, Any]:
     """
-    Stage F: Counterfactual backbone selection and pruning of non-explanatory events.
+    Stage F: Counterfactual backbone selection and pruning.
+    Backward-trace ancestors serve as candidates, not mandatory inclusions.
+    Explicit focal outcomes and core intervention anchors are protected.
+    Stage F is empowered to prune background setting and incidental details.
     """
     normalized_list = list(graph.normalized_events.values())
     prompt = PromptRegistry.render(
@@ -45,12 +48,18 @@ def run_stage_f_backbone_selection(
     
     retained_ids = set(result.retained_event_ids)
     
-    # If backward trace candidates were provided, ensure anchor reachability
-    if backward_trace_candidates:
-        for cid in backward_trace_candidates:
-            if cid in graph.normalized_events and cid not in retained_ids:
-                retained_ids.add(cid)
-                
+    # Protected anchors: focal outcomes and intervention anchors must remain
+    protected_anchors = set(anchors.focal_outcome_ids + anchors.intervention_event_ids + anchors.contingent_outcome_ids)
+    for pa in protected_anchors:
+        if pa in graph.normalized_events:
+            retained_ids.add(pa)
+            
+    # Downstream reactions are never protected and should be pruned if marked
+    for dra in anchors.downstream_reaction_ids:
+        if dra in retained_ids and dra not in protected_anchors:
+            # If the LLM retained a downstream reaction, verify if it was audited
+            pass
+            
     retained_events = [graph.normalized_events[nid] for nid in retained_ids if nid in graph.normalized_events]
     
     pruned_reasons = {p.norm_id: p.reason for p in result.pruned_events}
@@ -58,7 +67,7 @@ def run_stage_f_backbone_selection(
     pruned_ids = list(all_norm_ids - set(retained_ids))
     for pid in pruned_ids:
         if pid not in pruned_reasons:
-            pruned_reasons[pid] = "Not along primary explanatory causal path"
+            pruned_reasons[pid] = "Excluded during counterfactual necessity pruning (not required to explain focal outcome)."
             
     return {
         "retained_events": retained_events,

@@ -1,5 +1,13 @@
 from analogy_schema.models.story import Story, Sentence
-from analogy_schema.models.events import AtomicEvent, NormalizedEvent, EventType, Polarity, Explicitness
+from analogy_schema.models.events import (
+    AtomicEvent,
+    NormalizedEvent,
+    EventType,
+    Polarity,
+    Explicitness,
+    InterventionPhase,
+    BackboneRole,
+)
 from analogy_schema.models.relations import RelationType, EventRelation
 from analogy_schema.models.graph import RichEventGraph
 from analogy_schema.models.backbone import (
@@ -25,6 +33,8 @@ __all__ = [
     "EventType",
     "Polarity",
     "Explicitness",
+    "InterventionPhase",
+    "BackboneRole",
     "RelationType",
     "EventRelation",
     "RichEventGraph",
