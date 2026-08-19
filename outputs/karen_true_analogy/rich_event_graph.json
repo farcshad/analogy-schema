@@ -6,12 +6,12 @@
       "event_id": "E1",
       "text_span": "Karen is doing poorly in high school",
       "sentence_id": 1,
-      "predicate": "is doing poorly",
+      "predicate": "doing poorly",
       "participants": [
         "Karen"
       ],
       "event_type": "state",
-      "polarity": "positive",
+      "polarity": "negative",
       "explicitness": "explicit",
       "confidence": 1.0,
       "temporal_rank": 1
@@ -37,8 +37,8 @@
       "sentence_id": 1,
       "predicate": "causes",
       "participants": [
-        "Karen",
-        "Hawaii"
+        "daydreaming",
+        "poor performance"
       ],
       "event_type": "event",
       "polarity": "positive",
@@ -48,14 +48,13 @@
     },
     "E4": {
       "event_id": "E4",
-      "text_span": "Near graduation, her father promises to pay for a Hawaii trip if she improves enough to graduate",
+      "text_span": "Near graduation",
       "sentence_id": 2,
-      "predicate": "promises to pay",
+      "predicate": "near graduation",
       "participants": [
-        "Karen's father",
-        "Karen"
+        "graduation"
       ],
-      "event_type": "event",
+      "event_type": "state",
       "polarity": "positive",
       "explicitness": "explicit",
       "confidence": 1.0,
@@ -63,6 +62,22 @@
     },
     "E5": {
       "event_id": "E5",
+      "text_span": "her father promises to pay for a Hawaii trip if she improves enough to graduate",
+      "sentence_id": 2,
+      "predicate": "promises to pay",
+      "participants": [
+        "father",
+        "Karen",
+        "Hawaii trip"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 5
+    },
+    "E6": {
+      "event_id": "E6",
       "text_span": "if she improves enough to graduate",
       "sentence_id": 2,
       "predicate": "improves enough to graduate",
@@ -73,31 +88,18 @@
       "polarity": "positive",
       "explicitness": "explicit",
       "confidence": 1.0,
-      "temporal_rank": 5
-    },
-    "E6": {
-      "event_id": "E6",
-      "text_span": "She is happy about the incentive",
-      "sentence_id": 3,
-      "predicate": "is happy",
-      "participants": [
-        "Karen"
-      ],
-      "event_type": "emotion_reaction",
-      "polarity": "positive",
-      "explicitness": "explicit",
-      "confidence": 1.0,
       "temporal_rank": 6
     },
     "E7": {
       "event_id": "E7",
-      "text_span": "She is already too far behind in her classes to recover",
-      "sentence_id": 4,
-      "predicate": "is too far behind to recover",
+      "text_span": "She is happy about the incentive",
+      "sentence_id": 3,
+      "predicate": "is happy",
       "participants": [
-        "Karen"
+        "Karen",
+        "incentive"
       ],
-      "event_type": "constraint",
+      "event_type": "emotion_reaction",
       "polarity": "positive",
       "explicitness": "explicit",
       "confidence": 1.0,
@@ -105,21 +107,35 @@
     },
     "E8": {
       "event_id": "E8",
-      "text_span": "She fails enough classes that she does not graduate",
-      "sentence_id": 5,
-      "predicate": "fails enough classes",
+      "text_span": "She is already too far behind in her classes to recover",
+      "sentence_id": 4,
+      "predicate": "too far behind to recover",
       "participants": [
         "Karen"
       ],
-      "event_type": "event",
-      "polarity": "positive",
+      "event_type": "constraint",
+      "polarity": "negative",
       "explicitness": "explicit",
       "confidence": 1.0,
       "temporal_rank": 8
     },
     "E9": {
       "event_id": "E9",
-      "text_span": "she does not graduate",
+      "text_span": "She fails enough classes",
+      "sentence_id": 5,
+      "predicate": "fails classes",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "event",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 9
+    },
+    "E10": {
+      "event_id": "E10",
+      "text_span": "that she does not graduate",
       "sentence_id": 5,
       "predicate": "does not graduate",
       "participants": [
@@ -129,10 +145,10 @@
       "polarity": "negative",
       "explicitness": "explicit",
       "confidence": 1.0,
-      "temporal_rank": 9
+      "temporal_rank": 10
     },
-    "E10": {
-      "event_id": "E10",
+    "E11": {
+      "event_id": "E11",
       "text_span": "She therefore does not receive the Hawaii trip",
       "sentence_id": 6,
       "predicate": "does not receive",
@@ -144,116 +160,130 @@
       "polarity": "negative",
       "explicitness": "explicit",
       "confidence": 1.0,
-      "temporal_rank": 10
+      "temporal_rank": 11
     }
   },
   "normalized_events": {
     "NE1": {
       "norm_id": "NE1",
-      "predicate_name": "POOR_ACADEMIC_PERFORMANCE",
+      "predicate_name": "DEFICIT_STATE",
       "arguments": {
         "actor": "Karen",
-        "context": "high_school"
+        "context": "high school"
       },
       "atomic_event_ids": [
         "E1"
       ],
       "summary_label": "Karen is doing poorly in high school",
-      "polarity": "positive",
-      "confidence": 1.0
+      "polarity": "negative",
+      "confidence": 1.0,
+      "temporal_phase": "PRE_INTERVENTION",
+      "is_persistent_state": true
     },
     "NE2": {
       "norm_id": "NE2",
-      "predicate_name": "DISTRACTED_BY_DAYDREAMING",
+      "predicate_name": "NEGLECT_TASK",
       "arguments": {
         "actor": "Karen",
-        "object": "Hawaii"
+        "activity": "daydreaming about Hawaii"
       },
       "atomic_event_ids": [
         "E2",
         "E3"
       ],
-      "summary_label": "Karen spends time daydreaming about Hawaii",
-      "polarity": "positive",
-      "confidence": 1.0
+      "summary_label": "Karen daydreams about Hawaii causing poor performance",
+      "polarity": "negative",
+      "confidence": 1.0,
+      "temporal_phase": "PRE_INTERVENTION",
+      "is_persistent_state": true
     },
     "NE3": {
       "norm_id": "NE3",
-      "predicate_name": "OFFER_INCENTIVE",
+      "predicate_name": "INTRODUCE_INCENTIVE",
       "arguments": {
-        "offeror": "father",
-        "recipient": "Karen",
-        "incentive": "Hawaii_trip",
-        "condition": "improve_enough_to_graduate"
+        "actor": "father",
+        "target": "Karen",
+        "incentive": "Hawaii trip",
+        "condition": "improve enough to graduate"
       },
       "atomic_event_ids": [
         "E4",
-        "E5"
+        "E5",
+        "E6"
       ],
-      "summary_label": "Father promises to pay for Hawaii trip if Karen improves enough to graduate",
+      "summary_label": "Father promises Hawaii trip if Karen improves",
       "polarity": "positive",
-      "confidence": 1.0
+      "confidence": 1.0,
+      "temporal_phase": "AT_INTERVENTION",
+      "is_persistent_state": false
     },
     "NE4": {
       "norm_id": "NE4",
-      "predicate_name": "POSITIVE_REACTION",
+      "predicate_name": "EMOTIONAL_RESPONSE",
       "arguments": {
         "actor": "Karen",
+        "emotion": "happy",
         "stimulus": "incentive"
-      },
-      "atomic_event_ids": [
-        "E6"
-      ],
-      "summary_label": "Karen is happy about the incentive",
-      "polarity": "positive",
-      "confidence": 1.0
-    },
-    "NE5": {
-      "norm_id": "NE5",
-      "predicate_name": "INSUFFICIENT_TIME",
-      "arguments": {
-        "actor": "Karen",
-        "context": "classes",
-        "state": "too_far_behind_to_recover"
       },
       "atomic_event_ids": [
         "E7"
       ],
-      "summary_label": "Karen is already too far behind in her classes to recover",
+      "summary_label": "Karen is happy about the incentive",
       "polarity": "positive",
-      "confidence": 1.0
+      "confidence": 1.0,
+      "temporal_phase": "AT_INTERVENTION",
+      "is_persistent_state": false
+    },
+    "NE5": {
+      "norm_id": "NE5",
+      "predicate_name": "DEFICIT_STATE",
+      "arguments": {
+        "actor": "Karen",
+        "domain": "classes",
+        "state": "too far behind to recover"
+      },
+      "atomic_event_ids": [
+        "E8"
+      ],
+      "summary_label": "Karen is too far behind in classes to recover",
+      "polarity": "negative",
+      "confidence": 1.0,
+      "temporal_phase": "POST_INTERVENTION",
+      "is_persistent_state": true
     },
     "NE6": {
       "norm_id": "NE6",
-      "predicate_name": "FAIL_REQUIREMENT",
+      "predicate_name": "FAIL_CRITERIA",
       "arguments": {
         "actor": "Karen",
-        "requirement": "graduate",
-        "outcome": "fails_enough_classes"
+        "task": "improve enough to graduate",
+        "outcome": "fails classes"
       },
       "atomic_event_ids": [
-        "E8",
-        "E9"
+        "E9",
+        "E10"
       ],
-      "summary_label": "Karen fails enough classes that she does not graduate",
-      "polarity": "positive",
-      "confidence": 1.0
+      "summary_label": "Karen fails enough classes and does not graduate",
+      "polarity": "negative",
+      "confidence": 1.0,
+      "temporal_phase": "POST_INTERVENTION",
+      "is_persistent_state": false
     },
     "NE7": {
       "norm_id": "NE7",
-      "predicate_name": "WITHHOLD_REWARD",
+      "predicate_name": "CONSEQUENCE_ENACTED",
       "arguments": {
-        "actor": "father",
-        "recipient": "Karen",
-        "reward": "Hawaii_trip",
-        "reason": "did_not_graduate"
+        "actor": "Karen",
+        "outcome": "does not receive Hawaii trip"
       },
       "atomic_event_ids": [
-        "E10"
+        "E11"
       ],
       "summary_label": "Karen does not receive the Hawaii trip",
-      "polarity": "positive",
-      "confidence": 1.0
+      "polarity": "negative",
+      "confidence": 1.0,
+      "temporal_phase": "POST_INTERVENTION",
+      "is_persistent_state": false
     }
   },
   "relations": [
@@ -262,100 +292,70 @@
       "source_id": "NE2",
       "target_id": "NE1",
       "relation_type": "CAUSES",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "explicitness": "explicit",
-      "evidence": "The narrative states Karen is doing poorly because she daydreams about Hawaii, indicating a direct causal link.",
-      "provenance_span": "Karen is doing poorly in high school because she spends her time daydreaming about Hawaii."
+      "evidence": "The narrative states 'Karen is doing poorly in high school because she spends her time daydreaming about Hawaii', directly indicating causation.",
+      "provenance_span": "because she spends her time daydreaming about Hawaii"
     },
     {
       "relation_id": "R2",
       "source_id": "NE3",
       "target_id": "NE4",
       "relation_type": "CAUSES",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "explicitness": "explicit",
-      "evidence": "The promise of the trip directly causes Karen to be happy about the incentive.",
-      "provenance_span": "She is happy about the incentive."
+      "evidence": "The promise of the trip directly causes Karen's happiness about the incentive.",
+      "provenance_span": "She is happy about the incentive"
     },
     {
       "relation_id": "R3",
-      "source_id": "NE3",
-      "target_id": "NE6",
-      "relation_type": "MOTIVATES",
-      "confidence": 0.8,
-      "explicitness": "strongly_inferred",
-      "evidence": "The father's offer is intended to motivate Karen to improve and graduate, but it does not succeed; it still represents a motivational attempt.",
-      "provenance_span": "her father promises to pay for a Hawaii trip if she improves enough to graduate."
-    },
-    {
-      "relation_id": "R4",
       "source_id": "NE5",
       "target_id": "NE6",
       "relation_type": "CAUSES",
       "confidence": 0.95,
-      "explicitness": "explicit",
-      "evidence": "Being too far behind to recover directly causes her to fail enough classes to not graduate.",
+      "explicitness": "strongly_inferred",
+      "evidence": "Being too far behind in classes to recover directly leads to failing enough classes to not graduate.",
       "provenance_span": "She is already too far behind in her classes to recover. She fails enough classes that she does not graduate."
     },
     {
-      "relation_id": "R5",
+      "relation_id": "R4",
       "source_id": "NE6",
       "target_id": "NE7",
-      "relation_type": "CAUSES",
+      "relation_type": "RESULTS_IN",
       "confidence": 0.95,
       "explicitness": "explicit",
-      "evidence": "Failing to graduate directly causes the withholding of the Hawaii trip, as the condition was not met.",
-      "provenance_span": "She fails enough classes that she does not graduate. She therefore does not receive the Hawaii trip."
+      "evidence": "Failing to graduate results in not receiving the Hawaii trip, as the trip was conditional on graduation.",
+      "provenance_span": "She therefore does not receive the Hawaii trip"
     },
     {
-      "relation_id": "R6",
-      "source_id": "NE1",
-      "target_id": "NE5",
-      "relation_type": "RESULTS_IN",
-      "confidence": 0.85,
-      "explicitness": "strongly_inferred",
-      "evidence": "Karen's poor academic performance over time results in her being too far behind to recover.",
-      "provenance_span": "Karen is doing poorly in high school... She is already too far behind in her classes to recover."
-    },
-    {
-      "relation_id": "R7",
+      "relation_id": "R5",
       "source_id": "NE3",
       "target_id": "NE6",
       "relation_type": "CONDITIONAL_ON",
       "confidence": 0.9,
       "explicitness": "explicit",
-      "evidence": "The offer is conditional on Karen improving enough to graduate; her failure to meet that condition is part of the conditional structure.",
-      "provenance_span": "her father promises to pay for a Hawaii trip if she improves enough to graduate."
+      "evidence": "The promise of the trip is conditional on Karen improving enough to graduate, which she fails to do.",
+      "provenance_span": "if she improves enough to graduate"
     },
     {
-      "relation_id": "R8",
+      "relation_id": "R6",
       "source_id": "NE5",
-      "target_id": "NE3",
-      "relation_type": "BEFORE",
-      "confidence": 0.9,
-      "explicitness": "strongly_inferred",
-      "evidence": "The state of being too far behind exists before the father's promise, as indicated by 'already'.",
-      "provenance_span": "She is already too far behind in her classes to recover."
-    },
-    {
-      "relation_id": "R9",
-      "source_id": "NE2",
       "target_id": "NE3",
       "relation_type": "BEFORE",
       "confidence": 0.8,
       "explicitness": "strongly_inferred",
-      "evidence": "Daydreaming about Hawaii occurs before the father's promise, as the poor performance due to daydreaming is established first.",
-      "provenance_span": "Karen is doing poorly in high school because she spends her time daydreaming about Hawaii. Near graduation, her father promises..."
+      "evidence": "Karen's being too far behind is a pre-existing state before the father's promise, but the promise does not cause the deficit.",
+      "provenance_span": "She is already too far behind in her classes to recover. Near graduation, her father promises..."
     },
     {
-      "relation_id": "R10",
-      "source_id": "NE4",
-      "target_id": "NE6",
-      "relation_type": "BEFORE",
-      "confidence": 0.7,
-      "explicitness": "speculative",
-      "evidence": "Her happiness about the incentive occurs before she fails, but there is no causal link; it is purely temporal.",
-      "provenance_span": "She is happy about the incentive. She is already too far behind... She fails..."
+      "relation_id": "R7",
+      "source_id": "NE2",
+      "target_id": "NE5",
+      "relation_type": "CAUSES",
+      "confidence": 0.85,
+      "explicitness": "strongly_inferred",
+      "evidence": "Daydreaming causing poor performance over time leads to being too far behind to recover.",
+      "provenance_span": "Karen is doing poorly in high school because she spends her time daydreaming about Hawaii. ... She is already too far behind in her classes to recover."
     }
   ],
   "metadata": {

@@ -6,9 +6,10 @@
       "event_id": "E1",
       "text_span": "William was a patient in a psychiatric hospital",
       "sentence_id": 1,
-      "predicate": "is a patient",
+      "predicate": "was a patient",
       "participants": [
-        "William"
+        "William",
+        "psychiatric hospital"
       ],
       "event_type": "state",
       "polarity": "positive",
@@ -18,9 +19,9 @@
     },
     "E2": {
       "event_id": "E2",
-      "text_span": "who was confined indoors almost all the time",
+      "text_span": "was confined indoors almost all the time",
       "sentence_id": 1,
-      "predicate": "is confined indoors",
+      "predicate": "confined indoors",
       "participants": [
         "William"
       ],
@@ -34,7 +35,7 @@
       "event_id": "E3",
       "text_span": "He could never pass the monthly room inspections",
       "sentence_id": 2,
-      "predicate": "passes monthly room inspections",
+      "predicate": "pass inspections",
       "participants": [
         "William"
       ],
@@ -48,9 +49,10 @@
       "event_id": "E4",
       "text_span": "so he hated them",
       "sentence_id": 2,
-      "predicate": "hates inspections",
+      "predicate": "hated inspections",
       "participants": [
-        "William"
+        "William",
+        "monthly room inspections"
       ],
       "event_type": "emotion_reaction",
       "polarity": "positive",
@@ -62,7 +64,7 @@
       "event_id": "E5",
       "text_span": "He spent most of his time daydreaming about food",
       "sentence_id": 3,
-      "predicate": "daydreams about food",
+      "predicate": "daydreaming about food",
       "participants": [
         "William"
       ],
@@ -76,7 +78,7 @@
       "event_id": "E6",
       "text_span": "A few days before the April inspection William's room was still a mess",
       "sentence_id": 4,
-      "predicate": "room is a mess",
+      "predicate": "room was a mess",
       "participants": [
         "William",
         "William's room"
@@ -89,9 +91,9 @@
     },
     "E7": {
       "event_id": "E7",
-      "text_span": "since he had done nothing but daydream",
+      "text_span": "he had done nothing but daydream",
       "sentence_id": 4,
-      "predicate": "does nothing but daydream",
+      "predicate": "done nothing but daydream",
       "participants": [
         "William"
       ],
@@ -105,7 +107,7 @@
       "event_id": "E8",
       "text_span": "To provide William with an incentive",
       "sentence_id": 5,
-      "predicate": "provides incentive",
+      "predicate": "provide incentive",
       "participants": [
         "nurse",
         "William"
@@ -120,10 +122,11 @@
       "event_id": "E9",
       "text_span": "the nurse promised him some gingerbread from the cookie shop",
       "sentence_id": 5,
-      "predicate": "promises gingerbread",
+      "predicate": "promised gingerbread",
       "participants": [
         "nurse",
-        "William"
+        "William",
+        "gingerbread"
       ],
       "event_type": "action",
       "polarity": "positive",
@@ -135,7 +138,7 @@
       "event_id": "E10",
       "text_span": "if he scrubbed his room and put it in order once and for all",
       "sentence_id": 5,
-      "predicate": "scrubs room and puts in order",
+      "predicate": "scrub and put room in order",
       "participants": [
         "William"
       ],
@@ -149,7 +152,7 @@
       "event_id": "E11",
       "text_span": "William was overjoyed",
       "sentence_id": 6,
-      "predicate": "is overjoyed",
+      "predicate": "overjoyed",
       "participants": [
         "William"
       ],
@@ -163,7 +166,7 @@
       "event_id": "E12",
       "text_span": "But there was no longer enough time for him to put it in order",
       "sentence_id": 7,
-      "predicate": "has enough time to put room in order",
+      "predicate": "no longer enough time",
       "participants": [
         "William"
       ],
@@ -177,7 +180,7 @@
       "event_id": "E13",
       "text_span": "he did not pass the inspection",
       "sentence_id": 8,
-      "predicate": "passes inspection",
+      "predicate": "pass inspection",
       "participants": [
         "William"
       ],
@@ -189,9 +192,9 @@
     },
     "E14": {
       "event_id": "E14",
-      "text_span": "and did not get any gingerbread",
+      "text_span": "did not get any gingerbread",
       "sentence_id": 8,
-      "predicate": "gets gingerbread",
+      "predicate": "get gingerbread",
       "participants": [
         "William"
       ],
@@ -205,7 +208,7 @@
       "event_id": "E15",
       "text_span": "William sulked all day",
       "sentence_id": 9,
-      "predicate": "sulks",
+      "predicate": "sulked",
       "participants": [
         "William"
       ],
@@ -217,13 +220,12 @@
     },
     "E16": {
       "event_id": "E16",
-      "text_span": "and slammed his door so hard the plaster cracked",
+      "text_span": "slammed his door so hard the plaster cracked",
       "sentence_id": 9,
-      "predicate": "slams door causing plaster to crack",
+      "predicate": "slammed door",
       "participants": [
         "William",
-        "door",
-        "plaster"
+        "door"
       ],
       "event_type": "action",
       "polarity": "positive",
@@ -233,9 +235,23 @@
     },
     "E17": {
       "event_id": "E17",
-      "text_span": "but he still didn't get any gingerbread",
+      "text_span": "the plaster cracked",
       "sentence_id": 9,
-      "predicate": "gets gingerbread",
+      "predicate": "cracked",
+      "participants": [
+        "plaster"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 17
+    },
+    "E18": {
+      "event_id": "E18",
+      "text_span": "he still didn't get any gingerbread",
+      "sentence_id": 9,
+      "predicate": "get gingerbread",
       "participants": [
         "William"
       ],
@@ -243,339 +259,320 @@
       "polarity": "negative",
       "explicitness": "explicit",
       "confidence": 1.0,
-      "temporal_rank": 17
+      "temporal_rank": 18
     }
   },
   "normalized_events": {
     "NE1": {
       "norm_id": "NE1",
-      "predicate_name": "IS_PATIENT",
+      "predicate_name": "DEFICIT_STATE",
       "arguments": {
         "actor": "William",
-        "location": "psychiatric_hospital"
+        "location": "psychiatric hospital",
+        "state": "confined indoors"
       },
       "atomic_event_ids": [
-        "E1"
+        "E1",
+        "E2"
       ],
-      "summary_label": "William is a patient in a psychiatric hospital",
+      "summary_label": "William is a confined patient in a psychiatric hospital",
       "polarity": "positive",
-      "confidence": 1.0
+      "confidence": 1.0,
+      "temporal_phase": "UNANCHORED",
+      "is_persistent_state": true
     },
     "NE2": {
       "norm_id": "NE2",
-      "predicate_name": "CONFINED_INDOORS",
+      "predicate_name": "FAIL_CRITERIA",
       "arguments": {
         "actor": "William",
-        "location": "indoors"
-      },
-      "atomic_event_ids": [
-        "E2"
-      ],
-      "summary_label": "William is confined indoors almost all the time",
-      "polarity": "positive",
-      "confidence": 1.0
-    },
-    "NE3": {
-      "norm_id": "NE3",
-      "predicate_name": "PASS_INSPECTION",
-      "arguments": {
-        "actor": "William",
-        "inspection_type": "monthly_room_inspection"
+        "task": "pass monthly room inspections",
+        "outcome": "never passes"
       },
       "atomic_event_ids": [
         "E3"
       ],
       "summary_label": "William never passes monthly room inspections",
       "polarity": "negative",
-      "confidence": 1.0
+      "confidence": 1.0,
+      "temporal_phase": "PRE_INTERVENTION",
+      "is_persistent_state": true
     },
-    "NE4": {
-      "norm_id": "NE4",
-      "predicate_name": "HATE_INSPECTION",
+    "NE3": {
+      "norm_id": "NE3",
+      "predicate_name": "NEGATIVE_EMOTIONAL_STATE",
       "arguments": {
         "actor": "William",
-        "inspection_type": "monthly_room_inspection"
+        "emotion": "hate",
+        "target": "inspections"
       },
       "atomic_event_ids": [
         "E4"
       ],
       "summary_label": "William hates inspections",
       "polarity": "positive",
-      "confidence": 1.0
+      "confidence": 1.0,
+      "temporal_phase": "PRE_INTERVENTION",
+      "is_persistent_state": true
+    },
+    "NE4": {
+      "norm_id": "NE4",
+      "predicate_name": "NEGLECT_TASK",
+      "arguments": {
+        "actor": "William",
+        "task": "room cleaning",
+        "alternative_activity": "daydreaming about food"
+      },
+      "atomic_event_ids": [
+        "E5",
+        "E7"
+      ],
+      "summary_label": "William daydreams about food instead of cleaning",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_phase": "PRE_INTERVENTION",
+      "is_persistent_state": true
     },
     "NE5": {
       "norm_id": "NE5",
-      "predicate_name": "DAYDREAM_ABOUT_FOOD",
+      "predicate_name": "DEFICIT_STATE",
       "arguments": {
         "actor": "William",
-        "activity": "daydreaming",
-        "topic": "food"
-      },
-      "atomic_event_ids": [
-        "E5"
-      ],
-      "summary_label": "William daydreams about food",
-      "polarity": "positive",
-      "confidence": 1.0
-    },
-    "NE6": {
-      "norm_id": "NE6",
-      "predicate_name": "ROOM_IS_MESS",
-      "arguments": {
-        "actor": "William",
-        "room": "William's_room",
-        "time": "before_April_inspection"
+        "object": "room",
+        "state": "messy"
       },
       "atomic_event_ids": [
         "E6"
       ],
       "summary_label": "William's room is a mess before April inspection",
       "polarity": "positive",
-      "confidence": 1.0
+      "confidence": 1.0,
+      "temporal_phase": "PRE_INTERVENTION",
+      "is_persistent_state": true
     },
-    "NE7": {
-      "norm_id": "NE7",
-      "predicate_name": "NEGLECT_TASK",
-      "arguments": {
-        "actor": "William",
-        "task": "clean_room",
-        "reason": "daydreaming"
-      },
-      "atomic_event_ids": [
-        "E7"
-      ],
-      "summary_label": "William neglects cleaning room due to daydreaming",
-      "polarity": "positive",
-      "confidence": 1.0
-    },
-    "NE8": {
-      "norm_id": "NE8",
-      "predicate_name": "OFFER_INCENTIVE",
+    "NE6": {
+      "norm_id": "NE6",
+      "predicate_name": "INTRODUCE_INCENTIVE",
       "arguments": {
         "actor": "nurse",
         "recipient": "William",
-        "incentive": "gingerbread",
-        "condition": "clean_room"
+        "incentive": "gingerbread from cookie shop",
+        "condition": "scrub room and put in order"
       },
       "atomic_event_ids": [
         "E8",
         "E9",
         "E10"
       ],
-      "summary_label": "Nurse offers William gingerbread as incentive for cleaning room",
+      "summary_label": "Nurse promises gingerbread if William cleans room",
       "polarity": "positive",
-      "confidence": 1.0
+      "confidence": 1.0,
+      "temporal_phase": "AT_INTERVENTION",
+      "is_persistent_state": false
     },
-    "NE9": {
-      "norm_id": "NE9",
-      "predicate_name": "IS_OVERJOYED",
+    "NE7": {
+      "norm_id": "NE7",
+      "predicate_name": "EMOTIONAL_RESPONSE",
       "arguments": {
         "actor": "William",
-        "cause": "incentive_offer"
+        "emotion": "overjoyed"
       },
       "atomic_event_ids": [
         "E11"
       ],
-      "summary_label": "William is overjoyed by the incentive offer",
+      "summary_label": "William is overjoyed by the incentive",
       "polarity": "positive",
-      "confidence": 1.0
+      "confidence": 1.0,
+      "temporal_phase": "AT_INTERVENTION",
+      "is_persistent_state": false
     },
-    "NE10": {
-      "norm_id": "NE10",
-      "predicate_name": "INSUFFICIENT_TIME",
+    "NE8": {
+      "norm_id": "NE8",
+      "predicate_name": "RESOURCE_SHORTAGE",
       "arguments": {
         "actor": "William",
-        "task": "clean_room",
-        "time": "before_inspection"
+        "resource": "time",
+        "task": "put room in order"
       },
       "atomic_event_ids": [
         "E12"
       ],
-      "summary_label": "William has insufficient time to clean room before inspection",
-      "polarity": "positive",
-      "confidence": 1.0
+      "summary_label": "Not enough time for William to clean room",
+      "polarity": "negative",
+      "confidence": 1.0,
+      "temporal_phase": "POST_INTERVENTION",
+      "is_persistent_state": false
     },
-    "NE11": {
-      "norm_id": "NE11",
-      "predicate_name": "FAIL_REQUIREMENT",
+    "NE9": {
+      "norm_id": "NE9",
+      "predicate_name": "FAIL_CRITERIA",
       "arguments": {
         "actor": "William",
-        "requirement": "pass_inspection"
+        "task": "pass inspection"
       },
       "atomic_event_ids": [
         "E13"
       ],
-      "summary_label": "William fails to pass the inspection",
+      "summary_label": "William does not pass inspection",
       "polarity": "negative",
-      "confidence": 1.0
+      "confidence": 1.0,
+      "temporal_phase": "POST_INTERVENTION",
+      "is_persistent_state": false
     },
-    "NE12": {
-      "norm_id": "NE12",
-      "predicate_name": "WITHHOLD_REWARD",
+    "NE10": {
+      "norm_id": "NE10",
+      "predicate_name": "CONSEQUENCE_ENACTED",
       "arguments": {
         "actor": "nurse",
         "recipient": "William",
-        "reward": "gingerbread",
-        "reason": "failed_inspection"
+        "consequence": "no gingerbread"
       },
       "atomic_event_ids": [
         "E14",
-        "E17"
+        "E18"
       ],
-      "summary_label": "William does not get any gingerbread",
+      "summary_label": "William does not get gingerbread",
       "polarity": "negative",
-      "confidence": 1.0
+      "confidence": 1.0,
+      "temporal_phase": "POST_INTERVENTION",
+      "is_persistent_state": false
     },
-    "NE13": {
-      "norm_id": "NE13",
-      "predicate_name": "SULK",
+    "NE11": {
+      "norm_id": "NE11",
+      "predicate_name": "NEGATIVE_EMOTIONAL_STATE",
       "arguments": {
         "actor": "William",
-        "duration": "all_day"
+        "emotion": "sulked",
+        "duration": "all day"
       },
       "atomic_event_ids": [
         "E15"
       ],
       "summary_label": "William sulks all day",
       "polarity": "positive",
-      "confidence": 1.0
+      "confidence": 1.0,
+      "temporal_phase": "POST_INTERVENTION",
+      "is_persistent_state": false
     },
-    "NE14": {
-      "norm_id": "NE14",
-      "predicate_name": "SLAM_DOOR",
+    "NE12": {
+      "norm_id": "NE12",
+      "predicate_name": "AGGRESSIVE_ACTION",
       "arguments": {
         "actor": "William",
-        "object": "door",
-        "effect": "plaster_cracked"
+        "action": "slammed door",
+        "result": "plaster cracked"
       },
       "atomic_event_ids": [
-        "E16"
+        "E16",
+        "E17"
       ],
-      "summary_label": "William slams door causing plaster to crack",
+      "summary_label": "William slams door, cracking plaster",
       "polarity": "positive",
-      "confidence": 1.0
+      "confidence": 1.0,
+      "temporal_phase": "POST_INTERVENTION",
+      "is_persistent_state": false
     }
   },
   "relations": [
     {
       "relation_id": "R1",
-      "source_id": "NE5",
-      "target_id": "NE7",
+      "source_id": "NE4",
+      "target_id": "NE5",
       "relation_type": "CAUSES",
-      "confidence": 0.9,
+      "confidence": 1.0,
       "explicitness": "explicit",
-      "evidence": "William spent most of his time daydreaming about food, which directly caused him to neglect cleaning his room.",
-      "provenance_span": "He spent most of his time daydreaming about food. ... he had done nothing but daydream."
-    },
-    {
-      "relation_id": "R2",
-      "source_id": "NE7",
-      "target_id": "NE6",
-      "relation_type": "RESULTS_IN",
-      "confidence": 0.9,
-      "explicitness": "explicit",
-      "evidence": "Neglecting to clean the room resulted in the room being a mess before the April inspection.",
+      "evidence": "William daydreams about food instead of cleaning, which directly results in his room being a mess before the April inspection.",
       "provenance_span": "A few days before the April inspection William's room was still a mess since he had done nothing but daydream."
     },
     {
+      "relation_id": "R2",
+      "source_id": "NE6",
+      "target_id": "NE7",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "The nurse's promise of gingerbread causes William to be overjoyed.",
+      "provenance_span": "William was overjoyed."
+    },
+    {
       "relation_id": "R3",
+      "source_id": "NE6",
+      "target_id": "NE8",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "The nurse's promise occurs before the realization that there is not enough time to clean, but does not cause the time shortage.",
+      "provenance_span": "But there was no longer enough time for him to put it in order."
+    },
+    {
+      "relation_id": "R4",
       "source_id": "NE8",
       "target_id": "NE9",
       "relation_type": "CAUSES",
       "confidence": 1.0,
       "explicitness": "explicit",
-      "evidence": "The nurse's offer of gingerbread as an incentive directly caused William to be overjoyed.",
-      "provenance_span": "William was overjoyed."
-    },
-    {
-      "relation_id": "R4",
-      "source_id": "NE8",
-      "target_id": "NE10",
-      "relation_type": "BEFORE",
-      "confidence": 0.8,
-      "explicitness": "strongly_inferred",
-      "evidence": "The offer was made a few days before the inspection, but the narrative states there was no longer enough time, implying the offer occurred before the realization of insufficient time.",
-      "provenance_span": "A few days before the April inspection ... the nurse promised him ... But there was no longer enough time for him to put it in order."
+      "evidence": "The lack of enough time to clean directly causes William to not pass the inspection.",
+      "provenance_span": "As a result, he did not pass the inspection"
     },
     {
       "relation_id": "R5",
-      "source_id": "NE10",
-      "target_id": "NE11",
-      "relation_type": "CAUSES",
-      "confidence": 0.9,
-      "explicitness": "explicit",
-      "evidence": "Insufficient time to clean the room directly caused William to fail the inspection.",
-      "provenance_span": "But there was no longer enough time for him to put it in order. As a result, he did not pass the inspection"
-    },
-    {
-      "relation_id": "R6",
-      "source_id": "NE11",
-      "target_id": "NE12",
+      "source_id": "NE9",
+      "target_id": "NE10",
       "relation_type": "CAUSES",
       "confidence": 1.0,
       "explicitness": "explicit",
-      "evidence": "Failing the inspection directly caused William not to get any gingerbread, as the reward was conditional on passing.",
-      "provenance_span": "he did not pass the inspection and did not get any gingerbread."
+      "evidence": "Failing the inspection directly results in William not getting gingerbread, as the incentive was conditional on passing.",
+      "provenance_span": "and did not get any gingerbread."
     },
     {
-      "relation_id": "R7",
-      "source_id": "NE12",
-      "target_id": "NE13",
+      "relation_id": "R6",
+      "source_id": "NE10",
+      "target_id": "NE11",
       "relation_type": "CAUSES",
-      "confidence": 0.9,
+      "confidence": 1.0,
       "explicitness": "explicit",
-      "evidence": "Not getting the gingerbread caused William to sulk all day.",
+      "evidence": "Not getting gingerbread causes William to sulk all day.",
       "provenance_span": "William sulked all day"
     },
     {
-      "relation_id": "R8",
-      "source_id": "NE13",
-      "target_id": "NE14",
-      "relation_type": "BEFORE",
-      "confidence": 0.7,
-      "explicitness": "strongly_inferred",
-      "evidence": "Sulking all day is described before slamming the door, implying temporal order, but the narrative does not state a causal link.",
-      "provenance_span": "William sulked all day and slammed his door so hard the plaster cracked"
-    },
-    {
-      "relation_id": "R9",
-      "source_id": "NE3",
-      "target_id": "NE4",
-      "relation_type": "CAUSES",
+      "relation_id": "R7",
+      "source_id": "NE10",
+      "target_id": "NE12",
+      "relation_type": "MOTIVATES",
       "confidence": 0.8,
       "explicitness": "strongly_inferred",
-      "evidence": "Never passing inspections is the reason William hates them, as implied by 'so he hated them'.",
+      "evidence": "William's frustration from not getting gingerbread motivates his aggressive action of slamming the door, though the narrative does not explicitly state this as a direct cause.",
+      "provenance_span": "and slammed his door so hard the plaster cracked, but he still didn't get any gingerbread."
+    },
+    {
+      "relation_id": "R8",
+      "source_id": "NE2",
+      "target_id": "NE3",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "William's never passing monthly room inspections causes him to hate them.",
       "provenance_span": "He could never pass the monthly room inspections so he hated them."
     },
     {
-      "relation_id": "R10",
-      "source_id": "NE8",
-      "target_id": "NE7",
-      "relation_type": "MOTIVATES",
-      "confidence": 0.9,
-      "explicitness": "strongly_inferred",
-      "evidence": "The nurse offered gingerbread to provide William with an incentive to clean, meaning the offer was intended to motivate him to stop neglecting the task.",
-      "provenance_span": "To provide William with an incentive, the nurse promised him some gingerbread ... if he scrubbed his room"
-    },
-    {
-      "relation_id": "R11",
+      "relation_id": "R9",
       "source_id": "NE6",
-      "target_id": "NE8",
-      "relation_type": "BEFORE",
-      "confidence": 0.9,
+      "target_id": "NE9",
+      "relation_type": "CONDITIONAL_ON",
+      "confidence": 1.0,
       "explicitness": "explicit",
-      "evidence": "The room was a mess before the nurse made the offer, as the offer was made to address the mess.",
-      "provenance_span": "A few days before the April inspection William's room was still a mess ... the nurse promised him some gingerbread"
+      "evidence": "The nurse's promise of gingerbread is conditional on William passing the inspection, which he fails to do.",
+      "provenance_span": "the nurse promised him some gingerbread from the cookie shop if he scrubbed his room and put it in order once and for all."
     },
     {
-      "relation_id": "R12",
-      "source_id": "NE8",
-      "target_id": "NE11",
-      "relation_type": "CONDITIONAL_ON",
+      "relation_id": "R10",
+      "source_id": "NE4",
+      "target_id": "NE2",
+      "relation_type": "CAUSES",
       "confidence": 0.9,
       "explicitness": "strongly_inferred",
-      "evidence": "The offer of gingerbread was conditional on William cleaning his room and passing the inspection, but the condition was not met.",
-      "provenance_span": "if he scrubbed his room and put it in order once and for all"
+      "evidence": "William's consistent daydreaming instead of cleaning leads to his failure to pass monthly inspections, as implied by the narrative pattern.",
+      "provenance_span": "He could never pass the monthly room inspections... He spent most of his time daydreaming about food."
     }
   ],
   "metadata": {

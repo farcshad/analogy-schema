@@ -6,7 +6,7 @@
       "node_id": "N1",
       "macro_node": {
         "macro_id": "M1",
-        "label": "poor academic performance / daydreaming",
+        "label": "poor academic performance due to daydreaming",
         "source_normalized_ids": [
           "NE1",
           "NE2"
@@ -16,18 +16,21 @@
           "E2",
           "E3"
         ],
-        "functional_role": "initial_state",
+        "functional_role": "CAUSAL_ANTECEDENT",
+        "temporal_phase": "PRE_INTERVENTION",
         "temporal_order": 1
       },
       "abstraction": {
-        "level_0_raw": "Karen is doing poorly in high school because she spends her time daydreaming about Hawaii",
-        "level_1_domain": "student has poor grades due to distraction",
-        "level_2_functional": "baseline deficiency / distraction",
-        "level_3_schema": "pre-existing weakness"
+        "level_0_raw": "Karen is doing poorly in high school because she spends her time daydreaming about Hawaii.",
+        "level_1_domain": "Student neglects academic tasks due to distraction, leading to poor performance.",
+        "level_2_functional": "Deficit state caused by neglect of duty.",
+        "level_3_schema": "Neglect leads to deficit."
       },
-      "functional_role": "initial_state",
+      "functional_role": "CAUSAL_ANTECEDENT",
+      "temporal_phase": "PRE_INTERVENTION",
       "is_intervention": false,
-      "is_terminal_outcome": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
       "provenance_text_spans": [
         "she spends her time daydreaming about Hawaii",
         "Karen is doing poorly in high school",
@@ -40,29 +43,34 @@
       "node_id": "N2",
       "macro_node": {
         "macro_id": "M2",
-        "label": "offer incentive",
+        "label": "father introduces incentive",
         "source_normalized_ids": [
           "NE3"
         ],
         "source_atomic_ids": [
           "E4",
-          "E5"
+          "E5",
+          "E6"
         ],
-        "functional_role": "intervention",
+        "functional_role": "INTERVENTION",
+        "temporal_phase": "AT_INTERVENTION",
         "temporal_order": 2
       },
       "abstraction": {
-        "level_0_raw": "Father promises to pay for Hawaii trip if Karen improves enough to graduate",
-        "level_1_domain": "parent offers conditional reward for academic improvement",
-        "level_2_functional": "conditional incentive offer",
-        "level_3_schema": "intervention"
+        "level_0_raw": "Father promises Hawaii trip if Karen improves enough to graduate.",
+        "level_1_domain": "Authority figure offers conditional reward for performance improvement.",
+        "level_2_functional": "Introduction of external incentive to motivate behavior change.",
+        "level_3_schema": "Incentive intervention."
       },
-      "functional_role": "intervention",
+      "functional_role": "INTERVENTION",
+      "temporal_phase": "AT_INTERVENTION",
       "is_intervention": true,
-      "is_terminal_outcome": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
       "provenance_text_spans": [
-        "Near graduation, her father promises to pay for a Hawaii trip if she improves enough to graduate",
-        "if she improves enough to graduate"
+        "if she improves enough to graduate",
+        "Near graduation",
+        "her father promises to pay for a Hawaii trip if she improves enough to graduate"
       ],
       "confidence": 1.0,
       "explicitness": "explicit"
@@ -71,27 +79,30 @@
       "node_id": "N3",
       "macro_node": {
         "macro_id": "M3",
-        "label": "positive reaction to incentive",
+        "label": "irrecoverable academic deficit",
         "source_normalized_ids": [
-          "NE4"
+          "NE5"
         ],
         "source_atomic_ids": [
-          "E6"
+          "E8"
         ],
-        "functional_role": "motivational_response",
+        "functional_role": "CONSTRAINT",
+        "temporal_phase": "POST_INTERVENTION",
         "temporal_order": 3
       },
       "abstraction": {
-        "level_0_raw": "Karen is happy about the incentive",
-        "level_1_domain": "student feels positive about reward",
-        "level_2_functional": "positive affective response",
-        "level_3_schema": "motivation"
+        "level_0_raw": "Karen is already too far behind in her classes to recover.",
+        "level_1_domain": "Student's academic deficit is insurmountable within remaining time.",
+        "level_2_functional": "Pre-existing deficit prevents goal attainment despite intervention.",
+        "level_3_schema": "Irreversible constraint."
       },
-      "functional_role": "motivational_response",
+      "functional_role": "CONSTRAINT",
+      "temporal_phase": "POST_INTERVENTION",
       "is_intervention": false,
-      "is_terminal_outcome": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
       "provenance_text_spans": [
-        "She is happy about the incentive"
+        "She is already too far behind in her classes to recover"
       ],
       "confidence": 1.0,
       "explicitness": "explicit"
@@ -100,27 +111,32 @@
       "node_id": "N4",
       "macro_node": {
         "macro_id": "M4",
-        "label": "insufficient time to recover",
+        "label": "failure to graduate",
         "source_normalized_ids": [
-          "NE5"
+          "NE6"
         ],
         "source_atomic_ids": [
-          "E7"
+          "E9",
+          "E10"
         ],
-        "functional_role": "blocking_condition",
+        "functional_role": "FOCAL_OUTCOME",
+        "temporal_phase": "POST_INTERVENTION",
         "temporal_order": 4
       },
       "abstraction": {
-        "level_0_raw": "Karen is already too far behind in her classes to recover",
-        "level_1_domain": "student cannot catch up academically",
-        "level_2_functional": "irrecoverable deficit",
-        "level_3_schema": "constraint"
+        "level_0_raw": "Karen fails enough classes that she does not graduate.",
+        "level_1_domain": "Student fails to meet graduation criteria.",
+        "level_2_functional": "Failure to achieve the required outcome.",
+        "level_3_schema": "Goal failure."
       },
-      "functional_role": "blocking_condition",
+      "functional_role": "FOCAL_OUTCOME",
+      "temporal_phase": "POST_INTERVENTION",
       "is_intervention": false,
-      "is_terminal_outcome": false,
+      "is_focal_outcome": true,
+      "is_contingent_outcome": false,
       "provenance_text_spans": [
-        "She is already too far behind in her classes to recover"
+        "that she does not graduate",
+        "She fails enough classes"
       ],
       "confidence": 1.0,
       "explicitness": "explicit"
@@ -129,56 +145,28 @@
       "node_id": "N5",
       "macro_node": {
         "macro_id": "M5",
-        "label": "fail requirement / not graduate",
-        "source_normalized_ids": [
-          "NE6"
-        ],
-        "source_atomic_ids": [
-          "E8",
-          "E9"
-        ],
-        "functional_role": "failure_to_meet_condition",
-        "temporal_order": 5
-      },
-      "abstraction": {
-        "level_0_raw": "Karen fails enough classes that she does not graduate",
-        "level_1_domain": "student fails to graduate",
-        "level_2_functional": "condition not met",
-        "level_3_schema": "failure"
-      },
-      "functional_role": "failure_to_meet_condition",
-      "is_intervention": false,
-      "is_terminal_outcome": false,
-      "provenance_text_spans": [
-        "She fails enough classes that she does not graduate",
-        "she does not graduate"
-      ],
-      "confidence": 1.0,
-      "explicitness": "explicit"
-    },
-    "N6": {
-      "node_id": "N6",
-      "macro_node": {
-        "macro_id": "M6",
-        "label": "withhold reward",
+        "label": "forfeited reward",
         "source_normalized_ids": [
           "NE7"
         ],
         "source_atomic_ids": [
-          "E10"
+          "E11"
         ],
-        "functional_role": "terminal_outcome",
-        "temporal_order": 6
+        "functional_role": "CONTINGENT_OUTCOME",
+        "temporal_phase": "POST_INTERVENTION",
+        "temporal_order": 5
       },
       "abstraction": {
-        "level_0_raw": "Karen does not receive the Hawaii trip",
-        "level_1_domain": "reward is withheld",
-        "level_2_functional": "incentive not delivered",
-        "level_3_schema": "outcome"
+        "level_0_raw": "Karen does not receive the Hawaii trip.",
+        "level_1_domain": "Conditional reward is not delivered due to unmet condition.",
+        "level_2_functional": "Contingent reward is withheld after failure.",
+        "level_3_schema": "Withheld reward."
       },
-      "functional_role": "terminal_outcome",
+      "functional_role": "CONTINGENT_OUTCOME",
+      "temporal_phase": "POST_INTERVENTION",
       "is_intervention": false,
-      "is_terminal_outcome": true,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": true,
       "provenance_text_spans": [
         "She therefore does not receive the Hawaii trip"
       ],
@@ -189,111 +177,92 @@
   "edges": [
     {
       "edge_id": "BE1",
-      "source_id": "N1",
-      "target_id": "N2",
-      "relation_type": "MOTIVATES",
-      "justification": "The poor performance and distraction create the context that motivates the father to offer an incentive.",
-      "confidence": 1.0,
-      "explicitness": "explicit",
+      "source_id": "N3",
+      "target_id": "N4",
+      "relation_type": "CAUSES",
+      "justification": "Being too far behind in classes to recover directly leads to failing enough classes to not graduate.",
+      "confidence": 0.95,
+      "explicitness": "strongly_inferred",
       "underlying_relation_ids": [
-        "R9"
+        "R3"
       ]
     },
     {
       "edge_id": "BE2",
-      "source_id": "N2",
-      "target_id": "N3",
-      "relation_type": "CAUSES",
-      "justification": "The offer of the incentive directly causes Karen's positive emotional reaction.",
-      "confidence": 1.0,
-      "explicitness": "explicit",
-      "underlying_relation_ids": [
-        "R2"
-      ]
-    },
-    {
-      "edge_id": "BE3",
-      "source_id": "N1",
-      "target_id": "N4",
-      "relation_type": "CAUSES",
-      "justification": "The initial poor performance and daydreaming lead to being too far behind to recover.",
-      "confidence": 1.0,
-      "explicitness": "explicit",
-      "underlying_relation_ids": [
-        "R6"
-      ]
-    },
-    {
-      "edge_id": "BE4",
       "source_id": "N4",
       "target_id": "N5",
-      "relation_type": "CAUSES",
-      "justification": "Being too far behind to recover causes Karen to fail enough classes and not graduate.",
-      "confidence": 1.0,
+      "relation_type": "RESULTS_IN",
+      "justification": "Failing to graduate results in not receiving the Hawaii trip, as the trip was conditional on graduation.",
+      "confidence": 0.95,
       "explicitness": "explicit",
       "underlying_relation_ids": [
         "R4"
       ]
     },
     {
-      "edge_id": "BE5",
-      "source_id": "N3",
-      "target_id": "N5",
-      "relation_type": "BLOCKS",
-      "justification": "Despite positive motivation, the irrecoverable deficit blocks the possibility of meeting the graduation requirement.",
-      "confidence": 1.0,
-      "explicitness": "explicit",
-      "underlying_relation_ids": [
-        "R10"
-      ]
-    },
-    {
-      "edge_id": "BE6",
-      "source_id": "N5",
-      "target_id": "N6",
-      "relation_type": "RESULTS_IN",
-      "justification": "Failing to graduate results in the withholding of the Hawaii trip.",
-      "confidence": 1.0,
+      "edge_id": "BE3",
+      "source_id": "N2",
+      "target_id": "N4",
+      "relation_type": "CONDITIONAL_ON",
+      "justification": "The promise of the trip is conditional on Karen improving enough to graduate, which she fails to do.",
+      "confidence": 0.9,
       "explicitness": "explicit",
       "underlying_relation_ids": [
         "R5"
       ]
     },
     {
-      "edge_id": "BE7",
-      "source_id": "N2",
-      "target_id": "N6",
-      "relation_type": "CONDITIONAL_ON",
-      "justification": "The reward is conditional on graduation; since the condition is not met, the reward is not given.",
-      "confidence": 1.0,
-      "explicitness": "explicit",
-      "underlying_relation_ids": []
+      "edge_id": "BE4",
+      "source_id": "N3",
+      "target_id": "N2",
+      "relation_type": "BEFORE",
+      "justification": "Karen's being too far behind is a pre-existing state before the father's promise, but the promise does not cause the deficit.",
+      "confidence": 0.8,
+      "explicitness": "strongly_inferred",
+      "underlying_relation_ids": [
+        "R6"
+      ]
+    },
+    {
+      "edge_id": "BE5",
+      "source_id": "N1",
+      "target_id": "N3",
+      "relation_type": "CAUSES",
+      "justification": "Daydreaming causing poor performance over time leads to being too far behind to recover.",
+      "confidence": 0.85,
+      "explicitness": "strongly_inferred",
+      "underlying_relation_ids": [
+        "R7"
+      ]
     }
   ],
   "anchors": {
-    "central_problem": "Karen is doing poorly in high school because she spends her time daydreaming about Hawaii",
-    "central_goal": "Karen needs to improve enough to graduate",
-    "intervention": "Father promises to pay for a Hawaii trip if Karen improves enough to graduate",
-    "terminal_outcomes": [
-      "Karen fails enough classes that she does not graduate",
-      "Karen does not receive the Hawaii trip"
+    "central_problem": "Karen is doing poorly in high school because she daydreams about Hawaii",
+    "central_goal": "Improve enough to graduate high school",
+    "intervention_event_ids": [
+      "NE3"
     ],
-    "anchor_event_ids": [
-      "NE1",
-      "NE2",
-      "NE3",
-      "NE4",
-      "NE5",
-      "NE6",
+    "focal_outcome_ids": [
+      "NE6"
+    ],
+    "contingent_outcome_ids": [
       "NE7"
-    ]
+    ],
+    "downstream_reaction_ids": [
+      "NE4"
+    ],
+    "explanation": "The central problem is Karen's poor performance due to daydreaming; the goal is to graduate; the intervention is the father's promise; the focal outcome is failing to graduate; the contingent outcome is not receiving the trip; the emotional response to the incentive is a downstream reaction that does not cause the focal outcome."
   },
-  "pruned_node_ids": [],
+  "pruned_node_ids": [
+    "NE4"
+  ],
   "pruned_reasons": {
-    "NE4": "Emotional reaction to the incentive; not causally necessary to explain why the requirement failed or the outcome."
+    "NE4": "Karen's happiness about the incentive is a secondary emotional reaction that does not causally affect whether she improves, fails, or receives the trip. If she had been unhappy, the causal chain from the offer to her inability to recover and failure would remain unchanged."
   },
   "metadata": {
-    "total_backbone_nodes": 6,
-    "total_backbone_edges": 7
+    "total_backbone_nodes": 5,
+    "total_backbone_edges": 5,
+    "edge_derivation_method": "deterministic_rich_relation_lifting",
+    "validation_warnings": []
   }
 }
