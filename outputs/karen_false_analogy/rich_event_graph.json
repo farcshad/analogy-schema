@@ -1,0 +1,458 @@
+{
+  "graph_id": "rich_graph_karen_false_analogy",
+  "story_id": "karen_false_analogy",
+  "atomic_events": {
+    "E1": {
+      "event_id": "E1",
+      "text_span": "Karen dislikes school",
+      "sentence_id": 1,
+      "predicate": "dislikes",
+      "participants": [
+        "Karen",
+        "school"
+      ],
+      "event_type": "emotion_reaction",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 1
+    },
+    "E2": {
+      "event_id": "E2",
+      "text_span": "is doing poorly",
+      "sentence_id": 1,
+      "predicate": "is doing poorly",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "state",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 2
+    },
+    "E3": {
+      "event_id": "E3",
+      "text_span": "Her father promises a Hawaii trip if she graduates",
+      "sentence_id": 2,
+      "predicate": "promises",
+      "participants": [
+        "father",
+        "Karen",
+        "Hawaii trip"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 3
+    },
+    "E4": {
+      "event_id": "E4",
+      "text_span": "if she graduates",
+      "sentence_id": 2,
+      "predicate": "graduates",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "constraint",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 4
+    },
+    "E5": {
+      "event_id": "E5",
+      "text_span": "After receiving the incentive",
+      "sentence_id": 3,
+      "predicate": "receives",
+      "participants": [
+        "Karen",
+        "incentive"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 5
+    },
+    "E6": {
+      "event_id": "E6",
+      "text_span": "she spends the remaining weeks dreaming about Hawaii",
+      "sentence_id": 3,
+      "predicate": "spends time dreaming",
+      "participants": [
+        "Karen",
+        "Hawaii"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 6
+    },
+    "E7": {
+      "event_id": "E7",
+      "text_span": "preparing for the trip",
+      "sentence_id": 3,
+      "predicate": "prepares",
+      "participants": [
+        "Karen",
+        "trip"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 7
+    },
+    "E8": {
+      "event_id": "E8",
+      "text_span": "instead of studying",
+      "sentence_id": 3,
+      "predicate": "studies",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "action",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 8
+    },
+    "E9": {
+      "event_id": "E9",
+      "text_span": "She then fails to graduate",
+      "sentence_id": 4,
+      "predicate": "fails to graduate",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "outcome",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 9
+    },
+    "E10": {
+      "event_id": "E10",
+      "text_span": "does not go to Hawaii",
+      "sentence_id": 4,
+      "predicate": "goes to Hawaii",
+      "participants": [
+        "Karen",
+        "Hawaii"
+      ],
+      "event_type": "outcome",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 10
+    }
+  },
+  "normalized_events": {
+    "NE1": {
+      "norm_id": "NE1",
+      "predicate_name": "DISLIKE_SCHOOL",
+      "arguments": {
+        "actor": "Karen",
+        "entity": "school"
+      },
+      "atomic_event_ids": [
+        "E1"
+      ],
+      "summary_label": "Karen dislikes school",
+      "polarity": "positive",
+      "confidence": 1.0
+    },
+    "NE2": {
+      "norm_id": "NE2",
+      "predicate_name": "PERFORM_POORLY",
+      "arguments": {
+        "actor": "Karen"
+      },
+      "atomic_event_ids": [
+        "E2"
+      ],
+      "summary_label": "Karen is doing poorly",
+      "polarity": "positive",
+      "confidence": 1.0
+    },
+    "NE3": {
+      "norm_id": "NE3",
+      "predicate_name": "OFFER_INCENTIVE",
+      "arguments": {
+        "offerer": "father",
+        "recipient": "Karen",
+        "incentive": "Hawaii trip",
+        "condition": "graduates"
+      },
+      "atomic_event_ids": [
+        "E3",
+        "E4"
+      ],
+      "summary_label": "Father promises Hawaii trip if Karen graduates",
+      "polarity": "positive",
+      "confidence": 1.0
+    },
+    "NE4": {
+      "norm_id": "NE4",
+      "predicate_name": "RECEIVE_INCENTIVE",
+      "arguments": {
+        "actor": "Karen",
+        "incentive": "Hawaii trip"
+      },
+      "atomic_event_ids": [
+        "E5"
+      ],
+      "summary_label": "Karen receives the incentive",
+      "polarity": "positive",
+      "confidence": 1.0
+    },
+    "NE5": {
+      "norm_id": "NE5",
+      "predicate_name": "DREAM_ABOUT_TRIP",
+      "arguments": {
+        "actor": "Karen",
+        "destination": "Hawaii"
+      },
+      "atomic_event_ids": [
+        "E6"
+      ],
+      "summary_label": "Karen spends time dreaming about Hawaii",
+      "polarity": "positive",
+      "confidence": 1.0
+    },
+    "NE6": {
+      "norm_id": "NE6",
+      "predicate_name": "PREPARE_FOR_TRIP",
+      "arguments": {
+        "actor": "Karen",
+        "trip": "Hawaii trip"
+      },
+      "atomic_event_ids": [
+        "E7"
+      ],
+      "summary_label": "Karen prepares for the trip",
+      "polarity": "positive",
+      "confidence": 1.0
+    },
+    "NE7": {
+      "norm_id": "NE7",
+      "predicate_name": "NEGLECT_TASK",
+      "arguments": {
+        "actor": "Karen",
+        "task": "studying"
+      },
+      "atomic_event_ids": [
+        "E8"
+      ],
+      "summary_label": "Karen neglects studying",
+      "polarity": "positive",
+      "confidence": 1.0
+    },
+    "NE8": {
+      "norm_id": "NE8",
+      "predicate_name": "FAIL_REQUIREMENT",
+      "arguments": {
+        "actor": "Karen",
+        "requirement": "graduation"
+      },
+      "atomic_event_ids": [
+        "E9"
+      ],
+      "summary_label": "Karen fails to graduate",
+      "polarity": "positive",
+      "confidence": 1.0
+    },
+    "NE9": {
+      "norm_id": "NE9",
+      "predicate_name": "WITHHOLD_REWARD",
+      "arguments": {
+        "actor": "Karen",
+        "reward": "Hawaii trip"
+      },
+      "atomic_event_ids": [
+        "E10"
+      ],
+      "summary_label": "Karen does not go to Hawaii",
+      "polarity": "negative",
+      "confidence": 1.0
+    }
+  },
+  "relations": [
+    {
+      "relation_id": "R1",
+      "source_id": "NE1",
+      "target_id": "NE2",
+      "relation_type": "CAUSES",
+      "confidence": 0.9,
+      "explicitness": "strongly_inferred",
+      "evidence": "Disliking school directly leads to poor performance, as lack of interest typically results in low effort and achievement.",
+      "provenance_span": null
+    },
+    {
+      "relation_id": "R2",
+      "source_id": "NE3",
+      "target_id": "NE4",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "The father's promise of a Hawaii trip causes Karen to receive the incentive, as the offer is made and she becomes aware of it.",
+      "provenance_span": "Her father promises a Hawaii trip if she graduates. After receiving the incentive"
+    },
+    {
+      "relation_id": "R3",
+      "source_id": "NE4",
+      "target_id": "NE5",
+      "relation_type": "MOTIVATES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Receiving the incentive motivates Karen to dream about Hawaii, as the narrative states she spends time dreaming about Hawaii after receiving the incentive.",
+      "provenance_span": "After receiving the incentive, she spends the remaining weeks dreaming about Hawaii"
+    },
+    {
+      "relation_id": "R4",
+      "source_id": "NE4",
+      "target_id": "NE6",
+      "relation_type": "MOTIVATES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Receiving the incentive motivates Karen to prepare for the trip, as the narrative states she prepares for the trip after receiving the incentive.",
+      "provenance_span": "After receiving the incentive, she spends the remaining weeks ... preparing for the trip"
+    },
+    {
+      "relation_id": "R5",
+      "source_id": "NE5",
+      "target_id": "NE7",
+      "relation_type": "CAUSES",
+      "confidence": 0.9,
+      "explicitness": "strongly_inferred",
+      "evidence": "Dreaming about Hawaii instead of studying causes her to neglect studying, as her focus on the trip displaces study time.",
+      "provenance_span": null
+    },
+    {
+      "relation_id": "R6",
+      "source_id": "NE6",
+      "target_id": "NE7",
+      "relation_type": "CAUSES",
+      "confidence": 0.9,
+      "explicitness": "strongly_inferred",
+      "evidence": "Preparing for the trip instead of studying causes her to neglect studying, as trip preparation consumes time and attention.",
+      "provenance_span": null
+    },
+    {
+      "relation_id": "R7",
+      "source_id": "NE7",
+      "target_id": "NE8",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Neglecting studying directly causes her to fail to graduate, as studying is necessary for graduation.",
+      "provenance_span": "She then fails to graduate"
+    },
+    {
+      "relation_id": "R8",
+      "source_id": "NE8",
+      "target_id": "NE9",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Failing to graduate causes her not to go to Hawaii, because the trip was conditional on graduation.",
+      "provenance_span": "does not go to Hawaii"
+    },
+    {
+      "relation_id": "R9",
+      "source_id": "NE3",
+      "target_id": "NE8",
+      "relation_type": "CONDITIONAL_ON",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "The promise of the Hawaii trip is conditional on Karen graduating; her failure to graduate means the condition is not met.",
+      "provenance_span": "promises a Hawaii trip if she graduates"
+    },
+    {
+      "relation_id": "R10",
+      "source_id": "NE1",
+      "target_id": "NE3",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Karen dislikes school before the father makes the promise, as the narrative describes her dislike and poor performance prior to the incentive.",
+      "provenance_span": "Karen dislikes school and is doing poorly. Her father promises a Hawaii trip"
+    },
+    {
+      "relation_id": "R11",
+      "source_id": "NE2",
+      "target_id": "NE3",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Karen is doing poorly before the father makes the promise, as the narrative describes her poor performance prior to the incentive.",
+      "provenance_span": "Karen dislikes school and is doing poorly. Her father promises a Hawaii trip"
+    },
+    {
+      "relation_id": "R12",
+      "source_id": "NE4",
+      "target_id": "NE5",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Receiving the incentive occurs before she starts dreaming about Hawaii, as the narrative states 'after receiving the incentive, she spends the remaining weeks dreaming about Hawaii'.",
+      "provenance_span": "After receiving the incentive, she spends the remaining weeks dreaming about Hawaii"
+    },
+    {
+      "relation_id": "R13",
+      "source_id": "NE4",
+      "target_id": "NE6",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Receiving the incentive occurs before she prepares for the trip, as the narrative states 'after receiving the incentive, she spends the remaining weeks ... preparing for the trip'.",
+      "provenance_span": "After receiving the incentive, she spends the remaining weeks ... preparing for the trip"
+    },
+    {
+      "relation_id": "R14",
+      "source_id": "NE5",
+      "target_id": "NE7",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "strongly_inferred",
+      "evidence": "Dreaming about Hawaii occurs before or concurrently with neglecting studying, but the narrative implies she does these instead of studying, so temporal order is clear.",
+      "provenance_span": null
+    },
+    {
+      "relation_id": "R15",
+      "source_id": "NE6",
+      "target_id": "NE7",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "strongly_inferred",
+      "evidence": "Preparing for the trip occurs before or concurrently with neglecting studying, as both are done instead of studying.",
+      "provenance_span": null
+    },
+    {
+      "relation_id": "R16",
+      "source_id": "NE7",
+      "target_id": "NE8",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Neglecting studying occurs before failing to graduate, as the failure is the result of neglect.",
+      "provenance_span": "She then fails to graduate"
+    },
+    {
+      "relation_id": "R17",
+      "source_id": "NE8",
+      "target_id": "NE9",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Failing to graduate occurs before not going to Hawaii, as the trip is withheld after the failure.",
+      "provenance_span": "does not go to Hawaii"
+    }
+  ],
+  "metadata": {
+    "story_length_chars": 280
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "story_id": "karen_false_analogy",
+  "title": "Karen's Hawaii Incentive (False Analogy)",
+  "text": "Karen dislikes school and is doing poorly. Her father promises a Hawaii trip if she graduates. After receiving the incentive, she spends the remaining weeks dreaming about Hawaii and preparing for the trip instead of studying. She then fails to graduate and does not go to Hawaii.",
+  "metadata": {
+    "domain": "high_school_academics",
+    "protagonist": "Karen",
+    "condition": "false_analogy"
+  }
+}

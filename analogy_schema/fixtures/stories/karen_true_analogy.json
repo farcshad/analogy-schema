@@ -1,0 +1,10 @@
+{
+  "story_id": "karen_true_analogy",
+  "title": "Karen's Graduation Incentive (True Analogy)",
+  "text": "Karen is doing poorly in high school because she spends her time daydreaming about Hawaii. Near graduation, her father promises to pay for a Hawaii trip if she improves enough to graduate. She is happy about the incentive. She is already too far behind in her classes to recover. She fails enough classes that she does not graduate. She therefore does not receive the Hawaii trip.",
+  "metadata": {
+    "domain": "high_school_academics",
+    "protagonist": "Karen",
+    "condition": "true_analogy"
+  }
+}

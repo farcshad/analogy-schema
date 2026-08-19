@@ -1,0 +1,365 @@
+{
+  "backbone_id": "backbone_william_base",
+  "story_id": "william_base",
+  "nodes": {
+    "N1": {
+      "node_id": "N1",
+      "macro_node": {
+        "macro_id": "M1",
+        "label": "confinement and patient status",
+        "source_normalized_ids": [
+          "E1",
+          "E2"
+        ],
+        "source_atomic_ids": [
+          "E1",
+          "E2"
+        ],
+        "functional_role": "background condition",
+        "temporal_order": 1
+      },
+      "abstraction": {
+        "level_0_raw": "William is a patient in a psychiatric hospital who is confined indoors almost all the time",
+        "level_1_domain": "psychiatric patient confined indoors",
+        "level_2_functional": "restrictive environment",
+        "level_3_schema": "setting constraints"
+      },
+      "functional_role": "background condition",
+      "is_intervention": false,
+      "is_terminal_outcome": false,
+      "provenance_text_spans": [
+        "William was a patient in a psychiatric hospital",
+        "who was confined indoors almost all the time"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N2": {
+      "node_id": "N2",
+      "macro_node": {
+        "macro_id": "M2",
+        "label": "daydreaming and neglect",
+        "source_normalized_ids": [
+          "E5",
+          "E7"
+        ],
+        "source_atomic_ids": [
+          "E5",
+          "E7"
+        ],
+        "functional_role": "causal antecedent",
+        "temporal_order": 2
+      },
+      "abstraction": {
+        "level_0_raw": "William daydreams about food and neglects cleaning room due to daydreaming",
+        "level_1_domain": "daydreaming leads to task neglect",
+        "level_2_functional": "distraction causes inaction",
+        "level_3_schema": "cognitive disengagement"
+      },
+      "functional_role": "causal antecedent",
+      "is_intervention": false,
+      "is_terminal_outcome": false,
+      "provenance_text_spans": [
+        "since he had done nothing but daydream",
+        "He spent most of his time daydreaming about food"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N3": {
+      "node_id": "N3",
+      "macro_node": {
+        "macro_id": "M3",
+        "label": "room is a mess",
+        "source_normalized_ids": [
+          "E6"
+        ],
+        "source_atomic_ids": [
+          "E6"
+        ],
+        "functional_role": "intermediate state",
+        "temporal_order": 3
+      },
+      "abstraction": {
+        "level_0_raw": "William's room is a mess before April inspection",
+        "level_1_domain": "room in disarray before inspection",
+        "level_2_functional": "unmet condition",
+        "level_3_schema": "state deficiency"
+      },
+      "functional_role": "intermediate state",
+      "is_intervention": false,
+      "is_terminal_outcome": false,
+      "provenance_text_spans": [
+        "A few days before the April inspection William's room was still a mess"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N4": {
+      "node_id": "N4",
+      "macro_node": {
+        "macro_id": "M4",
+        "label": "offer of incentive",
+        "source_normalized_ids": [
+          "E8",
+          "E9",
+          "E10"
+        ],
+        "source_atomic_ids": [
+          "E8",
+          "E9",
+          "E10"
+        ],
+        "functional_role": "intervention attempt",
+        "temporal_order": 4
+      },
+      "abstraction": {
+        "level_0_raw": "Nurse offers William gingerbread as incentive for cleaning room",
+        "level_1_domain": "nurse offers reward for cleaning",
+        "level_2_functional": "external motivation",
+        "level_3_schema": "incentive intervention"
+      },
+      "functional_role": "intervention attempt",
+      "is_intervention": true,
+      "is_terminal_outcome": false,
+      "provenance_text_spans": [
+        "the nurse promised him some gingerbread from the cookie shop",
+        "To provide William with an incentive",
+        "if he scrubbed his room and put it in order once and for all"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N5": {
+      "node_id": "N5",
+      "macro_node": {
+        "macro_id": "M5",
+        "label": "insufficient time",
+        "source_normalized_ids": [
+          "E12"
+        ],
+        "source_atomic_ids": [
+          "E12"
+        ],
+        "functional_role": "blocking condition",
+        "temporal_order": 5
+      },
+      "abstraction": {
+        "level_0_raw": "William has insufficient time to clean room before inspection",
+        "level_1_domain": "time shortage prevents cleaning",
+        "level_2_functional": "temporal constraint",
+        "level_3_schema": "resource limitation"
+      },
+      "functional_role": "blocking condition",
+      "is_intervention": false,
+      "is_terminal_outcome": false,
+      "provenance_text_spans": [
+        "But there was no longer enough time for him to put it in order"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N6": {
+      "node_id": "N6",
+      "macro_node": {
+        "macro_id": "M6",
+        "label": "failure to pass inspection",
+        "source_normalized_ids": [
+          "E3",
+          "E13"
+        ],
+        "source_atomic_ids": [
+          "E3",
+          "E13"
+        ],
+        "functional_role": "negative outcome",
+        "temporal_order": 6
+      },
+      "abstraction": {
+        "level_0_raw": "William never passes monthly room inspections and fails to pass the inspection",
+        "level_1_domain": "fails room inspection",
+        "level_2_functional": "non-compliance consequence",
+        "level_3_schema": "failure event"
+      },
+      "functional_role": "negative outcome",
+      "is_intervention": false,
+      "is_terminal_outcome": false,
+      "provenance_text_spans": [
+        "he did not pass the inspection",
+        "He could never pass the monthly room inspections"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N7": {
+      "node_id": "N7",
+      "macro_node": {
+        "macro_id": "M7",
+        "label": "withholding reward and sulking",
+        "source_normalized_ids": [
+          "E14",
+          "E17",
+          "E15"
+        ],
+        "source_atomic_ids": [
+          "E14",
+          "E17",
+          "E15"
+        ],
+        "functional_role": "terminal outcome",
+        "temporal_order": 7
+      },
+      "abstraction": {
+        "level_0_raw": "William does not get any gingerbread and sulks all day",
+        "level_1_domain": "reward withheld, sulking",
+        "level_2_functional": "negative reinforcement",
+        "level_3_schema": "deprivation and emotional response"
+      },
+      "functional_role": "terminal outcome",
+      "is_intervention": false,
+      "is_terminal_outcome": true,
+      "provenance_text_spans": [
+        "and did not get any gingerbread",
+        "William sulked all day",
+        "but he still didn't get any gingerbread"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N8": {
+      "node_id": "N8",
+      "macro_node": {
+        "macro_id": "M8",
+        "label": "door slamming",
+        "source_normalized_ids": [
+          "E16"
+        ],
+        "source_atomic_ids": [
+          "E16"
+        ],
+        "functional_role": "reactive behavior",
+        "temporal_order": 8
+      },
+      "abstraction": {
+        "level_0_raw": "William slams door causing plaster to crack",
+        "level_1_domain": "slams door in frustration",
+        "level_2_functional": "aggressive venting",
+        "level_3_schema": "displaced aggression"
+      },
+      "functional_role": "reactive behavior",
+      "is_intervention": false,
+      "is_terminal_outcome": false,
+      "provenance_text_spans": [
+        "and slammed his door so hard the plaster cracked"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    }
+  },
+  "edges": [
+    {
+      "edge_id": "BE1",
+      "source_id": "N1",
+      "target_id": "N2",
+      "relation_type": "ENABLES",
+      "justification": "Confinement and patient status provide the environment where daydreaming and neglect occur.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": []
+    },
+    {
+      "edge_id": "BE2",
+      "source_id": "N2",
+      "target_id": "N3",
+      "relation_type": "CAUSES",
+      "justification": "Daydreaming and neglect directly cause the room to remain a mess.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": []
+    },
+    {
+      "edge_id": "BE3",
+      "source_id": "N3",
+      "target_id": "N4",
+      "relation_type": "MOTIVATES",
+      "justification": "The messy room motivates the nurse to offer an incentive.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": []
+    },
+    {
+      "edge_id": "BE4",
+      "source_id": "N4",
+      "target_id": "N5",
+      "relation_type": "BEFORE",
+      "justification": "The offer occurs before the realization of insufficient time.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": []
+    },
+    {
+      "edge_id": "BE5",
+      "source_id": "N5",
+      "target_id": "N6",
+      "relation_type": "CAUSES",
+      "justification": "Insufficient time leads to failure to pass the inspection.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": []
+    },
+    {
+      "edge_id": "BE6",
+      "source_id": "N6",
+      "target_id": "N7",
+      "relation_type": "RESULTS_IN",
+      "justification": "Failing the inspection results in withholding the reward and subsequent sulking.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": []
+    },
+    {
+      "edge_id": "BE7",
+      "source_id": "N7",
+      "target_id": "N8",
+      "relation_type": "CAUSES",
+      "justification": "Sulking and frustration cause William to slam the door.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": []
+    }
+  ],
+  "anchors": {
+    "central_problem": "William never passes monthly room inspections and his room is a mess before the April inspection.",
+    "central_goal": "To pass the April room inspection.",
+    "intervention": "The nurse offers William gingerbread as an incentive to clean his room.",
+    "terminal_outcomes": [
+      "William fails to pass the inspection",
+      "William does not get any gingerbread",
+      "William sulks all day",
+      "William slams door causing plaster to crack"
+    ],
+    "anchor_event_ids": [
+      "NE3",
+      "NE6",
+      "NE8",
+      "NE11",
+      "NE12",
+      "NE13",
+      "NE14"
+    ]
+  },
+  "pruned_node_ids": [
+    "NE4",
+    "NE9"
+  ],
+  "pruned_reasons": {
+    "NE4": "Emotional reaction (hating inspections) is not causally necessary to explain the problem, intervention, or outcome.",
+    "NE9": "Emotional reaction (overjoyed) is a narrative decoration; it does not affect the causal chain of incentive, time, or failure.",
+    "NE13": "Sulking is an emotional reaction and does not causally explain the requirement failure or reward withholding.",
+    "NE14": "Slamming door and cracking plaster are incidental physical details that do not affect the core causal mechanism of the story."
+  },
+  "metadata": {
+    "total_backbone_nodes": 8,
+    "total_backbone_edges": 7
+  }
+}
