@@ -6,58 +6,36 @@
       "node_id": "N1",
       "macro_node": {
         "macro_id": "M1",
-        "label": "William confined and failing inspections",
+        "label": "William's confinement and daydreaming",
         "source_normalized_ids": [
-          "NE2"
-        ],
-        "source_atomic_ids": [
-          "E3"
-        ],
-        "functional_role": "BACKGROUND",
-        "temporal_phase": "PRE_INTERVENTION",
-        "temporal_order": 1
-      },
-      "abstraction": {
-        "level_0_raw": "William never passes monthly room inspections",
-        "level_1_domain": "Patient fails recurring cleanliness criteria",
-        "level_2_functional": "Chronic failure to meet institutional standards",
-        "level_3_schema": "Persistent non-compliance"
-      },
-      "functional_role": "BACKGROUND",
-      "temporal_phase": "PRE_INTERVENTION",
-      "is_intervention": false,
-      "is_focal_outcome": false,
-      "is_contingent_outcome": false,
-      "provenance_text_spans": [
-        "He could never pass the monthly room inspections"
-      ],
-      "confidence": 1.0,
-      "explicitness": "explicit"
-    },
-    "N2": {
-      "node_id": "N2",
-      "macro_node": {
-        "macro_id": "M2",
-        "label": "William daydreams instead of cleaning",
-        "source_normalized_ids": [
-          "NE4"
+          "NE5"
         ],
         "source_atomic_ids": [
           "E5",
           "E7"
         ],
-        "functional_role": "CAUSAL_ANTECEDENT",
-        "temporal_phase": "PRE_INTERVENTION",
-        "temporal_order": 2
+        "functional_role": "BACKGROUND",
+        "temporal_grounding": {
+          "mention_phase": "PRE_INTERVENTION",
+          "onset_phase": "PRE_INTERVENTION",
+          "holds_at_intervention": true,
+          "temporal_extent": "PERSISTENT_STATE"
+        },
+        "temporal_order": 1
       },
       "abstraction": {
-        "level_0_raw": "William daydreams about food instead of cleaning",
-        "level_1_domain": "Patient engages in wishful thinking over task",
-        "level_2_functional": "Task neglect due to competing desire",
-        "level_3_schema": "Goal displacement"
+        "level_0_raw": "William spends time daydreaming about food instead of cleaning",
+        "level_1_domain": "Patient daydreams about food",
+        "level_2_functional": "task neglect",
+        "level_3_schema": "Neglect of Required Task"
       },
-      "functional_role": "CAUSAL_ANTECEDENT",
-      "temporal_phase": "PRE_INTERVENTION",
+      "functional_role": "BACKGROUND",
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      },
       "is_intervention": false,
       "is_focal_outcome": false,
       "is_contingent_outcome": false,
@@ -68,29 +46,39 @@
       "confidence": 1.0,
       "explicitness": "explicit"
     },
-    "N3": {
-      "node_id": "N3",
+    "N2": {
+      "node_id": "N2",
       "macro_node": {
-        "macro_id": "M3",
-        "label": "Room is messy before inspection",
+        "macro_id": "M2",
+        "label": "William's room is a mess",
         "source_normalized_ids": [
-          "NE5"
+          "NE6"
         ],
         "source_atomic_ids": [
           "E6"
         ],
         "functional_role": "PROBLEM_STATE",
-        "temporal_phase": "PRE_INTERVENTION",
-        "temporal_order": 3
+        "temporal_grounding": {
+          "mention_phase": "PRE_INTERVENTION",
+          "onset_phase": "PRE_INTERVENTION",
+          "holds_at_intervention": true,
+          "temporal_extent": "PERSISTENT_STATE"
+        },
+        "temporal_order": 2
       },
       "abstraction": {
-        "level_0_raw": "William's room is a mess before April inspection",
-        "level_1_domain": "Patient's room fails pre-inspection standard",
-        "level_2_functional": "Deficit state before deadline",
-        "level_3_schema": "Pre-deficit condition"
+        "level_0_raw": "William's room is a mess a few days before the April inspection",
+        "level_1_domain": "Room is untidy before inspection",
+        "level_2_functional": "deficit state",
+        "level_3_schema": "Unresolved Deficit"
       },
       "functional_role": "PROBLEM_STATE",
-      "temporal_phase": "PRE_INTERVENTION",
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      },
       "is_intervention": false,
       "is_focal_outcome": false,
       "is_contingent_outcome": false,
@@ -100,65 +88,87 @@
       "confidence": 1.0,
       "explicitness": "explicit"
     },
-    "N4": {
-      "node_id": "N4",
+    "N3": {
+      "node_id": "N3",
       "macro_node": {
-        "macro_id": "M4",
-        "label": "Nurse offers incentive for cleaning",
+        "macro_id": "M3",
+        "label": "Nurse promises gingerbread as incentive",
         "source_normalized_ids": [
-          "NE6"
+          "NE7"
         ],
         "source_atomic_ids": [
           "E8",
           "E9",
-          "E10"
+          "E10",
+          "E11"
         ],
         "functional_role": "INTERVENTION",
-        "temporal_phase": "AT_INTERVENTION",
-        "temporal_order": 4
+        "temporal_grounding": {
+          "mention_phase": "AT_INTERVENTION",
+          "onset_phase": "AT_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 3
       },
       "abstraction": {
-        "level_0_raw": "Nurse promises gingerbread if William cleans room",
-        "level_1_domain": "Caregiver introduces contingent reward for task completion",
-        "level_2_functional": "Incentive-based intervention",
-        "level_3_schema": "Contingent reward"
+        "level_0_raw": "Nurse promises William gingerbread if he cleans his room",
+        "level_1_domain": "Nurse offers conditional reward",
+        "level_2_functional": "conditional incentive",
+        "level_3_schema": "Conditional Incentive Offer"
       },
       "functional_role": "INTERVENTION",
-      "temporal_phase": "AT_INTERVENTION",
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
       "is_intervention": true,
       "is_focal_outcome": false,
       "is_contingent_outcome": false,
       "provenance_text_spans": [
-        "if he scrubbed his room and put it in order once and for all",
         "the nurse promised him some gingerbread from the cookie shop",
-        "To provide William with an incentive"
+        "if he scrubbed his room",
+        "To provide William with an incentive",
+        "and put it in order once and for all"
       ],
       "confidence": 1.0,
       "explicitness": "explicit"
     },
-    "N5": {
-      "node_id": "N5",
+    "N4": {
+      "node_id": "N4",
       "macro_node": {
-        "macro_id": "M5",
+        "macro_id": "M4",
         "label": "Insufficient time to clean",
         "source_normalized_ids": [
-          "NE8"
+          "NE9"
         ],
         "source_atomic_ids": [
-          "E12"
+          "E13"
         ],
         "functional_role": "CONSTRAINT",
-        "temporal_phase": "POST_INTERVENTION",
-        "temporal_order": 5
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 4
       },
       "abstraction": {
-        "level_0_raw": "Not enough time for William to clean room",
-        "level_1_domain": "Time resource insufficient for task completion",
-        "level_2_functional": "Resource shortage prevents action",
-        "level_3_schema": "Temporal constraint"
+        "level_0_raw": "There is no longer enough time for William to clean his room",
+        "level_1_domain": "Time runs out for cleaning",
+        "level_2_functional": "insufficient remaining resources",
+        "level_3_schema": "Resource Constraint"
       },
       "functional_role": "CONSTRAINT",
-      "temporal_phase": "POST_INTERVENTION",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
       "is_intervention": false,
       "is_focal_outcome": false,
       "is_contingent_outcome": false,
@@ -168,29 +178,39 @@
       "confidence": 1.0,
       "explicitness": "explicit"
     },
-    "N6": {
-      "node_id": "N6",
+    "N5": {
+      "node_id": "N5",
       "macro_node": {
-        "macro_id": "M6",
+        "macro_id": "M5",
         "label": "William fails inspection",
         "source_normalized_ids": [
-          "NE9"
+          "NE10"
         ],
         "source_atomic_ids": [
-          "E13"
+          "E14"
         ],
         "functional_role": "FOCAL_OUTCOME",
-        "temporal_phase": "POST_INTERVENTION",
-        "temporal_order": 6
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 5
       },
       "abstraction": {
-        "level_0_raw": "William does not pass inspection",
-        "level_1_domain": "Patient fails cleanliness assessment",
-        "level_2_functional": "Failure to meet evaluation criteria",
-        "level_3_schema": "Outcome failure"
+        "level_0_raw": "William does not pass the April inspection",
+        "level_1_domain": "Patient fails inspection",
+        "level_2_functional": "requirement failure",
+        "level_3_schema": "Failure to Meet Requirement"
       },
       "functional_role": "FOCAL_OUTCOME",
-      "temporal_phase": "POST_INTERVENTION",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
       "is_intervention": false,
       "is_focal_outcome": true,
       "is_contingent_outcome": false,
@@ -200,36 +220,88 @@
       "confidence": 1.0,
       "explicitness": "explicit"
     },
-    "N7": {
-      "node_id": "N7",
+    "N6": {
+      "node_id": "N6",
       "macro_node": {
-        "macro_id": "M7",
-        "label": "William does not receive reward",
+        "macro_id": "M6",
+        "label": "William does not get gingerbread",
         "source_normalized_ids": [
-          "NE10"
+          "NE11"
         ],
         "source_atomic_ids": [
-          "E14",
+          "E15",
           "E18"
         ],
         "functional_role": "CONTINGENT_OUTCOME",
-        "temporal_phase": "POST_INTERVENTION",
-        "temporal_order": 7
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 6
       },
       "abstraction": {
-        "level_0_raw": "William does not get gingerbread",
-        "level_1_domain": "Patient does not receive promised reward",
-        "level_2_functional": "Contingent reward withheld due to non-performance",
-        "level_3_schema": "Unfulfilled contingency"
+        "level_0_raw": "William does not get any gingerbread",
+        "level_1_domain": "Reward withheld",
+        "level_2_functional": "reward withheld",
+        "level_3_schema": "Withheld Contingent Reward"
       },
       "functional_role": "CONTINGENT_OUTCOME",
-      "temporal_phase": "POST_INTERVENTION",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
       "is_intervention": false,
       "is_focal_outcome": false,
       "is_contingent_outcome": true,
       "provenance_text_spans": [
-        "did not get any gingerbread",
-        "he still didn't get any gingerbread"
+        "he still didn't get any gingerbread",
+        "and did not get any gingerbread"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N7": {
+      "node_id": "N7",
+      "macro_node": {
+        "macro_id": "M7",
+        "label": "William never passes inspections",
+        "source_normalized_ids": [
+          "NE3"
+        ],
+        "source_atomic_ids": [
+          "E3"
+        ],
+        "functional_role": "BACKGROUND",
+        "temporal_grounding": {
+          "mention_phase": "PRE_INTERVENTION",
+          "onset_phase": "PRE_INTERVENTION",
+          "holds_at_intervention": true,
+          "temporal_extent": "PERSISTENT_STATE"
+        },
+        "temporal_order": 0
+      },
+      "abstraction": {
+        "level_0_raw": "William never passes monthly room inspections",
+        "level_1_domain": "Patient chronically fails inspections",
+        "level_2_functional": "chronic failure",
+        "level_3_schema": "Chronic Failure Pattern"
+      },
+      "functional_role": "BACKGROUND",
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "He could never pass the monthly room inspections"
       ],
       "confidence": 1.0,
       "explicitness": "explicit"
@@ -238,108 +310,118 @@
   "edges": [
     {
       "edge_id": "BE1",
-      "source_id": "N2",
-      "target_id": "N3",
+      "source_id": "N1",
+      "target_id": "N2",
       "relation_type": "CAUSES",
-      "justification": "William daydreams about food instead of cleaning, which directly results in his room being a mess before the April inspection.",
-      "confidence": 1.0,
-      "explicitness": "explicit",
-      "underlying_relation_ids": [
-        "R1"
-      ]
-    },
-    {
-      "edge_id": "BE2",
-      "source_id": "N4",
-      "target_id": "N5",
-      "relation_type": "BEFORE",
-      "justification": "The nurse's promise occurs before the realization that there is not enough time to clean, but does not cause the time shortage.",
-      "confidence": 1.0,
+      "justification": "William's daydreaming instead of cleaning directly results in his room being a mess a few days before the April inspection.",
+      "confidence": 0.9,
       "explicitness": "explicit",
       "underlying_relation_ids": [
         "R3"
       ]
     },
     {
-      "edge_id": "BE3",
-      "source_id": "N5",
-      "target_id": "N6",
-      "relation_type": "CAUSES",
-      "justification": "The lack of enough time to clean directly causes William to not pass the inspection.",
-      "confidence": 1.0,
+      "edge_id": "BE2",
+      "source_id": "N2",
+      "target_id": "N3",
+      "relation_type": "MOTIVATES",
+      "justification": "The mess in William's room motivates the nurse to promise gingerbread as an incentive for him to clean.",
+      "confidence": 0.8,
       "explicitness": "explicit",
       "underlying_relation_ids": [
         "R4"
       ]
     },
     {
-      "edge_id": "BE4",
-      "source_id": "N6",
-      "target_id": "N7",
+      "edge_id": "BE3",
+      "source_id": "N2",
+      "target_id": "N4",
       "relation_type": "CAUSES",
-      "justification": "Failing the inspection directly results in William not getting gingerbread, as the incentive was conditional on passing.",
-      "confidence": 1.0,
+      "justification": "The room being a mess and the lateness of the intervention imply that there is no longer enough time for William to clean it before the inspection.",
+      "confidence": 0.8,
+      "explicitness": "strongly_inferred",
+      "underlying_relation_ids": [
+        "R6"
+      ]
+    },
+    {
+      "edge_id": "BE4",
+      "source_id": "N4",
+      "target_id": "N5",
+      "relation_type": "CAUSES",
+      "justification": "Because there is no longer enough time to clean, William does not pass the April inspection.",
+      "confidence": 0.9,
       "explicitness": "explicit",
       "underlying_relation_ids": [
-        "R5"
+        "R7"
       ]
     },
     {
       "edge_id": "BE5",
-      "source_id": "N4",
+      "source_id": "N5",
       "target_id": "N6",
-      "relation_type": "CONDITIONAL_ON",
-      "justification": "The nurse's promise of gingerbread is conditional on William passing the inspection, which he fails to do.",
-      "confidence": 1.0,
+      "relation_type": "CAUSES",
+      "justification": "Failing the inspection directly leads to William not getting any gingerbread, as the promise was conditional on passing.",
+      "confidence": 0.9,
       "explicitness": "explicit",
       "underlying_relation_ids": [
-        "R9"
+        "R8"
       ]
     },
     {
       "edge_id": "BE6",
-      "source_id": "N2",
-      "target_id": "N1",
-      "relation_type": "CAUSES",
-      "justification": "William's consistent daydreaming instead of cleaning leads to his failure to pass monthly inspections, as implied by the narrative pattern.",
+      "source_id": "N3",
+      "target_id": "N4",
+      "relation_type": "BEFORE",
+      "justification": "The promise occurs before the realization that there is no longer enough time, but the promise does not cause the time shortage.",
       "confidence": 0.9,
-      "explicitness": "strongly_inferred",
+      "explicitness": "explicit",
       "underlying_relation_ids": [
-        "R10"
+        "R13"
       ]
     }
   ],
   "anchors": {
-    "central_problem": "William never passes monthly room inspections because he daydreams about food instead of cleaning.",
-    "central_goal": "Pass the April room inspection.",
+    "central_problem": "William never passes monthly room inspections and his room is a mess a few days before the April inspection.",
+    "central_goal": "Pass the April room inspection by cleaning the room.",
     "intervention_event_ids": [
-      "NE6"
+      "NE7"
     ],
     "focal_outcome_ids": [
-      "NE9"
-    ],
-    "contingent_outcome_ids": [
       "NE10"
     ],
-    "downstream_reaction_ids": [
-      "NE11",
-      "NE12"
+    "contingent_outcome_ids": [
+      "NE11"
     ],
-    "explanation": "The central problem is William's failure to pass inspections due to neglect. The goal is to pass the April inspection. The nurse's promise of gingerbread (NE6) is the intervention. The focal outcome is failing the inspection (NE9). The contingent outcome is not receiving gingerbread (NE10). Downstream reactions are William sulking (NE11) and slamming the door (NE12)."
+    "downstream_reaction_ids": [
+      "NE12",
+      "NE13"
+    ],
+    "contracts": [
+      {
+        "intervention_event_id": "NE7",
+        "promised_reward": "gingerbread from the cookie shop",
+        "contingent_requirement": "scrub his room and put it in order once and for all",
+        "condition_polarity": "positive"
+      }
+    ],
+    "explanation": "The central problem is William's chronic failure to pass inspections and his messy room. The goal is to pass the April inspection. The nurse introduces an incentive (NE7) promising gingerbread if he cleans. The focal outcome is failing the inspection (NE10), which triggers the contingent outcome of not getting gingerbread (NE11). William's sulking and door slamming (NE12, NE13) are downstream reactions to the outcome."
   },
   "pruned_node_ids": [
-    "NE7",
-    "NE3",
+    "NE4",
     "NE1",
     "NE12",
-    "NE11"
+    "NE8",
+    "NE2",
+    "NE13"
   ],
   "pruned_reasons": {
-    "NE1": "Background setting: William being a confined patient is a static description that does not causally explain the failure to pass inspections or the outcome. Removing it does not break the causal chain because the relevant deficit (messy room, daydreaming) is captured by NE4 and NE5.",
-    "NE3": "Secondary emotional reaction: William hating inspections is a subjective feeling that does not causally contribute to the failure or the intervention's effect. Its removal does not alter the explanation of why he failed.",
-    "NE7": "Incidental emotional response: William being overjoyed is a transient reaction to the incentive but does not causally affect the outcome (lack of time). Removing it does not break the causal explanation of failure.",
-    "NE11": "Downstream reaction: Sulking is a consequence of failure, not a cause of the focal outcome or contingent outcome. Its removal does not affect the causal backbone explaining why he did not get gingerbread.",
-    "NE12": "Incidental collateral action: Slamming the door and cracking plaster is an aggressive reaction that does not causally explain the failure or the lack of gingerbread. Removing it does not break the causal chain."
+    "NE1": "William being a patient in a psychiatric hospital is a static background setting. Even if he were not a patient (e.g., a resident in a group home), the specific deficit (messy room) and incentive (gingerbread) would still explain the failure. Thus, removing NE1 does not damage the explanation of the focal outcome.",
+    "NE2": "William being confined indoors almost all the time is a chronic background condition. The narrative's focal episode is about a specific inspection and incentive; confinement does not causally explain why he failed to clean in time. Removing NE2 does not alter the causal chain from deficit to intervention to resource shortage to failure.",
+    "NE4": "William hating inspections is a secondary emotional reaction to his chronic failure. It does not causally explain the origin of the deficit, the intervention, or the failure outcome. Even if he were indifferent, the same events (messy room, incentive, time shortage) would lead to the same outcome. Thus, NE4 is pruned.",
+    "NE8": "William being overjoyed is a transient emotional reaction to the incentive. It does not causally affect the subsequent resource shortage or failure. Removing NE8 does not break the explanatory chain from the incentive to the lack of time to the failure.",
+    "NE12": "William sulking all day is a downstream emotional reaction to the failure and does not causally explain the focal outcome or contingent consequence. The failure and lack of gingerbread are already explained without this reaction. Thus, NE12 is pruned.",
+    "NE13": "William slamming his door is a collateral aggressive action after the outcome. It does not causally explain why he failed or why he did not get gingerbread. Removing NE13 does not affect the explanation of the focal or contingent outcomes."
   },
   "metadata": {
     "total_backbone_nodes": 7,

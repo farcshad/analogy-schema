@@ -97,6 +97,10 @@ class NormalizedEvent(BaseModel):
     )
 
     @property
+    def temporal_phase(self) -> InterventionPhase:
+        return self.temporal_grounding.onset_phase
+
+    @property
     def onset_phase(self) -> InterventionPhase:
         return self.temporal_grounding.onset_phase
 

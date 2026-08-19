@@ -50,7 +50,6 @@ def enforce_anti_merging_constraints(
     (CAUSES, RESULTS_IN, BLOCKS, PREVENTS, ENABLES, MOTIVATES, REQUIRES, BEFORE),
     they MUST NOT be merged into a single macro-node.
     """
-    # Build set of related pairs in rich graph
     related_pairs: Set[Tuple[str, str]] = set()
     for rel in graph.relations:
         related_pairs.add((rel.source_id, rel.target_id))
@@ -64,7 +63,6 @@ def enforce_anti_merging_constraints(
             sanitized_nodes.append(gmn)
             continue
             
-        # Check if any two events in this macro-node have a relation between them
         has_internal_relation = False
         events = gmn.source_normalized_ids
         for i in range(len(events)):
@@ -78,7 +76,6 @@ def enforce_anti_merging_constraints(
         if not has_internal_relation:
             sanitized_nodes.append(gmn)
         else:
-            # Split into individual single-event macro nodes to preserve structural edges
             for ne_id in events:
                 ne = graph.normalized_events.get(ne_id)
                 summary = ne.summary_label if ne else ne_id
@@ -123,7 +120,6 @@ def lift_rich_relations_to_backbone_edges(
     """
     Deterministic Edge Lifting Algorithm.
     Projects Stage-C Rich Graph relations onto MacroNodes.
-    Enforces invariant: Every BackboneEdge must be grounded in underlying rich relation IDs.
     """
     projected: Dict[Tuple[str, str], List[EventRelation]] = defaultdict(list)
     
@@ -181,45 +177,15 @@ def lift_rich_relations_to_backbone_edges(
     return backbone_edges
 
 
-def run_stage_g_and_h_macro_and_abstraction(
+def _build_causal_backbone_from_grouping(
     story: Story,
     graph: RichEventGraph,
-    retained_events: List[NormalizedEvent],
     anchors: NarrativeAnchors,
     pruned_ids: List[str],
     pruned_reasons: Dict[str, str],
-    llm: BaseLLMProvider
+    result_nodes: List[GeneratedMacroNode]
 ) -> CausalBackbone:
-    """
-    Stages G & H:
-    1. LLM groups retained events into MacroNodes with 4-Level Abstraction Ladders.
-    2. Anti-merging programmatic constraint prevents destruction of relational edges.
-    3. Relational clauses are stripped from Level-2 node labels.
-    4. Backbone edges are strictly and deterministically lifted from Stage-C Rich Graph relations.
-    5. Invariants are validated and attached to metadata.
-    """
-    retained_ids = set(e.norm_id for e in retained_events)
-    retained_relations = [
-        r for r in graph.relations
-        if r.source_id in retained_ids and r.target_id in retained_ids
-    ]
-    
-    prompt = PromptRegistry.render(
-        "macro_grouping",
-        story=story,
-        retained_events=retained_events,
-        rich_relations=retained_relations
-    )
-    system_prompt = "You are a scientific abstract schema induction parser grouping events into atomic functional macro-nodes."
-    
-    result = llm.generate_structured(
-        prompt=prompt,
-        response_model=MacroGroupingOutput,
-        system_prompt=system_prompt
-    )
-    
-    # Enforce programmatic anti-merging constraint
-    sanitized_nodes = enforce_anti_merging_constraints(result.macro_nodes, graph)
+    sanitized_nodes = enforce_anti_merging_constraints(result_nodes, graph)
     
     nodes_dict: Dict[str, BackboneNode] = {}
     macro_to_backbone_id: Dict[str, str] = {}
@@ -260,7 +226,6 @@ def run_stage_g_and_h_macro_and_abstraction(
                 source_atomic_ids.append(item_id)
                 provenance_spans.append(graph.atomic_events[item_id].text_span)
                 
-        # Resolve temporal grounding from source events
         if groundings:
             first_tg = groundings[0]
             onset = (
@@ -282,7 +247,6 @@ def run_stage_g_and_h_macro_and_abstraction(
         else:
             node_tg = TemporalGrounding()
             
-        # Clean label and level-2 abstraction of relational clauses
         cleaned_label = sanitize_level_2_label(gmn.label)
         cleaned_level_2 = sanitize_level_2_label(gmn.abstraction_level_2)
         
@@ -341,5 +305,84 @@ def run_stage_g_and_h_macro_and_abstraction(
     
     warnings = backbone.validate_invariants()
     backbone.metadata["validation_warnings"] = warnings
-    
     return backbone
+
+
+def run_stage_g_and_h_macro_and_abstraction(
+    story: Story,
+    graph: RichEventGraph,
+    retained_events: List[NormalizedEvent],
+    anchors: NarrativeAnchors,
+    pruned_ids: List[str],
+    pruned_reasons: Dict[str, str],
+    llm: BaseLLMProvider
+) -> CausalBackbone:
+    """Stages G & H (Synchronous)."""
+    retained_ids = set(e.norm_id for e in retained_events)
+    retained_relations = [
+        r for r in graph.relations
+        if r.source_id in retained_ids and r.target_id in retained_ids
+    ]
+    
+    prompt = PromptRegistry.render(
+        "macro_grouping",
+        story=story,
+        retained_events=retained_events,
+        rich_relations=retained_relations
+    )
+    system_prompt = "You are a scientific abstract schema induction parser grouping events into atomic functional macro-nodes."
+    
+    result = llm.generate_structured(
+        prompt=prompt,
+        response_model=MacroGroupingOutput,
+        system_prompt=system_prompt
+    )
+    
+    return _build_causal_backbone_from_grouping(
+        story=story,
+        graph=graph,
+        anchors=anchors,
+        pruned_ids=pruned_ids,
+        pruned_reasons=pruned_reasons,
+        result_nodes=result.macro_nodes
+    )
+
+
+async def run_stage_g_and_h_macro_and_abstraction_async(
+    story: Story,
+    graph: RichEventGraph,
+    retained_events: List[NormalizedEvent],
+    anchors: NarrativeAnchors,
+    pruned_ids: List[str],
+    pruned_reasons: Dict[str, str],
+    llm: BaseLLMProvider
+) -> CausalBackbone:
+    """Stages G & H (Asynchronous)."""
+    retained_ids = set(e.norm_id for e in retained_events)
+    retained_relations = [
+        r for r in graph.relations
+        if r.source_id in retained_ids and r.target_id in retained_ids
+    ]
+    
+    prompt = PromptRegistry.render(
+        "macro_grouping",
+        story=story,
+        retained_events=retained_events,
+        rich_relations=retained_relations
+    )
+    system_prompt = "You are a scientific abstract schema induction parser grouping events into atomic functional macro-nodes."
+    
+    result = await llm.agenerate_structured(
+        prompt=prompt,
+        response_model=MacroGroupingOutput,
+        system_prompt=system_prompt
+    )
+    
+    return _build_causal_backbone_from_grouping(
+        story=story,
+        graph=graph,
+        anchors=anchors,
+        pruned_ids=pruned_ids,
+        pruned_reasons=pruned_reasons,
+        result_nodes=result.macro_nodes
+    )

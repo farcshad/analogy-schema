@@ -1,4 +1,5 @@
 import json
+import asyncio
 from typing import Type, TypeVar, Optional, Any, Dict, Callable
 from pydantic import BaseModel
 from analogy_schema.llm.base import BaseLLMProvider
@@ -8,8 +9,8 @@ T = TypeVar("T", bound=BaseModel)
 
 class MockLLMProvider(BaseLLMProvider):
     """
-    Deterministic mock provider for unit tests and reproducible experiments without live API keys.
-    Can be configured with stage-specific return objects or matchers.
+    Deterministic mock provider for unit tests and reproducible experiments.
+    Supports both synchronous and asynchronous execution.
     """
 
     def __init__(self):
@@ -43,7 +44,6 @@ class MockLLMProvider(BaseLLMProvider):
             "type": "structured"
         })
         
-        # Check matching registered responses
         for key, resp in self.registered_responses.items():
             if key in prompt or (system_prompt and key in system_prompt) or key == response_model.__name__:
                 if isinstance(resp, response_model):
@@ -61,3 +61,15 @@ class MockLLMProvider(BaseLLMProvider):
         raise ValueError(
             f"MockLLMProvider: No registered response found for model {response_model.__name__} in prompt: {prompt[:100]}..."
         )
+
+    async def agenerate_text(self, prompt: str, system_prompt: Optional[str] = None, **kwargs) -> str:
+        return self.generate_text(prompt, system_prompt, **kwargs)
+
+    async def agenerate_structured(
+        self,
+        prompt: str,
+        response_model: Type[T],
+        system_prompt: Optional[str] = None,
+        **kwargs
+    ) -> T:
+        return self.generate_structured(prompt, response_model, system_prompt, **kwargs)

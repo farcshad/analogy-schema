@@ -1,0 +1,223 @@
+{
+  "backbone_id": "backbone_william_surface_similar",
+  "story_id": "william_surface_similar",
+  "nodes": {
+    "N1": {
+      "node_id": "N1",
+      "macro_node": {
+        "macro_id": "M1",
+        "label": "task assignment",
+        "source_normalized_ids": [
+          "NE5"
+        ],
+        "source_atomic_ids": [
+          "E5"
+        ],
+        "functional_role": "INTERVENTION",
+        "temporal_grounding": {
+          "mention_phase": "AT_INTERVENTION",
+          "onset_phase": "AT_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 1
+      },
+      "abstraction": {
+        "level_0_raw": "Matron asks Arthur to clean the dining tables",
+        "level_1_domain": "authority assigns cleaning task",
+        "level_2_functional": "task assignment",
+        "level_3_schema": "directive intervention"
+      },
+      "functional_role": "INTERVENTION",
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": true,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "The matron asked Arthur to clean the dining tables"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N2": {
+      "node_id": "N2",
+      "macro_node": {
+        "macro_id": "M2",
+        "label": "task execution",
+        "source_normalized_ids": [
+          "NE6"
+        ],
+        "source_atomic_ids": [
+          "E6"
+        ],
+        "functional_role": "ACTION_RESPONSE",
+        "temporal_grounding": {
+          "mention_phase": "AT_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "INTERVAL"
+        },
+        "temporal_order": 2
+      },
+      "abstraction": {
+        "level_0_raw": "Arthur cleans the dining tables",
+        "level_1_domain": "patient performs assigned cleaning",
+        "level_2_functional": "task execution",
+        "level_3_schema": "compliant action"
+      },
+      "functional_role": "ACTION_RESPONSE",
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": true,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "Arthur to clean the dining tables"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N3": {
+      "node_id": "N3",
+      "macro_node": {
+        "macro_id": "M3",
+        "label": "reward service",
+        "source_normalized_ids": [
+          "NE7"
+        ],
+        "source_atomic_ids": [
+          "E7"
+        ],
+        "functional_role": "CONTINGENT_OUTCOME",
+        "temporal_grounding": {
+          "mention_phase": "AT_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 3
+      },
+      "abstraction": {
+        "level_0_raw": "Cake is served",
+        "level_1_domain": "special cake served in recreation hall",
+        "level_2_functional": "reward service",
+        "level_3_schema": "contingent reward delivery"
+      },
+      "functional_role": "CONTINGENT_OUTCOME",
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": true,
+      "provenance_text_spans": [
+        "before the cake was served"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    }
+  },
+  "edges": [
+    {
+      "edge_id": "BE1",
+      "source_id": "N1",
+      "target_id": "N2",
+      "relation_type": "CAUSES",
+      "justification": "The matron asked Arthur to clean the dining tables, and Arthur performed the cleaning as a direct result of that request.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R1"
+      ]
+    },
+    {
+      "edge_id": "BE2",
+      "source_id": "N2",
+      "target_id": "N3",
+      "relation_type": "BEFORE",
+      "justification": "Arthur cleaned the tables before the cake was served, as stated in the narrative.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R2"
+      ]
+    }
+  ],
+  "anchors": {
+    "central_problem": "Arthur dislikes bedroom inspections",
+    "central_goal": "Arthur cleans the dining tables before the cake is served",
+    "intervention_event_ids": [
+      "NE5"
+    ],
+    "focal_outcome_ids": [
+      "NE6"
+    ],
+    "contingent_outcome_ids": [
+      "NE7"
+    ],
+    "downstream_reaction_ids": [
+      "NE8",
+      "NE9",
+      "NE11",
+      "NE12",
+      "NE13",
+      "NE14",
+      "NE15"
+    ],
+    "contracts": [
+      {
+        "intervention_event_id": "NE5",
+        "promised_reward": "cake served",
+        "contingent_requirement": "clean the dining tables before the cake is served",
+        "condition_polarity": "positive"
+      }
+    ],
+    "explanation": "The matron asks Arthur to clean the dining tables (NE5) with the implicit reward of cake being served (NE7). Arthur does clean the tables (NE6), fulfilling the requirement, so the cake is served (NE7). The subsequent events (Arthur eating a large meal, feeling tired, napping, waking up after the party, etc.) are downstream reactions that do not explain why the focal outcome occurred."
+  },
+  "pruned_node_ids": [
+    "NE4",
+    "NE10",
+    "NE3",
+    "NE1",
+    "NE11",
+    "NE14",
+    "NE12",
+    "NE8",
+    "NE2",
+    "NE13",
+    "NE15",
+    "NE9"
+  ],
+  "pruned_reasons": {
+    "NE1": "Arthur being a patient is a static background setting; removing it does not affect the causal explanation of why he missed the cake, as the focal mechanism involves his nap and the matron's task assignment.",
+    "NE2": "The matron managing the ward is a chronic institutional role; its removal does not change the causal chain from the task assignment to the missed cake.",
+    "NE3": "Arthur disliking inspections is a habitual state that does not causally drive the specific episode of missing the cake; the problem is resolved by the intervention and subsequent events.",
+    "NE4": "The bakery delivering a cake is a background event that sets the context but is not causally necessary for the focal outcome; the cake being served (NE7) is retained as a contingent outcome.",
+    "NE8": "Arthur eating a large meal is a secondary action that leads to fatigue but is not part of the minimal explanatory backbone; the nap (NE11) is pruned as a downstream reaction, and the fatigue state (NE9) is also pruned.",
+    "NE9": "Feeling tired is an internal state that mediates the nap but is not causally necessary; the nap itself is pruned as a downstream reaction.",
+    "NE10": "The matron conducting checks elsewhere is a background condition that allows the nap but is not part of the minimal causal chain; the nap is pruned.",
+    "NE11": "Taking a nap is a downstream reaction to fatigue; its removal does not damage the explanation because the focal outcome (cleaning tables) and contingent outcome (cake served) are already captured, and the nap is not causally required for the missed cake—the timing of the party conclusion suffices.",
+    "NE12": "Waking up is a trivial consequence of the nap; removing it does not affect the causal explanation of the missed cake.",
+    "NE13": "The party concluding is a downstream event that is implied by the cake being eaten and tables cleared; it is not causally necessary for the focal outcome.",
+    "NE14": "Tables being cleared by staff is a collateral action after the cake is served; it does not explain why Arthur missed the cake.",
+    "NE15": "The cake being eaten is a downstream consequence of the party; the contingent outcome (cake served) is retained, and the eating is not causally necessary for the focal outcome."
+  },
+  "metadata": {
+    "total_backbone_nodes": 3,
+    "total_backbone_edges": 2,
+    "edge_derivation_method": "deterministic_rich_relation_lifting",
+    "validation_warnings": []
+  }
+}

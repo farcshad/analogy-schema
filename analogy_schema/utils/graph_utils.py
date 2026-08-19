@@ -11,6 +11,10 @@ def rich_graph_to_nx(graph: RichEventGraph) -> nx.DiGraph:
     
     if graph.normalized_events:
         for nid, ne in graph.normalized_events.items():
+            phase_val = (
+                ne.onset_phase.value if hasattr(ne, "onset_phase") and hasattr(ne.onset_phase, "value")
+                else (ne.temporal_phase.value if hasattr(ne, "temporal_phase") and hasattr(ne.temporal_phase, "value") else str(getattr(ne, "temporal_phase", "UNANCHORED")))
+            )
             G.add_node(
                 nid,
                 label=ne.summary_label,
@@ -18,7 +22,7 @@ def rich_graph_to_nx(graph: RichEventGraph) -> nx.DiGraph:
                 arguments=ne.arguments,
                 atomic_ids=ne.atomic_event_ids,
                 confidence=ne.confidence,
-                phase=ne.temporal_phase.value if hasattr(ne.temporal_phase, "value") else str(ne.temporal_phase)
+                phase=phase_val
             )
     else:
         for eid, ae in graph.atomic_events.items():
@@ -48,6 +52,10 @@ def backbone_to_nx(backbone: CausalBackbone) -> nx.DiGraph:
     """Converts a CausalBackbone to a NetworkX DiGraph."""
     G = nx.DiGraph()
     for nid, node in backbone.nodes.items():
+        phase_val = (
+            node.onset_phase.value if hasattr(node, "onset_phase") and hasattr(node.onset_phase, "value")
+            else (node.temporal_phase.value if hasattr(node, "temporal_phase") and hasattr(node.temporal_phase, "value") else str(getattr(node, "temporal_phase", "UNANCHORED")))
+        )
         G.add_node(
             nid,
             label=node.abstraction.level_2_functional,
@@ -56,7 +64,7 @@ def backbone_to_nx(backbone: CausalBackbone) -> nx.DiGraph:
             level_2=node.abstraction.level_2_functional,
             level_3=node.abstraction.level_3_schema,
             role=node.functional_role.value if hasattr(node.functional_role, "value") else str(node.functional_role),
-            temporal_phase=node.temporal_phase.value if hasattr(node.temporal_phase, "value") else str(node.temporal_phase),
+            temporal_phase=phase_val,
             is_intervention=node.is_intervention,
             is_focal_outcome=node.is_focal_outcome,
             is_contingent_outcome=node.is_contingent_outcome,

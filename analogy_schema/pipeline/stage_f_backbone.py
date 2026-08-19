@@ -25,12 +25,7 @@ def run_stage_f_backbone_selection(
     llm: BaseLLMProvider,
     candidate_ancestors: List[str] = None
 ) -> Dict[str, Any]:
-    """
-    Stage F: Counterfactual backbone selection and pruning.
-    Backward-trace ancestors serve as candidates, not mandatory inclusions.
-    Explicit focal outcomes and core intervention anchors are protected.
-    Stage F is empowered to prune background setting and incidental details.
-    """
+    """Stage F: Counterfactual backbone selection (Synchronous)."""
     normalized_list = list(graph.normalized_events.values())
     prompt = PromptRegistry.render(
         "backbone_selection",
@@ -47,21 +42,56 @@ def run_stage_f_backbone_selection(
     )
     
     retained_ids = set(result.retained_event_ids)
-    
-    # Protected anchors: focal outcomes and intervention anchors must remain
     protected_anchors = set(anchors.focal_outcome_ids + anchors.intervention_event_ids + anchors.contingent_outcome_ids)
     for pa in protected_anchors:
         if pa in graph.normalized_events:
             retained_ids.add(pa)
             
-    # Downstream reactions are never protected and should be pruned if marked
-    for dra in anchors.downstream_reaction_ids:
-        if dra in retained_ids and dra not in protected_anchors:
-            # If the LLM retained a downstream reaction, verify if it was audited
-            pass
+    retained_events = [graph.normalized_events[nid] for nid in retained_ids if nid in graph.normalized_events]
+    pruned_reasons = {p.norm_id: p.reason for p in result.pruned_events}
+    all_norm_ids = set(graph.normalized_events.keys())
+    pruned_ids = list(all_norm_ids - set(retained_ids))
+    for pid in pruned_ids:
+        if pid not in pruned_reasons:
+            pruned_reasons[pid] = "Excluded during counterfactual necessity pruning (not required to explain focal outcome)."
+            
+    return {
+        "retained_events": retained_events,
+        "pruned_ids": pruned_ids,
+        "pruned_reasons": pruned_reasons
+    }
+
+
+async def run_stage_f_backbone_selection_async(
+    story: Story,
+    graph: RichEventGraph,
+    anchors: NarrativeAnchors,
+    llm: BaseLLMProvider,
+    candidate_ancestors: List[str] = None
+) -> Dict[str, Any]:
+    """Stage F: Counterfactual backbone selection (Asynchronous)."""
+    normalized_list = list(graph.normalized_events.values())
+    prompt = PromptRegistry.render(
+        "backbone_selection",
+        story=story,
+        normalized_events=normalized_list,
+        anchors=anchors
+    )
+    system_prompt = "You are a causal reasoning engine selecting the minimal explanatory causal backbone."
+    
+    result = await llm.agenerate_structured(
+        prompt=prompt,
+        response_model=BackboneSelectionOutput,
+        system_prompt=system_prompt
+    )
+    
+    retained_ids = set(result.retained_event_ids)
+    protected_anchors = set(anchors.focal_outcome_ids + anchors.intervention_event_ids + anchors.contingent_outcome_ids)
+    for pa in protected_anchors:
+        if pa in graph.normalized_events:
+            retained_ids.add(pa)
             
     retained_events = [graph.normalized_events[nid] for nid in retained_ids if nid in graph.normalized_events]
-    
     pruned_reasons = {p.norm_id: p.reason for p in result.pruned_events}
     all_norm_ids = set(graph.normalized_events.keys())
     pruned_ids = list(all_norm_ids - set(retained_ids))

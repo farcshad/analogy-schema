@@ -1,99 +1,128 @@
 # Causal Backbone: karen_false_analogy
 
-## Narrative Anchors
+## Narrative Anchors & Contracts
 - **Central Problem**: Karen dislikes school and is doing poorly
-- **Central Goal**: Graduate from school
+- **Central Goal**: Karen graduates
 - **Intervention Events**: ['NE3']
 - **Focal Outcomes**: ['NE6']
 - **Contingent Outcomes**: ['NE7']
-- **Downstream Reactions (Excluded from Anchoring)**: []
+- **Downstream Reactions (Excluded from Anchoring)**: ['NE5']
+- **Incentive Contracts**:
+  - Reward: `Hawaii trip` | Requirement: `Karen graduates` (Polarity: positive)
 
 ## Backbone Nodes (Level 2 Functional Roles & Temporal Phases)
-### N1: pre-existing deficit state
-- **Role**: `BACKGROUND`
-- **Intervention Phase**: `PRE_INTERVENTION`
+### N1: Karen dislikes school
+- **Role**: `PROBLEM_STATE`
+- **Temporal Grounding**: onset=`PRE_INTERVENTION`, holds_at_intervention=`True`, mention=`PRE_INTERVENTION`, extent=`PERSISTENT_STATE`
 - **Abstraction Ladder**:
-  - *Level 0 (Raw)*: Karen dislikes school and is doing poorly
-  - *Level 1 (Domain)*: Student has negative attitude and low performance
-  - *Level 2 (Functional)*: pre-existing deficit state
-  - *Level 3 (Schema)*: BACKGROUND_DEFICIT
-- **Underlying Macro-Node**: `M1` (pre-existing academic disengagement)
-- **Source Normalized Events**: ['NE1', 'NE2']
-- **Textual Provenance Spans**: ['Karen dislikes school and is doing poorly', 'is doing poorly', 'Karen dislikes school']
+  - *Level 0 (Raw)*: Karen dislikes school
+  - *Level 1 (Domain)*: Karen dislikes school
+  - *Level 2 (Functional)*: Karen dislikes school
+  - *Level 3 (Schema)*: baseline deficiency
+- **Underlying Macro-Node**: `M1_split_1` (Karen dislikes school)
+- **Source Normalized Events**: ['NE1']
+- **Textual Provenance Spans**: ['Karen dislikes school and is doing poorly', 'Karen dislikes school']
 
-### N2: conditional incentive introduced `[INTERVENTION]`
+### N2: Karen is doing poorly in school
+- **Role**: `PROBLEM_STATE`
+- **Temporal Grounding**: onset=`PRE_INTERVENTION`, holds_at_intervention=`True`, mention=`PRE_INTERVENTION`, extent=`PERSISTENT_STATE`
+- **Abstraction Ladder**:
+  - *Level 0 (Raw)*: Karen is doing poorly in school
+  - *Level 1 (Domain)*: Karen is doing poorly in school
+  - *Level 2 (Functional)*: Karen is doing poorly in school
+  - *Level 3 (Schema)*: baseline deficiency
+- **Underlying Macro-Node**: `M1_split_2` (Karen is doing poorly in school)
+- **Source Normalized Events**: ['NE2']
+- **Textual Provenance Spans**: ['is doing poorly', 'Karen dislikes school and is doing poorly']
+
+### N3: conditional incentive `[INTERVENTION]`
 - **Role**: `INTERVENTION`
-- **Intervention Phase**: `AT_INTERVENTION`
+- **Temporal Grounding**: onset=`AT_INTERVENTION`, holds_at_intervention=`False`, mention=`AT_INTERVENTION`, extent=`POINT`
 - **Abstraction Ladder**:
-  - *Level 0 (Raw)*: Father promises Hawaii trip if Karen graduates
-  - *Level 1 (Domain)*: Parent offers conditional reward for academic success
-  - *Level 2 (Functional)*: conditional incentive introduced
-  - *Level 3 (Schema)*: INTERVENTION_INCENTIVE
-- **Underlying Macro-Node**: `M2` (conditional incentive offered)
+  - *Level 0 (Raw)*: Father promises Hawaii trip if Karen graduates.
+  - *Level 1 (Domain)*: parental conditional reward promise
+  - *Level 2 (Functional)*: conditional incentive
+  - *Level 3 (Schema)*: incentive intervention
+- **Underlying Macro-Node**: `M2` (conditional incentive introduction)
 - **Source Normalized Events**: ['NE3']
-- **Textual Provenance Spans**: ['if she graduates', 'Her father promises a Hawaii trip if she graduates']
+- **Textual Provenance Spans**: ['Her father promises a Hawaii trip if she graduates']
 
-### N3: incentive uptake
+### N4: incentive reception
 - **Role**: `ACTION_RESPONSE`
-- **Intervention Phase**: `AT_INTERVENTION`
+- **Temporal Grounding**: onset=`AT_INTERVENTION`, holds_at_intervention=`False`, mention=`POST_INTERVENTION`, extent=`POINT`
 - **Abstraction Ladder**:
-  - *Level 0 (Raw)*: Karen receives the incentive
-  - *Level 1 (Domain)*: Student accepts the conditional reward
-  - *Level 2 (Functional)*: incentive uptake
-  - *Level 3 (Schema)*: ACTION_RESPONSE_ACCEPTANCE
-- **Underlying Macro-Node**: `M3` (incentive received)
+  - *Level 0 (Raw)*: Karen receives the incentive.
+  - *Level 1 (Domain)*: student receives promised reward
+  - *Level 2 (Functional)*: incentive reception
+  - *Level 3 (Schema)*: reward uptake
+- **Underlying Macro-Node**: `M3` (incentive reception)
 - **Source Normalized Events**: ['NE4']
-- **Textual Provenance Spans**: ['receiving the incentive']
+- **Textual Provenance Spans**: ['After receiving the incentive', 'After receiving the incentive, she spends the remaining weeks dreaming about Hawaii and preparing for the trip instead of studying']
 
-### N4: goal displacement leading to task neglect
-- **Role**: `CAUSAL_ANTECEDENT`
-- **Intervention Phase**: `POST_INTERVENTION`
+### N5: task neglect
+- **Role**: `ACTION_RESPONSE`
+- **Temporal Grounding**: onset=`POST_INTERVENTION`, holds_at_intervention=`False`, mention=`POST_INTERVENTION`, extent=`INTERVAL`
 - **Abstraction Ladder**:
-  - *Level 0 (Raw)*: Karen neglects studying to dream about and prepare for Hawaii trip
-  - *Level 1 (Domain)*: Student prioritizes trip preparation over studying
-  - *Level 2 (Functional)*: goal displacement leading to task neglect
-  - *Level 3 (Schema)*: CAUSAL_ANTECEDENT_DISTRACTION
-- **Underlying Macro-Node**: `M4` (task neglect due to distraction)
+  - *Level 0 (Raw)*: Karen spends time dreaming about Hawaii and preparing for trip instead of studying.
+  - *Level 1 (Domain)*: student engages in reward-related activities instead of studying
+  - *Level 2 (Functional)*: task neglect
+  - *Level 3 (Schema)*: goal displacement
+- **Underlying Macro-Node**: `M4` (task neglect)
 - **Source Normalized Events**: ['NE5']
-- **Textual Provenance Spans**: ['After receiving the incentive, she spends the remaining weeks dreaming about Hawaii and preparing for the trip instead of studying', 'she spends the remaining weeks dreaming about Hawaii', 'instead of studying', 'preparing for the trip']
+- **Textual Provenance Spans**: ['preparing for the trip', 'she spends the remaining weeks dreaming about Hawaii', 'instead of studying', 'After receiving the incentive, she spends the remaining weeks dreaming about Hawaii and preparing for the trip instead of studying']
 
-### N5: failure to achieve target outcome `[FOCAL_OUTCOME]`
+### N6: requirement failure `[FOCAL_OUTCOME]`
 - **Role**: `FOCAL_OUTCOME`
-- **Intervention Phase**: `POST_INTERVENTION`
+- **Temporal Grounding**: onset=`POST_INTERVENTION`, holds_at_intervention=`False`, mention=`POST_INTERVENTION`, extent=`POINT`
 - **Abstraction Ladder**:
-  - *Level 0 (Raw)*: Karen fails to graduate
-  - *Level 1 (Domain)*: Student does not meet graduation requirements
-  - *Level 2 (Functional)*: failure to achieve target outcome
-  - *Level 3 (Schema)*: FOCAL_OUTCOME_FAILURE
-- **Underlying Macro-Node**: `M5` (failure to meet graduation criteria)
+  - *Level 0 (Raw)*: Karen fails to graduate.
+  - *Level 1 (Domain)*: student fails to meet graduation requirement
+  - *Level 2 (Functional)*: requirement failure
+  - *Level 3 (Schema)*: outcome failure
+- **Underlying Macro-Node**: `M5` (requirement failure)
 - **Source Normalized Events**: ['NE6']
-- **Textual Provenance Spans**: ['She then fails to graduate']
+- **Textual Provenance Spans**: ['She then fails to graduate and does not go to Hawaii', 'She then fails to graduate']
 
-### N6: contingent reward not realized `[CONTINGENT_OUTCOME]`
+### N7: reward withheld `[CONTINGENT_OUTCOME]`
 - **Role**: `CONTINGENT_OUTCOME`
-- **Intervention Phase**: `POST_INTERVENTION`
+- **Temporal Grounding**: onset=`POST_INTERVENTION`, holds_at_intervention=`False`, mention=`POST_INTERVENTION`, extent=`POINT`
 - **Abstraction Ladder**:
-  - *Level 0 (Raw)*: Karen does not go to Hawaii
-  - *Level 1 (Domain)*: Student does not receive the promised trip
-  - *Level 2 (Functional)*: contingent reward not realized
-  - *Level 3 (Schema)*: CONTINGENT_OUTCOME_FORFEITURE
-- **Underlying Macro-Node**: `M6` (forfeited reward)
+  - *Level 0 (Raw)*: Karen does not go to Hawaii.
+  - *Level 1 (Domain)*: student does not receive promised trip
+  - *Level 2 (Functional)*: reward withheld
+  - *Level 3 (Schema)*: contingent consequence
+- **Underlying Macro-Node**: `M6` (reward withheld)
 - **Source Normalized Events**: ['NE7']
-- **Textual Provenance Spans**: ['does not go to Hawaii']
+- **Textual Provenance Spans**: ['She then fails to graduate and does not go to Hawaii', 'does not go to Hawaii']
 
 ## Backbone Edges (Typed Relational Backbone with Provenance)
-- **`N2` (conditional incentive introduced)** `--CAUSES-->` **`N3` (incentive uptake)**
+- **`N1` (Karen dislikes school)** `--CAUSES-->` **`N2` (Karen is doing poorly in school)**
+  - *Underlying Rich Relations*: `['R1']`
+  - *Justification*: Karen's dislike of school is a plausible cause for her poor academic performance, as negative attitude often leads to lack of effort.
+- **`N3` (conditional incentive)** `--CAUSES-->` **`N4` (incentive reception)**
   - *Underlying Rich Relations*: `['R2']`
-  - *Justification*: The father's promise of a Hawaii trip if Karen graduates directly leads to Karen receiving that incentive.
-- **`N3` (incentive uptake)** `--MOTIVATES-->` **`N4` (goal displacement leading to task neglect)**
+  - *Justification*: The father's promise directly results in Karen receiving the incentive, as the promise is the mechanism of delivery.
+- **`N4` (incentive reception)** `--MOTIVATES-->` **`N5` (task neglect)**
   - *Underlying Rich Relations*: `['R3']`
-  - *Justification*: Receiving the incentive motivates Karen to focus on dreaming about and preparing for the trip instead of studying.
-- **`N4` (goal displacement leading to task neglect)** `--CAUSES-->` **`N5` (failure to achieve target outcome)**
+  - *Justification*: Receiving the incentive motivates Karen to dream about Hawaii and prepare for the trip, but she misdirects her effort away from studying.
+- **`N5` (task neglect)** `--CAUSES-->` **`N6` (requirement failure)**
   - *Underlying Rich Relations*: `['R4']`
-  - *Justification*: Neglecting studying directly causes Karen to fail to graduate, as studying is necessary for graduation.
-- **`N5` (failure to achieve target outcome)** `--RESULTS_IN-->` **`N6` (contingent reward not realized)**
+  - *Justification*: Neglecting studying directly leads to failing to graduate, as studying is necessary to meet graduation requirements.
+- **`N6` (requirement failure)** `--CAUSES-->` **`N7` (reward withheld)**
   - *Underlying Rich Relations*: `['R5']`
-  - *Justification*: Failing to graduate results in the consequence that Karen does not go to Hawaii, as the trip was conditional on graduation.
-- **`N2` (conditional incentive introduced)** `--CONDITIONAL_ON-->` **`N5` (failure to achieve target outcome)**
+  - *Justification*: Failing to graduate triggers the consequence of not going to Hawaii, as the trip was conditional on graduation.
+- **`N1` (Karen dislikes school)** `--BEFORE-->` **`N5` (task neglect)**
   - *Underlying Rich Relations*: `['R6']`
-  - *Justification*: The promise of a Hawaii trip is conditional on Karen graduating; thus, graduation is a condition for the trip.
+  - *Justification*: Karen's dislike of school exists before she neglects studying, but it does not directly cause the neglect; the incentive is the immediate trigger.
+- **`N2` (Karen is doing poorly in school)** `--BEFORE-->` **`N5` (task neglect)**
+  - *Underlying Rich Relations*: `['R7']`
+  - *Justification*: Karen's poor performance precedes her neglect of studying, but the neglect is a new behavior triggered by the incentive, not caused by prior poor performance.
+- **`N3` (conditional incentive)** `--BEFORE-->` **`N5` (task neglect)**
+  - *Underlying Rich Relations*: `['R8']`
+  - *Justification*: The promise occurs before the neglect, but the neglect is a response to receiving the incentive, not directly to the promise itself.
+- **`N4` (incentive reception)** `--BEFORE-->` **`N6` (requirement failure)**
+  - *Underlying Rich Relations*: `['R9']`
+  - *Justification*: Receiving the incentive occurs before failing to graduate, but the failure is caused by neglect, not directly by receiving the incentive.
+- **`N5` (task neglect)** `--BEFORE-->` **`N7` (reward withheld)**
+  - *Underlying Rich Relations*: `['R10']`
+  - *Justification*: Neglect precedes the consequence of not going to Hawaii, but the direct cause is failing to graduate.

@@ -5,36 +5,42 @@
     "N1": {
       "node_id": "N1",
       "macro_node": {
-        "macro_id": "M1",
-        "label": "pre-existing academic disengagement",
+        "macro_id": "M1_split_1",
+        "label": "Karen dislikes school",
         "source_normalized_ids": [
-          "NE1",
-          "NE2"
+          "NE1"
         ],
         "source_atomic_ids": [
           "E1",
-          "E11",
-          "E2",
           "E11"
         ],
-        "functional_role": "BACKGROUND",
-        "temporal_phase": "PRE_INTERVENTION",
+        "functional_role": "PROBLEM_STATE",
+        "temporal_grounding": {
+          "mention_phase": "PRE_INTERVENTION",
+          "onset_phase": "PRE_INTERVENTION",
+          "holds_at_intervention": true,
+          "temporal_extent": "PERSISTENT_STATE"
+        },
         "temporal_order": 1
       },
       "abstraction": {
-        "level_0_raw": "Karen dislikes school and is doing poorly",
-        "level_1_domain": "Student has negative attitude and low performance",
-        "level_2_functional": "pre-existing deficit state",
-        "level_3_schema": "BACKGROUND_DEFICIT"
+        "level_0_raw": "Karen dislikes school",
+        "level_1_domain": "Karen dislikes school",
+        "level_2_functional": "Karen dislikes school",
+        "level_3_schema": "baseline deficiency"
       },
-      "functional_role": "BACKGROUND",
-      "temporal_phase": "PRE_INTERVENTION",
+      "functional_role": "PROBLEM_STATE",
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      },
       "is_intervention": false,
       "is_focal_outcome": false,
       "is_contingent_outcome": false,
       "provenance_text_spans": [
         "Karen dislikes school and is doing poorly",
-        "is doing poorly",
         "Karen dislikes school"
       ],
       "confidence": 1.0,
@@ -43,33 +49,43 @@
     "N2": {
       "node_id": "N2",
       "macro_node": {
-        "macro_id": "M2",
-        "label": "conditional incentive offered",
+        "macro_id": "M1_split_2",
+        "label": "Karen is doing poorly in school",
         "source_normalized_ids": [
-          "NE3"
+          "NE2"
         ],
         "source_atomic_ids": [
-          "E3",
-          "E4"
+          "E2",
+          "E11"
         ],
-        "functional_role": "INTERVENTION",
-        "temporal_phase": "AT_INTERVENTION",
-        "temporal_order": 2
+        "functional_role": "PROBLEM_STATE",
+        "temporal_grounding": {
+          "mention_phase": "PRE_INTERVENTION",
+          "onset_phase": "PRE_INTERVENTION",
+          "holds_at_intervention": true,
+          "temporal_extent": "PERSISTENT_STATE"
+        },
+        "temporal_order": 1
       },
       "abstraction": {
-        "level_0_raw": "Father promises Hawaii trip if Karen graduates",
-        "level_1_domain": "Parent offers conditional reward for academic success",
-        "level_2_functional": "conditional incentive introduced",
-        "level_3_schema": "INTERVENTION_INCENTIVE"
+        "level_0_raw": "Karen is doing poorly in school",
+        "level_1_domain": "Karen is doing poorly in school",
+        "level_2_functional": "Karen is doing poorly in school",
+        "level_3_schema": "baseline deficiency"
       },
-      "functional_role": "INTERVENTION",
-      "temporal_phase": "AT_INTERVENTION",
-      "is_intervention": true,
+      "functional_role": "PROBLEM_STATE",
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      },
+      "is_intervention": false,
       "is_focal_outcome": false,
       "is_contingent_outcome": false,
       "provenance_text_spans": [
-        "if she graduates",
-        "Her father promises a Hawaii trip if she graduates"
+        "is doing poorly",
+        "Karen dislikes school and is doing poorly"
       ],
       "confidence": 1.0,
       "explicitness": "explicit"
@@ -77,31 +93,42 @@
     "N3": {
       "node_id": "N3",
       "macro_node": {
-        "macro_id": "M3",
-        "label": "incentive received",
+        "macro_id": "M2",
+        "label": "conditional incentive introduction",
         "source_normalized_ids": [
-          "NE4"
+          "NE3"
         ],
         "source_atomic_ids": [
-          "E5"
+          "E3",
+          "E12"
         ],
-        "functional_role": "ACTION_RESPONSE",
-        "temporal_phase": "AT_INTERVENTION",
-        "temporal_order": 3
+        "functional_role": "INTERVENTION",
+        "temporal_grounding": {
+          "mention_phase": "AT_INTERVENTION",
+          "onset_phase": "AT_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 2
       },
       "abstraction": {
-        "level_0_raw": "Karen receives the incentive",
-        "level_1_domain": "Student accepts the conditional reward",
-        "level_2_functional": "incentive uptake",
-        "level_3_schema": "ACTION_RESPONSE_ACCEPTANCE"
+        "level_0_raw": "Father promises Hawaii trip if Karen graduates.",
+        "level_1_domain": "parental conditional reward promise",
+        "level_2_functional": "conditional incentive",
+        "level_3_schema": "incentive intervention"
       },
-      "functional_role": "ACTION_RESPONSE",
-      "temporal_phase": "AT_INTERVENTION",
-      "is_intervention": false,
+      "functional_role": "INTERVENTION",
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": true,
       "is_focal_outcome": false,
       "is_contingent_outcome": false,
       "provenance_text_spans": [
-        "receiving the incentive"
+        "Her father promises a Hawaii trip if she graduates"
       ],
       "confidence": 1.0,
       "explicitness": "explicit"
@@ -109,37 +136,43 @@
     "N4": {
       "node_id": "N4",
       "macro_node": {
-        "macro_id": "M4",
-        "label": "task neglect due to distraction",
+        "macro_id": "M3",
+        "label": "incentive reception",
         "source_normalized_ids": [
-          "NE5"
+          "NE4"
         ],
         "source_atomic_ids": [
-          "E6",
-          "E7",
-          "E8",
-          "E12"
+          "E5",
+          "E13"
         ],
-        "functional_role": "CAUSAL_ANTECEDENT",
-        "temporal_phase": "POST_INTERVENTION",
-        "temporal_order": 4
+        "functional_role": "ACTION_RESPONSE",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "AT_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 3
       },
       "abstraction": {
-        "level_0_raw": "Karen neglects studying to dream about and prepare for Hawaii trip",
-        "level_1_domain": "Student prioritizes trip preparation over studying",
-        "level_2_functional": "goal displacement leading to task neglect",
-        "level_3_schema": "CAUSAL_ANTECEDENT_DISTRACTION"
+        "level_0_raw": "Karen receives the incentive.",
+        "level_1_domain": "student receives promised reward",
+        "level_2_functional": "incentive reception",
+        "level_3_schema": "reward uptake"
       },
-      "functional_role": "CAUSAL_ANTECEDENT",
-      "temporal_phase": "POST_INTERVENTION",
+      "functional_role": "ACTION_RESPONSE",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
       "is_intervention": false,
       "is_focal_outcome": false,
       "is_contingent_outcome": false,
       "provenance_text_spans": [
-        "After receiving the incentive, she spends the remaining weeks dreaming about Hawaii and preparing for the trip instead of studying",
-        "she spends the remaining weeks dreaming about Hawaii",
-        "instead of studying",
-        "preparing for the trip"
+        "After receiving the incentive",
+        "After receiving the incentive, she spends the remaining weeks dreaming about Hawaii and preparing for the trip instead of studying"
       ],
       "confidence": 1.0,
       "explicitness": "explicit"
@@ -147,31 +180,47 @@
     "N5": {
       "node_id": "N5",
       "macro_node": {
-        "macro_id": "M5",
-        "label": "failure to meet graduation criteria",
+        "macro_id": "M4",
+        "label": "task neglect",
         "source_normalized_ids": [
-          "NE6"
+          "NE5"
         ],
         "source_atomic_ids": [
-          "E9"
+          "E6",
+          "E7",
+          "E8",
+          "E13"
         ],
-        "functional_role": "FOCAL_OUTCOME",
-        "temporal_phase": "POST_INTERVENTION",
-        "temporal_order": 5
+        "functional_role": "ACTION_RESPONSE",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "INTERVAL"
+        },
+        "temporal_order": 4
       },
       "abstraction": {
-        "level_0_raw": "Karen fails to graduate",
-        "level_1_domain": "Student does not meet graduation requirements",
-        "level_2_functional": "failure to achieve target outcome",
-        "level_3_schema": "FOCAL_OUTCOME_FAILURE"
+        "level_0_raw": "Karen spends time dreaming about Hawaii and preparing for trip instead of studying.",
+        "level_1_domain": "student engages in reward-related activities instead of studying",
+        "level_2_functional": "task neglect",
+        "level_3_schema": "goal displacement"
       },
-      "functional_role": "FOCAL_OUTCOME",
-      "temporal_phase": "POST_INTERVENTION",
+      "functional_role": "ACTION_RESPONSE",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      },
       "is_intervention": false,
-      "is_focal_outcome": true,
+      "is_focal_outcome": false,
       "is_contingent_outcome": false,
       "provenance_text_spans": [
-        "She then fails to graduate"
+        "preparing for the trip",
+        "she spends the remaining weeks dreaming about Hawaii",
+        "instead of studying",
+        "After receiving the incentive, she spends the remaining weeks dreaming about Hawaii and preparing for the trip instead of studying"
       ],
       "confidence": 1.0,
       "explicitness": "explicit"
@@ -179,30 +228,86 @@
     "N6": {
       "node_id": "N6",
       "macro_node": {
+        "macro_id": "M5",
+        "label": "requirement failure",
+        "source_normalized_ids": [
+          "NE6"
+        ],
+        "source_atomic_ids": [
+          "E9",
+          "E14"
+        ],
+        "functional_role": "FOCAL_OUTCOME",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 5
+      },
+      "abstraction": {
+        "level_0_raw": "Karen fails to graduate.",
+        "level_1_domain": "student fails to meet graduation requirement",
+        "level_2_functional": "requirement failure",
+        "level_3_schema": "outcome failure"
+      },
+      "functional_role": "FOCAL_OUTCOME",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": true,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "She then fails to graduate and does not go to Hawaii",
+        "She then fails to graduate"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N7": {
+      "node_id": "N7",
+      "macro_node": {
         "macro_id": "M6",
-        "label": "forfeited reward",
+        "label": "reward withheld",
         "source_normalized_ids": [
           "NE7"
         ],
         "source_atomic_ids": [
-          "E10"
+          "E10",
+          "E14"
         ],
         "functional_role": "CONTINGENT_OUTCOME",
-        "temporal_phase": "POST_INTERVENTION",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
         "temporal_order": 6
       },
       "abstraction": {
-        "level_0_raw": "Karen does not go to Hawaii",
-        "level_1_domain": "Student does not receive the promised trip",
-        "level_2_functional": "contingent reward not realized",
-        "level_3_schema": "CONTINGENT_OUTCOME_FORFEITURE"
+        "level_0_raw": "Karen does not go to Hawaii.",
+        "level_1_domain": "student does not receive promised trip",
+        "level_2_functional": "reward withheld",
+        "level_3_schema": "contingent consequence"
       },
       "functional_role": "CONTINGENT_OUTCOME",
-      "temporal_phase": "POST_INTERVENTION",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
       "is_intervention": false,
       "is_focal_outcome": false,
       "is_contingent_outcome": true,
       "provenance_text_spans": [
+        "She then fails to graduate and does not go to Hawaii",
         "does not go to Hawaii"
       ],
       "confidence": 1.0,
@@ -212,10 +317,22 @@
   "edges": [
     {
       "edge_id": "BE1",
-      "source_id": "N2",
-      "target_id": "N3",
+      "source_id": "N1",
+      "target_id": "N2",
       "relation_type": "CAUSES",
-      "justification": "The father's promise of a Hawaii trip if Karen graduates directly leads to Karen receiving that incentive.",
+      "justification": "Karen's dislike of school is a plausible cause for her poor academic performance, as negative attitude often leads to lack of effort.",
+      "confidence": 0.8,
+      "explicitness": "strongly_inferred",
+      "underlying_relation_ids": [
+        "R1"
+      ]
+    },
+    {
+      "edge_id": "BE2",
+      "source_id": "N3",
+      "target_id": "N4",
+      "relation_type": "CAUSES",
+      "justification": "The father's promise directly results in Karen receiving the incentive, as the promise is the mechanism of delivery.",
       "confidence": 1.0,
       "explicitness": "explicit",
       "underlying_relation_ids": [
@@ -223,35 +340,35 @@
       ]
     },
     {
-      "edge_id": "BE2",
-      "source_id": "N3",
-      "target_id": "N4",
-      "relation_type": "MOTIVATES",
-      "justification": "Receiving the incentive motivates Karen to focus on dreaming about and preparing for the trip instead of studying.",
-      "confidence": 0.9,
-      "explicitness": "explicit",
-      "underlying_relation_ids": [
-        "R3"
-      ]
-    },
-    {
       "edge_id": "BE3",
       "source_id": "N4",
       "target_id": "N5",
-      "relation_type": "CAUSES",
-      "justification": "Neglecting studying directly causes Karen to fail to graduate, as studying is necessary for graduation.",
+      "relation_type": "MOTIVATES",
+      "justification": "Receiving the incentive motivates Karen to dream about Hawaii and prepare for the trip, but she misdirects her effort away from studying.",
       "confidence": 0.9,
-      "explicitness": "explicit",
+      "explicitness": "strongly_inferred",
       "underlying_relation_ids": [
-        "R4"
+        "R3"
       ]
     },
     {
       "edge_id": "BE4",
       "source_id": "N5",
       "target_id": "N6",
-      "relation_type": "RESULTS_IN",
-      "justification": "Failing to graduate results in the consequence that Karen does not go to Hawaii, as the trip was conditional on graduation.",
+      "relation_type": "CAUSES",
+      "justification": "Neglecting studying directly leads to failing to graduate, as studying is necessary to meet graduation requirements.",
+      "confidence": 0.95,
+      "explicitness": "strongly_inferred",
+      "underlying_relation_ids": [
+        "R4"
+      ]
+    },
+    {
+      "edge_id": "BE5",
+      "source_id": "N6",
+      "target_id": "N7",
+      "relation_type": "CAUSES",
+      "justification": "Failing to graduate triggers the consequence of not going to Hawaii, as the trip was conditional on graduation.",
       "confidence": 1.0,
       "explicitness": "explicit",
       "underlying_relation_ids": [
@@ -259,21 +376,69 @@
       ]
     },
     {
-      "edge_id": "BE5",
-      "source_id": "N2",
+      "edge_id": "BE6",
+      "source_id": "N1",
       "target_id": "N5",
-      "relation_type": "CONDITIONAL_ON",
-      "justification": "The promise of a Hawaii trip is conditional on Karen graduating; thus, graduation is a condition for the trip.",
+      "relation_type": "BEFORE",
+      "justification": "Karen's dislike of school exists before she neglects studying, but it does not directly cause the neglect; the incentive is the immediate trigger.",
       "confidence": 1.0,
       "explicitness": "explicit",
       "underlying_relation_ids": [
         "R6"
       ]
+    },
+    {
+      "edge_id": "BE7",
+      "source_id": "N2",
+      "target_id": "N5",
+      "relation_type": "BEFORE",
+      "justification": "Karen's poor performance precedes her neglect of studying, but the neglect is a new behavior triggered by the incentive, not caused by prior poor performance.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R7"
+      ]
+    },
+    {
+      "edge_id": "BE8",
+      "source_id": "N3",
+      "target_id": "N5",
+      "relation_type": "BEFORE",
+      "justification": "The promise occurs before the neglect, but the neglect is a response to receiving the incentive, not directly to the promise itself.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R8"
+      ]
+    },
+    {
+      "edge_id": "BE9",
+      "source_id": "N4",
+      "target_id": "N6",
+      "relation_type": "BEFORE",
+      "justification": "Receiving the incentive occurs before failing to graduate, but the failure is caused by neglect, not directly by receiving the incentive.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R9"
+      ]
+    },
+    {
+      "edge_id": "BE10",
+      "source_id": "N5",
+      "target_id": "N7",
+      "relation_type": "BEFORE",
+      "justification": "Neglect precedes the consequence of not going to Hawaii, but the direct cause is failing to graduate.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R10"
+      ]
     }
   ],
   "anchors": {
     "central_problem": "Karen dislikes school and is doing poorly",
-    "central_goal": "Graduate from school",
+    "central_goal": "Karen graduates",
     "intervention_event_ids": [
       "NE3"
     ],
@@ -283,14 +448,24 @@
     "contingent_outcome_ids": [
       "NE7"
     ],
-    "downstream_reaction_ids": [],
-    "explanation": "The central problem is Karen's dislike and poor performance in school. The central goal is to graduate. The father's promise of a Hawaii trip (NE3) is an intervention intended to motivate her. The focal outcome is her failure to graduate (NE6), which triggers the contingent outcome of not going to Hawaii (NE7). There are no downstream reactions beyond the contingent consequence."
+    "downstream_reaction_ids": [
+      "NE5"
+    ],
+    "contracts": [
+      {
+        "intervention_event_id": "NE3",
+        "promised_reward": "Hawaii trip",
+        "contingent_requirement": "Karen graduates",
+        "condition_polarity": "positive"
+      }
+    ],
+    "explanation": null
   },
   "pruned_node_ids": [],
   "pruned_reasons": {},
   "metadata": {
-    "total_backbone_nodes": 6,
-    "total_backbone_edges": 5,
+    "total_backbone_nodes": 7,
+    "total_backbone_edges": 10,
     "edge_derivation_method": "deterministic_rich_relation_lifting",
     "validation_warnings": []
   }

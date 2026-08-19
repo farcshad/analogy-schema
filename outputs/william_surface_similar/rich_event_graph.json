@@ -1,0 +1,794 @@
+{
+  "graph_id": "rich_graph_william_surface_similar",
+  "story_id": "william_surface_similar",
+  "atomic_events": {
+    "E1": {
+      "event_id": "E1",
+      "text_span": "Arthur was a patient in a psychiatric hospital",
+      "sentence_id": 1,
+      "predicate": "was a patient",
+      "participants": [
+        "Arthur",
+        "psychiatric hospital"
+      ],
+      "event_type": "state",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 1
+    },
+    "E2": {
+      "event_id": "E2",
+      "text_span": "the matron managed the ward",
+      "sentence_id": 1,
+      "predicate": "managed",
+      "participants": [
+        "matron",
+        "ward"
+      ],
+      "event_type": "state",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 2
+    },
+    "E3": {
+      "event_id": "E3",
+      "text_span": "Arthur disliked bedroom inspections",
+      "sentence_id": 2,
+      "predicate": "disliked",
+      "participants": [
+        "Arthur",
+        "bedroom inspections"
+      ],
+      "event_type": "emotion_reaction",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 3
+    },
+    "E4": {
+      "event_id": "E4",
+      "text_span": "the bakery delivered a special cake for the recreation hall",
+      "sentence_id": 2,
+      "predicate": "delivered",
+      "participants": [
+        "bakery",
+        "special cake",
+        "recreation hall"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 4
+    },
+    "E5": {
+      "event_id": "E5",
+      "text_span": "The matron asked Arthur to clean the dining tables",
+      "sentence_id": 3,
+      "predicate": "asked",
+      "participants": [
+        "matron",
+        "Arthur"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 5
+    },
+    "E6": {
+      "event_id": "E6",
+      "text_span": "Arthur to clean the dining tables",
+      "sentence_id": 3,
+      "predicate": "clean",
+      "participants": [
+        "Arthur",
+        "dining tables"
+      ],
+      "event_type": "goal",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 6
+    },
+    "E7": {
+      "event_id": "E7",
+      "text_span": "before the cake was served",
+      "sentence_id": 3,
+      "predicate": "was served",
+      "participants": [
+        "cake"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 7
+    },
+    "E8": {
+      "event_id": "E8",
+      "text_span": "Arthur ate a large meal",
+      "sentence_id": 4,
+      "predicate": "ate",
+      "participants": [
+        "Arthur",
+        "large meal"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 8
+    },
+    "E9": {
+      "event_id": "E9",
+      "text_span": "felt tired",
+      "sentence_id": 4,
+      "predicate": "felt tired",
+      "participants": [
+        "Arthur"
+      ],
+      "event_type": "state",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 9
+    },
+    "E10": {
+      "event_id": "E10",
+      "text_span": "the matron conducted routine bedroom checks elsewhere in the facility",
+      "sentence_id": 5,
+      "predicate": "conducted",
+      "participants": [
+        "matron",
+        "bedroom checks",
+        "facility"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 10
+    },
+    "E11": {
+      "event_id": "E11",
+      "text_span": "Arthur took a nap in his room",
+      "sentence_id": 5,
+      "predicate": "took a nap",
+      "participants": [
+        "Arthur",
+        "his room"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 11
+    },
+    "E12": {
+      "event_id": "E12",
+      "text_span": "Arthur woke up",
+      "sentence_id": 6,
+      "predicate": "woke up",
+      "participants": [
+        "Arthur"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 12
+    },
+    "E13": {
+      "event_id": "E13",
+      "text_span": "the party had concluded",
+      "sentence_id": 6,
+      "predicate": "had concluded",
+      "participants": [
+        "party"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 13
+    },
+    "E14": {
+      "event_id": "E14",
+      "text_span": "the tables had been cleared by staff",
+      "sentence_id": 6,
+      "predicate": "had been cleared",
+      "participants": [
+        "tables",
+        "staff"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 14
+    },
+    "E15": {
+      "event_id": "E15",
+      "text_span": "the cake had already been eaten",
+      "sentence_id": 6,
+      "predicate": "had been eaten",
+      "participants": [
+        "cake"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 15
+    },
+    "E16": {
+      "event_id": "E16",
+      "text_span": "Arthur disliked bedroom inspections",
+      "sentence_id": 2,
+      "predicate": "disliked",
+      "participants": [
+        "Arthur",
+        "bedroom inspections"
+      ],
+      "event_type": "state",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 3
+    },
+    "E17": {
+      "event_id": "E17",
+      "text_span": "Arthur ate a large meal and felt tired",
+      "sentence_id": 4,
+      "predicate": "ate",
+      "participants": [
+        "Arthur",
+        "large meal"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 8
+    },
+    "E18": {
+      "event_id": "E18",
+      "text_span": "Arthur ate a large meal and felt tired",
+      "sentence_id": 4,
+      "predicate": "felt tired",
+      "participants": [
+        "Arthur"
+      ],
+      "event_type": "state",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 9
+    },
+    "E19": {
+      "event_id": "E19",
+      "text_span": "the matron conducted routine bedroom checks elsewhere in the facility",
+      "sentence_id": 5,
+      "predicate": "conducted",
+      "participants": [
+        "matron",
+        "bedroom checks",
+        "facility"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 10
+    },
+    "E20": {
+      "event_id": "E20",
+      "text_span": "Arthur took a nap in his room",
+      "sentence_id": 5,
+      "predicate": "took a nap",
+      "participants": [
+        "Arthur",
+        "his room"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 11
+    },
+    "E21": {
+      "event_id": "E21",
+      "text_span": "Arthur woke up",
+      "sentence_id": 6,
+      "predicate": "woke up",
+      "participants": [
+        "Arthur"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 12
+    },
+    "E22": {
+      "event_id": "E22",
+      "text_span": "the party had concluded",
+      "sentence_id": 6,
+      "predicate": "had concluded",
+      "participants": [
+        "party"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 13
+    },
+    "E23": {
+      "event_id": "E23",
+      "text_span": "the tables had been cleared by staff",
+      "sentence_id": 6,
+      "predicate": "had been cleared",
+      "participants": [
+        "tables",
+        "staff"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 14
+    },
+    "E24": {
+      "event_id": "E24",
+      "text_span": "the cake had already been eaten",
+      "sentence_id": 6,
+      "predicate": "had been eaten",
+      "participants": [
+        "cake"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 15
+    }
+  },
+  "normalized_events": {
+    "NE1": {
+      "norm_id": "NE1",
+      "predicate_name": "PATIENT_STATE",
+      "arguments": {
+        "actor": "Arthur",
+        "location": "psychiatric hospital"
+      },
+      "atomic_event_ids": [
+        "E1"
+      ],
+      "summary_label": "Arthur is a patient in a psychiatric hospital",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE2": {
+      "norm_id": "NE2",
+      "predicate_name": "MANAGE_WARD",
+      "arguments": {
+        "manager": "matron",
+        "location": "ward"
+      },
+      "atomic_event_ids": [
+        "E2"
+      ],
+      "summary_label": "Matron manages the ward",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE3": {
+      "norm_id": "NE3",
+      "predicate_name": "DISLIKE_STATE",
+      "arguments": {
+        "experiencer": "Arthur",
+        "stimulus": "bedroom inspections"
+      },
+      "atomic_event_ids": [
+        "E3",
+        "E16"
+      ],
+      "summary_label": "Arthur dislikes bedroom inspections",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE4": {
+      "norm_id": "NE4",
+      "predicate_name": "DELIVER_ITEM",
+      "arguments": {
+        "actor": "bakery",
+        "object": "special cake",
+        "destination": "recreation hall"
+      },
+      "atomic_event_ids": [
+        "E4"
+      ],
+      "summary_label": "Bakery delivers a special cake to the recreation hall",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE5": {
+      "norm_id": "NE5",
+      "predicate_name": "ASSIGN_TASK",
+      "arguments": {
+        "assigner": "matron",
+        "assignee": "Arthur",
+        "task": "clean the dining tables"
+      },
+      "atomic_event_ids": [
+        "E5"
+      ],
+      "summary_label": "Matron asks Arthur to clean the dining tables",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE6": {
+      "norm_id": "NE6",
+      "predicate_name": "CLEAN_TABLES",
+      "arguments": {
+        "actor": "Arthur",
+        "object": "dining tables"
+      },
+      "atomic_event_ids": [
+        "E6"
+      ],
+      "summary_label": "Arthur cleans the dining tables",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE7": {
+      "norm_id": "NE7",
+      "predicate_name": "SERVE_CAKE",
+      "arguments": {
+        "object": "cake"
+      },
+      "atomic_event_ids": [
+        "E7"
+      ],
+      "summary_label": "Cake is served",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE8": {
+      "norm_id": "NE8",
+      "predicate_name": "EAT_MEAL",
+      "arguments": {
+        "actor": "Arthur",
+        "object": "large meal"
+      },
+      "atomic_event_ids": [
+        "E8",
+        "E17"
+      ],
+      "summary_label": "Arthur eats a large meal",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE9": {
+      "norm_id": "NE9",
+      "predicate_name": "FATIGUE_STATE",
+      "arguments": {
+        "experiencer": "Arthur"
+      },
+      "atomic_event_ids": [
+        "E9",
+        "E18"
+      ],
+      "summary_label": "Arthur feels tired",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE10": {
+      "norm_id": "NE10",
+      "predicate_name": "CONDUCT_CHECKS",
+      "arguments": {
+        "actor": "matron",
+        "object": "routine bedroom checks",
+        "location": "elsewhere in the facility"
+      },
+      "atomic_event_ids": [
+        "E10",
+        "E19"
+      ],
+      "summary_label": "Matron conducts routine bedroom checks elsewhere",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE11": {
+      "norm_id": "NE11",
+      "predicate_name": "TAKE_NAP",
+      "arguments": {
+        "actor": "Arthur",
+        "location": "his room"
+      },
+      "atomic_event_ids": [
+        "E11",
+        "E20"
+      ],
+      "summary_label": "Arthur takes a nap in his room",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE12": {
+      "norm_id": "NE12",
+      "predicate_name": "WAKE_UP",
+      "arguments": {
+        "actor": "Arthur"
+      },
+      "atomic_event_ids": [
+        "E12",
+        "E21"
+      ],
+      "summary_label": "Arthur wakes up",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE13": {
+      "norm_id": "NE13",
+      "predicate_name": "CONCLUDE_PARTY",
+      "arguments": {
+        "object": "party"
+      },
+      "atomic_event_ids": [
+        "E13",
+        "E22"
+      ],
+      "summary_label": "Party concludes",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE14": {
+      "norm_id": "NE14",
+      "predicate_name": "CLEAR_TABLES",
+      "arguments": {
+        "actor": "staff",
+        "object": "tables"
+      },
+      "atomic_event_ids": [
+        "E14",
+        "E23"
+      ],
+      "summary_label": "Tables are cleared by staff",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE15": {
+      "norm_id": "NE15",
+      "predicate_name": "EAT_CAKE",
+      "arguments": {
+        "object": "cake"
+      },
+      "atomic_event_ids": [
+        "E15",
+        "E24"
+      ],
+      "summary_label": "Cake is eaten",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    }
+  },
+  "relations": [
+    {
+      "relation_id": "R1",
+      "source_id": "NE5",
+      "target_id": "NE6",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "The matron asked Arthur to clean the dining tables, and Arthur performed the cleaning as a direct result of that request.",
+      "provenance_span": "The matron asked Arthur to clean the dining tables before the cake was served."
+    },
+    {
+      "relation_id": "R2",
+      "source_id": "NE6",
+      "target_id": "NE7",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Arthur cleaned the tables before the cake was served, as stated in the narrative.",
+      "provenance_span": "The matron asked Arthur to clean the dining tables before the cake was served."
+    },
+    {
+      "relation_id": "R3",
+      "source_id": "NE8",
+      "target_id": "NE9",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "strongly_inferred",
+      "evidence": "Arthur ate a large meal and then felt tired, implying the meal caused the fatigue.",
+      "provenance_span": "Arthur ate a large meal and felt tired."
+    },
+    {
+      "relation_id": "R4",
+      "source_id": "NE9",
+      "target_id": "NE11",
+      "relation_type": "MOTIVATES",
+      "confidence": 0.8,
+      "explicitness": "strongly_inferred",
+      "evidence": "Feeling tired motivated Arthur to take a nap.",
+      "provenance_span": "Arthur ate a large meal and felt tired. ... Arthur took a nap in his room."
+    },
+    {
+      "relation_id": "R5",
+      "source_id": "NE10",
+      "target_id": "NE11",
+      "relation_type": "ENABLES",
+      "confidence": 0.9,
+      "explicitness": "strongly_inferred",
+      "evidence": "The matron conducting checks elsewhere created an opportunity for Arthur to nap without being noticed.",
+      "provenance_span": "While the matron conducted routine bedroom checks elsewhere in the facility, Arthur took a nap in his room."
+    },
+    {
+      "relation_id": "R6",
+      "source_id": "NE11",
+      "target_id": "NE12",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Arthur napped and then woke up.",
+      "provenance_span": "Arthur took a nap in his room. By the time Arthur woke up..."
+    },
+    {
+      "relation_id": "R7",
+      "source_id": "NE12",
+      "target_id": "NE13",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Arthur woke up after the party had concluded.",
+      "provenance_span": "By the time Arthur woke up, the party had concluded..."
+    },
+    {
+      "relation_id": "R8",
+      "source_id": "NE13",
+      "target_id": "NE14",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "The party concluded before the tables were cleared.",
+      "provenance_span": "the party had concluded, the tables had been cleared by staff"
+    },
+    {
+      "relation_id": "R9",
+      "source_id": "NE14",
+      "target_id": "NE15",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "The tables were cleared after the cake was eaten.",
+      "provenance_span": "the tables had been cleared by staff, and the cake had already been eaten."
+    },
+    {
+      "relation_id": "R10",
+      "source_id": "NE7",
+      "target_id": "NE15",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "The cake was served and then eaten.",
+      "provenance_span": "the cake had already been eaten."
+    },
+    {
+      "relation_id": "R11",
+      "source_id": "NE4",
+      "target_id": "NE7",
+      "relation_type": "ENABLES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "The bakery delivering the cake made it possible for the cake to be served later.",
+      "provenance_span": "the bakery delivered a special cake for the recreation hall."
+    },
+    {
+      "relation_id": "R12",
+      "source_id": "NE3",
+      "target_id": "NE11",
+      "relation_type": "MOTIVATES",
+      "confidence": 0.7,
+      "explicitness": "speculative",
+      "evidence": "Arthur's dislike of bedroom inspections may have motivated him to nap while the matron was away, but this is not explicitly stated.",
+      "provenance_span": "Arthur disliked bedroom inspections ... Arthur took a nap in his room."
+    }
+  ],
+  "metadata": {
+    "story_length_chars": 544
+  }
+}

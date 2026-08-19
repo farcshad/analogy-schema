@@ -1,0 +1,365 @@
+{
+  "backbone_id": "backbone_william_mere_appearance",
+  "story_id": "william_mere_appearance",
+  "nodes": {
+    "N1": {
+      "node_id": "N1",
+      "macro_node": {
+        "macro_id": "M1",
+        "label": "eating cake",
+        "source_normalized_ids": [
+          "NE3"
+        ],
+        "source_atomic_ids": [
+          "E3"
+        ],
+        "functional_role": "BACKGROUND",
+        "temporal_grounding": {
+          "mention_phase": "PRE_INTERVENTION",
+          "onset_phase": "PRE_INTERVENTION",
+          "holds_at_intervention": true,
+          "temporal_extent": "INTERVAL"
+        },
+        "temporal_order": 1
+      },
+      "abstraction": {
+        "level_0_raw": "Arthur was eating a piece of cake from the bakery while watching the painters.",
+        "level_1_domain": "Arthur eats cake",
+        "level_2_functional": "food consumption",
+        "level_3_schema": "preparatory action"
+      },
+      "functional_role": "BACKGROUND",
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "INTERVAL"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "Arthur was eating a piece of cake from the bakery"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N2": {
+      "node_id": "N2",
+      "macro_node": {
+        "macro_id": "M2",
+        "label": "leaning over paint bucket",
+        "source_normalized_ids": [
+          "NE5"
+        ],
+        "source_atomic_ids": [
+          "E5"
+        ],
+        "functional_role": "CAUSAL_ANTECEDENT",
+        "temporal_grounding": {
+          "mention_phase": "PRE_INTERVENTION",
+          "onset_phase": "AT_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 2
+      },
+      "abstraction": {
+        "level_0_raw": "As he leaned over the open paint bucket to inspect the color, cake crumbs fell into the white paint.",
+        "level_1_domain": "Arthur leans over open paint bucket",
+        "level_2_functional": "proximity to hazard",
+        "level_3_schema": "risk-taking behavior"
+      },
+      "functional_role": "CAUSAL_ANTECEDENT",
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "he leaned over the open paint bucket to inspect the color"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N3": {
+      "node_id": "N3",
+      "macro_node": {
+        "macro_id": "M3",
+        "label": "cake crumbs contaminate paint",
+        "source_normalized_ids": [
+          "NE7"
+        ],
+        "source_atomic_ids": [
+          "E7",
+          "E13"
+        ],
+        "functional_role": "PROBLEM_STATE",
+        "temporal_grounding": {
+          "mention_phase": "PRE_INTERVENTION",
+          "onset_phase": "AT_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 3
+      },
+      "abstraction": {
+        "level_0_raw": "Cake crumbs fall into and contaminate the white paint",
+        "level_1_domain": "Cake crumbs contaminate paint",
+        "level_2_functional": "contamination event",
+        "level_3_schema": "unintended consequence"
+      },
+      "functional_role": "PROBLEM_STATE",
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "cake crumbs fell into the white paint"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N4": {
+      "node_id": "N4",
+      "macro_node": {
+        "macro_id": "M4",
+        "label": "matron notices contamination",
+        "source_normalized_ids": [
+          "NE8"
+        ],
+        "source_atomic_ids": [
+          "E8",
+          "E14"
+        ],
+        "functional_role": "FOCAL_OUTCOME",
+        "temporal_grounding": {
+          "mention_phase": "AT_INTERVENTION",
+          "onset_phase": "AT_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 4
+      },
+      "abstraction": {
+        "level_0_raw": "Matron notices the crumbs in the paint",
+        "level_1_domain": "Matron notices contamination",
+        "level_2_functional": "detection of problem",
+        "level_3_schema": "awareness"
+      },
+      "functional_role": "FOCAL_OUTCOME",
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": true,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "The matron noticed the crumbs"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N5": {
+      "node_id": "N5",
+      "macro_node": {
+        "macro_id": "M5",
+        "label": "matron requests removal",
+        "source_normalized_ids": [
+          "NE9"
+        ],
+        "source_atomic_ids": [
+          "E9",
+          "E15"
+        ],
+        "functional_role": "INTERVENTION",
+        "temporal_grounding": {
+          "mention_phase": "AT_INTERVENTION",
+          "onset_phase": "AT_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 5
+      },
+      "abstraction": {
+        "level_0_raw": "Matron asks Arthur to step outside into the courtyard",
+        "level_1_domain": "Matron requests Arthur's removal",
+        "level_2_functional": "removal request",
+        "level_3_schema": "corrective intervention"
+      },
+      "functional_role": "INTERVENTION",
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": true,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "asked Arthur to step outside into the courtyard"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N6": {
+      "node_id": "N6",
+      "macro_node": {
+        "macro_id": "M6",
+        "label": "Arthur complies with request",
+        "source_normalized_ids": [
+          "NE10"
+        ],
+        "source_atomic_ids": [
+          "E10",
+          "E11",
+          "E16"
+        ],
+        "functional_role": "ACTION_RESPONSE",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "INTERVAL"
+        },
+        "temporal_order": 6
+      },
+      "abstraction": {
+        "level_0_raw": "Arthur walks to his bedroom (compliance with request to step outside)",
+        "level_1_domain": "Arthur walks to bedroom",
+        "level_2_functional": "compliance with removal request",
+        "level_3_schema": "compliant action"
+      },
+      "functional_role": "ACTION_RESPONSE",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": true,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "Arthur walked to his bedroom",
+        "to step outside into the courtyard"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    }
+  },
+  "edges": [
+    {
+      "edge_id": "BE1",
+      "source_id": "N1",
+      "target_id": "N2",
+      "relation_type": "ENABLES",
+      "justification": "Arthur was eating cake (NE3) while watching painters, which provides the cake crumbs that later fall when he leans over.",
+      "confidence": 0.9,
+      "explicitness": "strongly_inferred",
+      "underlying_relation_ids": [
+        "R1"
+      ]
+    },
+    {
+      "edge_id": "BE2",
+      "source_id": "N2",
+      "target_id": "N3",
+      "relation_type": "CAUSES",
+      "justification": "Leaning over the open paint bucket (NE5) causes cake crumbs to fall into the paint (NE7).; Leaning over (NE5) occurs before the crumbs fall (NE7) in narrative time. [Adjudicated between BEFORE, CAUSES: prioritized CAUSES.]",
+      "confidence": 0.95,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R3",
+        "R8"
+      ]
+    },
+    {
+      "edge_id": "BE3",
+      "source_id": "N3",
+      "target_id": "N4",
+      "relation_type": "CAUSES",
+      "justification": "The contamination of the paint (NE7) causes the matron to notice the crumbs (NE8).",
+      "confidence": 0.95,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R4"
+      ]
+    },
+    {
+      "edge_id": "BE4",
+      "source_id": "N4",
+      "target_id": "N5",
+      "relation_type": "MOTIVATES",
+      "justification": "Noticing the crumbs (NE8) motivates the matron to ask Arthur to step outside (NE9).; Noticing (NE8) occurs before the request (NE9) in narrative time. [Adjudicated between BEFORE, MOTIVATES: prioritized MOTIVATES.]",
+      "confidence": 0.9,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R5",
+        "R10"
+      ]
+    },
+    {
+      "edge_id": "BE5",
+      "source_id": "N5",
+      "target_id": "N6",
+      "relation_type": "CAUSES",
+      "justification": "The matron's request (NE9) causes Arthur to comply by walking to his bedroom (NE10).; The request (NE9) occurs before Arthur walks to his bedroom (NE10). [Adjudicated between BEFORE, CAUSES: prioritized CAUSES.]",
+      "confidence": 0.95,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R6",
+        "R11"
+      ]
+    }
+  ],
+  "anchors": {
+    "central_problem": "Cake crumbs contaminate the white paint",
+    "central_goal": "Remove Arthur from the recreation room to prevent further contamination",
+    "intervention_event_ids": [
+      "NE9"
+    ],
+    "focal_outcome_ids": [
+      "NE10"
+    ],
+    "contingent_outcome_ids": [],
+    "downstream_reaction_ids": [
+      "NE11"
+    ],
+    "contracts": [],
+    "explanation": "The central problem is the contamination of paint by cake crumbs (NE7). The matron's request (NE9) is an intervention to achieve the goal of removing Arthur. Arthur's compliance (NE10) is the focal outcome. The workers stirring the paint (NE11) is a downstream reaction to fix the contamination, not a direct consequence of Arthur's compliance."
+  },
+  "pruned_node_ids": [
+    "NE4",
+    "NE1",
+    "NE11",
+    "NE6",
+    "NE2"
+  ],
+  "pruned_reasons": {
+    "NE1": "Matron's location in the institution is a static background setting; removing it does not affect the causal explanation of the contamination or removal.",
+    "NE2": "Supervising painting is a chronic task context; the contamination and removal are explained without it.",
+    "NE4": "Arthur watching painters is a secondary activity; the contamination is caused by leaning over the bucket, not by watching.",
+    "NE6": "Inspecting the color is a detail of the leaning action; the contamination occurs from leaning regardless of inspection.",
+    "NE11": "Workers stirring paint is a downstream collateral action after the focal outcome (Arthur's removal); it does not explain the central problem or goal fulfillment."
+  },
+  "metadata": {
+    "total_backbone_nodes": 6,
+    "total_backbone_edges": 5,
+    "edge_derivation_method": "deterministic_rich_relation_lifting",
+    "validation_warnings": []
+  }
+}

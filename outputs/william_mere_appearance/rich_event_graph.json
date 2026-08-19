@@ -1,0 +1,627 @@
+{
+  "graph_id": "rich_graph_william_mere_appearance",
+  "story_id": "william_mere_appearance",
+  "atomic_events": {
+    "E1": {
+      "event_id": "E1",
+      "text_span": "In the mental institution",
+      "sentence_id": 1,
+      "predicate": "be located in",
+      "participants": [
+        "matron",
+        "Arthur",
+        "mental institution"
+      ],
+      "event_type": "state",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 0
+    },
+    "E2": {
+      "event_id": "E2",
+      "text_span": "the matron was supervising the painting of the recreation room",
+      "sentence_id": 1,
+      "predicate": "supervise",
+      "participants": [
+        "matron",
+        "painting",
+        "recreation room"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 1
+    },
+    "E3": {
+      "event_id": "E3",
+      "text_span": "Arthur was eating a piece of cake from the bakery",
+      "sentence_id": 2,
+      "predicate": "eat",
+      "participants": [
+        "Arthur",
+        "cake"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 2
+    },
+    "E4": {
+      "event_id": "E4",
+      "text_span": "watching the painters",
+      "sentence_id": 2,
+      "predicate": "watch",
+      "participants": [
+        "Arthur",
+        "painters"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 3
+    },
+    "E5": {
+      "event_id": "E5",
+      "text_span": "he leaned over the open paint bucket to inspect the color",
+      "sentence_id": 3,
+      "predicate": "lean over",
+      "participants": [
+        "Arthur",
+        "paint bucket"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 4
+    },
+    "E6": {
+      "event_id": "E6",
+      "text_span": "to inspect the color",
+      "sentence_id": 3,
+      "predicate": "inspect",
+      "participants": [
+        "Arthur",
+        "color"
+      ],
+      "event_type": "goal",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 5
+    },
+    "E7": {
+      "event_id": "E7",
+      "text_span": "cake crumbs fell into the white paint",
+      "sentence_id": 3,
+      "predicate": "fall into",
+      "participants": [
+        "cake crumbs",
+        "white paint"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 6
+    },
+    "E8": {
+      "event_id": "E8",
+      "text_span": "The matron noticed the crumbs",
+      "sentence_id": 4,
+      "predicate": "notice",
+      "participants": [
+        "matron",
+        "crumbs"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 7
+    },
+    "E9": {
+      "event_id": "E9",
+      "text_span": "asked Arthur to step outside into the courtyard",
+      "sentence_id": 4,
+      "predicate": "ask",
+      "participants": [
+        "matron",
+        "Arthur"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 8
+    },
+    "E10": {
+      "event_id": "E10",
+      "text_span": "to step outside into the courtyard",
+      "sentence_id": 4,
+      "predicate": "step outside",
+      "participants": [
+        "Arthur",
+        "courtyard"
+      ],
+      "event_type": "goal",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 9
+    },
+    "E11": {
+      "event_id": "E11",
+      "text_span": "Arthur walked to his bedroom",
+      "sentence_id": 5,
+      "predicate": "walk to",
+      "participants": [
+        "Arthur",
+        "bedroom"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 10
+    },
+    "E12": {
+      "event_id": "E12",
+      "text_span": "the workers stirred the paint",
+      "sentence_id": 5,
+      "predicate": "stir",
+      "participants": [
+        "workers",
+        "paint"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 11
+    },
+    "E13": {
+      "event_id": "E13",
+      "text_span": "cake crumbs fell into the white paint",
+      "sentence_id": 3,
+      "predicate": "contaminate",
+      "participants": [
+        "cake crumbs",
+        "white paint"
+      ],
+      "event_type": "outcome",
+      "polarity": "negative",
+      "explicitness": "strongly_inferred",
+      "confidence": 0.9,
+      "temporal_rank": 6
+    },
+    "E14": {
+      "event_id": "E14",
+      "text_span": "The matron noticed the crumbs",
+      "sentence_id": 4,
+      "predicate": "become aware of contamination",
+      "participants": [
+        "matron",
+        "crumbs",
+        "paint"
+      ],
+      "event_type": "outcome",
+      "polarity": "positive",
+      "explicitness": "strongly_inferred",
+      "confidence": 0.9,
+      "temporal_rank": 7
+    },
+    "E15": {
+      "event_id": "E15",
+      "text_span": "asked Arthur to step outside into the courtyard",
+      "sentence_id": 4,
+      "predicate": "request removal",
+      "participants": [
+        "matron",
+        "Arthur"
+      ],
+      "event_type": "outcome",
+      "polarity": "positive",
+      "explicitness": "strongly_inferred",
+      "confidence": 0.9,
+      "temporal_rank": 8
+    },
+    "E16": {
+      "event_id": "E16",
+      "text_span": "Arthur walked to his bedroom",
+      "sentence_id": 5,
+      "predicate": "comply with request",
+      "participants": [
+        "Arthur"
+      ],
+      "event_type": "outcome",
+      "polarity": "positive",
+      "explicitness": "strongly_inferred",
+      "confidence": 0.8,
+      "temporal_rank": 10
+    },
+    "E17": {
+      "event_id": "E17",
+      "text_span": "the workers stirred the paint",
+      "sentence_id": 5,
+      "predicate": "attempt to fix contamination",
+      "participants": [
+        "workers",
+        "paint"
+      ],
+      "event_type": "goal",
+      "polarity": "positive",
+      "explicitness": "strongly_inferred",
+      "confidence": 0.7,
+      "temporal_rank": 11
+    }
+  },
+  "normalized_events": {
+    "NE1": {
+      "norm_id": "NE1",
+      "predicate_name": "LOCATED_IN",
+      "arguments": {
+        "entity": "matron",
+        "location": "mental institution"
+      },
+      "atomic_event_ids": [
+        "E1"
+      ],
+      "summary_label": "Matron is located in the mental institution",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE2": {
+      "norm_id": "NE2",
+      "predicate_name": "SUPERVISE_TASK",
+      "arguments": {
+        "supervisor": "matron",
+        "task": "painting of the recreation room"
+      },
+      "atomic_event_ids": [
+        "E2"
+      ],
+      "summary_label": "Matron supervises painting of recreation room",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE3": {
+      "norm_id": "NE3",
+      "predicate_name": "EAT_FOOD",
+      "arguments": {
+        "actor": "Arthur",
+        "object": "piece of cake from the bakery"
+      },
+      "atomic_event_ids": [
+        "E3"
+      ],
+      "summary_label": "Arthur eats a piece of cake",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE4": {
+      "norm_id": "NE4",
+      "predicate_name": "WATCH_ACTIVITY",
+      "arguments": {
+        "observer": "Arthur",
+        "activity": "painters painting"
+      },
+      "atomic_event_ids": [
+        "E4"
+      ],
+      "summary_label": "Arthur watches the painters",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE5": {
+      "norm_id": "NE5",
+      "predicate_name": "LEAN_OVER",
+      "arguments": {
+        "actor": "Arthur",
+        "object": "open paint bucket"
+      },
+      "atomic_event_ids": [
+        "E5"
+      ],
+      "summary_label": "Arthur leans over the open paint bucket",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE6": {
+      "norm_id": "NE6",
+      "predicate_name": "INSPECT_OBJECT",
+      "arguments": {
+        "actor": "Arthur",
+        "object": "color of paint"
+      },
+      "atomic_event_ids": [
+        "E6"
+      ],
+      "summary_label": "Arthur inspects the color of the paint",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE7": {
+      "norm_id": "NE7",
+      "predicate_name": "CONTAMINATE",
+      "arguments": {
+        "contaminant": "cake crumbs",
+        "contaminated_object": "white paint"
+      },
+      "atomic_event_ids": [
+        "E7",
+        "E13"
+      ],
+      "summary_label": "Cake crumbs fall into and contaminate the white paint",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE8": {
+      "norm_id": "NE8",
+      "predicate_name": "NOTICE_CONTAMINATION",
+      "arguments": {
+        "observer": "matron",
+        "contamination": "crumbs in paint"
+      },
+      "atomic_event_ids": [
+        "E8",
+        "E14"
+      ],
+      "summary_label": "Matron notices the crumbs in the paint",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE9": {
+      "norm_id": "NE9",
+      "predicate_name": "REQUEST_REMOVAL",
+      "arguments": {
+        "requester": "matron",
+        "target": "Arthur",
+        "action": "step outside into the courtyard"
+      },
+      "atomic_event_ids": [
+        "E9",
+        "E15"
+      ],
+      "summary_label": "Matron asks Arthur to step outside into the courtyard",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE10": {
+      "norm_id": "NE10",
+      "predicate_name": "COMPLY_WITH_REQUEST",
+      "arguments": {
+        "actor": "Arthur",
+        "request": "step outside into the courtyard"
+      },
+      "atomic_event_ids": [
+        "E10",
+        "E11",
+        "E16"
+      ],
+      "summary_label": "Arthur walks to his bedroom (compliance with request to step outside)",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE11": {
+      "norm_id": "NE11",
+      "predicate_name": "ATTEMPT_FIX_CONTAMINATION",
+      "arguments": {
+        "actor": "workers",
+        "object": "paint"
+      },
+      "atomic_event_ids": [
+        "E12",
+        "E17"
+      ],
+      "summary_label": "Workers stir the paint to fix contamination",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      }
+    }
+  },
+  "relations": [
+    {
+      "relation_id": "R1",
+      "source_id": "NE3",
+      "target_id": "NE5",
+      "relation_type": "ENABLES",
+      "confidence": 0.9,
+      "explicitness": "strongly_inferred",
+      "evidence": "Arthur was eating cake (NE3) while watching painters, which provides the cake crumbs that later fall when he leans over.",
+      "provenance_span": "Arthur was eating a piece of cake from the bakery while watching the painters."
+    },
+    {
+      "relation_id": "R2",
+      "source_id": "NE5",
+      "target_id": "NE6",
+      "relation_type": "ENABLES",
+      "confidence": 0.95,
+      "explicitness": "explicit",
+      "evidence": "Leaning over the paint bucket (NE5) allows Arthur to inspect the color (NE6).",
+      "provenance_span": "As he leaned over the open paint bucket to inspect the color"
+    },
+    {
+      "relation_id": "R3",
+      "source_id": "NE5",
+      "target_id": "NE7",
+      "relation_type": "CAUSES",
+      "confidence": 0.95,
+      "explicitness": "explicit",
+      "evidence": "Leaning over the open paint bucket (NE5) causes cake crumbs to fall into the paint (NE7).",
+      "provenance_span": "cake crumbs fell into the white paint"
+    },
+    {
+      "relation_id": "R4",
+      "source_id": "NE7",
+      "target_id": "NE8",
+      "relation_type": "CAUSES",
+      "confidence": 0.95,
+      "explicitness": "explicit",
+      "evidence": "The contamination of the paint (NE7) causes the matron to notice the crumbs (NE8).",
+      "provenance_span": "The matron noticed the crumbs"
+    },
+    {
+      "relation_id": "R5",
+      "source_id": "NE8",
+      "target_id": "NE9",
+      "relation_type": "MOTIVATES",
+      "confidence": 0.9,
+      "explicitness": "explicit",
+      "evidence": "Noticing the crumbs (NE8) motivates the matron to ask Arthur to step outside (NE9).",
+      "provenance_span": "The matron noticed the crumbs and asked Arthur to step outside into the courtyard."
+    },
+    {
+      "relation_id": "R6",
+      "source_id": "NE9",
+      "target_id": "NE10",
+      "relation_type": "CAUSES",
+      "confidence": 0.95,
+      "explicitness": "explicit",
+      "evidence": "The matron's request (NE9) causes Arthur to comply by walking to his bedroom (NE10).",
+      "provenance_span": "Arthur walked to his bedroom"
+    },
+    {
+      "relation_id": "R7",
+      "source_id": "NE7",
+      "target_id": "NE11",
+      "relation_type": "MOTIVATES",
+      "confidence": 0.85,
+      "explicitness": "strongly_inferred",
+      "evidence": "The contamination (NE7) motivates the workers to stir the paint to fix it (NE11).",
+      "provenance_span": "the workers stirred the paint"
+    },
+    {
+      "relation_id": "R8",
+      "source_id": "NE5",
+      "target_id": "NE7",
+      "relation_type": "BEFORE",
+      "confidence": 0.95,
+      "explicitness": "explicit",
+      "evidence": "Leaning over (NE5) occurs before the crumbs fall (NE7) in narrative time.",
+      "provenance_span": "As he leaned over ... cake crumbs fell"
+    },
+    {
+      "relation_id": "R9",
+      "source_id": "NE6",
+      "target_id": "NE7",
+      "relation_type": "BEFORE",
+      "confidence": 0.9,
+      "explicitness": "strongly_inferred",
+      "evidence": "Inspecting the color (NE6) occurs before the crumbs fall (NE7) as part of the same leaning action.",
+      "provenance_span": "to inspect the color, cake crumbs fell"
+    },
+    {
+      "relation_id": "R10",
+      "source_id": "NE8",
+      "target_id": "NE9",
+      "relation_type": "BEFORE",
+      "confidence": 0.95,
+      "explicitness": "explicit",
+      "evidence": "Noticing (NE8) occurs before the request (NE9) in narrative time.",
+      "provenance_span": "noticed the crumbs and asked"
+    },
+    {
+      "relation_id": "R11",
+      "source_id": "NE9",
+      "target_id": "NE10",
+      "relation_type": "BEFORE",
+      "confidence": 0.95,
+      "explicitness": "explicit",
+      "evidence": "The request (NE9) occurs before Arthur walks to his bedroom (NE10).",
+      "provenance_span": "asked Arthur to step outside ... Arthur walked to his bedroom"
+    },
+    {
+      "relation_id": "R12",
+      "source_id": "NE9",
+      "target_id": "NE11",
+      "relation_type": "BEFORE",
+      "confidence": 0.9,
+      "explicitness": "strongly_inferred",
+      "evidence": "The request (NE9) occurs before the workers stir the paint (NE11) as the narrative progresses.",
+      "provenance_span": "asked Arthur to step outside ... the workers stirred the paint"
+    },
+    {
+      "relation_id": "R13",
+      "source_id": "NE10",
+      "target_id": "NE11",
+      "relation_type": "BEFORE",
+      "confidence": 0.85,
+      "explicitness": "strongly_inferred",
+      "evidence": "Arthur walking to his bedroom (NE10) occurs before the workers stir the paint (NE11) as simultaneous actions.",
+      "provenance_span": "Arthur walked to his bedroom while the workers stirred the paint."
+    }
+  ],
+  "metadata": {
+    "story_length_chars": 419
+  }
+}

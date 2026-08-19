@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """
 CLI runner for the Scientifically Stabilized Causal Graph Induction Pipeline.
+Supports high-speed async execution with concurrent Stage C & Stage D calls.
+
 Usage:
     python run_pipeline.py --story analogy_schema/fixtures/stories/william_base.json
     python run_pipeline.py --story analogy_schema/fixtures/stories/karen_true_analogy.json
     python run_pipeline.py --story analogy_schema/fixtures/stories/karen_false_analogy.json
-    python run_pipeline.py --story analogy_schema/fixtures/stories/william_literally_similar.json
-    python run_pipeline.py --story analogy_schema/fixtures/stories/william_surface_similar.json
-    python run_pipeline.py --story analogy_schema/fixtures/stories/william_mere_appearance.json
 """
 
 import os
 import json
+import asyncio
 import argparse
 from pathlib import Path
 from dotenv import load_dotenv
@@ -25,7 +25,7 @@ from analogy_schema.utils.serialization import save_json, export_backbone_markdo
 load_dotenv()
 
 
-def main():
+async def main_async():
     parser = argparse.ArgumentParser(description="Run single-story causal graph induction pipeline.")
     parser.add_argument("--story", type=str, default="analogy_schema/fixtures/stories/william_base.json", help="Path to story JSON or TXT file.")
     parser.add_argument("--model", type=str, default="deepseek/deepseek-v4-flash", help="OpenRouter model identifier.")
@@ -75,8 +75,9 @@ def main():
         print(f"Using OpenRouterProvider with model: {args.model} (reasoning=off)")
 
     print("\nRunning Causal Event Graph Induction Pipeline (Stages A -> H)...")
+    print("⚡ [Concurrency Active]: Stage C (Relations) & Stage D (Anchors) running in parallel.")
     pipeline = SingleStoryPipeline(llm=llm)
-    result = pipeline.run(story)
+    result = await pipeline.arun(story)
 
     out_dir = Path(args.output_dir) / story.story_id
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -99,4 +100,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main_async())

@@ -28,6 +28,10 @@ class MacroNode(BaseModel):
     temporal_grounding: TemporalGrounding = Field(default_factory=TemporalGrounding)
     temporal_order: int = Field(default=0)
 
+    @property
+    def temporal_phase(self) -> InterventionPhase:
+        return self.temporal_grounding.onset_phase
+
 
 class BackboneNode(BaseModel):
     node_id: str = Field(description="Unique backbone node ID, e.g., N1, N2")
@@ -41,6 +45,10 @@ class BackboneNode(BaseModel):
     provenance_text_spans: List[str] = Field(default_factory=list)
     confidence: float = Field(default=1.0, ge=0.0, le=1.0)
     explicitness: Explicitness = Field(default=Explicitness.EXPLICIT)
+
+    @property
+    def temporal_phase(self) -> InterventionPhase:
+        return self.temporal_grounding.onset_phase
 
     @property
     def onset_phase(self) -> InterventionPhase:

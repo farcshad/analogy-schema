@@ -1,0 +1,491 @@
+{
+  "backbone_id": "backbone_william_literally_similar",
+  "story_id": "william_literally_similar",
+  "nodes": {
+    "N1": {
+      "node_id": "N1",
+      "macro_node": {
+        "macro_id": "M1",
+        "label": "task neglect",
+        "source_normalized_ids": [
+          "NE7"
+        ],
+        "source_atomic_ids": [
+          "E7"
+        ],
+        "functional_role": "CAUSAL_ANTECEDENT",
+        "temporal_grounding": {
+          "mention_phase": "PRE_INTERVENTION",
+          "onset_phase": "PRE_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "INTERVAL"
+        },
+        "temporal_order": 1
+      },
+      "abstraction": {
+        "level_0_raw": "Arthur spent days daydreaming instead of tidying",
+        "level_1_domain": "inmate neglects task due to daydreaming",
+        "level_2_functional": "task neglect",
+        "level_3_schema": "neglect antecedent"
+      },
+      "functional_role": "CAUSAL_ANTECEDENT",
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "he had spent the days daydreaming"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N2": {
+      "node_id": "N2",
+      "macro_node": {
+        "macro_id": "M2",
+        "label": "deficit state",
+        "source_normalized_ids": [
+          "NE6"
+        ],
+        "source_atomic_ids": [
+          "E6"
+        ],
+        "functional_role": "PROBLEM_STATE",
+        "temporal_grounding": {
+          "mention_phase": "PRE_INTERVENTION",
+          "onset_phase": "PRE_INTERVENTION",
+          "holds_at_intervention": true,
+          "temporal_extent": "PERSISTENT_STATE"
+        },
+        "temporal_order": 2
+      },
+      "abstraction": {
+        "level_0_raw": "Arthur's bedroom is cluttered shortly before inspection",
+        "level_1_domain": "bedroom cluttered before inspection",
+        "level_2_functional": "deficit state",
+        "level_3_schema": "resource deficit"
+      },
+      "functional_role": "PROBLEM_STATE",
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "Shortly before the scheduled inspection Arthur's bedroom was cluttered"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N3": {
+      "node_id": "N3",
+      "macro_node": {
+        "macro_id": "M3",
+        "label": "conditional incentive",
+        "source_normalized_ids": [
+          "NE8"
+        ],
+        "source_atomic_ids": [
+          "E8",
+          "E9",
+          "E10"
+        ],
+        "functional_role": "INTERVENTION",
+        "temporal_grounding": {
+          "mention_phase": "AT_INTERVENTION",
+          "onset_phase": "AT_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 3
+      },
+      "abstraction": {
+        "level_0_raw": "Matron offers Arthur cake if he tidies bedroom thoroughly",
+        "level_1_domain": "conditional reward offered for compliance",
+        "level_2_functional": "conditional incentive",
+        "level_3_schema": "contingent motivation"
+      },
+      "functional_role": "INTERVENTION",
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": true,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "To motivate Arthur",
+        "To motivate Arthur, the matron offered him a slice of cake from the bakery if he tidied his bedroom thoroughly",
+        "if he tidied his bedroom thoroughly"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N4": {
+      "node_id": "N4",
+      "macro_node": {
+        "macro_id": "M4",
+        "label": "insufficient remaining resources",
+        "source_normalized_ids": [
+          "NE10"
+        ],
+        "source_atomic_ids": [
+          "E12"
+        ],
+        "functional_role": "CONSTRAINT",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "PERSISTENT_STATE"
+        },
+        "temporal_order": 4
+      },
+      "abstraction": {
+        "level_0_raw": "Insufficient time remains for Arthur to finish cleaning",
+        "level_1_domain": "time shortage prevents completion",
+        "level_2_functional": "insufficient remaining resources",
+        "level_3_schema": "resource constraint"
+      },
+      "functional_role": "CONSTRAINT",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "PERSISTENT_STATE"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "insufficient time remained for him to finish cleaning"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N5": {
+      "node_id": "N5",
+      "macro_node": {
+        "macro_id": "M5",
+        "label": "requirement failure",
+        "source_normalized_ids": [
+          "NE11"
+        ],
+        "source_atomic_ids": [
+          "E13"
+        ],
+        "functional_role": "FOCAL_OUTCOME",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 5
+      },
+      "abstraction": {
+        "level_0_raw": "Arthur fails the bedroom check",
+        "level_1_domain": "fails criteria of bedroom check",
+        "level_2_functional": "requirement failure",
+        "level_3_schema": "failure outcome"
+      },
+      "functional_role": "FOCAL_OUTCOME",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": true,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "he failed the bedroom check"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N6": {
+      "node_id": "N6",
+      "macro_node": {
+        "macro_id": "M6_split_1",
+        "label": "Arthur is denied the cake",
+        "source_normalized_ids": [
+          "NE12"
+        ],
+        "source_atomic_ids": [
+          "E14"
+        ],
+        "functional_role": "CONTINGENT_OUTCOME",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 6
+      },
+      "abstraction": {
+        "level_0_raw": "Arthur is denied the cake",
+        "level_1_domain": "Arthur is denied the cake",
+        "level_2_functional": "Arthur is denied the cake",
+        "level_3_schema": "consequence denial"
+      },
+      "functional_role": "CONTINGENT_OUTCOME",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": true,
+      "provenance_text_spans": [
+        "was denied the cake"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N7": {
+      "node_id": "N7",
+      "macro_node": {
+        "macro_id": "M6_split_2",
+        "label": "Arthur receives no cake",
+        "source_normalized_ids": [
+          "NE15"
+        ],
+        "source_atomic_ids": [
+          "E17"
+        ],
+        "functional_role": "CONTINGENT_OUTCOME",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "PERSISTENT_STATE"
+        },
+        "temporal_order": 6
+      },
+      "abstraction": {
+        "level_0_raw": "Arthur receives no cake",
+        "level_1_domain": "Arthur receives no cake",
+        "level_2_functional": "Arthur receives no cake",
+        "level_3_schema": "consequence denial"
+      },
+      "functional_role": "CONTINGENT_OUTCOME",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "PERSISTENT_STATE"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": true,
+      "provenance_text_spans": [
+        "he received no cake"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N8": {
+      "node_id": "N8",
+      "macro_node": {
+        "macro_id": "M7",
+        "label": "upset reaction",
+        "source_normalized_ids": [],
+        "source_atomic_ids": [],
+        "functional_role": "DOWNSTREAM_REACTION",
+        "temporal_grounding": {
+          "mention_phase": "UNANCHORED",
+          "onset_phase": "UNANCHORED",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 7
+      },
+      "abstraction": {
+        "level_0_raw": "Arthur became upset and kicked the wall",
+        "level_1_domain": "patient reacts with anger and physical outburst",
+        "level_2_functional": "upset reaction",
+        "level_3_schema": "emotional response"
+      },
+      "functional_role": "DOWNSTREAM_REACTION",
+      "temporal_grounding": {
+        "mention_phase": "UNANCHORED",
+        "onset_phase": "UNANCHORED",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    }
+  },
+  "edges": [
+    {
+      "edge_id": "BE1",
+      "source_id": "N1",
+      "target_id": "N2",
+      "relation_type": "CAUSES",
+      "justification": "Arthur spent days daydreaming instead of tidying, which directly caused his bedroom to be cluttered shortly before inspection.",
+      "confidence": 0.95,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R1"
+      ]
+    },
+    {
+      "edge_id": "BE2",
+      "source_id": "N3",
+      "target_id": "N2",
+      "relation_type": "MOTIVATES",
+      "justification": "The offer of cake was intended to motivate Arthur to tidy his bedroom, which would address the clutter.",
+      "confidence": 0.9,
+      "explicitness": "strongly_inferred",
+      "underlying_relation_ids": [
+        "R3"
+      ]
+    },
+    {
+      "edge_id": "BE3",
+      "source_id": "N4",
+      "target_id": "N5",
+      "relation_type": "CAUSES",
+      "justification": "Insufficient time remaining caused Arthur to fail the bedroom check.",
+      "confidence": 0.95,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R4"
+      ]
+    },
+    {
+      "edge_id": "BE4",
+      "source_id": "N5",
+      "target_id": "N6",
+      "relation_type": "CAUSES",
+      "justification": "Failing the bedroom check directly resulted in Arthur being denied the cake.",
+      "confidence": 0.95,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R5"
+      ]
+    },
+    {
+      "edge_id": "BE5",
+      "source_id": "N6",
+      "target_id": "N7",
+      "relation_type": "RESULTS_IN",
+      "justification": "Being denied the cake resulted in Arthur receiving no cake.",
+      "confidence": 0.95,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R8"
+      ]
+    },
+    {
+      "edge_id": "BE6",
+      "source_id": "N2",
+      "target_id": "N3",
+      "relation_type": "MOTIVATES",
+      "justification": "The cluttered bedroom motivated the matron to offer the incentive to Arthur.",
+      "confidence": 0.9,
+      "explicitness": "strongly_inferred",
+      "underlying_relation_ids": [
+        "R11"
+      ]
+    },
+    {
+      "edge_id": "BE7",
+      "source_id": "N3",
+      "target_id": "N4",
+      "relation_type": "BEFORE",
+      "justification": "The offer occurred before the realization of insufficient time, but did not cause the time shortage.",
+      "confidence": 0.9,
+      "explicitness": "strongly_inferred",
+      "underlying_relation_ids": [
+        "R12"
+      ]
+    },
+    {
+      "edge_id": "BE8",
+      "source_id": "N4",
+      "target_id": "N6",
+      "relation_type": "BEFORE",
+      "justification": "Insufficient time preceded the denial of cake, but the denial was directly caused by the failed check, not the time shortage itself.",
+      "confidence": 0.85,
+      "explicitness": "strongly_inferred",
+      "underlying_relation_ids": [
+        "R13"
+      ]
+    }
+  ],
+  "anchors": {
+    "central_problem": "Arthur's bedroom is cluttered because he spent days daydreaming instead of tidying, and he regularly fails monthly bedroom checks.",
+    "central_goal": "Arthur must tidy his bedroom thoroughly to pass the bedroom check.",
+    "intervention_event_ids": [
+      "NE8"
+    ],
+    "focal_outcome_ids": [
+      "NE11"
+    ],
+    "contingent_outcome_ids": [
+      "NE12",
+      "NE15"
+    ],
+    "downstream_reaction_ids": [
+      "NE13",
+      "NE14"
+    ],
+    "contracts": [
+      {
+        "intervention_event_id": "NE8",
+        "promised_reward": "a slice of cake from the bakery",
+        "contingent_requirement": "tidying his bedroom thoroughly",
+        "condition_polarity": "positive"
+      }
+    ],
+    "explanation": "The central problem is Arthur's cluttered bedroom and history of failing checks. The goal is to pass the upcoming inspection. The matron offers cake (NE8) as an incentive contingent on thorough tidying. Arthur fails the check (NE11) due to insufficient time (NE10), so the reward is denied (NE12, NE15). His upset and kicking the wall (NE13, NE14) are downstream reactions not causing the failure."
+  },
+  "pruned_node_ids": [
+    "NE4",
+    "NE1",
+    "NE14",
+    "NE5",
+    "NE2",
+    "NE13",
+    "NE3",
+    "NE9"
+  ],
+  "pruned_reasons": {
+    "NE1": "Chronic background state; removing it does not affect the explanation of why the bedroom was cluttered or why the intervention failed.",
+    "NE2": "Chronic background state; not causally necessary for the specific episode of failing the check due to insufficient time.",
+    "NE3": "Habitual past record; the focal failure is explained by the immediate clutter and time shortage, not by prior failures.",
+    "NE4": "Secondary emotional reaction; removing it does not change the causal chain from clutter to intervention to failure.",
+    "NE5": "Background fantasy; not causally necessary for the clutter or the intervention's failure.",
+    "NE9": "Secondary emotional reaction; Arthur's delight does not causally affect the time shortage or the outcome.",
+    "NE13": "Downstream emotional reaction; not causally necessary for the denial of cake or the final outcome.",
+    "NE14": "Downstream collateral action; removing it does not alter the explanation of why Arthur failed and was denied cake."
+  },
+  "metadata": {
+    "total_backbone_nodes": 8,
+    "total_backbone_edges": 8,
+    "edge_derivation_method": "deterministic_rich_relation_lifting",
+    "validation_warnings": []
+  }
+}
