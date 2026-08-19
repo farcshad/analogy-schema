@@ -6,11 +6,14 @@ from analogy_schema.models.events import (
     Polarity,
     Explicitness,
     InterventionPhase,
+    TemporalExtent,
+    TemporalGrounding,
     BackboneRole,
 )
 from analogy_schema.models.relations import RelationType, EventRelation
 from analogy_schema.models.graph import RichEventGraph
 from analogy_schema.models.backbone import (
+    IncentiveContract,
     AbstractionLadder,
     MacroNode,
     BackboneNode,
@@ -34,10 +37,13 @@ __all__ = [
     "Polarity",
     "Explicitness",
     "InterventionPhase",
+    "TemporalExtent",
+    "TemporalGrounding",
     "BackboneRole",
     "RelationType",
     "EventRelation",
     "RichEventGraph",
+    "IncentiveContract",
     "AbstractionLadder",
     "MacroNode",
     "BackboneNode",

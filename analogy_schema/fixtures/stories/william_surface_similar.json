@@ -1,0 +1,10 @@
+{
+  "story_id": "william_surface_similar",
+  "title": "Surface Similar Target: Arthur's Bakery Delivery",
+  "text": "Arthur was a patient in a psychiatric hospital where the matron managed the ward. Arthur disliked bedroom inspections, but today the bakery delivered a special cake for the recreation hall. The matron asked Arthur to clean the dining tables before the cake was served. Arthur ate a large meal and felt tired. While the matron conducted routine bedroom checks elsewhere in the facility, Arthur took a nap in his room. By the time Arthur woke up, the party had concluded, the tables had been cleared by staff, and the cake had already been eaten.",
+  "metadata": {
+    "domain": "psychiatric_hospital",
+    "protagonist": "Arthur",
+    "benchmark_condition": "surface_similar"
+  }
+}

@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """
-CLI runner for the Analogical Schema Induction Pipeline.
+CLI runner for the Scientifically Stabilized Causal Graph Induction Pipeline.
 Usage:
-    python run_pipeline.py --story fixtures/stories/william_base.json
-    python run_pipeline.py --story fixtures/stories/karen_true_analogy.json
-    python run_pipeline.py --story fixtures/stories/karen_false_analogy.json
+    python run_pipeline.py --story analogy_schema/fixtures/stories/william_base.json
+    python run_pipeline.py --story analogy_schema/fixtures/stories/karen_true_analogy.json
+    python run_pipeline.py --story analogy_schema/fixtures/stories/karen_false_analogy.json
+    python run_pipeline.py --story analogy_schema/fixtures/stories/william_literally_similar.json
+    python run_pipeline.py --story analogy_schema/fixtures/stories/william_surface_similar.json
+    python run_pipeline.py --story analogy_schema/fixtures/stories/william_mere_appearance.json
 """
 
 import os
@@ -17,7 +20,7 @@ from analogy_schema.models.story import Story
 from analogy_schema.llm.openrouter_provider import OpenRouterProvider
 from analogy_schema.llm.mock_provider import MockLLMProvider
 from analogy_schema.pipeline.single_story_runner import SingleStoryPipeline
-from analogy_schema.utils.serialization import save_json, export_backbone_markdown, to_json
+from analogy_schema.utils.serialization import save_json, export_backbone_markdown
 
 load_dotenv()
 
@@ -30,7 +33,6 @@ def main():
     parser.add_argument("--output-dir", type=str, default="outputs", help="Directory to save output artifacts.")
     args = parser.parse_args()
 
-    # Load story
     story_path = Path(args.story)
     if not story_path.exists():
         print(f"Error: Story file not found at {story_path}")
@@ -51,7 +53,6 @@ def main():
 
     print(f"Loaded story: {story.story_id} ({len(story.sentences)} sentences)")
 
-    # Select LLM Provider
     if args.mock:
         from analogy_schema.fixtures.mock_responses import (
             get_william_mock_stage_a,
@@ -67,26 +68,22 @@ def main():
         llm.register_response("RelationExtractionOutput", get_william_mock_stage_c())
         llm.register_response("GoalOutcomeOutput", get_william_mock_stage_d())
         llm.register_response("BackboneSelectionOutput", get_william_mock_stage_f())
-        llm.register_response("MacroAbstractionOutput", get_william_mock_stage_gh())
+        llm.register_response("MacroGroupingOutput", get_william_mock_stage_gh())
         print("Using MockLLMProvider")
     else:
         llm = OpenRouterProvider(model_name=args.model, disable_reasoning=True)
         print(f"Using OpenRouterProvider with model: {args.model} (reasoning=off)")
 
-    # Run pipeline
     print("\nRunning Causal Event Graph Induction Pipeline (Stages A -> H)...")
     pipeline = SingleStoryPipeline(llm=llm)
     result = pipeline.run(story)
 
-    # Save outputs
     out_dir = Path(args.output_dir) / story.story_id
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    # 1. Save rich graph JSON
     save_json(result.rich_graph, str(out_dir / "rich_event_graph.json"))
-    # 2. Save causal backbone JSON
     save_json(result.backbone, str(out_dir / "causal_backbone.json"))
-    # 3. Save Markdown inspection report
+
     md_content = export_backbone_markdown(result.backbone)
     with open(out_dir / "backbone_summary.md", "w", encoding="utf-8") as f:
         f.write(md_content)

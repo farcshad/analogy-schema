@@ -9,10 +9,9 @@ class RelationType(str, Enum):
     BEFORE = "BEFORE"                   # Source occurs strictly before Target in narrative time (pure temporal)
     ENABLES = "ENABLES"                 # Source creates necessary preconditions making Target possible
     BLOCKS = "BLOCKS"                   # Source prevents, obstructs, or renders impossible Target
-    MOTIVATES = "MOTIVATES"             # Source gives agent reason/goal/incentive to attempt Target
+    MOTIVATES = "MOTIVATES"             # Source gives agent goal/stimulus to attempt Target (only when motivation is evident)
     REQUIRES = "REQUIRES"               # Source requires condition Target to be fulfilled/satisfied
-    CONDITIONAL_ON = "CONDITIONAL_ON"   # Source outcome depends on Target condition being met
-    RESULTS_IN = "RESULTS_IN"           # Source directly produces consequential outcome Target
+    RESULTS_IN = "RESULTS_IN"           # Source directly produces consequential outcome Target (e.g. failure -> reward withheld)
     PREVENTS = "PREVENTS"               # Source directly counteracts or stops Target
 
 

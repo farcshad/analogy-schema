@@ -26,15 +26,40 @@ class EventType(str, Enum):
 
 class InterventionPhase(str, Enum):
     PRE_INTERVENTION = "PRE_INTERVENTION"        # Began and/or occurred strictly before intervention
-    AT_INTERVENTION = "AT_INTERVENTION"          # Coincident with / part of intervention introduction
-    POST_INTERVENTION = "POST_INTERVENTION"      # Initiated after intervention
+    AT_INTERVENTION = "AT_INTERVENTION"          # Coincident with / introduced by the intervention
+    POST_INTERVENTION = "POST_INTERVENTION"      # Initiated after intervention introduction
     SPANS_INTERVENTION = "SPANS_INTERVENTION"    # Began before intervention and persisted through/after it
-    UNANCHORED = "UNANCHORED"                    # Setting/context or story without explicit intervention
+    UNANCHORED = "UNANCHORED"                    # Contextual background or narrative without intervention
+
+
+class TemporalExtent(str, Enum):
+    POINT = "POINT"                              # Instantaneous event or discrete action
+    PERSISTENT_STATE = "PERSISTENT_STATE"        # State that persists across time until changed
+    INTERVAL = "INTERVAL"                        # Extended activity over a duration
+
+
+class TemporalGrounding(BaseModel):
+    mention_phase: InterventionPhase = Field(
+        default=InterventionPhase.UNANCHORED,
+        description="Textual position in narrative relative to the intervention mention sentence"
+    )
+    onset_phase: InterventionPhase = Field(
+        default=InterventionPhase.UNANCHORED,
+        description="True story-world time when this event or state began"
+    )
+    holds_at_intervention: bool = Field(
+        default=False,
+        description="True if this state exists / holds active when the intervention is introduced"
+    )
+    temporal_extent: TemporalExtent = Field(
+        default=TemporalExtent.POINT,
+        description="Point event vs persistent state vs extended interval"
+    )
 
 
 class BackboneRole(str, Enum):
-    BACKGROUND = "BACKGROUND"                    # Contextual setting, static traits
-    CAUSAL_ANTECEDENT = "CAUSAL_ANTECEDENT"      # Action or event triggering problem/deficit
+    BACKGROUND = "BACKGROUND"                    # Contextual setting, static traits, chronic past history
+    CAUSAL_ANTECEDENT = "CAUSAL_ANTECEDENT"      # Action or event triggering the problem/deficit
     PROBLEM_STATE = "PROBLEM_STATE"              # Ongoing deficit, backlog, or challenge
     GOAL = "GOAL"                                # Target objective or requirement
     INTERVENTION = "INTERVENTION"                # External nudge, incentive, aid, or plan introduced
@@ -63,14 +88,22 @@ class NormalizedEvent(BaseModel):
     predicate_name: str = Field(description="Normalized predicate, e.g., NEGLECT_TASK, DEFICIT_STATE")
     arguments: Dict[str, Any] = Field(default_factory=dict, description="Semantic arguments")
     atomic_event_ids: List[str] = Field(default_factory=list, description="Provenance: source AtomicEvent IDs")
-    summary_label: str = Field(description="Human readable summary label")
+    summary_label: str = Field(description="Human readable summary label (atomic event/state description without embedded relations)")
     polarity: Polarity = Field(default=Polarity.POSITIVE)
     confidence: float = Field(default=1.0, ge=0.0, le=1.0)
-    temporal_phase: InterventionPhase = Field(
-        default=InterventionPhase.UNANCHORED,
-        description="Temporal occurrence or persistence relative to any narrative intervention"
+    temporal_grounding: TemporalGrounding = Field(
+        default_factory=TemporalGrounding,
+        description="Disambiguated mention time, onset time, and state persistence"
     )
-    is_persistent_state: bool = Field(
-        default=False,
-        description="True if this state persists across subsequent story events until resolved/failed"
-    )
+
+    @property
+    def onset_phase(self) -> InterventionPhase:
+        return self.temporal_grounding.onset_phase
+
+    @property
+    def holds_at_intervention(self) -> bool:
+        return self.temporal_grounding.holds_at_intervention
+
+    @property
+    def mention_phase(self) -> InterventionPhase:
+        return self.temporal_grounding.mention_phase

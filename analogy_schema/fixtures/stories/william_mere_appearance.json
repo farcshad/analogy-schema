@@ -1,0 +1,10 @@
+{
+  "story_id": "william_mere_appearance",
+  "title": "Mere Appearance Target: Painting the Recreation Room",
+  "text": "In the mental institution, the matron was supervising the painting of the recreation room. Arthur was eating a piece of cake from the bakery while watching the painters. As he leaned over the open paint bucket to inspect the color, cake crumbs fell into the white paint. The matron noticed the crumbs and asked Arthur to step outside into the courtyard. Arthur walked to his bedroom while the workers stirred the paint.",
+  "metadata": {
+    "domain": "mental_institution",
+    "protagonist": "Arthur",
+    "benchmark_condition": "mere_appearance"
+  }
+}

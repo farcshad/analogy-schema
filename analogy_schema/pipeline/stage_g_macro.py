@@ -1,9 +1,17 @@
-from typing import List, Dict, Any, Optional, Set
+import re
+from typing import List, Dict, Any, Optional, Set, Tuple
 from collections import defaultdict
 from pydantic import BaseModel, Field
 from analogy_schema.models.story import Story
 from analogy_schema.models.graph import RichEventGraph
-from analogy_schema.models.events import NormalizedEvent, Explicitness, BackboneRole, InterventionPhase
+from analogy_schema.models.events import (
+    NormalizedEvent,
+    Explicitness,
+    BackboneRole,
+    InterventionPhase,
+    TemporalExtent,
+    TemporalGrounding,
+)
 from analogy_schema.models.relations import RelationType, EventRelation
 from analogy_schema.models.backbone import (
     AbstractionLadder,
@@ -19,19 +27,92 @@ from analogy_schema.prompts.registry import PromptRegistry
 
 class GeneratedMacroNode(BaseModel):
     macro_id: str = Field(description="Temporary ID, e.g., M1, M2")
-    label: str = Field(description="Neutral state or event label")
+    label: str = Field(description="Neutral state or event label (without relational clauses)")
     source_normalized_ids: List[str] = Field(description="Retained normalized event IDs mapped to this macro node")
     functional_role: BackboneRole = Field(description="Controlled generic role")
-    temporal_phase: InterventionPhase = Field(default=InterventionPhase.UNANCHORED, description="Temporal phase relative to intervention")
     temporal_order: int = Field(default=0)
     abstraction_level_0: str
     abstraction_level_1: str
-    abstraction_level_2: str
+    abstraction_level_2: str = Field(description="Atomic functional role/state description (no relational clauses)")
     abstraction_level_3: str
 
 
 class MacroGroupingOutput(BaseModel):
     macro_nodes: List[GeneratedMacroNode] = Field(default_factory=list)
+
+
+def enforce_anti_merging_constraints(
+    proposed_nodes: List[GeneratedMacroNode],
+    graph: RichEventGraph
+) -> List[GeneratedMacroNode]:
+    """
+    Hard Invariant: If two normalized events are connected by a meaningful relation
+    (CAUSES, RESULTS_IN, BLOCKS, PREVENTS, ENABLES, MOTIVATES, REQUIRES, BEFORE),
+    they MUST NOT be merged into a single macro-node.
+    """
+    # Build set of related pairs in rich graph
+    related_pairs: Set[Tuple[str, str]] = set()
+    for rel in graph.relations:
+        related_pairs.add((rel.source_id, rel.target_id))
+        related_pairs.add((rel.target_id, rel.source_id))
+        
+    sanitized_nodes: List[GeneratedMacroNode] = []
+    split_counter = 1
+    
+    for gmn in proposed_nodes:
+        if len(gmn.source_normalized_ids) <= 1:
+            sanitized_nodes.append(gmn)
+            continue
+            
+        # Check if any two events in this macro-node have a relation between them
+        has_internal_relation = False
+        events = gmn.source_normalized_ids
+        for i in range(len(events)):
+            for j in range(i + 1, len(events)):
+                if (events[i], events[j]) in related_pairs:
+                    has_internal_relation = True
+                    break
+            if has_internal_relation:
+                break
+                
+        if not has_internal_relation:
+            sanitized_nodes.append(gmn)
+        else:
+            # Split into individual single-event macro nodes to preserve structural edges
+            for ne_id in events:
+                ne = graph.normalized_events.get(ne_id)
+                summary = ne.summary_label if ne else ne_id
+                sanitized_nodes.append(GeneratedMacroNode(
+                    macro_id=f"{gmn.macro_id}_split_{split_counter}",
+                    label=summary,
+                    source_normalized_ids=[ne_id],
+                    functional_role=gmn.functional_role,
+                    temporal_order=gmn.temporal_order,
+                    abstraction_level_0=summary,
+                    abstraction_level_1=summary,
+                    abstraction_level_2=summary,
+                    abstraction_level_3=gmn.abstraction_level_3
+                ))
+                split_counter += 1
+                
+    return sanitized_nodes
+
+
+def sanitize_level_2_label(label: str) -> str:
+    """Removes relational connective clauses from Level-2 functional descriptions."""
+    sanitized = label
+    patterns = [
+        r"(?i)\s+caused by.*$",
+        r"(?i)\s+due to.*$",
+        r"(?i)\s+leading to.*$",
+        r"(?i)\s+results in.*$",
+        r"(?i)\s+resulting in.*$",
+        r"(?i)\s+because of.*$",
+        r"(?i)\s+despite.*$",
+    ]
+    for pat in patterns:
+        sanitized = re.sub(pat, "", sanitized).strip()
+    return sanitized if sanitized else label
 
 
 def lift_rich_relations_to_backbone_edges(
@@ -44,18 +125,15 @@ def lift_rich_relations_to_backbone_edges(
     Projects Stage-C Rich Graph relations onto MacroNodes.
     Enforces invariant: Every BackboneEdge must be grounded in underlying rich relation IDs.
     """
-    # Map pair (src_node_id, dst_node_id) -> list of EventRelation
     projected: Dict[Tuple[str, str], List[EventRelation]] = defaultdict(list)
     
     for rel in graph.relations:
         src_bb = ne_to_backbone_id.get(rel.source_id)
         dst_bb = ne_to_backbone_id.get(rel.target_id)
         
-        # Check if relation connects two distinct retained backbone nodes
         if src_bb and dst_bb and src_bb != dst_bb:
             projected[(src_bb, dst_bb)].append(rel)
             
-    # Priority rank for adjudicating multiple relations between same pair
     relation_priority = {
         RelationType.RESULTS_IN: 10,
         RelationType.CAUSES: 9,
@@ -63,7 +141,6 @@ def lift_rich_relations_to_backbone_edges(
         RelationType.PREVENTS: 8,
         RelationType.ENABLES: 7,
         RelationType.REQUIRES: 6,
-        RelationType.CONDITIONAL_ON: 6,
         RelationType.MOTIVATES: 5,
         RelationType.BEFORE: 1,
     }
@@ -72,7 +149,6 @@ def lift_rich_relations_to_backbone_edges(
     edge_idx = 1
     
     for (src_id, dst_id), rel_list in projected.items():
-        # Sort relations by priority
         rel_list_sorted = sorted(
             rel_list,
             key=lambda r: relation_priority.get(r.relation_type, 0),
@@ -80,12 +156,10 @@ def lift_rich_relations_to_backbone_edges(
         )
         primary_rel = rel_list_sorted[0]
         
-        # Collect all underlying relation IDs
         underlying_ids = [r.relation_id for r in rel_list]
         evidence_snippets = [r.evidence for r in rel_list if r.evidence]
         justification = "; ".join(evidence_snippets) if evidence_snippets else primary_rel.evidence
         
-        # Check if there is an adjudicated conflict (e.g. BEFORE + CAUSES)
         types_present = set(r.relation_type for r in rel_list)
         if len(types_present) > 1:
             conflict_desc = f"Adjudicated between {', '.join(t.value for t in types_present)}: prioritized {primary_rel.relation_type.value}."
@@ -119,23 +193,33 @@ def run_stage_g_and_h_macro_and_abstraction(
     """
     Stages G & H:
     1. LLM groups retained events into MacroNodes with 4-Level Abstraction Ladders.
-    2. Backbone edges are strictly and deterministically lifted from Stage-C Rich Graph relations.
-    3. Invariants are validated and attached to metadata.
+    2. Anti-merging programmatic constraint prevents destruction of relational edges.
+    3. Relational clauses are stripped from Level-2 node labels.
+    4. Backbone edges are strictly and deterministically lifted from Stage-C Rich Graph relations.
+    5. Invariants are validated and attached to metadata.
     """
-    ne_phase_map = {ne.norm_id: ne.temporal_phase.value for ne in retained_events}
+    retained_ids = set(e.norm_id for e in retained_events)
+    retained_relations = [
+        r for r in graph.relations
+        if r.source_id in retained_ids and r.target_id in retained_ids
+    ]
+    
     prompt = PromptRegistry.render(
         "macro_grouping",
         story=story,
         retained_events=retained_events,
-        ne_phase_map=ne_phase_map
+        rich_relations=retained_relations
     )
-    system_prompt = "You are a scientific abstract schema induction parser grouping events into functional macro-nodes."
+    system_prompt = "You are a scientific abstract schema induction parser grouping events into atomic functional macro-nodes."
     
     result = llm.generate_structured(
         prompt=prompt,
         response_model=MacroGroupingOutput,
         system_prompt=system_prompt
     )
+    
+    # Enforce programmatic anti-merging constraint
+    sanitized_nodes = enforce_anti_merging_constraints(result.macro_nodes, graph)
     
     nodes_dict: Dict[str, BackboneNode] = {}
     macro_to_backbone_id: Dict[str, str] = {}
@@ -145,19 +229,17 @@ def run_stage_g_and_h_macro_and_abstraction(
     focal_outcome_set = set(anchors.focal_outcome_ids)
     contingent_outcome_set = set(anchors.contingent_outcome_ids)
     
-    for i, gmn in enumerate(result.macro_nodes, start=1):
+    for i, gmn in enumerate(sanitized_nodes, start=1):
         node_id = f"N{i}"
         macro_to_backbone_id[gmn.macro_id] = node_id
         
-        # Collect source atomic IDs and provenance spans
         source_atomic_ids = []
         provenance_spans = []
         is_intervention = False
         is_focal = False
         is_contingent = False
         
-        # Determine temporal phase from source events or model
-        phases = []
+        groundings: List[TemporalGrounding] = []
         for item_id in gmn.source_normalized_ids:
             ne_to_backbone_id[item_id] = node_id
             if item_id in intervention_set:
@@ -169,7 +251,7 @@ def run_stage_g_and_h_macro_and_abstraction(
                 
             if item_id in graph.normalized_events:
                 ne = graph.normalized_events[item_id]
-                phases.append(ne.temporal_phase)
+                groundings.append(ne.temporal_grounding)
                 for aid in ne.atomic_event_ids:
                     source_atomic_ids.append(aid)
                     if aid in graph.atomic_events:
@@ -178,35 +260,46 @@ def run_stage_g_and_h_macro_and_abstraction(
                 source_atomic_ids.append(item_id)
                 provenance_spans.append(graph.atomic_events[item_id].text_span)
                 
-        # Resolve temporal phase
-        if gmn.temporal_phase and gmn.temporal_phase != InterventionPhase.UNANCHORED:
-            node_phase = gmn.temporal_phase
-        elif phases:
-            if InterventionPhase.SPANS_INTERVENTION in phases:
-                node_phase = InterventionPhase.SPANS_INTERVENTION
-            elif InterventionPhase.PRE_INTERVENTION in phases:
-                node_phase = InterventionPhase.PRE_INTERVENTION
-            elif InterventionPhase.POST_INTERVENTION in phases:
-                node_phase = InterventionPhase.POST_INTERVENTION
-            else:
-                node_phase = phases[0]
+        # Resolve temporal grounding from source events
+        if groundings:
+            first_tg = groundings[0]
+            onset = (
+                InterventionPhase.SPANS_INTERVENTION
+                if any(g.onset_phase == InterventionPhase.SPANS_INTERVENTION for g in groundings)
+                else (
+                    InterventionPhase.PRE_INTERVENTION
+                    if any(g.onset_phase == InterventionPhase.PRE_INTERVENTION for g in groundings)
+                    else first_tg.onset_phase
+                )
+            )
+            holds_at_int = any(g.holds_at_intervention for g in groundings)
+            node_tg = TemporalGrounding(
+                mention_phase=first_tg.mention_phase,
+                onset_phase=onset,
+                holds_at_intervention=holds_at_int,
+                temporal_extent=first_tg.temporal_extent
+            )
         else:
-            node_phase = InterventionPhase.UNANCHORED
+            node_tg = TemporalGrounding()
             
+        # Clean label and level-2 abstraction of relational clauses
+        cleaned_label = sanitize_level_2_label(gmn.label)
+        cleaned_level_2 = sanitize_level_2_label(gmn.abstraction_level_2)
+        
         macro_obj = MacroNode(
             macro_id=gmn.macro_id,
-            label=gmn.label,
+            label=cleaned_label,
             source_normalized_ids=gmn.source_normalized_ids,
             source_atomic_ids=source_atomic_ids,
             functional_role=gmn.functional_role,
-            temporal_phase=node_phase,
+            temporal_grounding=node_tg,
             temporal_order=gmn.temporal_order
         )
         
         ladder = AbstractionLadder(
             level_0_raw=gmn.abstraction_level_0,
             level_1_domain=gmn.abstraction_level_1,
-            level_2_functional=gmn.abstraction_level_2,
+            level_2_functional=cleaned_level_2,
             level_3_schema=gmn.abstraction_level_3
         )
         
@@ -215,7 +308,7 @@ def run_stage_g_and_h_macro_and_abstraction(
             macro_node=macro_obj,
             abstraction=ladder,
             functional_role=gmn.functional_role,
-            temporal_phase=node_phase,
+            temporal_grounding=node_tg,
             is_intervention=is_intervention or gmn.functional_role == BackboneRole.INTERVENTION,
             is_focal_outcome=is_focal or gmn.functional_role == BackboneRole.FOCAL_OUTCOME,
             is_contingent_outcome=is_contingent or gmn.functional_role == BackboneRole.CONTINGENT_OUTCOME,
@@ -225,7 +318,6 @@ def run_stage_g_and_h_macro_and_abstraction(
         )
         nodes_dict[node_id] = backbone_node
         
-    # Strictly lift edges deterministically from Stage-C Rich Graph
     backbone_edges = lift_rich_relations_to_backbone_edges(
         graph=graph,
         nodes_dict=nodes_dict,
@@ -247,13 +339,7 @@ def run_stage_g_and_h_macro_and_abstraction(
         }
     )
     
-    # Invariant validation
     warnings = backbone.validate_invariants()
     backbone.metadata["validation_warnings"] = warnings
     
     return backbone
-
-
-# Type alias for cleaner code
-Tuple_List_BackboneEdge = List[BackboneEdge]
-from typing import Tuple

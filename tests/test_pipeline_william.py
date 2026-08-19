@@ -45,7 +45,7 @@ def test_william_pipeline_vertical_slice():
     # 4. Verify Rich Graph
     assert len(result.rich_graph.atomic_events) >= 12
     assert len(result.rich_graph.normalized_events) == 7
-    assert len(result.rich_graph.relations) == 7
+    assert len(result.rich_graph.relations) == 6
     
     # Verify critical ontological fact: NE2 (backlog) is BEFORE NE3 (incentive), NOT caused by it
     temporal_edge = next((r for r in result.rich_graph.relations if r.source_id == "NE2" and r.target_id == "NE3"), None)
@@ -61,13 +61,19 @@ def test_william_pipeline_vertical_slice():
     assert len(backbone.nodes) == 6
     assert "NE7" in backbone.pruned_node_ids
     
-    # 7. Check Level 2 Functional Roles and Generic Roles
+    # 7. Check Level 2 Functional Roles and Generic Roles (Atomic descriptions without relational clauses)
     level_2_labels = [node.abstraction.level_2_functional for node in backbone.nodes.values()]
-    assert "task neglect / inaction" in level_2_labels
-    assert "conditional reward offered as incentive" in level_2_labels
+    assert "task neglect" in level_2_labels
+    assert "conditional incentive" in level_2_labels
     assert "requirement failure" in level_2_labels
     assert "reward withheld" in level_2_labels
     
+    # Ensure no relational phrases in level 2 labels
+    for lbl in level_2_labels:
+        lbl_lower = lbl.lower()
+        for forbidden in ["caused by", "due to", "leading to", "results in", "because"]:
+            assert forbidden not in lbl_lower, f"Forbidden relational phrase '{forbidden}' in Level-2 label '{lbl}'"
+            
     roles = [node.functional_role for node in backbone.nodes.values()]
     assert BackboneRole.CAUSAL_ANTECEDENT in roles
     assert BackboneRole.INTERVENTION in roles
@@ -88,7 +94,7 @@ def test_william_pipeline_vertical_slice():
     md_output = export_backbone_markdown(backbone)
     assert "Causal Backbone: william_base" in md_output
     assert "Underlying Rich Relations" in md_output
-    assert "task neglect / inaction" in md_output
+    assert "task neglect" in md_output
     
     json_output = to_json(backbone)
     assert "PRE_INTERVENTION" in json_output

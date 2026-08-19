@@ -28,20 +28,29 @@ def export_backbone_markdown(backbone: CausalBackbone) -> str:
     lines = [
         f"# Causal Backbone: {backbone.story_id}",
         "",
-        "## Narrative Anchors",
+        "## Narrative Anchors & Contracts",
         f"- **Central Problem**: {backbone.anchors.central_problem}",
         f"- **Central Goal**: {backbone.anchors.central_goal}",
         f"- **Intervention Events**: {backbone.anchors.intervention_event_ids}",
         f"- **Focal Outcomes**: {backbone.anchors.focal_outcome_ids}",
         f"- **Contingent Outcomes**: {backbone.anchors.contingent_outcome_ids}",
         f"- **Downstream Reactions (Excluded from Anchoring)**: {backbone.anchors.downstream_reaction_ids}",
-        "",
-        "## Backbone Nodes (Level 2 Functional Roles & Temporal Phases)",
     ]
+    
+    if backbone.anchors.contracts:
+        lines.append("- **Incentive Contracts**:")
+        for c in backbone.anchors.contracts:
+            lines.append(f"  - Reward: `{c.promised_reward}` | Requirement: `{c.contingent_requirement}` (Polarity: {c.condition_polarity.value})")
+            
+    lines.append("")
+    lines.append("## Backbone Nodes (Level 2 Functional Roles & Temporal Phases)")
     
     for nid, node in backbone.nodes.items():
         role_val = node.functional_role.value if hasattr(node.functional_role, "value") else str(node.functional_role)
-        phase_val = node.temporal_phase.value if hasattr(node.temporal_phase, "value") else str(node.temporal_phase)
+        tg = node.temporal_grounding
+        onset_val = tg.onset_phase.value if hasattr(tg.onset_phase, "value") else str(tg.onset_phase)
+        mention_val = tg.mention_phase.value if hasattr(tg.mention_phase, "value") else str(tg.mention_phase)
+        holds_val = tg.holds_at_intervention
         
         intervention_tag = " `[INTERVENTION]`" if node.is_intervention else ""
         focal_tag = " `[FOCAL_OUTCOME]`" if node.is_focal_outcome else ""
@@ -49,7 +58,7 @@ def export_backbone_markdown(backbone: CausalBackbone) -> str:
         
         lines.append(f"### {nid}: {node.abstraction.level_2_functional}{intervention_tag}{focal_tag}{contingent_tag}")
         lines.append(f"- **Role**: `{role_val}`")
-        lines.append(f"- **Intervention Phase**: `{phase_val}`")
+        lines.append(f"- **Temporal Grounding**: onset=`{onset_val}`, holds_at_intervention=`{holds_val}`, mention=`{mention_val}`, extent=`{tg.temporal_extent.value}`")
         lines.append(f"- **Abstraction Ladder**:")
         lines.append(f"  - *Level 0 (Raw)*: {node.abstraction.level_0_raw}")
         lines.append(f"  - *Level 1 (Domain)*: {node.abstraction.level_1_domain}")

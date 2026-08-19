@@ -1,0 +1,10 @@
+{
+  "story_id": "william_literally_similar",
+  "title": "Literally Similar Target: Arthur's Bedroom Check",
+  "text": "Arthur was an inmate in a psychiatric facility who remained indoors at all times. He regularly failed the monthly bedroom checks and disliked them intensely. He passed his hours fantasizing about pastries. Shortly before the scheduled inspection Arthur's bedroom was cluttered because he had spent the days daydreaming. To motivate Arthur, the matron offered him a slice of cake from the bakery if he tidied his bedroom thoroughly. Arthur was delighted. However, insufficient time remained for him to finish cleaning. Consequently, he failed the bedroom check and was denied the cake. Arthur became upset and kicked the wall, but he received no cake.",
+  "metadata": {
+    "domain": "psychiatric_facility",
+    "protagonist": "Arthur",
+    "benchmark_condition": "literally_similar"
+  }
+}
