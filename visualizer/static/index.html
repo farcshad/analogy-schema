@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analogy Schema Graph Explorer</title>
+  <!-- Cytoscape and Dagre layout engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header Controls -->
+    <header class="top-bar">
+      <div class="brand">
+        <span class="brand-icon">🔬</span>
+        <h1>Analogy Schema Graph Explorer</h1>
+      </div>
+      
+      <div class="controls-group">
+        <div class="control-item">
+          <label for="output-select">Output:</label>
+          <select id="output-select">
+            <option value="">Loading outputs...</option>
+          </select>
+        </div>
+
+        <div class="control-item view-toggles">
+          <button id="btn-view-backbone" class="btn-toggle active">Causal Backbone</button>
+          <button id="btn-view-rich" class="btn-toggle">Rich Event Graph</button>
+        </div>
+
+        <div class="control-item filter-toggles">
+          <label class="checkbox-label">
+            <input type="checkbox" id="toggle-explanatory" checked> Explanatory Edges
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="toggle-temporal" checked> Temporal Constraints
+          </label>
+        </div>
+
+        <div class="control-item action-buttons">
+          <button id="btn-fit" class="btn-action" title="Fit graph to viewport">Fit View</button>
+          <button id="btn-reset" class="btn-action" title="Re-run layout">Reset Layout</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="workspace">
+      <!-- Graph Canvas -->
+      <section class="graph-panel">
+        <div id="cy"></div>
+
+        <!-- Legend Overlay -->
+        <div class="legend-overlay">
+          <div class="legend-header">Legend</div>
+          <div class="legend-items">
+            <div class="legend-item"><span class="badge badge-intervention"></span> Intervention</div>
+            <div class="legend-item"><span class="badge badge-focal"></span> Focal Outcome</div>
+            <div class="legend-item"><span class="badge badge-contingent"></span> Contingent Outcome</div>
+            <div class="legend-item"><span class="badge badge-problem"></span> Problem State</div>
+            <div class="legend-item"><span class="badge badge-antecedent"></span> Causal Antecedent</div>
+            <div class="legend-item"><span class="badge badge-constraint"></span> Constraint</div>
+            <div class="legend-item"><span class="badge badge-reaction"></span> Reaction</div>
+          </div>
+          <div class="legend-divider"></div>
+          <div class="legend-items">
+            <div class="legend-item"><span class="line line-solid"></span> Explanatory / Causal</div>
+            <div class="legend-item"><span class="line line-dashed"></span> Temporal (BEFORE)</div>
+          </div>
+        </div>
+
+        <!-- Notification Toast -->
+        <div id="toast" class="toast hidden"></div>
+      </section>
+
+      <!-- Sidebar Inspector -->
+      <aside class="sidebar" id="sidebar">
+        <!-- Validation Warnings Banner -->
+        <div id="warnings-banner" class="warnings-banner empty">
+          <span class="warning-icon">✓</span>
+          <span class="warning-text">No validation warnings</span>
+        </div>
+        <div id="warnings-details" class="warnings-details hidden"></div>
+
+        <!-- Selected Element Inspector -->
+        <section class="inspector-card" id="inspector-card">
+          <h2 class="card-title">Selected Element Details</h2>
+          <div id="inspector-content" class="inspector-body">
+            <p class="placeholder-text">Click any node or edge in the graph to inspect its abstraction ladder, functional role, temporal grounding, or provenance.</p>
+          </div>
+        </section>
+
+        <!-- Incentive Contracts Panel -->
+        <section id="contracts-panel" class="collapsible-card">
+          <button class="card-header-toggle" onclick="toggleCard(this, 'contracts-body')">
+            <span>📜 Incentive / Contingency Contract</span>
+            <span class="toggle-icon">▼</span>
+          </button>
+          <div id="contracts-body" class="card-body">
+            <p class="placeholder-text">No contract data available.</p>
+          </div>
+        </section>
+
+        <!-- Narrative Anchors Panel -->
+        <section id="anchors-panel" class="collapsible-card">
+          <button class="card-header-toggle" onclick="toggleCard(this, 'anchors-body')">
+            <span>⚓ Narrative Anchors</span>
+            <span class="toggle-icon">▼</span>
+          </button>
+          <div id="anchors-body" class="card-body">
+            <p class="placeholder-text">No anchor data available.</p>
+          </div>
+        </section>
+
+        <!-- Pruned Events Panel -->
+        <section id="pruned-panel" class="collapsible-card">
+          <button class="card-header-toggle" onclick="toggleCard(this, 'pruned-body')">
+            <span>✂️ Pruned Events (Audit Trail)</span>
+            <span class="toggle-icon">▼</span>
+          </button>
+          <div id="pruned-body" class="card-body">
+            <p class="placeholder-text">No pruned events recorded.</p>
+          </div>
+        </section>
+
+        <!-- Original Story Text Panel with Provenance Highlighting -->
+        <section id="story-panel" class="collapsible-card">
+          <button class="card-header-toggle" onclick="toggleCard(this, 'story-body')">
+            <span>📖 Narrative Text</span>
+            <span class="toggle-icon">▼</span>
+          </button>
+          <div id="story-body" class="card-body">
+            <div id="story-text-container" class="story-text-container">
+              <p class="placeholder-text">Narrative text not loaded.</p>
+            </div>
+          </div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
