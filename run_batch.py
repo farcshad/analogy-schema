@@ -4,14 +4,17 @@ High-Performance Concurrent Batch Pipeline Runner.
 Runs multiple stories simultaneously with intra-pipeline and inter-pipeline concurrency.
 
 Usage:
-    # Run all 6 benchmark narratives concurrently:
-    python run_batch.py --all --concurrency 4
+    # Run the 6 exact benchmark narratives concurrently:
+    python run_batch.py --benchmarks --concurrency 6
 
-    # Run specific stories:
-    python run_batch.py --stories analogy_schema/fixtures/stories/william_base.json analogy_schema/fixtures/stories/karen_true_analogy.json
+    # Run the 3 synthetic fixtures:
+    python run_batch.py --synth --concurrency 3
+
+    # Run all fixtures:
+    python run_batch.py --all --concurrency 6
 
     # Run with deterministic mock provider:
-    python run_batch.py --all --mock
+    python run_batch.py --benchmarks --mock
 """
 
 import os
@@ -40,18 +43,12 @@ async def process_single_story(
     async with semaphore:
         t0 = time.time()
         # Load story
-        if story_path.suffix == ".json":
-            with open(story_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            story = Story.from_text(
-                story_id=data.get("story_id", story_path.stem),
-                text=data["text"],
-                title=data.get("title"),
-                metadata=data.get("metadata", {})
-            )
-        else:
-            text = story_path.read_text(encoding="utf-8")
-            story = Story.from_text(story_id=story_path.stem, text=text)
+        with open(story_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        story = Story.from_text(
+            story_id=data.get("story_id", story_path.stem),
+            text=data["text"]
+        )
 
         print(f"🚀 [START] Processing: {story.story_id} ({len(story.sentences)} sentences)")
         
@@ -59,7 +56,7 @@ async def process_single_story(
             result = await pipeline.arun(story)
             elapsed = time.time() - t0
             
-            # Save outputs
+            # Save outputs in neutral directory
             out_dir = output_dir / story.story_id
             out_dir.mkdir(parents=True, exist_ok=True)
             
@@ -72,52 +69,74 @@ async def process_single_story(
                 
             warnings_count = len(result.validation_warnings)
             warning_msg = f" (⚠️ {warnings_count} warnings)" if warnings_count > 0 else " (✅ 0 warnings)"
-            print(f"✅ [DONE] {story.story_id} in {elapsed:.2f}s | Nodes: {len(result.backbone.nodes)}, Edges: {len(result.backbone.edges)}{warning_msg}")
-            return story.story_id, True, elapsed, md_content
+            print(f"✅ [DONE] {story.story_id} in {elapsed:.2f}s | Nodes: {len(result.backbone.nodes)}, Explanatory Edges: {len(result.backbone.explanatory_edges)}, Temporal: {len(result.backbone.temporal_constraints)}{warning_msg}")
+            return story.story_id, True, elapsed, result.backbone
         except Exception as e:
             elapsed = time.time() - t0
             print(f"❌ [FAILED] {story.story_id} in {elapsed:.2f}s: {e}")
-            return story.story_id, False, elapsed, str(e)
+            return story.story_id, False, elapsed, None
 
 
 async def main_async():
     parser = argparse.ArgumentParser(description="Concurrent multi-story causal graph induction runner.")
-    parser.add_argument("--all", action="store_true", help="Run all benchmark fixtures in fixtures/stories/.")
+    parser.add_argument("--benchmarks", action="store_true", help="Run the 6 exact benchmark fixtures (story_base_01, story_target_01..05).")
+    parser.add_argument("--synth", action="store_true", help="Run the 3 synthetic fixtures (synth_story_01..03).")
+    parser.add_argument("--all", action="store_true", help="Run all available story fixtures.")
     parser.add_argument("--stories", nargs="+", help="Paths to story JSON files.")
-    parser.add_argument("--concurrency", type=int, default=4, help="Maximum concurrent stories to process simultaneously.")
+    parser.add_argument("--concurrency", type=int, default=6, help="Maximum concurrent stories to process simultaneously.")
     parser.add_argument("--model", type=str, default="deepseek/deepseek-v4-flash", help="OpenRouter model identifier.")
     parser.add_argument("--mock", action="store_true", help="Use deterministic mock provider.")
     parser.add_argument("--output-dir", type=str, default="outputs", help="Output directory for generated graphs.")
     args = parser.parse_args()
 
-    # Collect story paths
+    fixtures_dir = Path("analogy_schema/fixtures/stories")
     story_paths = []
-    if args.all:
-        fixtures_dir = Path("analogy_schema/fixtures/stories")
-        if fixtures_dir.exists():
-            story_paths = sorted(list(fixtures_dir.glob("*.json")))
+    
+    if args.benchmarks:
+        story_paths = [
+            fixtures_dir / "story_base_01.json",
+            fixtures_dir / "story_target_01.json",
+            fixtures_dir / "story_target_02.json",
+            fixtures_dir / "story_target_03.json",
+            fixtures_dir / "story_target_04.json",
+            fixtures_dir / "story_target_05.json",
+        ]
+    elif args.synth:
+        story_paths = [
+            fixtures_dir / "synth_story_01.json",
+            fixtures_dir / "synth_story_02.json",
+            fixtures_dir / "synth_story_03.json",
+        ]
     elif args.stories:
         story_paths = [Path(p) for p in args.stories]
-    else:
-        # Default to the 6 benchmark fixtures
-        fixtures_dir = Path("analogy_schema/fixtures/stories")
+    elif args.all:
         if fixtures_dir.exists():
             story_paths = sorted(list(fixtures_dir.glob("*.json")))
-        else:
-            print("Please specify --stories or --all.")
-            return
+    else:
+        # Default to benchmarks
+        story_paths = [
+            fixtures_dir / "story_base_01.json",
+            fixtures_dir / "story_target_01.json",
+            fixtures_dir / "story_target_02.json",
+            fixtures_dir / "story_target_03.json",
+            fixtures_dir / "story_target_04.json",
+            fixtures_dir / "story_target_05.json",
+        ]
 
+    # Filter only existing files
+    story_paths = [p for p in story_paths if p.exists()]
     if not story_paths:
-        print("No story files found.")
+        print("No story files found to execute.")
         return
 
-    print("=" * 65)
-    print(f"🌟 Analogy Schema Induction: Concurrent Batch Runner")
+    print("=" * 70)
+    print(f"🌟 Analogy Schema Induction: Stabilized Batch Runner")
     print(f"📁 Stories to process: {len(story_paths)}")
     print(f"⚡ Inter-story concurrency: {args.concurrency}")
     print(f"🤖 LLM Model: {args.model} {'(Mock)' if args.mock else '(Live OpenRouter, reasoning=off)'}")
-    print(f"🔄 Intra-pipeline concurrency: Stage C (Relations) & Stage D (Anchors) run in parallel")
-    print("=" * 65)
+    print(f"🔄 Intra-pipeline concurrency: Stage C (Relations) & Stage D (Anchors) in parallel")
+    print(f"🔒 Ground-Truth Leakage Shield: Active (StoryInput anonymized, labels quarantined)")
+    print("=" * 70)
 
     # Initialize Provider
     if args.mock:
@@ -151,14 +170,30 @@ async def main_async():
     results = await asyncio.gather(*tasks)
     total_elapsed = time.time() - total_start
 
-    print("\n" + "=" * 65)
+    print("\n" + "=" * 70)
     print(f"🎉 Batch execution completed in {total_elapsed:.2f}s")
-    print(f"📊 Summary:")
-    for sid, success, elapsed, _ in results:
+    print(f"📊 Summary Table:")
+    for sid, success, elapsed, backbone in results:
         status = "✅ SUCCESS" if success else "❌ FAILED"
-        print(f"  - {sid:<30} {status} ({elapsed:.2f}s)")
-    print(f"💾 All outputs saved under: {output_dir.resolve()}/")
-    print("=" * 65)
+        if backbone:
+            nodes_summary = ", ".join(f"{nid}:{n.abstraction.level_2_functional}" for nid, n in backbone.nodes.items())
+            warnings = backbone.metadata.get("validation_warnings", [])
+            w_str = f" | ⚠️ {len(warnings)} warnings" if warnings else " | ✅ 0 warnings"
+            print(f"\n📌 Story: {sid} ({elapsed:.2f}s) [{status}{w_str}]")
+            print(f"   - Nodes ({len(backbone.nodes)}): {nodes_summary}")
+            print(f"   - Explanatory Edges ({len(backbone.explanatory_edges)}): {['(' + e.source_id + ' --' + e.relation_type.value + '--> ' + e.target_id + ')' for e in backbone.explanatory_edges]}")
+            print(f"   - Temporal Constraints ({len(backbone.temporal_constraints)}): {['(' + e.source_id + ' --BEFORE--> ' + e.target_id + ')' for e in backbone.temporal_constraints]}")
+            if backbone.anchors.contracts:
+                print(f"   - Incentive Contracts: {[{'reward': c.promised_reward, 'req': c.contingent_requirement} for c in backbone.anchors.contracts]}")
+            if backbone.pruned_node_ids:
+                print(f"   - Pruned Nodes: {backbone.pruned_node_ids}")
+            if warnings:
+                print(f"   - Warnings: {warnings}")
+        else:
+            print(f"\n📌 Story: {sid} ({elapsed:.2f}s) [{status}]")
+            
+    print(f"\n💾 All outputs saved under: {output_dir.resolve()}/")
+    print("=" * 70)
 
 
 if __name__ == "__main__":

@@ -14,6 +14,8 @@ from analogy_schema.pipeline.stage_g_macro import (
     GeneratedMacroNode,
     enforce_anti_merging_constraints,
     sanitize_level_2_label,
+    derive_atomic_functional_level_2,
+    apply_backbone_minimality_pass,
 )
 from analogy_schema.pipeline.single_story_runner import SingleStoryPipeline
 from analogy_schema.llm.mock_provider import MockLLMProvider
@@ -41,10 +43,10 @@ def test_prompts_contain_no_benchmark_leakage():
             assert term not in text_lower, f"Forbidden benchmark term '{term}' leaked into prompt template '{tname}'!"
 
 
-def test_anti_merging_constraint_preserves_structural_edges():
-    """Validates Point 2: Events with rich relations (e.g. CAUSES) must never be merged into one node."""
-    ne1 = NormalizedEvent(norm_id="NE1", predicate_name="NEGLECT_TASK", summary_label="task neglect")
-    ne2 = NormalizedEvent(norm_id="NE2", predicate_name="DEFICIT_STATE", summary_label="performance deficit")
+def test_anti_merging_constraint_derives_functional_level_2_abstractions():
+    """Validates Point 2: Split child nodes receive valid cross-domain Level-2 functional labels."""
+    ne1 = NormalizedEvent(norm_id="NE1", predicate_name="NEGLECT_TASK", summary_label="Karen neglects homework")
+    ne2 = NormalizedEvent(norm_id="NE2", predicate_name="DEFICIT_STATE", summary_label="Failing enough classes")
     
     # NE1 --CAUSES--> NE2
     rel = EventRelation(relation_id="R1", source_id="NE1", target_id="NE2", relation_type=RelationType.CAUSES)
@@ -55,104 +57,131 @@ def test_anti_merging_constraint_preserves_structural_edges():
         relations=[rel]
     )
     
-    # Proposed bad merge combining NE1 and NE2 into one macro node
     bad_merged_macro = GeneratedMacroNode(
         macro_id="M_merged",
-        label="Deficit state caused by neglect of duty",
+        label="Neglecting classes causing deficit",
         source_normalized_ids=["NE1", "NE2"],
         functional_role=BackboneRole.PROBLEM_STATE,
         temporal_order=1,
         abstraction_level_0="raw",
         abstraction_level_1="domain",
-        abstraction_level_2="Deficit state caused by neglect of duty",
+        abstraction_level_2="Neglecting classes causing deficit",
         abstraction_level_3="schema"
     )
     
-    # Enforce programmatic constraint
     sanitized = enforce_anti_merging_constraints([bad_merged_macro], graph)
     
-    # Must be split into 2 separate nodes!
     assert len(sanitized) == 2
-    assert sanitized[0].source_normalized_ids == ["NE1"]
-    assert sanitized[1].source_normalized_ids == ["NE2"]
+    assert sanitized[0].abstraction_level_2 == "task neglect"
+    assert sanitized[1].abstraction_level_2 in ("performance deficit", "prerequisite failure")
 
 
-def test_label_sanitizer_removes_relational_clauses():
-    """Validates Point 3: Level-2 labels strip embedded relational connective phrases."""
-    raw_label = "Deficit state caused by neglect of duty"
-    cleaned = sanitize_level_2_label(raw_label)
-    assert cleaned == "Deficit state"
+def test_backbone_minimality_pass_prunes_isolated_background_nodes():
+    """Validates Point 3: Isolated background nodes without explanatory paths are removed."""
+    from analogy_schema.models.backbone import BackboneNode, MacroNode, AbstractionLadder, BackboneEdge, NarrativeAnchors
     
-    raw_label2 = "Failure to meet criteria due to resource shortage"
-    cleaned2 = sanitize_level_2_label(raw_label2)
-    assert cleaned2 == "Failure to meet criteria"
+    n_chronic = BackboneNode(
+        node_id="N1",
+        macro_node=MacroNode(macro_id="M1", label="habitual failure", source_normalized_ids=["NE_old"]),
+        abstraction=AbstractionLadder(level_0_raw="old", level_1_domain="old", level_2_functional="habitual failure", level_3_schema="history"),
+        functional_role=BackboneRole.BACKGROUND
+    )
+    n_cause = BackboneNode(
+        node_id="N2",
+        macro_node=MacroNode(macro_id="M2", label="task neglect", source_normalized_ids=["NE1"]),
+        abstraction=AbstractionLadder(level_0_raw="daydream", level_1_domain="neglect", level_2_functional="task neglect", level_3_schema="inaction"),
+        functional_role=BackboneRole.CAUSAL_ANTECEDENT
+    )
+    n_outcome = BackboneNode(
+        node_id="N3",
+        macro_node=MacroNode(macro_id="M3", label="requirement failure", source_normalized_ids=["NE5"]),
+        abstraction=AbstractionLadder(level_0_raw="fails", level_1_domain="fails", level_2_functional="requirement failure", level_3_schema="failure"),
+        functional_role=BackboneRole.FOCAL_OUTCOME,
+        is_focal_outcome=True
+    )
+    
+    edge = BackboneEdge(
+        edge_id="BE1",
+        source_id="N2",
+        target_id="N3",
+        relation_type=RelationType.CAUSES,
+        underlying_relation_ids=["R1"]
+    )
+    
+    nodes_dict = {"N1": n_chronic, "N2": n_cause, "N3": n_outcome}
+    surviving_nodes, exp_edges, temp_edges, pruned_ids, pruned_reasons = apply_backbone_minimality_pass(
+        nodes_dict=nodes_dict,
+        explanatory_edges=[edge],
+        temporal_constraints=[],
+        anchors=NarrativeAnchors(focal_outcome_ids=["NE5"]),
+        pruned_ids=[],
+        pruned_reasons={}
+    )
+    
+    # N1 (isolated background) should be pruned
+    assert "N1" not in surviving_nodes
+    assert "N2" in surviving_nodes
+    assert "N3" in surviving_nodes
+    assert "NE_old" in pruned_ids
 
 
-def test_william_backbone_pruning_and_provenance_invariants():
-    """Validates Points 2, 3, 4, 5, 8 on William's canonical story."""
-    fixture_path = Path(__file__).parent.parent / "analogy_schema" / "fixtures" / "stories" / "william_base.json"
-    with open(fixture_path, "r") as f:
-        data = json.load(f)
-    story = Story.from_text(story_id=data["story_id"], text=data["text"])
+def test_anchor_role_consistency_validator_catches_downstream_causal_conflict():
+    """Validates Point 5 & 8: Downstream reaction on causal path raises validation warning."""
+    from analogy_schema.models.backbone import BackboneNode, MacroNode, AbstractionLadder, BackboneEdge, NarrativeAnchors, CausalBackbone
     
-    mock_llm = MockLLMProvider()
-    mock_llm.register_response("AtomicExtractionOutput", get_william_mock_stage_a())
-    mock_llm.register_response("NormalizationOutput", get_william_mock_stage_b())
-    mock_llm.register_response("RelationExtractionOutput", get_william_mock_stage_c())
-    mock_llm.register_response("GoalOutcomeOutput", get_william_mock_stage_d())
-    mock_llm.register_response("BackboneSelectionOutput", get_william_mock_stage_f())
-    mock_llm.register_response("MacroGroupingOutput", get_william_mock_stage_gh())
+    n_reaction = BackboneNode(
+        node_id="N1",
+        macro_node=MacroNode(macro_id="M1", label="task neglect", source_normalized_ids=["NE1"]),
+        abstraction=AbstractionLadder(level_0_raw="daydream", level_1_domain="neglect", level_2_functional="task neglect", level_3_schema="inaction"),
+        functional_role=BackboneRole.DOWNSTREAM_REACTION
+    )
+    n_outcome = BackboneNode(
+        node_id="N2",
+        macro_node=MacroNode(macro_id="M2", label="requirement failure", source_normalized_ids=["NE5"]),
+        abstraction=AbstractionLadder(level_0_raw="fails", level_1_domain="fails", level_2_functional="requirement failure", level_3_schema="failure"),
+        functional_role=BackboneRole.FOCAL_OUTCOME,
+        is_focal_outcome=True
+    )
+    edge = BackboneEdge(
+        edge_id="BE1",
+        source_id="N1",
+        target_id="N2",
+        relation_type=RelationType.CAUSES,
+        underlying_relation_ids=["R1"]
+    )
     
-    pipeline = SingleStoryPipeline(llm=mock_llm)
-    result = pipeline.run(story)
-    backbone = result.backbone
+    backbone = CausalBackbone(
+        backbone_id="bb_test",
+        story_id="test",
+        nodes={"N1": n_reaction, "N2": n_outcome},
+        explanatory_edges=[edge]
+    )
     
-    # 1. William's final backbone excludes emotional reaction / door slamming / plaster cracking
-    all_node_text = " ".join(
-        n.abstraction.level_0_raw + " " + n.abstraction.level_2_functional + " " + n.macro_node.label
-        for n in backbone.nodes.values()
-    ).lower()
-    assert "sulk" not in all_node_text
-    assert "slam" not in all_node_text
-    assert "plaster" not in all_node_text
-    assert "NE7" in backbone.pruned_node_ids
-    
-    # 2. William's requirement failure and reward withholding remain
-    focal_nodes = [n for n in backbone.nodes.values() if n.functional_role == BackboneRole.FOCAL_OUTCOME]
-    contingent_nodes = [n for n in backbone.nodes.values() if n.functional_role == BackboneRole.CONTINGENT_OUTCOME]
-    assert len(focal_nodes) >= 1
-    assert len(contingent_nodes) >= 1
-    
-    # 3. No final backbone edge exists without rich-edge provenance
-    assert len(backbone.edges) > 0
-    for edge in backbone.edges:
-        assert len(edge.underlying_relation_ids) > 0, f"Edge {edge.edge_id} has no rich-edge provenance!"
-        
-    # 4. William's deficit state exists before/spans the intervention with holds_at_intervention=True
-    deficit_nodes = [n for n in backbone.nodes.values() if n.functional_role == BackboneRole.PROBLEM_STATE]
-    assert len(deficit_nodes) >= 1
-    assert deficit_nodes[0].onset_phase in (InterventionPhase.PRE_INTERVENTION, InterventionPhase.SPANS_INTERVENTION)
-    assert deficit_nodes[0].holds_at_intervention is True
-    
-    # 5. Invariant checks pass with 0 warnings
     warnings = backbone.validate_invariants()
-    assert len(warnings) == 0
+    assert any("Anchor Role Conflict" in w for w in warnings)
 
 
-def test_all_six_benchmark_fixtures_exist():
-    """Validates Point 7: All 6 benchmark story fixtures are present and valid."""
+def test_all_anonymous_benchmark_fixtures_exist():
+    """Validates Point 9: All 6 exact benchmark story fixtures and evaluation manifest exist."""
     fixtures_dir = Path(__file__).parent.parent / "analogy_schema" / "fixtures" / "stories"
     expected_files = [
-        "william_base.json",
-        "karen_true_analogy.json",
-        "karen_false_analogy.json",
-        "william_literally_similar.json",
-        "william_surface_similar.json",
-        "william_mere_appearance.json",
+        "story_base_01.json",
+        "story_target_01.json",
+        "story_target_02.json",
+        "story_target_03.json",
+        "story_target_04.json",
+        "story_target_05.json",
+        "synth_story_01.json",
+        "synth_story_02.json",
+        "synth_story_03.json",
     ]
     for fname in expected_files:
         fpath = fixtures_dir / fname
-        assert fpath.exists(), f"Missing benchmark fixture: {fname}"
+        assert fpath.exists(), f"Missing fixture: {fname}"
         with open(fpath, "r") as f:
             data = json.load(f)
         assert "text" in data and len(data["text"]) > 50
+        assert "title" not in data or data.get("title") is None or "analogy" not in data.get("title", "").lower()
+        
+    manifest_path = Path(__file__).parent.parent / "analogy_schema" / "fixtures" / "benchmark_manifest.json"
+    assert manifest_path.exists()

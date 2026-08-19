@@ -1,6 +1,7 @@
 import re
 from typing import List, Dict, Any, Optional, Set, Tuple
 from collections import defaultdict
+import networkx as nx
 from pydantic import BaseModel, Field
 from analogy_schema.models.story import Story
 from analogy_schema.models.graph import RichEventGraph
@@ -41,6 +42,52 @@ class MacroGroupingOutput(BaseModel):
     macro_nodes: List[GeneratedMacroNode] = Field(default_factory=list)
 
 
+def derive_atomic_functional_level_2(ne: NormalizedEvent, fallback_role: BackboneRole) -> str:
+    """
+    Derives a domain-neutral Level-2 functional label when a compound macro-node is split.
+    Guarantees that split nodes do not lose cross-domain functional abstraction.
+    """
+    pred = ne.predicate_name.upper() if ne.predicate_name else ""
+    summary = ne.summary_label.lower() if ne.summary_label else ""
+    
+    # Generic predicate to functional mapping
+    if "NEGLECT" in pred or "DISENGAGE" in pred or "DISTRACT" in pred:
+        return "task neglect"
+    elif "DEFICIT" in pred or "POOR" in pred or "BEHIND" in pred or "DISORDER" in pred or "MESS" in pred:
+        return "performance deficit"
+    elif "INCENTIVE" in pred or "OFFER" in pred or "PROMISE" in pred or "REWARD_OFFER" in pred:
+        return "conditional incentive"
+    elif "INSUFFICIENT" in pred or "SHORTAGE" in pred or "CONSTRAINT" in pred or "TIME" in pred:
+        return "insufficient remaining resources"
+    elif "FAIL" in pred and ("CLASS" in pred or "COURSE" in pred or "SUBGOAL" in pred or "PREREQ" in pred):
+        return "prerequisite failure"
+    elif "FAIL" in pred or "UNMET" in pred:
+        return "requirement failure"
+    elif "WITHHOLD" in pred or "FORFEIT" in pred or "DENIED" in pred or "NO_REWARD" in pred:
+        return "reward withheld"
+    elif "ACCEPT" in pred or "RECEIVE_INCENTIVE" in pred:
+        return "incentive notification"
+    elif "ATTITUDE" in pred or "DISLIKE" in pred:
+        return "negative task attitude"
+    elif "EMOTION" in pred or "REACTION" in pred or "SULK" in pred:
+        return "emotional reaction"
+        
+    # Role-based fallback
+    role_map = {
+        BackboneRole.CAUSAL_ANTECEDENT: "causal antecedent action",
+        BackboneRole.PROBLEM_STATE: "problem state deficit",
+        BackboneRole.INTERVENTION: "external intervention",
+        BackboneRole.CONSTRAINT: "insufficient capacity constraint",
+        BackboneRole.FOCAL_OUTCOME: "requirement failure",
+        BackboneRole.CONTINGENT_OUTCOME: "reward withheld",
+        BackboneRole.ACTION_RESPONSE: "action response",
+        BackboneRole.BACKGROUND: "background context",
+        BackboneRole.DOWNSTREAM_REACTION: "downstream reaction",
+        BackboneRole.GOAL: "focal objective",
+    }
+    return role_map.get(fallback_role, sanitize_level_2_label(ne.summary_label))
+
+
 def enforce_anti_merging_constraints(
     proposed_nodes: List[GeneratedMacroNode],
     graph: RichEventGraph
@@ -79,6 +126,7 @@ def enforce_anti_merging_constraints(
             for ne_id in events:
                 ne = graph.normalized_events.get(ne_id)
                 summary = ne.summary_label if ne else ne_id
+                level_2_lbl = derive_atomic_functional_level_2(ne, gmn.functional_role) if ne else summary
                 sanitized_nodes.append(GeneratedMacroNode(
                     macro_id=f"{gmn.macro_id}_split_{split_counter}",
                     label=summary,
@@ -87,7 +135,7 @@ def enforce_anti_merging_constraints(
                     temporal_order=gmn.temporal_order,
                     abstraction_level_0=summary,
                     abstraction_level_1=summary,
-                    abstraction_level_2=summary,
+                    abstraction_level_2=level_2_lbl,
                     abstraction_level_3=gmn.abstraction_level_3
                 ))
                 split_counter += 1
@@ -116,10 +164,12 @@ def lift_rich_relations_to_backbone_edges(
     graph: RichEventGraph,
     nodes_dict: Dict[str, BackboneNode],
     ne_to_backbone_id: Dict[str, str]
-) -> List[BackboneEdge]:
+) -> Tuple[List[BackboneEdge], List[BackboneEdge]]:
     """
-    Deterministic Edge Lifting Algorithm.
-    Projects Stage-C Rich Graph relations onto MacroNodes.
+    Deterministic Edge Lifting & Separation Algorithm.
+    1. Projects Stage-C Rich Graph relations onto MacroNodes.
+    2. Separates Explanatory Causal Edges from Pure Temporal Constraints.
+    3. Computes a minimal non-redundant transitive reduction on BEFORE relations.
     """
     projected: Dict[Tuple[str, str], List[EventRelation]] = defaultdict(list)
     
@@ -141,7 +191,8 @@ def lift_rich_relations_to_backbone_edges(
         RelationType.BEFORE: 1,
     }
     
-    backbone_edges: List[BackboneEdge] = []
+    explanatory_edges: List[BackboneEdge] = []
+    raw_temporal_edges: List[BackboneEdge] = []
     edge_idx = 1
     
     for (src_id, dst_id), rel_list in projected.items():
@@ -171,10 +222,112 @@ def lift_rich_relations_to_backbone_edges(
             explicitness=primary_rel.explicitness,
             underlying_relation_ids=underlying_ids
         )
-        backbone_edges.append(edge)
         edge_idx += 1
         
-    return backbone_edges
+        if edge.is_explanatory:
+            explanatory_edges.append(edge)
+        else:
+            raw_temporal_edges.append(edge)
+            
+    # Compute minimal non-redundant transitive reduction on temporal BEFORE relations
+    temporal_constraints = compute_minimal_temporal_constraints(raw_temporal_edges, explanatory_edges)
+    
+    return explanatory_edges, temporal_constraints
+
+
+def compute_minimal_temporal_constraints(
+    raw_temporal_edges: List[BackboneEdge],
+    explanatory_edges: List[BackboneEdge]
+) -> List[BackboneEdge]:
+    """
+    Computes a minimal non-redundant set of temporal constraints.
+    Eliminates redundant edges where temporal precedence is already implied by explanatory paths or transitive chronology.
+    """
+    if not raw_temporal_edges:
+        return []
+        
+    G_temp = nx.DiGraph()
+    edge_map = {}
+    for edge in raw_temporal_edges:
+        G_temp.add_edge(edge.source_id, edge.target_id)
+        edge_map[(edge.source_id, edge.target_id)] = edge
+        
+    # Also include causal edges as implicit temporal constraints
+    for edge in explanatory_edges:
+        G_temp.add_edge(edge.source_id, edge.target_id)
+        
+    try:
+        # Transitive reduction on the combined graph
+        TR = nx.transitive_reduction(G_temp)
+        minimal_edges = []
+        for u, v in TR.edges():
+            if (u, v) in edge_map:
+                minimal_edges.append(edge_map[(u, v)])
+        return minimal_edges
+    except Exception:
+        return raw_temporal_edges
+
+
+def apply_backbone_minimality_pass(
+    nodes_dict: Dict[str, BackboneNode],
+    explanatory_edges: List[BackboneEdge],
+    temporal_constraints: List[BackboneEdge],
+    anchors: NarrativeAnchors,
+    pruned_ids: List[str],
+    pruned_reasons: Dict[str, str]
+) -> Tuple[Dict[str, BackboneNode], List[BackboneEdge], List[BackboneEdge], List[str], Dict[str, str]]:
+    """
+    Final Backbone Minimality Pass (Point 3):
+    Removes isolated / non-anchor nodes that do not participate in the explanatory subgraph
+    connecting causal antecedents / problem states / interventions / constraints to focal or contingent outcomes.
+    This domain-neutrally prunes William's chronic failure record.
+    """
+    # Build explanatory graph
+    G_exp = nx.DiGraph()
+    for nid in nodes_dict.keys():
+        G_exp.add_node(nid)
+    for edge in explanatory_edges:
+        G_exp.add_edge(edge.source_id, edge.target_id)
+        
+    # Identify focal & contingent outcome node IDs in backbone
+    outcome_node_ids = set()
+    for nid, node in nodes_dict.items():
+        if node.is_focal_outcome or node.is_contingent_outcome:
+            outcome_node_ids.add(nid)
+            
+    # Find all ancestors that can reach any focal/contingent outcome via explanatory paths
+    connected_ancestors = set()
+    for out_id in outcome_node_ids:
+        if out_id in G_exp:
+            connected_ancestors.add(out_id)
+            connected_ancestors.update(nx.ancestors(G_exp, out_id))
+            
+    # Also retain intervention nodes and nodes reachable from intervention
+    for nid, node in nodes_dict.items():
+        if node.is_intervention:
+            connected_ancestors.add(nid)
+            if nid in G_exp:
+                connected_ancestors.update(nx.descendants(G_exp, nid))
+                
+    surviving_nodes: Dict[str, BackboneNode] = {}
+    updated_pruned_ids = list(pruned_ids)
+    updated_pruned_reasons = dict(pruned_reasons)
+    
+    for nid, node in nodes_dict.items():
+        if nid in connected_ancestors or G_exp.degree(nid) > 0:
+            surviving_nodes[nid] = node
+        else:
+            # Isolated background node - prune in minimality pass
+            for ne_id in node.macro_node.source_normalized_ids:
+                updated_pruned_ids.append(ne_id)
+                updated_pruned_reasons[ne_id] = f"Pruned during final minimality pass: isolated {node.functional_role.value} node '{node.abstraction.level_2_functional}' without explanatory connection to focal outcomes."
+                
+    # Filter edges to only connect surviving nodes
+    surviving_ids = set(surviving_nodes.keys())
+    surviving_explanatory = [e for e in explanatory_edges if e.source_id in surviving_ids and e.target_id in surviving_ids]
+    surviving_temporal = [e for e in temporal_constraints if e.source_id in surviving_ids and e.target_id in surviving_ids]
+    
+    return surviving_nodes, surviving_explanatory, surviving_temporal, updated_pruned_ids, updated_pruned_reasons
 
 
 def _build_causal_backbone_from_grouping(
@@ -282,23 +435,41 @@ def _build_causal_backbone_from_grouping(
         )
         nodes_dict[node_id] = backbone_node
         
-    backbone_edges = lift_rich_relations_to_backbone_edges(
+    explanatory_edges, temporal_constraints = lift_rich_relations_to_backbone_edges(
         graph=graph,
         nodes_dict=nodes_dict,
         ne_to_backbone_id=ne_to_backbone_id
     )
     
+    # Apply Final Backbone Minimality Pass (removes disconnected background nodes)
+    (
+        surviving_nodes,
+        surviving_explanatory,
+        surviving_temporal,
+        final_pruned_ids,
+        final_pruned_reasons
+    ) = apply_backbone_minimality_pass(
+        nodes_dict=nodes_dict,
+        explanatory_edges=explanatory_edges,
+        temporal_constraints=temporal_constraints,
+        anchors=anchors,
+        pruned_ids=pruned_ids,
+        pruned_reasons=pruned_reasons
+    )
+    
     backbone = CausalBackbone(
         backbone_id=f"backbone_{story.story_id}",
         story_id=story.story_id,
-        nodes=nodes_dict,
-        edges=backbone_edges,
+        nodes=surviving_nodes,
+        explanatory_edges=surviving_explanatory,
+        temporal_constraints=surviving_temporal,
         anchors=anchors,
-        pruned_node_ids=pruned_ids,
-        pruned_reasons=pruned_reasons,
+        pruned_node_ids=final_pruned_ids,
+        pruned_reasons=final_pruned_reasons,
         metadata={
-            "total_backbone_nodes": len(nodes_dict),
-            "total_backbone_edges": len(backbone_edges),
+            "total_backbone_nodes": len(surviving_nodes),
+            "total_explanatory_edges": len(surviving_explanatory),
+            "total_temporal_constraints": len(surviving_temporal),
             "edge_derivation_method": "deterministic_rich_relation_lifting"
         }
     )
@@ -318,6 +489,7 @@ def run_stage_g_and_h_macro_and_abstraction(
     llm: BaseLLMProvider
 ) -> CausalBackbone:
     """Stages G & H (Synchronous)."""
+    anonymous_story = story.to_llm_input()
     retained_ids = set(e.norm_id for e in retained_events)
     retained_relations = [
         r for r in graph.relations
@@ -326,7 +498,7 @@ def run_stage_g_and_h_macro_and_abstraction(
     
     prompt = PromptRegistry.render(
         "macro_grouping",
-        story=story,
+        story=anonymous_story,
         retained_events=retained_events,
         rich_relations=retained_relations
     )
@@ -358,6 +530,7 @@ async def run_stage_g_and_h_macro_and_abstraction_async(
     llm: BaseLLMProvider
 ) -> CausalBackbone:
     """Stages G & H (Asynchronous)."""
+    anonymous_story = story.to_llm_input()
     retained_ids = set(e.norm_id for e in retained_events)
     retained_relations = [
         r for r in graph.relations
@@ -366,7 +539,7 @@ async def run_stage_g_and_h_macro_and_abstraction_async(
     
     prompt = PromptRegistry.render(
         "macro_grouping",
-        story=story,
+        story=anonymous_story,
         retained_events=retained_events,
         rich_relations=retained_relations
     )

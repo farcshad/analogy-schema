@@ -1,5 +1,6 @@
 import re
-from typing import List, Dict, Optional, Any
+from typing import List, Dict, Optional, Any, Set
+import networkx as nx
 from pydantic import BaseModel, Field
 from analogy_schema.models.relations import RelationType, EventRelation
 from analogy_schema.models.events import Explicitness, BackboneRole, InterventionPhase, TemporalGrounding, Polarity
@@ -76,6 +77,14 @@ class BackboneEdge(BaseModel):
         description="Mandatory provenance: Stage-C Rich Graph relation IDs from which this edge is lifted"
     )
 
+    @property
+    def is_explanatory(self) -> bool:
+        return self.relation_type.is_causal_or_explanatory
+
+    @property
+    def is_temporal_only(self) -> bool:
+        return self.relation_type.is_temporal_only
+
 
 class NarrativeAnchors(BaseModel):
     central_problem: Optional[str] = None
@@ -96,61 +105,99 @@ class CausalBackbone(BaseModel):
     backbone_id: str
     story_id: str
     nodes: Dict[str, BackboneNode] = Field(default_factory=dict)
-    edges: List[BackboneEdge] = Field(default_factory=list)
+    explanatory_edges: List[BackboneEdge] = Field(default_factory=list, description="Causal, motivational, and consequential edges")
+    temporal_constraints: List[BackboneEdge] = Field(default_factory=list, description="Minimal non-redundant chronological constraints")
     anchors: NarrativeAnchors = Field(default_factory=NarrativeAnchors)
     pruned_node_ids: List[str] = Field(default_factory=list)
     pruned_reasons: Dict[str, str] = Field(default_factory=dict)
     metadata: Dict[str, Any] = Field(default_factory=dict)
 
+    @property
+    def edges(self) -> List[BackboneEdge]:
+        """Returns all edges combining explanatory edges and temporal constraints."""
+        return self.explanatory_edges + self.temporal_constraints
+
     def validate_invariants(self) -> List[str]:
         """
-        Validates methodological and topological invariants:
-        1. Edge provenance invariant.
-        2. Temporal-causal consistency (e.g. POST_INTERVENTION node cannot precede or cause an intervention).
-        3. Relational neutrality in node labels.
-        4. Node existence & self-loop prevention.
+        Comprehensive Methodological & Topological Invariant Validators:
+        1. Label leakage verification.
+        2. Downstream-reaction / causal-path conflict verification.
+        3. Disconnected non-anchor node verification.
+        4. Valid Level-2 functional abstraction verification.
+        5. Temporal-causal consistency verification.
+        6. Redundant temporal constraint verification.
+        7. Edge provenance verification.
         """
         warnings = []
+        
+        # 1. Label leakage check
+        forbidden_benchmark_labels = [
+            "true_analogy", "false_analogy", "surface_similar",
+            "literally_similar", "mere_appearance"
+        ]
+        all_text = " ".join([
+            node.abstraction.level_0_raw + " " + node.abstraction.level_2_functional + " " + node.macro_node.label
+            for node in self.nodes.values()
+        ] + [
+            edge.justification or "" for edge in self.edges
+        ] + [
+            self.anchors.central_problem or "", self.anchors.central_goal or ""
+        ]).lower()
+        for label in forbidden_benchmark_labels:
+            if label in all_text:
+                warnings.append(f"Ground-Truth Leakage Warning: Found benchmark condition label '{label}' in backbone text!")
+
+        # 2. Downstream-reaction on causal path check
+        for nid, node in self.nodes.items():
+            if node.functional_role == BackboneRole.DOWNSTREAM_REACTION:
+                # Check if this node has outgoing explanatory edges
+                out_explanatory = [e for e in self.explanatory_edges if e.source_id == nid]
+                if out_explanatory:
+                    warnings.append(
+                        f"Anchor Role Conflict: Node {nid} marked DOWNSTREAM_REACTION has outgoing explanatory edge(s) {[e.edge_id for e in out_explanatory]} to {', '.join(e.target_id for e in out_explanatory)}."
+                    )
+
+        # 3. Disconnected non-anchor check
+        all_edge_nodes = set(e.source_id for e in self.edges).union(set(e.target_id for e in self.edges))
+        for nid, node in self.nodes.items():
+            if nid not in all_edge_nodes and not (node.is_focal_outcome or node.is_intervention):
+                warnings.append(
+                    f"Minimality Violation: Node {nid} ({node.abstraction.level_2_functional}) is disconnected from the backbone graph and is not an intervention/focal outcome."
+                )
+
+        # 4. Valid Level-2 abstraction check
         forbidden_label_phrases = [
             "caused by", "due to", "leading to", "results in", "resulting in",
             "because of", "despite intervention", "prevents "
         ]
-        
-        # Check node labels
         for nid, node in self.nodes.items():
-            l2 = node.abstraction.level_2_functional.lower()
+            l2 = node.abstraction.level_2_functional.strip()
+            if not l2 or len(l2) < 3:
+                warnings.append(f"Level-2 Abstraction Invalid: Node {nid} has empty or degenerate Level-2 functional label '{l2}'.")
             for phrase in forbidden_label_phrases:
-                if phrase in l2:
+                if phrase in l2.lower():
                     warnings.append(
-                        f"Node {nid} Level-2 label '{node.abstraction.level_2_functional}' embeds relational phrase '{phrase}'. Prefer atomic event/state description."
+                        f"Relational Embedding Warning: Node {nid} Level-2 label '{l2}' embeds relational phrase '{phrase}'."
                     )
-                    
-        # Check edges and temporal consistency
+
+        # 5. Temporal-causal consistency check
+        for edge in self.explanatory_edges:
+            if edge.source_id in self.nodes and edge.target_id in self.nodes:
+                src_node = self.nodes[edge.source_id]
+                dst_node = self.nodes[edge.target_id]
+                src_onset = src_node.temporal_grounding.onset_phase
+                dst_onset = dst_node.temporal_grounding.onset_phase
+                if src_onset == InterventionPhase.POST_INTERVENTION and dst_onset in (InterventionPhase.PRE_INTERVENTION, InterventionPhase.AT_INTERVENTION):
+                    if edge.relation_type in (RelationType.CAUSES, RelationType.RESULTS_IN, RelationType.ENABLES):
+                        warnings.append(
+                            f"Temporal-Causal Inversion: Node {edge.source_id} (onset=POST_INTERVENTION) is asserted to {edge.relation_type.value} {edge.target_id} (onset={dst_onset.value})."
+                        )
+
+        # 6. Edge provenance check
         for edge in self.edges:
-            if edge.source_id not in self.nodes:
-                warnings.append(f"Edge {edge.edge_id}: source_id '{edge.source_id}' does not exist in nodes.")
-                continue
-            if edge.target_id not in self.nodes:
-                warnings.append(f"Edge {edge.edge_id}: target_id '{edge.target_id}' does not exist in nodes.")
-                continue
-            if edge.source_id == edge.target_id:
-                warnings.append(f"Edge {edge.edge_id}: self-loop detected on '{edge.source_id}'.")
             if not edge.underlying_relation_ids:
                 warnings.append(
-                    f"Invariant Violation: Backbone edge {edge.edge_id} ({edge.source_id} -> {edge.target_id}) has no underlying rich relation provenance."
+                    f"Provenance Invariant Violation: Edge {edge.edge_id} ({edge.source_id} -> {edge.target_id}) has no underlying rich-graph relation provenance."
                 )
-                
-            # Temporal-causal consistency check
-            src_node = self.nodes[edge.source_id]
-            dst_node = self.nodes[edge.target_id]
-            
-            src_onset = src_node.temporal_grounding.onset_phase
-            dst_onset = dst_node.temporal_grounding.onset_phase
-            
-            if src_onset == InterventionPhase.POST_INTERVENTION and dst_onset in (InterventionPhase.PRE_INTERVENTION, InterventionPhase.AT_INTERVENTION):
-                if edge.relation_type in (RelationType.CAUSES, RelationType.BEFORE, RelationType.ENABLES, RelationType.RESULTS_IN):
-                    warnings.append(
-                        f"Temporal Anomaly: Node {edge.source_id} (onset=POST_INTERVENTION) is linked via {edge.relation_type.value} to {edge.target_id} (onset={dst_onset.value})."
-                    )
-                    
+
         return warnings

@@ -1,0 +1,542 @@
+{
+  "backbone_id": "backbone_story_target_02",
+  "story_id": "story_target_02",
+  "nodes": {
+    "N1": {
+      "node_id": "N1",
+      "macro_node": {
+        "macro_id": "M1",
+        "label": "conditional incentive",
+        "source_normalized_ids": [
+          "NE2"
+        ],
+        "source_atomic_ids": [
+          "E4",
+          "E5",
+          "E21"
+        ],
+        "functional_role": "INTERVENTION",
+        "temporal_grounding": {
+          "mention_phase": "AT_INTERVENTION",
+          "onset_phase": "AT_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 1
+      },
+      "abstraction": {
+        "level_0_raw": "Father promises Hawaii vacation conditional on top marks",
+        "level_1_domain": "conditional reward offer",
+        "level_2_functional": "conditional incentive",
+        "level_3_schema": "conditional reward offer"
+      },
+      "functional_role": "INTERVENTION",
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": true,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "if she earned top marks on her final graduation requirements",
+        "her father promised to pay for a vacation to Hawaii",
+        "A few weeks before the end of the term, her father promised to pay for a vacation to Hawaii if she earned top marks"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N2": {
+      "node_id": "N2",
+      "macro_node": {
+        "macro_id": "M2",
+        "label": "incentive reception",
+        "source_normalized_ids": [
+          "NE3"
+        ],
+        "source_atomic_ids": [
+          "E6"
+        ],
+        "functional_role": "ACTION_RESPONSE",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "AT_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 2
+      },
+      "abstraction": {
+        "level_0_raw": "Karen receives the promise",
+        "level_1_domain": "incentive reception",
+        "level_2_functional": "incentive reception",
+        "level_3_schema": "incentive reception"
+      },
+      "functional_role": "ACTION_RESPONSE",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "After receiving this exciting promise"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N3": {
+      "node_id": "N3",
+      "macro_node": {
+        "macro_id": "M3",
+        "label": "obsessive preoccupation",
+        "source_normalized_ids": [
+          "NE4"
+        ],
+        "source_atomic_ids": [
+          "E7"
+        ],
+        "functional_role": "DOWNSTREAM_REACTION",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "PERSISTENT_STATE"
+        },
+        "temporal_order": 3
+      },
+      "abstraction": {
+        "level_0_raw": "Karen becomes obsessed with Hawaii",
+        "level_1_domain": "obsessive preoccupation",
+        "level_2_functional": "obsessive preoccupation",
+        "level_3_schema": "obsessive preoccupation"
+      },
+      "functional_role": "DOWNSTREAM_REACTION",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "PERSISTENT_STATE"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "Karen became so obsessed with the prospect of Hawaii"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N4": {
+      "node_id": "N4",
+      "macro_node": {
+        "macro_id": "M4",
+        "label": "task neglect",
+        "source_normalized_ids": [
+          "NE5"
+        ],
+        "source_atomic_ids": [
+          "E8",
+          "E9",
+          "E10",
+          "E11"
+        ],
+        "functional_role": "ACTION_RESPONSE",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "INTERVAL"
+        },
+        "temporal_order": 4
+      },
+      "abstraction": {
+        "level_0_raw": "Karen neglects studying to engage in vacation-related activities",
+        "level_1_domain": "task neglect",
+        "level_2_functional": "task neglect",
+        "level_3_schema": "task neglect"
+      },
+      "functional_role": "ACTION_RESPONSE",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "instead of studying for her exams",
+        "making travel itineraries",
+        "daydreaming about the beach",
+        "she spent the remaining weeks shopping for summer clothes"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N6": {
+      "node_id": "N6",
+      "macro_node": {
+        "macro_id": "M6",
+        "label": "performance deficit",
+        "source_normalized_ids": [
+          "NE7"
+        ],
+        "source_atomic_ids": [
+          "E13"
+        ],
+        "functional_role": "PROBLEM_STATE",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "PERSISTENT_STATE"
+        },
+        "temporal_order": 6
+      },
+      "abstraction": {
+        "level_0_raw": "Karen is unprepared for exams",
+        "level_1_domain": "performance deficit",
+        "level_2_functional": "performance deficit",
+        "level_3_schema": "performance deficit"
+      },
+      "functional_role": "PROBLEM_STATE",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "PERSISTENT_STATE"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "she was completely unprepared"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N7": {
+      "node_id": "N7",
+      "macro_node": {
+        "macro_id": "M7",
+        "label": "requirement failure",
+        "source_normalized_ids": [
+          "NE8"
+        ],
+        "source_atomic_ids": [
+          "E14",
+          "E22"
+        ],
+        "functional_role": "FOCAL_OUTCOME",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 7
+      },
+      "abstraction": {
+        "level_0_raw": "Karen fails final tests",
+        "level_1_domain": "requirement failure",
+        "level_2_functional": "requirement failure",
+        "level_3_schema": "requirement failure"
+      },
+      "functional_role": "FOCAL_OUTCOME",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": true,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "Karen failed her final tests"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N8": {
+      "node_id": "N8",
+      "macro_node": {
+        "macro_id": "M8",
+        "label": "graduation denial",
+        "source_normalized_ids": [
+          "NE9"
+        ],
+        "source_atomic_ids": [
+          "E15",
+          "E23"
+        ],
+        "functional_role": "CONTINGENT_OUTCOME",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 8
+      },
+      "abstraction": {
+        "level_0_raw": "Karen is denied graduation",
+        "level_1_domain": "graduation denial",
+        "level_2_functional": "graduation denial",
+        "level_3_schema": "graduation denial"
+      },
+      "functional_role": "CONTINGENT_OUTCOME",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": true,
+      "provenance_text_spans": [
+        "was denied graduation"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N9": {
+      "node_id": "N9",
+      "macro_node": {
+        "macro_id": "M9",
+        "label": "reward withheld",
+        "source_normalized_ids": [
+          "NE10"
+        ],
+        "source_atomic_ids": [
+          "E16",
+          "E24"
+        ],
+        "functional_role": "CONTINGENT_OUTCOME",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 9
+      },
+      "abstraction": {
+        "level_0_raw": "Karen does not receive the Hawaii trip",
+        "level_1_domain": "reward withheld",
+        "level_2_functional": "reward withheld",
+        "level_3_schema": "reward withheld"
+      },
+      "functional_role": "CONTINGENT_OUTCOME",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": true,
+      "provenance_text_spans": [
+        "did not receive the trip to Hawaii"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N10": {
+      "node_id": "N10",
+      "macro_node": {
+        "macro_id": "M10",
+        "label": "vacation cancellation",
+        "source_normalized_ids": [
+          "NE12"
+        ],
+        "source_atomic_ids": [
+          "E19"
+        ],
+        "functional_role": "DOWNSTREAM_REACTION",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 10
+      },
+      "abstraction": {
+        "level_0_raw": "Vacation is canceled",
+        "level_1_domain": "vacation cancellation",
+        "level_2_functional": "vacation cancellation",
+        "level_3_schema": "vacation cancellation"
+      },
+      "functional_role": "DOWNSTREAM_REACTION",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": true,
+      "provenance_text_spans": [
+        "the vacation was canceled"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    }
+  },
+  "explanatory_edges": [
+    {
+      "edge_id": "BE1",
+      "source_id": "N1",
+      "target_id": "N2",
+      "relation_type": "CAUSES",
+      "justification": "Father promises Hawaii vacation conditional on top marks; Karen receives the promise.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R1"
+      ]
+    },
+    {
+      "edge_id": "BE2",
+      "source_id": "N2",
+      "target_id": "N3",
+      "relation_type": "CAUSES",
+      "justification": "After receiving this exciting promise, Karen became so obsessed with the prospect of Hawaii.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R2"
+      ]
+    },
+    {
+      "edge_id": "BE3",
+      "source_id": "N3",
+      "target_id": "N4",
+      "relation_type": "CAUSES",
+      "justification": "Karen became so obsessed with the prospect of Hawaii that she spent the remaining weeks shopping for summer clothes, making travel itineraries, and daydreaming about the beach instead of studying for her exams.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R3"
+      ]
+    },
+    {
+      "edge_id": "BE4",
+      "source_id": "N4",
+      "target_id": "N6",
+      "relation_type": "CAUSES",
+      "justification": "Karen neglected studying to engage in vacation-related activities, leading to being unprepared for exams.",
+      "confidence": 1.0,
+      "explicitness": "strongly_inferred",
+      "underlying_relation_ids": [
+        "R4"
+      ]
+    },
+    {
+      "edge_id": "BE6",
+      "source_id": "N6",
+      "target_id": "N7",
+      "relation_type": "CAUSES",
+      "justification": "Karen was completely unprepared for exams, and as a result failed her final tests.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R6"
+      ]
+    },
+    {
+      "edge_id": "BE7",
+      "source_id": "N7",
+      "target_id": "N8",
+      "relation_type": "RESULTS_IN",
+      "justification": "Karen failed her final tests, and was denied graduation.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R7"
+      ]
+    },
+    {
+      "edge_id": "BE8",
+      "source_id": "N7",
+      "target_id": "N9",
+      "relation_type": "RESULTS_IN",
+      "justification": "Karen failed her final tests, and did not receive the trip to Hawaii.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R8"
+      ]
+    },
+    {
+      "edge_id": "BE9",
+      "source_id": "N9",
+      "target_id": "N10",
+      "relation_type": "RESULTS_IN",
+      "justification": "Karen did not receive the trip, and the vacation was canceled.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R10"
+      ]
+    }
+  ],
+  "temporal_constraints": [],
+  "anchors": {
+    "central_problem": "Karen is a high school student who dislikes school and maintains barely passing grades.",
+    "central_goal": "Earn top marks on final graduation requirements.",
+    "intervention_event_ids": [
+      "NE2"
+    ],
+    "focal_outcome_ids": [
+      "NE8"
+    ],
+    "contingent_outcome_ids": [
+      "NE9",
+      "NE10",
+      "NE12"
+    ],
+    "downstream_reaction_ids": [
+      "NE11"
+    ],
+    "contracts": [
+      {
+        "intervention_event_id": "NE2",
+        "promised_reward": "vacation to Hawaii",
+        "contingent_requirement": "earn top marks on final graduation requirements",
+        "condition_polarity": "positive"
+      }
+    ],
+    "explanation": "The central problem is Karen's poor academic engagement. The central goal is to earn top marks. The father's promise (NE2) is the intervention. Failing the final tests (NE8) is the focal outcome (failure to meet the goal). Denied graduation (NE9), not receiving the trip (NE10), and vacation canceled (NE12) are contingent outcomes. Arguing angrily (NE11) is a downstream reaction that does not causally explain the focal outcome."
+  },
+  "pruned_node_ids": [
+    "NE11",
+    "NE1",
+    "NE6"
+  ],
+  "pruned_reasons": {
+    "NE1": "Karen's chronic poor academic engagement and low grades are a background state that does not causally explain the specific focal episode. The intervention (promise of Hawaii) and subsequent obsession directly cause the neglect of studying, leading to failure. Removing NE1 does not damage the explanation because the causal chain from incentive to neglect to failure is sufficient.",
+    "NE11": "Karen's angry argument with her father is a downstream emotional reaction and collateral action, not causally necessary to explain the focal outcomes (failure, denied graduation, canceled trip). Removing it does not affect the explanatory mechanism of how the intervention led to failure.",
+    "NE6": "Pruned during final minimality pass: isolated CONSTRAINT node 'exam arrival' without explanatory connection to focal outcomes."
+  },
+  "metadata": {
+    "total_backbone_nodes": 9,
+    "total_explanatory_edges": 8,
+    "total_temporal_constraints": 0,
+    "edge_derivation_method": "deterministic_rich_relation_lifting",
+    "validation_warnings": [
+      "Anchor Role Conflict: Node N3 marked DOWNSTREAM_REACTION has outgoing explanatory edge(s) ['BE3'] to N4."
+    ]
+  }
+}

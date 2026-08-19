@@ -16,9 +16,10 @@ def run_stage_b_semantic_normalization(
     llm: BaseLLMProvider
 ) -> List[NormalizedEvent]:
     """Stage B: Semantic normalization of atomic events (Synchronous)."""
+    anonymous_story = story.to_llm_input()
     prompt = PromptRegistry.render(
         "semantic_normalization",
-        story=story,
+        story=anonymous_story,
         atomic_events=atomic_events
     )
     system_prompt = "You are a semantic predicate normalizer maintaining strict provenance to atomic event IDs."
@@ -42,9 +43,10 @@ async def run_stage_b_semantic_normalization_async(
     llm: BaseLLMProvider
 ) -> List[NormalizedEvent]:
     """Stage B: Semantic normalization of atomic events (Asynchronous)."""
+    anonymous_story = story.to_llm_input()
     prompt = PromptRegistry.render(
         "semantic_normalization",
-        story=story,
+        story=anonymous_story,
         atomic_events=atomic_events
     )
     system_prompt = "You are a semantic predicate normalizer maintaining strict provenance to atomic event IDs."

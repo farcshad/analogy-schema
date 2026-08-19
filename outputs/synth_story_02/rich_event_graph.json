@@ -1,0 +1,589 @@
+{
+  "graph_id": "rich_graph_synth_story_02",
+  "story_id": "synth_story_02",
+  "atomic_events": {
+    "E1": {
+      "event_id": "E1",
+      "text_span": "Karen was a high school student",
+      "sentence_id": 1,
+      "predicate": "was a high school student",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "state",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 1
+    },
+    "E2": {
+      "event_id": "E2",
+      "text_span": "was doing very poorly in school",
+      "sentence_id": 1,
+      "predicate": "doing very poorly in school",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "state",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 2
+    },
+    "E3": {
+      "event_id": "E3",
+      "text_span": "hated it",
+      "sentence_id": 1,
+      "predicate": "hated school",
+      "participants": [
+        "Karen",
+        "school"
+      ],
+      "event_type": "emotion_reaction",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 3
+    },
+    "E4": {
+      "event_id": "E4",
+      "text_span": "She spent most of her time daydreaming about going to Hawaii",
+      "sentence_id": 2,
+      "predicate": "spent time daydreaming about going to Hawaii",
+      "participants": [
+        "Karen",
+        "Hawaii"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 4
+    },
+    "E5": {
+      "event_id": "E5",
+      "text_span": "A few weeks before the end of the year Karen was failing enough classes",
+      "sentence_id": 3,
+      "predicate": "was failing enough classes",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "state",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 5
+    },
+    "E6": {
+      "event_id": "E6",
+      "text_span": "she was not going to graduate",
+      "sentence_id": 3,
+      "predicate": "was not going to graduate",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "outcome",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 6
+    },
+    "E7": {
+      "event_id": "E7",
+      "text_span": "because she had spent all her study time daydreaming",
+      "sentence_id": 3,
+      "predicate": "spent all her study time daydreaming",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 7
+    },
+    "E8": {
+      "event_id": "E8",
+      "text_span": "To encourage Karen, her father promised to take her to Hawaii if she passed all of her classes",
+      "sentence_id": 4,
+      "predicate": "promised to take her to Hawaii if she passed all of her classes",
+      "participants": [
+        "Karen",
+        "Karen's father",
+        "Hawaii"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 8
+    },
+    "E9": {
+      "event_id": "E9",
+      "text_span": "To encourage Karen",
+      "sentence_id": 4,
+      "predicate": "encourage Karen",
+      "participants": [
+        "Karen's father",
+        "Karen"
+      ],
+      "event_type": "goal",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 9
+    },
+    "E10": {
+      "event_id": "E10",
+      "text_span": "if she passed all of her classes",
+      "sentence_id": 4,
+      "predicate": "passed all of her classes",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "constraint",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 10
+    },
+    "E11": {
+      "event_id": "E11",
+      "text_span": "Karen was thrilled",
+      "sentence_id": 5,
+      "predicate": "was thrilled",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "emotion_reaction",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 11
+    },
+    "E12": {
+      "event_id": "E12",
+      "text_span": "there was no longer enough time for her to learn the material and pass",
+      "sentence_id": 6,
+      "predicate": "no longer enough time to learn the material and pass",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "constraint",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 12
+    },
+    "E13": {
+      "event_id": "E13",
+      "text_span": "Consequently, Karen failed her classes",
+      "sentence_id": 7,
+      "predicate": "failed her classes",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "outcome",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 13
+    },
+    "E14": {
+      "event_id": "E14",
+      "text_span": "did not get to go to Hawaii",
+      "sentence_id": 7,
+      "predicate": "did not get to go to Hawaii",
+      "participants": [
+        "Karen",
+        "Hawaii"
+      ],
+      "event_type": "outcome",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 14
+    },
+    "E15": {
+      "event_id": "E15",
+      "text_span": "Karen was deeply disappointed",
+      "sentence_id": 8,
+      "predicate": "was deeply disappointed",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "emotion_reaction",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 15
+    },
+    "E16": {
+      "event_id": "E16",
+      "text_span": "cried in her room",
+      "sentence_id": 8,
+      "predicate": "cried in her room",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "action",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 16
+    },
+    "E17": {
+      "event_id": "E17",
+      "text_span": "she didn't get to go to Hawaii",
+      "sentence_id": 8,
+      "predicate": "didn't get to go to Hawaii",
+      "participants": [
+        "Karen",
+        "Hawaii"
+      ],
+      "event_type": "outcome",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 17
+    }
+  },
+  "normalized_events": {
+    "NE1": {
+      "norm_id": "NE1",
+      "predicate_name": "DEFICIT_STATE",
+      "arguments": {
+        "actor": "Karen",
+        "state": "doing very poorly in school"
+      },
+      "atomic_event_ids": [
+        "E1",
+        "E2"
+      ],
+      "summary_label": "Karen is a high school student doing very poorly",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE2": {
+      "norm_id": "NE2",
+      "predicate_name": "NEGATIVE_EMOTIONAL_STATE",
+      "arguments": {
+        "actor": "Karen",
+        "target": "school",
+        "emotion": "hated"
+      },
+      "atomic_event_ids": [
+        "E3"
+      ],
+      "summary_label": "Karen hated school",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE3": {
+      "norm_id": "NE3",
+      "predicate_name": "NEGLECT_TASK",
+      "arguments": {
+        "actor": "Karen",
+        "task": "studying",
+        "alternative_activity": "daydreaming about going to Hawaii"
+      },
+      "atomic_event_ids": [
+        "E4",
+        "E7"
+      ],
+      "summary_label": "Karen spent time daydreaming instead of studying",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE4": {
+      "norm_id": "NE4",
+      "predicate_name": "DEFICIT_STATE",
+      "arguments": {
+        "actor": "Karen",
+        "state": "failing enough classes to not graduate"
+      },
+      "atomic_event_ids": [
+        "E5",
+        "E6"
+      ],
+      "summary_label": "Karen was failing classes and would not graduate",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE5": {
+      "norm_id": "NE5",
+      "predicate_name": "INTRODUCE_INCENTIVE",
+      "arguments": {
+        "actor": "Karen's father",
+        "beneficiary": "Karen",
+        "incentive": "trip to Hawaii",
+        "condition": "pass all classes"
+      },
+      "atomic_event_ids": [
+        "E8",
+        "E9",
+        "E10"
+      ],
+      "summary_label": "Father promised Hawaii trip if Karen passes all classes",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE6": {
+      "norm_id": "NE6",
+      "predicate_name": "POSITIVE_EMOTIONAL_STATE",
+      "arguments": {
+        "actor": "Karen",
+        "emotion": "thrilled"
+      },
+      "atomic_event_ids": [
+        "E11"
+      ],
+      "summary_label": "Karen was thrilled",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE7": {
+      "norm_id": "NE7",
+      "predicate_name": "RESOURCE_SHORTAGE",
+      "arguments": {
+        "actor": "Karen",
+        "resource": "time",
+        "task": "learn material and pass"
+      },
+      "atomic_event_ids": [
+        "E12"
+      ],
+      "summary_label": "Not enough time to learn material and pass",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE8": {
+      "norm_id": "NE8",
+      "predicate_name": "FAIL_CRITERIA",
+      "arguments": {
+        "actor": "Karen",
+        "task": "pass classes"
+      },
+      "atomic_event_ids": [
+        "E13"
+      ],
+      "summary_label": "Karen failed her classes",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE9": {
+      "norm_id": "NE9",
+      "predicate_name": "CONSEQUENCE_ENACTED",
+      "arguments": {
+        "actor": "Karen",
+        "consequence": "did not go to Hawaii"
+      },
+      "atomic_event_ids": [
+        "E14",
+        "E17"
+      ],
+      "summary_label": "Karen did not go to Hawaii",
+      "polarity": "negative",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE10": {
+      "norm_id": "NE10",
+      "predicate_name": "NEGATIVE_EMOTIONAL_STATE",
+      "arguments": {
+        "actor": "Karen",
+        "emotion": "deeply disappointed"
+      },
+      "atomic_event_ids": [
+        "E15"
+      ],
+      "summary_label": "Karen was deeply disappointed",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE11": {
+      "norm_id": "NE11",
+      "predicate_name": "EMOTIONAL_BEHAVIOR",
+      "arguments": {
+        "actor": "Karen",
+        "behavior": "cried in her room"
+      },
+      "atomic_event_ids": [
+        "E16"
+      ],
+      "summary_label": "Karen cried in her room",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      }
+    }
+  },
+  "relations": [
+    {
+      "relation_id": "R1",
+      "source_id": "NE3",
+      "target_id": "NE4",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Narrative states: 'she had spent all her study time daydreaming' directly causing her to fail classes and not graduate.",
+      "provenance_span": "she had spent all her study time daydreaming"
+    },
+    {
+      "relation_id": "R2",
+      "source_id": "NE5",
+      "target_id": "NE6",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Narrative states: 'Karen was thrilled' as a direct emotional response to the promise.",
+      "provenance_span": "Karen was thrilled"
+    },
+    {
+      "relation_id": "R3",
+      "source_id": "NE7",
+      "target_id": "NE8",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Narrative states: 'there was no longer enough time for her to learn the material and pass. Consequently, Karen failed her classes'",
+      "provenance_span": "there was no longer enough time for her to learn the material and pass. Consequently, Karen failed her classes"
+    },
+    {
+      "relation_id": "R4",
+      "source_id": "NE8",
+      "target_id": "NE9",
+      "relation_type": "RESULTS_IN",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Narrative states: 'Karen failed her classes and did not get to go to Hawaii' as a direct consequence of failing.",
+      "provenance_span": "Karen failed her classes and did not get to go to Hawaii"
+    },
+    {
+      "relation_id": "R5",
+      "source_id": "NE9",
+      "target_id": "NE10",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Narrative states: 'Karen was deeply disappointed' as a direct emotional result of not going to Hawaii.",
+      "provenance_span": "Karen was deeply disappointed"
+    },
+    {
+      "relation_id": "R6",
+      "source_id": "NE10",
+      "target_id": "NE11",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Narrative states: 'cried in her room' as a direct behavioral expression of disappointment.",
+      "provenance_span": "cried in her room"
+    },
+    {
+      "relation_id": "R7",
+      "source_id": "NE5",
+      "target_id": "NE7",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "The promise occurs before the realization of insufficient time, but the promise does not cause the time shortage.",
+      "provenance_span": "A few weeks before the end of the year ... To encourage Karen, her father promised ... However, there was no longer enough time"
+    },
+    {
+      "relation_id": "R8",
+      "source_id": "NE3",
+      "target_id": "NE7",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "strongly_inferred",
+      "evidence": "Daydreaming instead of studying led to insufficient time to learn material, as implied by the narrative sequence.",
+      "provenance_span": "she had spent all her study time daydreaming ... there was no longer enough time"
+    },
+    {
+      "relation_id": "R9",
+      "source_id": "NE5",
+      "target_id": "NE8",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "The promise occurs before the failure, but the promise does not cause the failure; the time shortage does.",
+      "provenance_span": "To encourage Karen, her father promised ... Consequently, Karen failed her classes"
+    },
+    {
+      "relation_id": "R10",
+      "source_id": "NE4",
+      "target_id": "NE5",
+      "relation_type": "MOTIVATES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Narrative states: 'To encourage Karen, her father promised to take her to Hawaii if she passed all of her classes.' The father's intentional motivation is explicitly stated.",
+      "provenance_span": "To encourage Karen, her father promised to take her to Hawaii if she passed all of her classes"
+    }
+  ],
+  "metadata": {
+    "story_length_chars": 663
+  }
+}

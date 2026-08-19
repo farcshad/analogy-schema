@@ -1,0 +1,483 @@
+{
+  "backbone_id": "backbone_story_target_04",
+  "story_id": "story_target_04",
+  "nodes": {
+    "N2": {
+      "node_id": "N2",
+      "macro_node": {
+        "macro_id": "M2",
+        "label": "incentive announcement",
+        "source_normalized_ids": [
+          "NE2"
+        ],
+        "source_atomic_ids": [
+          "E3",
+          "E4"
+        ],
+        "functional_role": "INTERVENTION",
+        "temporal_grounding": {
+          "mention_phase": "AT_INTERVENTION",
+          "onset_phase": "AT_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 2
+      },
+      "abstraction": {
+        "level_0_raw": "The ward matron announced that fresh gingerbread from the local bakery had arrived for the patients.",
+        "level_1_domain": "incentive introduction",
+        "level_2_functional": "conditional incentive",
+        "level_3_schema": "incentive offer"
+      },
+      "functional_role": "INTERVENTION",
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": true,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "fresh gingerbread from the local bakery had arrived for the patients",
+        "The ward matron announced that fresh gingerbread from the local bakery had arrived for the patients"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N3": {
+      "node_id": "N3",
+      "macro_node": {
+        "macro_id": "M3",
+        "label": "task assignment",
+        "source_normalized_ids": [
+          "NE3"
+        ],
+        "source_atomic_ids": [
+          "E5",
+          "E6",
+          "E7"
+        ],
+        "functional_role": "GOAL",
+        "temporal_grounding": {
+          "mention_phase": "AT_INTERVENTION",
+          "onset_phase": "AT_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "INTERVAL"
+        },
+        "temporal_order": 3
+      },
+      "abstraction": {
+        "level_0_raw": "Arthur was asked to help the cleaning staff scrub the recreation hall floors before the dessert was distributed.",
+        "level_1_domain": "assigned cleaning task",
+        "level_2_functional": "task assignment",
+        "level_3_schema": "goal setting"
+      },
+      "functional_role": "GOAL",
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      },
+      "is_intervention": true,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "scrub the recreation hall floors",
+        "before the dessert was distributed",
+        "Arthur was asked to help the cleaning staff scrub the recreation hall floors before the dessert was distributed"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N4": {
+      "node_id": "N4",
+      "macro_node": {
+        "macro_id": "M4",
+        "label": "task neglect",
+        "source_normalized_ids": [
+          "NE4"
+        ],
+        "source_atomic_ids": [
+          "E8",
+          "E9"
+        ],
+        "functional_role": "CAUSAL_ANTECEDENT",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 4
+      },
+      "abstraction": {
+        "level_0_raw": "Arthur became distracted daydreaming about the gingerbread while working.",
+        "level_1_domain": "distraction during task",
+        "level_2_functional": "task neglect",
+        "level_3_schema": "attention failure"
+      },
+      "functional_role": "CAUSAL_ANTECEDENT",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "While working, Arthur became distracted daydreaming about the gingerbread",
+        "daydreaming about the gingerbread"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N5": {
+      "node_id": "N5",
+      "macro_node": {
+        "macro_id": "M5",
+        "label": "accidental spill",
+        "source_normalized_ids": [
+          "NE5"
+        ],
+        "source_atomic_ids": [
+          "E10"
+        ],
+        "functional_role": "ACTION_RESPONSE",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 5
+      },
+      "abstraction": {
+        "level_0_raw": "Arthur accidentally spills bucket of soapy water across clean floor.",
+        "level_1_domain": "accidental spill",
+        "level_2_functional": "accidental action",
+        "level_3_schema": "unintended action"
+      },
+      "functional_role": "ACTION_RESPONSE",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "accidentally spilled a bucket of soapy water across the clean floor"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N6": {
+      "node_id": "N6",
+      "macro_node": {
+        "macro_id": "M6",
+        "label": "cleanup",
+        "source_normalized_ids": [
+          "NE6"
+        ],
+        "source_atomic_ids": [
+          "E11"
+        ],
+        "functional_role": "ACTION_RESPONSE",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "INTERVAL"
+        },
+        "temporal_order": 6
+      },
+      "abstraction": {
+        "level_0_raw": "Mess is mopped up.",
+        "level_1_domain": "spill cleanup",
+        "level_2_functional": "cleanup action",
+        "level_3_schema": "remedial action"
+      },
+      "functional_role": "ACTION_RESPONSE",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "the mess was mopped up"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N7": {
+      "node_id": "N7",
+      "macro_node": {
+        "macro_id": "M7",
+        "label": "inspection delay",
+        "source_normalized_ids": [
+          "NE7"
+        ],
+        "source_atomic_ids": [
+          "E12"
+        ],
+        "functional_role": "PROBLEM_STATE",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 7
+      },
+      "abstraction": {
+        "level_0_raw": "Inspection of recreation hall is delayed.",
+        "level_1_domain": "inspection delay",
+        "level_2_functional": "criteria failure",
+        "level_3_schema": "schedule disruption"
+      },
+      "functional_role": "PROBLEM_STATE",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": true,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "the inspection of the recreation hall was delayed"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N8": {
+      "node_id": "N8",
+      "macro_node": {
+        "macro_id": "M8",
+        "label": "resource shortage",
+        "source_normalized_ids": [
+          "NE8"
+        ],
+        "source_atomic_ids": [
+          "E13"
+        ],
+        "functional_role": "FOCAL_OUTCOME",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 8
+      },
+      "abstraction": {
+        "level_0_raw": "Gingerbread distributed to other patients, Arthur misses out.",
+        "level_1_domain": "resource distribution exclusion",
+        "level_2_functional": "resource shortage",
+        "level_3_schema": "outcome deprivation"
+      },
+      "functional_role": "FOCAL_OUTCOME",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": true,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "the gingerbread had already been distributed to the other patients"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N9": {
+      "node_id": "N9",
+      "macro_node": {
+        "macro_id": "M9",
+        "label": "missed opportunity",
+        "source_normalized_ids": [
+          "NE11"
+        ],
+        "source_atomic_ids": [
+          "E16"
+        ],
+        "functional_role": "DOWNSTREAM_REACTION",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 9
+      },
+      "abstraction": {
+        "level_0_raw": "Arthur missed out on gingerbread.",
+        "level_1_domain": "missed reward opportunity",
+        "level_2_functional": "missed opportunity",
+        "level_3_schema": "outcome deprivation"
+      },
+      "functional_role": "DOWNSTREAM_REACTION",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": true,
+      "provenance_text_spans": [
+        "having missed out on the gingerbread"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    }
+  },
+  "explanatory_edges": [
+    {
+      "edge_id": "BE1",
+      "source_id": "N4",
+      "target_id": "N5",
+      "relation_type": "CAUSES",
+      "justification": "Arthur became distracted daydreaming about the gingerbread while working and accidentally spilled a bucket of soapy water across the clean floor.",
+      "confidence": 0.95,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R1"
+      ]
+    },
+    {
+      "edge_id": "BE2",
+      "source_id": "N5",
+      "target_id": "N6",
+      "relation_type": "CAUSES",
+      "justification": "The spill of soapy water necessitated mopping up the mess.",
+      "confidence": 0.9,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R2"
+      ]
+    },
+    {
+      "edge_id": "BE3",
+      "source_id": "N6",
+      "target_id": "N7",
+      "relation_type": "CAUSES",
+      "justification": "Mopping the mess took time, which delayed the inspection of the recreation hall.",
+      "confidence": 0.9,
+      "explicitness": "strongly_inferred",
+      "underlying_relation_ids": [
+        "R3"
+      ]
+    },
+    {
+      "edge_id": "BE4",
+      "source_id": "N7",
+      "target_id": "N8",
+      "relation_type": "CAUSES",
+      "justification": "The delay in inspection meant the gingerbread distribution occurred before Arthur could get any, causing him to miss out.",
+      "confidence": 0.85,
+      "explicitness": "strongly_inferred",
+      "underlying_relation_ids": [
+        "R4"
+      ]
+    },
+    {
+      "edge_id": "BE5",
+      "source_id": "N8",
+      "target_id": "N9",
+      "relation_type": "RESULTS_IN",
+      "justification": "The gingerbread being distributed to other patients directly resulted in Arthur missing out on the gingerbread.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R7"
+      ]
+    }
+  ],
+  "temporal_constraints": [
+    {
+      "edge_id": "BE6",
+      "source_id": "N3",
+      "target_id": "N4",
+      "relation_type": "BEFORE",
+      "justification": "Arthur was asked to help scrub floors before he became distracted while working.",
+      "confidence": 0.9,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R8"
+      ]
+    },
+    {
+      "edge_id": "BE7",
+      "source_id": "N2",
+      "target_id": "N3",
+      "relation_type": "BEFORE",
+      "justification": "The announcement of gingerbread occurred before Arthur was asked to help scrub floors.",
+      "confidence": 0.9,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R9"
+      ]
+    }
+  ],
+  "anchors": {
+    "central_problem": "Arthur is a resident confined indoors in a psychiatric hospital",
+    "central_goal": "Arthur must help scrub the recreation hall floors before gingerbread is distributed",
+    "intervention_event_ids": [
+      "NE2",
+      "NE3"
+    ],
+    "focal_outcome_ids": [
+      "NE7",
+      "NE8"
+    ],
+    "contingent_outcome_ids": [
+      "NE11"
+    ],
+    "downstream_reaction_ids": [
+      "NE9",
+      "NE10"
+    ],
+    "contracts": [
+      {
+        "intervention_event_id": "NE2",
+        "promised_reward": "fresh gingerbread",
+        "contingent_requirement": "help scrub recreation hall floors before gingerbread distribution",
+        "condition_polarity": "positive"
+      }
+    ],
+    "explanation": "The central problem is Arthur's confinement. The central goal is to complete the floor scrubbing to earn the gingerbread. The intervention (announcement and request) sets up an incentive contract: reward (gingerbread) contingent on completing the task. The focal outcomes are the delayed inspection and Arthur missing out (failure to meet the condition). The contingent outcome is the missed opportunity. Downstream reactions are Arthur's fury and door slamming, which do not causally explain the focal outcome."
+  },
+  "pruned_node_ids": [
+    "NE9",
+    "NE10",
+    "NE1"
+  ],
+  "pruned_reasons": {
+    "NE9": "Arthur's fury is a secondary emotional reaction to missing the gingerbread. Even if he had not become furious, the focal outcome (inspection delayed, gingerbread distributed to others) and the contingent outcome (Arthur missed out) would still be fully explained by the preceding causal chain. Thus, NE9 is not causally necessary.",
+    "NE10": "Slamming the dining hall door is a downstream collateral action expressing anger. Its removal does not alter the explanation of how the inspection was delayed, how the gingerbread was distributed to others, or why Arthur missed out. The causal backbone remains intact without this reaction.",
+    "NE1": "Pruned during final minimality pass: isolated BACKGROUND node 'confinement state' without explanatory connection to focal outcomes."
+  },
+  "metadata": {
+    "total_backbone_nodes": 8,
+    "total_explanatory_edges": 5,
+    "total_temporal_constraints": 2,
+    "edge_derivation_method": "deterministic_rich_relation_lifting",
+    "validation_warnings": []
+  }
+}

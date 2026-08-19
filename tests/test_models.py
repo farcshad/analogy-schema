@@ -25,13 +25,16 @@ from analogy_schema.models.backbone import (
 from analogy_schema.utils.serialization import to_json
 
 
-def test_story_creation():
+def test_story_creation_and_llm_input():
     text = "William was a patient. He hated inspections."
-    story = Story.from_text(story_id="test_1", text=text, title="Test")
+    story = Story.from_text(story_id="test_1", text=text, title="Test", metadata={"label": "ground_truth_label"})
     assert story.story_id == "test_1"
     assert len(story.sentences) == 2
-    assert story.sentences[0].text == "William was a patient."
-    assert story.sentences[1].text == "He hated inspections."
+    
+    llm_input = story.to_llm_input()
+    assert llm_input.story_id == "test_1"
+    assert hasattr(llm_input, "text")
+    assert not hasattr(llm_input, "metadata")
 
 
 def test_atomic_and_normalized_events_with_temporal_grounding():
@@ -61,6 +64,7 @@ def test_atomic_and_normalized_events_with_temporal_grounding():
     )
     assert norm.norm_id == "NE1"
     assert norm.onset_phase == InterventionPhase.PRE_INTERVENTION
+    assert norm.temporal_phase == InterventionPhase.PRE_INTERVENTION
     assert norm.holds_at_intervention is True
     assert "E1" in norm.atomic_event_ids
 
@@ -112,7 +116,7 @@ def test_relations_and_backbone_serialization():
         backbone_id="bb_1",
         story_id="test_1",
         nodes={"N1": node1, "N2": node2},
-        edges=[edge],
+        explanatory_edges=[edge],
         anchors=NarrativeAnchors(
             central_problem="problem",
             contracts=[
@@ -130,6 +134,7 @@ def test_relations_and_backbone_serialization():
     assert "CAUSES" in json_str
     assert "PRE_INTERVENTION" in json_str
     assert "underlying_relation_ids" in json_str
+    assert "explanatory_edges" in json_str
     
     warnings = backbone.validate_invariants()
     assert len(warnings) == 0

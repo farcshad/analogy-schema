@@ -56,20 +56,21 @@ RELATION_EXTRACTION_PROMPT = """You are a causal relation analyst. Extract evide
 
 Allowed Relation Types and Directional Semantics:
 - `CAUSES`: Source brings about or causes Target (e.g., Server Overload --CAUSES--> Request Latency).
+  * EVIDENCE RULE: A causal relation must NOT be justified using generic world knowledge (e.g. 'negative feelings often cause distraction'). Require explicit narrative causal language, direct mechanistic dependency, or necessary local inference from stated events. Otherwise downgrade to `BEFORE` or omit.
+- `RESULTS_IN`: Source directly produces consequential outcome Target (e.g., Missing Compliance Deadline --RESULTS_IN--> License Revocation; Failing Requirement --RESULTS_IN--> Reward Withheld).
 - `BEFORE`: Source occurs strictly before Target in narrative time, but Source did NOT causally produce Target (e.g., System Update --BEFORE--> Hardware Fault).
 - `ENABLES`: Source creates necessary preconditions making Target possible (e.g., Security Clearance --ENABLES--> Server Room Access).
 - `BLOCKS`: Source prevents, obstructs, or renders impossible Target (e.g., Network Partition --BLOCKS--> Database Replication).
-- `MOTIVATES`: Source provides reason, goal, or incentive for an agent to attempt Target (e.g., Financial Audit Notice --MOTIVATES--> Reconciliation Attempt). (Use conservatively; mere temporal succession is BEFORE, not MOTIVATES).
-- `REQUIRES`: Source requires condition Target to be fulfilled in order to succeed/occur (e.g., Firmware Upgrade --REQUIRES--> System Reboot).
-- `RESULTS_IN`: Source directly produces consequential outcome Target (e.g., Missing Compliance Deadline --RESULTS_IN--> License Revocation).
 - `PREVENTS`: Source actively stops or counteracts Target (e.g., Circuit Breaker Trip --PREVENTS--> Transformer Damage).
+- `MOTIVATES`: Source provides intentional reason, goal, or incentive for an agent to attempt Target (e.g., Audit Notice --MOTIVATES--> Reconciliation Attempt).
+  * EVIDENCE RULE: `MOTIVATES` requires textual evidence of intentional motivational causation (e.g. agent acting in order to achieve the goal). Mere 'after X, agent did Y' is strictly `BEFORE`, NOT `MOTIVATES`.
+- `REQUIRES`: Source requires condition Target to be fulfilled in order to succeed/occur (e.g., Firmware Upgrade --REQUIRES--> System Reboot).
 
 CRITICAL METHODOLOGICAL INVARIANTS:
 1. Temporal order vs. Causality: Never use `CAUSES` for events that merely precede each other. If event A existed prior to an intervention B, B does not cause A.
 2. Conservative Motivation: Do not use `MOTIVATES` for incidental actions that follow an event unless explicit motivational causation is present; otherwise use `BEFORE`.
 3. Directionality: Adhere strictly to `source_id` -> `target_id` conventions.
-4. Explicitness: Assign explicit, strongly_inferred, or speculative.
-5. Ground each relation with an `evidence` explanation citing the narrative mechanism.
+4. Ground each relation with an `evidence` explanation citing direct narrative mechanism.
 
 Story ID: {{ story.story_id }}
 
@@ -93,6 +94,7 @@ Identify the central narrative anchors and structured incentive contracts:
 4. `focal_outcome_ids`: Event IDs of the primary success or failure of the central goal/requirement.
 5. `contingent_outcome_ids`: Event IDs of consequences contingent upon the focal outcome (e.g., reward granted, reward withheld, penalty applied).
 6. `downstream_reaction_ids`: Event IDs of secondary emotional outbursts, reactions, or incidental collateral actions that do NOT explain why the focal outcome occurred.
+   * INVARIANT: Any event that causally explains the focal outcome MUST NOT be marked as a downstream reaction.
 7. `contracts`: Structured incentive contracts if an incentive was offered (promised_reward, contingent_requirement, condition_polarity).
 
 Story ID: {{ story.story_id }}

@@ -19,9 +19,10 @@ def run_stage_c_relation_extraction(
     llm: BaseLLMProvider
 ) -> RichEventGraph:
     """Stage C: Evidence-grounded typed relation extraction (Synchronous)."""
+    anonymous_story = story.to_llm_input()
     prompt = PromptRegistry.render(
         "relation_extraction",
-        story=story,
+        story=anonymous_story,
         normalized_events=normalized_events
     )
     system_prompt = "You are a causal narrative relation analyst distinguishing temporal order from true causality."
@@ -56,9 +57,10 @@ async def run_stage_c_relation_extraction_async(
     llm: BaseLLMProvider
 ) -> RichEventGraph:
     """Stage C: Evidence-grounded typed relation extraction (Asynchronous)."""
+    anonymous_story = story.to_llm_input()
     prompt = PromptRegistry.render(
         "relation_extraction",
-        story=story,
+        story=anonymous_story,
         normalized_events=normalized_events
     )
     system_prompt = "You are a causal narrative relation analyst distinguishing temporal order from true causality."

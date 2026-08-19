@@ -24,7 +24,7 @@ def load_json(cls, filepath: str):
 
 
 def export_backbone_markdown(backbone: CausalBackbone) -> str:
-    """Generates an inspectable markdown summary of the causal backbone with provenance and temporal phases."""
+    """Generates an inspectable markdown summary of the causal backbone with provenance, separated edge types, and temporal phases."""
     lines = [
         f"# Causal Backbone: {backbone.story_id}",
         "",
@@ -69,18 +69,37 @@ def export_backbone_markdown(backbone: CausalBackbone) -> str:
         lines.append(f"- **Textual Provenance Spans**: {node.provenance_text_spans}")
         lines.append("")
         
-    lines.append("## Backbone Edges (Typed Relational Backbone with Provenance)")
-    for edge in backbone.edges:
-        src = backbone.nodes.get(edge.source_id)
-        dst = backbone.nodes.get(edge.target_id)
-        src_lbl = src.abstraction.level_2_functional if src else edge.source_id
-        dst_lbl = dst.abstraction.level_2_functional if dst else edge.target_id
-        rel_val = edge.relation_type.value if hasattr(edge.relation_type, "value") else str(edge.relation_type)
+    lines.append("## Explanatory Causal Edges (Mechanisms, Motivations, Consequences)")
+    if backbone.explanatory_edges:
+        for edge in backbone.explanatory_edges:
+            src = backbone.nodes.get(edge.source_id)
+            dst = backbone.nodes.get(edge.target_id)
+            src_lbl = src.abstraction.level_2_functional if src else edge.source_id
+            dst_lbl = dst.abstraction.level_2_functional if dst else edge.target_id
+            rel_val = edge.relation_type.value if hasattr(edge.relation_type, "value") else str(edge.relation_type)
+            
+            lines.append(f"- **`{edge.source_id}` ({src_lbl})** `--{rel_val}-->` **`{edge.target_id}` ({dst_lbl})**")
+            lines.append(f"  - *Underlying Rich Relations*: `{edge.underlying_relation_ids}`")
+            if edge.justification:
+                lines.append(f"  - *Justification*: {edge.justification}")
+    else:
+        lines.append("- *(No explanatory edges)*")
         
-        lines.append(f"- **`{edge.source_id}` ({src_lbl})** `--{rel_val}-->` **`{edge.target_id}` ({dst_lbl})**")
-        lines.append(f"  - *Underlying Rich Relations*: `{edge.underlying_relation_ids}`")
-        if edge.justification:
-            lines.append(f"  - *Justification*: {edge.justification}")
+    lines.append("")
+    lines.append("## Minimal Temporal Constraints (Non-Redundant BEFORE Constraints)")
+    if backbone.temporal_constraints:
+        for edge in backbone.temporal_constraints:
+            src = backbone.nodes.get(edge.source_id)
+            dst = backbone.nodes.get(edge.target_id)
+            src_lbl = src.abstraction.level_2_functional if src else edge.source_id
+            dst_lbl = dst.abstraction.level_2_functional if dst else edge.target_id
+            
+            lines.append(f"- **`{edge.source_id}` ({src_lbl})** `--BEFORE-->` **`{edge.target_id}` ({dst_lbl})**")
+            lines.append(f"  - *Underlying Rich Relations*: `{edge.underlying_relation_ids}`")
+            if edge.justification:
+                lines.append(f"  - *Justification*: {edge.justification}")
+    else:
+        lines.append("- *(No independent temporal constraints)*")
             
     if backbone.pruned_node_ids:
         lines.append("")

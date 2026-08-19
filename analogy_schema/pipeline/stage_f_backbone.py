@@ -26,10 +26,11 @@ def run_stage_f_backbone_selection(
     candidate_ancestors: List[str] = None
 ) -> Dict[str, Any]:
     """Stage F: Counterfactual backbone selection (Synchronous)."""
+    anonymous_story = story.to_llm_input()
     normalized_list = list(graph.normalized_events.values())
     prompt = PromptRegistry.render(
         "backbone_selection",
-        story=story,
+        story=anonymous_story,
         normalized_events=normalized_list,
         anchors=anchors
     )
@@ -70,10 +71,11 @@ async def run_stage_f_backbone_selection_async(
     candidate_ancestors: List[str] = None
 ) -> Dict[str, Any]:
     """Stage F: Counterfactual backbone selection (Asynchronous)."""
+    anonymous_story = story.to_llm_input()
     normalized_list = list(graph.normalized_events.values())
     prompt = PromptRegistry.render(
         "backbone_selection",
-        story=story,
+        story=anonymous_story,
         normalized_events=normalized_list,
         anchors=anchors
     )

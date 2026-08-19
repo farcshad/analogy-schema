@@ -1,0 +1,540 @@
+{
+  "backbone_id": "backbone_story_target_01",
+  "story_id": "story_target_01",
+  "nodes": {
+    "N1": {
+      "node_id": "N1",
+      "macro_node": {
+        "macro_id": "M1",
+        "label": "task neglect",
+        "source_normalized_ids": [
+          "NE4"
+        ],
+        "source_atomic_ids": [
+          "E4"
+        ],
+        "functional_role": "CAUSAL_ANTECEDENT",
+        "temporal_grounding": {
+          "mention_phase": "PRE_INTERVENTION",
+          "onset_phase": "PRE_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "INTERVAL"
+        },
+        "temporal_order": 1
+      },
+      "abstraction": {
+        "level_0_raw": "Karen neglects coursework for months",
+        "level_1_domain": "student neglects academic tasks",
+        "level_2_functional": "task neglect",
+        "level_3_schema": "antecedent neglect"
+      },
+      "functional_role": "CAUSAL_ANTECEDENT",
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "she had neglected her coursework for months"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N2": {
+      "node_id": "N2",
+      "macro_node": {
+        "macro_id": "M2",
+        "label": "performance deficit",
+        "source_normalized_ids": [
+          "NE6"
+        ],
+        "source_atomic_ids": [
+          "E6"
+        ],
+        "functional_role": "PROBLEM_STATE",
+        "temporal_grounding": {
+          "mention_phase": "PRE_INTERVENTION",
+          "onset_phase": "PRE_INTERVENTION",
+          "holds_at_intervention": true,
+          "temporal_extent": "PERSISTENT_STATE"
+        },
+        "temporal_order": 2
+      },
+      "abstraction": {
+        "level_0_raw": "Karen's grades are far below graduation requirement",
+        "level_1_domain": "grades below requirement",
+        "level_2_functional": "performance deficit",
+        "level_3_schema": "deficit state"
+      },
+      "functional_role": "PROBLEM_STATE",
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "A few weeks before final exams, her grades were far below the graduation requirement"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N3": {
+      "node_id": "N3",
+      "macro_node": {
+        "macro_id": "M3",
+        "label": "cumulative deficit too severe",
+        "source_normalized_ids": [
+          "NE9"
+        ],
+        "source_atomic_ids": [
+          "E12"
+        ],
+        "functional_role": "PROBLEM_STATE",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "PRE_INTERVENTION",
+          "holds_at_intervention": true,
+          "temporal_extent": "PERSISTENT_STATE"
+        },
+        "temporal_order": 3
+      },
+      "abstraction": {
+        "level_0_raw": "Cumulative academic deficit is too severe",
+        "level_1_domain": "cumulative deficit exceeds threshold",
+        "level_2_functional": "cumulative deficit too severe",
+        "level_3_schema": "irreversible deficit"
+      },
+      "functional_role": "PROBLEM_STATE",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "the cumulative academic deficit was already too severe"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N4": {
+      "node_id": "N4",
+      "macro_node": {
+        "macro_id": "M4",
+        "label": "insufficient remaining resources",
+        "source_normalized_ids": [
+          "NE10"
+        ],
+        "source_atomic_ids": [
+          "E13"
+        ],
+        "functional_role": "CONSTRAINT",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "PRE_INTERVENTION",
+          "holds_at_intervention": true,
+          "temporal_extent": "PERSISTENT_STATE"
+        },
+        "temporal_order": 4
+      },
+      "abstraction": {
+        "level_0_raw": "Not enough time left to catch up",
+        "level_1_domain": "insufficient time to remediate",
+        "level_2_functional": "insufficient remaining resources",
+        "level_3_schema": "resource constraint"
+      },
+      "functional_role": "CONSTRAINT",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "there was not enough time left in the semester to catch up on the coursework"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N5": {
+      "node_id": "N5",
+      "macro_node": {
+        "macro_id": "M5",
+        "label": "conditional incentive",
+        "source_normalized_ids": [
+          "NE7"
+        ],
+        "source_atomic_ids": [
+          "E7",
+          "E8",
+          "E9",
+          "E10"
+        ],
+        "functional_role": "INTERVENTION",
+        "temporal_grounding": {
+          "mention_phase": "AT_INTERVENTION",
+          "onset_phase": "AT_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 5
+      },
+      "abstraction": {
+        "level_0_raw": "Father promises Hawaii trip if Karen studies and passes courses",
+        "level_1_domain": "conditional reward offered for performance",
+        "level_2_functional": "conditional incentive",
+        "level_3_schema": "incentive intervention"
+      },
+      "functional_role": "INTERVENTION",
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": true,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "if she studied diligently",
+        "To encourage her to pass",
+        "passed all her remaining courses",
+        "her father promised to pay for an all-expenses-paid trip to Hawaii"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N6": {
+      "node_id": "N6",
+      "macro_node": {
+        "macro_id": "M6",
+        "label": "requirement failure",
+        "source_normalized_ids": [
+          "NE11"
+        ],
+        "source_atomic_ids": [
+          "E14"
+        ],
+        "functional_role": "FOCAL_OUTCOME",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 6
+      },
+      "abstraction": {
+        "level_0_raw": "Karen fails final exams",
+        "level_1_domain": "student fails exams",
+        "level_2_functional": "requirement failure",
+        "level_3_schema": "outcome failure"
+      },
+      "functional_role": "FOCAL_OUTCOME",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": true,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "Karen failed her final exams"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N7": {
+      "node_id": "N7",
+      "macro_node": {
+        "macro_id": "M7",
+        "label": "graduation failure",
+        "source_normalized_ids": [
+          "NE12"
+        ],
+        "source_atomic_ids": [
+          "E15"
+        ],
+        "functional_role": "CONTINGENT_OUTCOME",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 7
+      },
+      "abstraction": {
+        "level_0_raw": "Karen does not graduate",
+        "level_1_domain": "student does not graduate",
+        "level_2_functional": "graduation failure",
+        "level_3_schema": "contingent outcome"
+      },
+      "functional_role": "CONTINGENT_OUTCOME",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": true,
+      "is_contingent_outcome": true,
+      "provenance_text_spans": [
+        "did not graduate with her class"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N8": {
+      "node_id": "N8",
+      "macro_node": {
+        "macro_id": "M8",
+        "label": "reward withheld",
+        "source_normalized_ids": [
+          "NE13"
+        ],
+        "source_atomic_ids": [
+          "E16"
+        ],
+        "functional_role": "CONTINGENT_OUTCOME",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 8
+      },
+      "abstraction": {
+        "level_0_raw": "Karen does not receive the trip to Hawaii",
+        "level_1_domain": "reward not delivered",
+        "level_2_functional": "reward withheld",
+        "level_3_schema": "contingent outcome"
+      },
+      "functional_role": "CONTINGENT_OUTCOME",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": true,
+      "provenance_text_spans": [
+        "did not receive the trip to Hawaii"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N9": {
+      "node_id": "N9",
+      "macro_node": {
+        "macro_id": "M9",
+        "label": "consequence enacted",
+        "source_normalized_ids": [
+          "NE15"
+        ],
+        "source_atomic_ids": [
+          "E18"
+        ],
+        "functional_role": "DOWNSTREAM_REACTION",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 9
+      },
+      "abstraction": {
+        "level_0_raw": "Father does not purchase plane tickets",
+        "level_1_domain": "father withholds reward",
+        "level_2_functional": "consequence enacted",
+        "level_3_schema": "downstream reaction"
+      },
+      "functional_role": "DOWNSTREAM_REACTION",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": true,
+      "provenance_text_spans": [
+        "her father did not purchase the plane tickets"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    }
+  },
+  "explanatory_edges": [
+    {
+      "edge_id": "BE1",
+      "source_id": "N1",
+      "target_id": "N2",
+      "relation_type": "CAUSES",
+      "justification": "Karen neglected her coursework for months, which directly caused her grades to be far below the graduation requirement.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R1"
+      ]
+    },
+    {
+      "edge_id": "BE2",
+      "source_id": "N3",
+      "target_id": "N4",
+      "relation_type": "CAUSES",
+      "justification": "The cumulative academic deficit being too severe caused there not to be enough time left to catch up.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R4"
+      ]
+    },
+    {
+      "edge_id": "BE3",
+      "source_id": "N4",
+      "target_id": "N6",
+      "relation_type": "CAUSES",
+      "justification": "Not having enough time to catch up caused Karen to fail her final exams.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R5"
+      ]
+    },
+    {
+      "edge_id": "BE4",
+      "source_id": "N6",
+      "target_id": "N7",
+      "relation_type": "RESULTS_IN",
+      "justification": "Failing final exams directly resulted in not graduating.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R6"
+      ]
+    },
+    {
+      "edge_id": "BE5",
+      "source_id": "N7",
+      "target_id": "N8",
+      "relation_type": "RESULTS_IN",
+      "justification": "Not graduating resulted in not receiving the trip to Hawaii.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R7"
+      ]
+    },
+    {
+      "edge_id": "BE6",
+      "source_id": "N8",
+      "target_id": "N9",
+      "relation_type": "RESULTS_IN",
+      "justification": "Karen not receiving the trip resulted in the father not purchasing plane tickets.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R9"
+      ]
+    }
+  ],
+  "temporal_constraints": [
+    {
+      "edge_id": "BE7",
+      "source_id": "N5",
+      "target_id": "N6",
+      "relation_type": "BEFORE",
+      "justification": "The father's promise occurred before the final exams, but did not cause the failure; the deficit caused the failure.",
+      "confidence": 0.9,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R11"
+      ]
+    },
+    {
+      "edge_id": "BE8",
+      "source_id": "N2",
+      "target_id": "N3",
+      "relation_type": "BEFORE",
+      "justification": "The grades being far below requirement is a state that persisted and is later described as a cumulative deficit, but the narrative does not explicitly state a causal link between the two descriptions.",
+      "confidence": 0.8,
+      "explicitness": "strongly_inferred",
+      "underlying_relation_ids": [
+        "R13"
+      ]
+    }
+  ],
+  "anchors": {
+    "central_problem": "Karen is struggling academically and at risk of not graduating due to neglecting coursework for months, with grades far below the graduation requirement.",
+    "central_goal": "Karen must study diligently and pass all remaining courses to graduate.",
+    "intervention_event_ids": [
+      "NE7"
+    ],
+    "focal_outcome_ids": [
+      "NE11",
+      "NE12"
+    ],
+    "contingent_outcome_ids": [
+      "NE13",
+      "NE15"
+    ],
+    "downstream_reaction_ids": [
+      "NE14"
+    ],
+    "contracts": [
+      {
+        "intervention_event_id": "NE7",
+        "promised_reward": "all-expenses-paid trip to Hawaii",
+        "contingent_requirement": "study diligently and pass all remaining courses",
+        "condition_polarity": "positive"
+      }
+    ],
+    "explanation": "The central problem is Karen's academic deficit and risk of not graduating. The central goal is to pass courses and graduate. The father's promise (NE7) is the intervention. The focal outcomes are failing exams and not graduating (NE11, NE12). The contingent outcomes are not receiving the trip (NE13) and father not buying tickets (NE15). Crying (NE14) is a downstream reaction, not causally explaining the focal outcome."
+  },
+  "pruned_node_ids": [
+    "NE1",
+    "NE5",
+    "NE14",
+    "NE2",
+    "NE3",
+    "NE8"
+  ],
+  "pruned_reasons": {
+    "NE1": "Karen being a high school student is a static background setting. Removing it does not affect the causal explanation of the focal outcomes because the academic deficit and risk are already captured by NE4, NE6, NE9, and NE10.",
+    "NE2": "Struggling academically is a chronic state that is redundant with the more specific deficit states (NE6, NE9) and neglect (NE4). Its removal does not damage the explanation of failure.",
+    "NE3": "Being at risk of not graduating is a summary of the deficit and time shortage. It is causally downstream of NE4, NE6, NE9, NE10 and upstream of NE11/NE12, but not necessary as a separate node; the causal chain from deficit to failure is complete without it.",
+    "NE5": "Daydreaming about Hawaii is a specific habitual behavior that explains why Karen neglected coursework, but the neglect itself (NE4) is sufficient to explain the deficit. Removing NE5 does not break the causal path to failure.",
+    "NE8": "Karen being thrilled is a secondary emotional reaction to the intervention. It does not causally affect the outcome because the deficit and time shortage are immutable. Removing it does not alter the explanation of failure.",
+    "NE14": "Crying in the bedroom is a downstream emotional reaction to the focal outcomes. It is not causally necessary to explain the failure or the contingent outcomes. Removing it does not affect the causal backbone."
+  },
+  "metadata": {
+    "total_backbone_nodes": 9,
+    "total_explanatory_edges": 6,
+    "total_temporal_constraints": 2,
+    "edge_derivation_method": "deterministic_rich_relation_lifting",
+    "validation_warnings": []
+  }
+}

@@ -1,0 +1,391 @@
+{
+  "backbone_id": "backbone_synth_story_02",
+  "story_id": "synth_story_02",
+  "nodes": {
+    "N2": {
+      "node_id": "N2",
+      "macro_node": {
+        "macro_id": "M2",
+        "label": "task neglect",
+        "source_normalized_ids": [
+          "NE3"
+        ],
+        "source_atomic_ids": [
+          "E4",
+          "E7"
+        ],
+        "functional_role": "CAUSAL_ANTECEDENT",
+        "temporal_grounding": {
+          "mention_phase": "PRE_INTERVENTION",
+          "onset_phase": "PRE_INTERVENTION",
+          "holds_at_intervention": true,
+          "temporal_extent": "PERSISTENT_STATE"
+        },
+        "temporal_order": 2
+      },
+      "abstraction": {
+        "level_0_raw": "She spent most of her time daydreaming about going to Hawaii.",
+        "level_1_domain": "daydreaming instead of studying",
+        "level_2_functional": "task neglect",
+        "level_3_schema": "self-indulgent distraction"
+      },
+      "functional_role": "CAUSAL_ANTECEDENT",
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "because she had spent all her study time daydreaming",
+        "She spent most of her time daydreaming about going to Hawaii"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N3": {
+      "node_id": "N3",
+      "macro_node": {
+        "macro_id": "M3",
+        "label": "performance deficit",
+        "source_normalized_ids": [
+          "NE4"
+        ],
+        "source_atomic_ids": [
+          "E5",
+          "E6"
+        ],
+        "functional_role": "PROBLEM_STATE",
+        "temporal_grounding": {
+          "mention_phase": "PRE_INTERVENTION",
+          "onset_phase": "PRE_INTERVENTION",
+          "holds_at_intervention": true,
+          "temporal_extent": "PERSISTENT_STATE"
+        },
+        "temporal_order": 3
+      },
+      "abstraction": {
+        "level_0_raw": "A few weeks before the end of the year Karen was failing enough classes that she was not going to graduate, because she had spent all her study time daydreaming.",
+        "level_1_domain": "failing classes and at risk of not graduating",
+        "level_2_functional": "performance deficit",
+        "level_3_schema": "critical failure risk"
+      },
+      "functional_role": "PROBLEM_STATE",
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "A few weeks before the end of the year Karen was failing enough classes",
+        "she was not going to graduate"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N4": {
+      "node_id": "N4",
+      "macro_node": {
+        "macro_id": "M4",
+        "label": "conditional incentive",
+        "source_normalized_ids": [
+          "NE5"
+        ],
+        "source_atomic_ids": [
+          "E8",
+          "E9",
+          "E10"
+        ],
+        "functional_role": "INTERVENTION",
+        "temporal_grounding": {
+          "mention_phase": "AT_INTERVENTION",
+          "onset_phase": "AT_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 4
+      },
+      "abstraction": {
+        "level_0_raw": "To encourage Karen, her father promised to take her to Hawaii if she passed all of her classes.",
+        "level_1_domain": "father promises Hawaii trip conditional on passing all classes",
+        "level_2_functional": "conditional incentive",
+        "level_3_schema": "motivational intervention"
+      },
+      "functional_role": "INTERVENTION",
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": true,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "To encourage Karen",
+        "To encourage Karen, her father promised to take her to Hawaii if she passed all of her classes",
+        "if she passed all of her classes"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N5": {
+      "node_id": "N5",
+      "macro_node": {
+        "macro_id": "M5",
+        "label": "insufficient remaining resources",
+        "source_normalized_ids": [
+          "NE7"
+        ],
+        "source_atomic_ids": [
+          "E12"
+        ],
+        "functional_role": "CONSTRAINT",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "PERSISTENT_STATE"
+        },
+        "temporal_order": 5
+      },
+      "abstraction": {
+        "level_0_raw": "However, there was no longer enough time for her to learn the material and pass.",
+        "level_1_domain": "insufficient time to learn material and pass",
+        "level_2_functional": "insufficient remaining resources",
+        "level_3_schema": "resource shortage"
+      },
+      "functional_role": "CONSTRAINT",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "PERSISTENT_STATE"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "there was no longer enough time for her to learn the material and pass"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N6": {
+      "node_id": "N6",
+      "macro_node": {
+        "macro_id": "M6",
+        "label": "requirement failure",
+        "source_normalized_ids": [
+          "NE8"
+        ],
+        "source_atomic_ids": [
+          "E13"
+        ],
+        "functional_role": "FOCAL_OUTCOME",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 6
+      },
+      "abstraction": {
+        "level_0_raw": "Consequently, Karen failed her classes and did not get to go to Hawaii.",
+        "level_1_domain": "failed classes",
+        "level_2_functional": "requirement failure",
+        "level_3_schema": "goal failure"
+      },
+      "functional_role": "FOCAL_OUTCOME",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": true,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "Consequently, Karen failed her classes"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N7": {
+      "node_id": "N7",
+      "macro_node": {
+        "macro_id": "M7",
+        "label": "reward withheld",
+        "source_normalized_ids": [
+          "NE9"
+        ],
+        "source_atomic_ids": [
+          "E14",
+          "E17"
+        ],
+        "functional_role": "CONTINGENT_OUTCOME",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 7
+      },
+      "abstraction": {
+        "level_0_raw": "Karen was deeply disappointed and cried in her room, but she didn't get to go to Hawaii.",
+        "level_1_domain": "did not go to Hawaii",
+        "level_2_functional": "reward withheld",
+        "level_3_schema": "contingent consequence"
+      },
+      "functional_role": "CONTINGENT_OUTCOME",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": true,
+      "provenance_text_spans": [
+        "she didn't get to go to Hawaii",
+        "did not get to go to Hawaii"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    }
+  },
+  "explanatory_edges": [
+    {
+      "edge_id": "BE1",
+      "source_id": "N2",
+      "target_id": "N3",
+      "relation_type": "CAUSES",
+      "justification": "Narrative states: 'she had spent all her study time daydreaming' directly causing her to fail classes and not graduate.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R1"
+      ]
+    },
+    {
+      "edge_id": "BE2",
+      "source_id": "N5",
+      "target_id": "N6",
+      "relation_type": "CAUSES",
+      "justification": "Narrative states: 'there was no longer enough time for her to learn the material and pass. Consequently, Karen failed her classes'",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R3"
+      ]
+    },
+    {
+      "edge_id": "BE3",
+      "source_id": "N6",
+      "target_id": "N7",
+      "relation_type": "RESULTS_IN",
+      "justification": "Narrative states: 'Karen failed her classes and did not get to go to Hawaii' as a direct consequence of failing.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R4"
+      ]
+    },
+    {
+      "edge_id": "BE5",
+      "source_id": "N2",
+      "target_id": "N5",
+      "relation_type": "CAUSES",
+      "justification": "Daydreaming instead of studying led to insufficient time to learn material, as implied by the narrative sequence.",
+      "confidence": 1.0,
+      "explicitness": "strongly_inferred",
+      "underlying_relation_ids": [
+        "R8"
+      ]
+    },
+    {
+      "edge_id": "BE7",
+      "source_id": "N3",
+      "target_id": "N4",
+      "relation_type": "MOTIVATES",
+      "justification": "Narrative states: 'To encourage Karen, her father promised to take her to Hawaii if she passed all of her classes.' The father's intentional motivation is explicitly stated.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R10"
+      ]
+    }
+  ],
+  "temporal_constraints": [
+    {
+      "edge_id": "BE4",
+      "source_id": "N4",
+      "target_id": "N5",
+      "relation_type": "BEFORE",
+      "justification": "The promise occurs before the realization of insufficient time, but the promise does not cause the time shortage.",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R7"
+      ]
+    }
+  ],
+  "anchors": {
+    "central_problem": "Karen was failing classes and would not graduate because she spent all her study time daydreaming.",
+    "central_goal": "Karen must pass all her classes to graduate.",
+    "intervention_event_ids": [
+      "NE5"
+    ],
+    "focal_outcome_ids": [
+      "NE8"
+    ],
+    "contingent_outcome_ids": [
+      "NE9"
+    ],
+    "downstream_reaction_ids": [
+      "NE10",
+      "NE11"
+    ],
+    "contracts": [
+      {
+        "intervention_event_id": "NE5",
+        "promised_reward": "trip to Hawaii",
+        "contingent_requirement": "pass all classes",
+        "condition_polarity": "positive"
+      }
+    ],
+    "explanation": "The central problem is Karen's academic failure due to daydreaming. The goal is to pass all classes. The father's promise (NE5) is an intervention. The focal outcome is failing classes (NE8), which triggers the contingent outcome of not going to Hawaii (NE9). Downstream reactions are Karen's disappointment and crying (NE10, NE11), which do not causally explain the focal outcome."
+  },
+  "pruned_node_ids": [
+    "NE10",
+    "NE11",
+    "NE2",
+    "NE6",
+    "NE1"
+  ],
+  "pruned_reasons": {
+    "NE2": "Karen's hatred of school is a static emotional state that does not causally explain the specific deficit or the failure. Even if she did not hate school, she still daydreamed and failed; removing it does not break the causal chain from daydreaming to failing.",
+    "NE6": "Karen's thrill is a secondary emotional reaction to the intervention. It does not causally affect the outcome; even if she were not thrilled, the incentive was still introduced and the time shortage still prevented success.",
+    "NE10": "Deep disappointment is a downstream emotional reaction to the failure and not getting to go to Hawaii. It does not explain the focal outcome or contingent consequence; removing it leaves the causal explanation intact.",
+    "NE11": "Crying in her room is a collateral behavioral expression of disappointment. It is not causally necessary to explain why she failed or did not go to Hawaii; removing it does not affect the explanatory backbone.",
+    "NE1": "Pruned during final minimality pass: isolated BACKGROUND node 'poor academic performance' without explanatory connection to focal outcomes."
+  },
+  "metadata": {
+    "total_backbone_nodes": 6,
+    "total_explanatory_edges": 5,
+    "total_temporal_constraints": 1,
+    "edge_derivation_method": "deterministic_rich_relation_lifting",
+    "validation_warnings": []
+  }
+}

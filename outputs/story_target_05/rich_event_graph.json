@@ -1,0 +1,707 @@
+{
+  "graph_id": "rich_graph_story_target_05",
+  "story_id": "story_target_05",
+  "atomic_events": {
+    "E1": {
+      "event_id": "E1",
+      "text_span": "the nurses were preparing the dining hall for an afternoon event",
+      "sentence_id": 1,
+      "predicate": "preparing",
+      "participants": [
+        "nurses",
+        "dining hall"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 1
+    },
+    "E2": {
+      "event_id": "E2",
+      "text_span": "Arthur, a patient who loved gingerbread from the bakery",
+      "sentence_id": 2,
+      "predicate": "loved",
+      "participants": [
+        "Arthur",
+        "gingerbread"
+      ],
+      "event_type": "state",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 0
+    },
+    "E3": {
+      "event_id": "E3",
+      "text_span": "Arthur was sitting in the corner eating a snack",
+      "sentence_id": 2,
+      "predicate": "sitting",
+      "participants": [
+        "Arthur"
+      ],
+      "event_type": "state",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 2
+    },
+    "E4": {
+      "event_id": "E4",
+      "text_span": "Arthur was sitting in the corner eating a snack",
+      "sentence_id": 2,
+      "predicate": "eating",
+      "participants": [
+        "Arthur",
+        "snack"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 2
+    },
+    "E5": {
+      "event_id": "E5",
+      "text_span": "painters applied fresh plaster to the hallway walls",
+      "sentence_id": 2,
+      "predicate": "applied",
+      "participants": [
+        "painters",
+        "plaster",
+        "hallway walls"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 3
+    },
+    "E6": {
+      "event_id": "E6",
+      "text_span": "an orderly opened the heavy door",
+      "sentence_id": 3,
+      "predicate": "opened",
+      "participants": [
+        "orderly",
+        "heavy door"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 4
+    },
+    "E7": {
+      "event_id": "E7",
+      "text_span": "a draft of wind blew plaster dust across the room",
+      "sentence_id": 3,
+      "predicate": "blew",
+      "participants": [
+        "draft of wind",
+        "plaster dust",
+        "room"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 5
+    },
+    "E8": {
+      "event_id": "E8",
+      "text_span": "contaminating Arthur's gingerbread",
+      "sentence_id": 3,
+      "predicate": "contaminating",
+      "participants": [
+        "plaster dust",
+        "Arthur's gingerbread"
+      ],
+      "event_type": "outcome",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 6
+    },
+    "E9": {
+      "event_id": "E9",
+      "text_span": "The head nurse told Arthur to discard the spoiled food",
+      "sentence_id": 4,
+      "predicate": "told",
+      "participants": [
+        "head nurse",
+        "Arthur"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 7
+    },
+    "E10": {
+      "event_id": "E10",
+      "text_span": "discard the spoiled food",
+      "sentence_id": 4,
+      "predicate": "discard",
+      "participants": [
+        "Arthur",
+        "spoiled food"
+      ],
+      "event_type": "goal",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 8
+    },
+    "E11": {
+      "event_id": "E11",
+      "text_span": "step into the courtyard for fresh air",
+      "sentence_id": 4,
+      "predicate": "step",
+      "participants": [
+        "Arthur",
+        "courtyard"
+      ],
+      "event_type": "goal",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 9
+    },
+    "E12": {
+      "event_id": "E12",
+      "text_span": "Arthur sulked as he walked outside",
+      "sentence_id": 5,
+      "predicate": "sulked",
+      "participants": [
+        "Arthur"
+      ],
+      "event_type": "emotion_reaction",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 10
+    },
+    "E13": {
+      "event_id": "E13",
+      "text_span": "Arthur walked outside",
+      "sentence_id": 5,
+      "predicate": "walked",
+      "participants": [
+        "Arthur"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 11
+    },
+    "E14": {
+      "event_id": "E14",
+      "text_span": "watching the maintenance workers repair the cracked wall",
+      "sentence_id": 5,
+      "predicate": "watching",
+      "participants": [
+        "Arthur",
+        "maintenance workers"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 12
+    },
+    "E15": {
+      "event_id": "E15",
+      "text_span": "repair the cracked wall",
+      "sentence_id": 5,
+      "predicate": "repair",
+      "participants": [
+        "maintenance workers",
+        "cracked wall"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 13
+    },
+    "E16": {
+      "event_id": "E16",
+      "text_span": "the spoiled food",
+      "sentence_id": 4,
+      "predicate": "spoiled",
+      "participants": [
+        "food"
+      ],
+      "event_type": "state",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 6
+    },
+    "E17": {
+      "event_id": "E17",
+      "text_span": "the cracked wall",
+      "sentence_id": 5,
+      "predicate": "cracked",
+      "participants": [
+        "wall"
+      ],
+      "event_type": "state",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 0
+    }
+  },
+  "normalized_events": {
+    "NE1": {
+      "norm_id": "NE1",
+      "predicate_name": "PREPARE_EVENT",
+      "arguments": {
+        "actor": "nurses",
+        "location": "dining hall",
+        "task": "afternoon event"
+      },
+      "atomic_event_ids": [
+        "E1"
+      ],
+      "summary_label": "Nurses prepare dining hall for afternoon event",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE2": {
+      "norm_id": "NE2",
+      "predicate_name": "PREFERENCE_STATE",
+      "arguments": {
+        "actor": "Arthur",
+        "object": "gingerbread from the bakery"
+      },
+      "atomic_event_ids": [
+        "E2"
+      ],
+      "summary_label": "Arthur loves gingerbread from the bakery",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE3": {
+      "norm_id": "NE3",
+      "predicate_name": "SITTING_STATE",
+      "arguments": {
+        "actor": "Arthur",
+        "location": "corner"
+      },
+      "atomic_event_ids": [
+        "E3"
+      ],
+      "summary_label": "Arthur sits in corner",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE4": {
+      "norm_id": "NE4",
+      "predicate_name": "EATING_ACTIVITY",
+      "arguments": {
+        "actor": "Arthur",
+        "object": "snack"
+      },
+      "atomic_event_ids": [
+        "E4"
+      ],
+      "summary_label": "Arthur eats a snack",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE5": {
+      "norm_id": "NE5",
+      "predicate_name": "APPLY_MATERIAL",
+      "arguments": {
+        "actor": "painters",
+        "object": "fresh plaster",
+        "target": "hallway walls"
+      },
+      "atomic_event_ids": [
+        "E5"
+      ],
+      "summary_label": "Painters apply fresh plaster to hallway walls",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE6": {
+      "norm_id": "NE6",
+      "predicate_name": "OPEN_DOOR",
+      "arguments": {
+        "actor": "orderly",
+        "object": "heavy door"
+      },
+      "atomic_event_ids": [
+        "E6"
+      ],
+      "summary_label": "Orderly opens heavy door",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE7": {
+      "norm_id": "NE7",
+      "predicate_name": "BLOW_DUST",
+      "arguments": {
+        "actor": "draft of wind",
+        "object": "plaster dust",
+        "source": "hallway",
+        "destination": "across the room"
+      },
+      "atomic_event_ids": [
+        "E7"
+      ],
+      "summary_label": "Draft blows plaster dust across room",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE8": {
+      "norm_id": "NE8",
+      "predicate_name": "CONTAMINATE_OBJECT",
+      "arguments": {
+        "actor": "plaster dust",
+        "object": "Arthur's gingerbread"
+      },
+      "atomic_event_ids": [
+        "E8"
+      ],
+      "summary_label": "Plaster dust contaminates Arthur's gingerbread",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE9": {
+      "norm_id": "NE9",
+      "predicate_name": "INSTRUCT_ACTION",
+      "arguments": {
+        "actor": "head nurse",
+        "recipient": "Arthur",
+        "task": "discard spoiled food and step into courtyard"
+      },
+      "atomic_event_ids": [
+        "E9"
+      ],
+      "summary_label": "Head nurse instructs Arthur to discard food and go to courtyard",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE10": {
+      "norm_id": "NE10",
+      "predicate_name": "DISCARD_OBJECT",
+      "arguments": {
+        "actor": "Arthur",
+        "object": "spoiled food"
+      },
+      "atomic_event_ids": [
+        "E10"
+      ],
+      "summary_label": "Arthur discards spoiled food",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE11": {
+      "norm_id": "NE11",
+      "predicate_name": "MOVE_TO_LOCATION",
+      "arguments": {
+        "actor": "Arthur",
+        "destination": "courtyard"
+      },
+      "atomic_event_ids": [
+        "E11"
+      ],
+      "summary_label": "Arthur steps into courtyard",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE12": {
+      "norm_id": "NE12",
+      "predicate_name": "SULK_STATE",
+      "arguments": {
+        "actor": "Arthur"
+      },
+      "atomic_event_ids": [
+        "E12"
+      ],
+      "summary_label": "Arthur sulks",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE13": {
+      "norm_id": "NE13",
+      "predicate_name": "WALK_OUTSIDE",
+      "arguments": {
+        "actor": "Arthur",
+        "location": "outside"
+      },
+      "atomic_event_ids": [
+        "E13"
+      ],
+      "summary_label": "Arthur walks outside",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE14": {
+      "norm_id": "NE14",
+      "predicate_name": "WATCH_ACTIVITY",
+      "arguments": {
+        "actor": "Arthur",
+        "object": "maintenance workers repairing cracked wall"
+      },
+      "atomic_event_ids": [
+        "E14"
+      ],
+      "summary_label": "Arthur watches maintenance workers repair cracked wall",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE15": {
+      "norm_id": "NE15",
+      "predicate_name": "REPAIR_OBJECT",
+      "arguments": {
+        "actor": "maintenance workers",
+        "object": "cracked wall"
+      },
+      "atomic_event_ids": [
+        "E15"
+      ],
+      "summary_label": "Maintenance workers repair cracked wall",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE16": {
+      "norm_id": "NE16",
+      "predicate_name": "SPOILED_STATE",
+      "arguments": {
+        "object": "food"
+      },
+      "atomic_event_ids": [
+        "E16"
+      ],
+      "summary_label": "Food is spoiled",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE17": {
+      "norm_id": "NE17",
+      "predicate_name": "CRACKED_STATE",
+      "arguments": {
+        "object": "wall"
+      },
+      "atomic_event_ids": [
+        "E17"
+      ],
+      "summary_label": "Wall is cracked",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    }
+  },
+  "relations": [
+    {
+      "relation_id": "R1",
+      "source_id": "NE6",
+      "target_id": "NE7",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "When an orderly opened the heavy door, a draft of wind blew plaster dust across the room",
+      "provenance_span": "When an orderly opened the heavy door, a draft of wind blew plaster dust across the room"
+    },
+    {
+      "relation_id": "R2",
+      "source_id": "NE7",
+      "target_id": "NE8",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "a draft of wind blew plaster dust across the room, contaminating Arthur's gingerbread",
+      "provenance_span": "a draft of wind blew plaster dust across the room, contaminating Arthur's gingerbread"
+    },
+    {
+      "relation_id": "R3",
+      "source_id": "NE8",
+      "target_id": "NE16",
+      "relation_type": "RESULTS_IN",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "contaminating Arthur's gingerbread. The head nurse told Arthur to discard the spoiled food",
+      "provenance_span": "contaminating Arthur's gingerbread. The head nurse told Arthur to discard the spoiled food"
+    },
+    {
+      "relation_id": "R4",
+      "source_id": "NE9",
+      "target_id": "NE10",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "The head nurse told Arthur to discard the spoiled food and step into the courtyard for fresh air. Arthur sulked as he walked outside",
+      "provenance_span": "The head nurse told Arthur to discard the spoiled food and step into the courtyard for fresh air. Arthur sulked as he walked outside"
+    },
+    {
+      "relation_id": "R5",
+      "source_id": "NE9",
+      "target_id": "NE11",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "The head nurse told Arthur to discard the spoiled food and step into the courtyard for fresh air. Arthur sulked as he walked outside",
+      "provenance_span": "The head nurse told Arthur to discard the spoiled food and step into the courtyard for fresh air. Arthur sulked as he walked outside"
+    },
+    {
+      "relation_id": "R6",
+      "source_id": "NE10",
+      "target_id": "NE12",
+      "relation_type": "BEFORE",
+      "confidence": 0.9,
+      "explicitness": "strongly_inferred",
+      "evidence": "Arthur sulked as he walked outside, watching the maintenance workers repair the cracked wall. The narrative implies sulking occurs after discarding, but no causal mechanism is stated.",
+      "provenance_span": "Arthur sulked as he walked outside"
+    },
+    {
+      "relation_id": "R7",
+      "source_id": "NE11",
+      "target_id": "NE13",
+      "relation_type": "BEFORE",
+      "confidence": 0.9,
+      "explicitness": "strongly_inferred",
+      "evidence": "Arthur sulked as he walked outside. The walking is part of stepping into courtyard, but temporal order is clear.",
+      "provenance_span": "Arthur sulked as he walked outside"
+    },
+    {
+      "relation_id": "R8",
+      "source_id": "NE13",
+      "target_id": "NE14",
+      "relation_type": "BEFORE",
+      "confidence": 0.9,
+      "explicitness": "strongly_inferred",
+      "evidence": "Arthur sulked as he walked outside, watching the maintenance workers repair the cracked wall. Watching occurs after walking.",
+      "provenance_span": "Arthur sulked as he walked outside, watching the maintenance workers repair the cracked wall"
+    },
+    {
+      "relation_id": "R9",
+      "source_id": "NE15",
+      "target_id": "NE17",
+      "relation_type": "BEFORE",
+      "confidence": 0.9,
+      "explicitness": "strongly_inferred",
+      "evidence": "Maintenance workers repair cracked wall. The wall was already cracked before repair.",
+      "provenance_span": "maintenance workers repair the cracked wall"
+    },
+    {
+      "relation_id": "R10",
+      "source_id": "NE5",
+      "target_id": "NE7",
+      "relation_type": "ENABLES",
+      "confidence": 0.8,
+      "explicitness": "strongly_inferred",
+      "evidence": "Painters applied fresh plaster to hallway walls, which provided the plaster dust that was later blown by the draft.",
+      "provenance_span": "painters applied fresh plaster to the hallway walls"
+    }
+  ],
+  "metadata": {
+    "story_length_chars": 569
+  }
+}

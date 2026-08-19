@@ -1,0 +1,53 @@
+{
+  "dataset_version": "1.0.0",
+  "description": "Ground-truth evaluation manifest stored separately from induction pipeline to prevent leakage.",
+  "benchmark_pairs": [
+    {
+      "base_story_id": "story_base_01",
+      "target_story_id": "story_target_01",
+      "ground_truth_label": "True Analogy",
+      "structural_similarity": "HIGH",
+      "surface_similarity": "LOW"
+    },
+    {
+      "base_story_id": "story_base_01",
+      "target_story_id": "story_target_02",
+      "ground_truth_label": "False Analogy",
+      "structural_similarity": "LOW",
+      "surface_similarity": "LOW"
+    },
+    {
+      "base_story_id": "story_base_01",
+      "target_story_id": "story_target_03",
+      "ground_truth_label": "Literally Similar",
+      "structural_similarity": "HIGH",
+      "surface_similarity": "HIGH"
+    },
+    {
+      "base_story_id": "story_base_01",
+      "target_story_id": "story_target_04",
+      "ground_truth_label": "Surface Similar",
+      "structural_similarity": "LOW",
+      "surface_similarity": "HIGH"
+    },
+    {
+      "base_story_id": "story_base_01",
+      "target_story_id": "story_target_05",
+      "ground_truth_label": "Mere Appearance",
+      "structural_similarity": "NONE",
+      "surface_similarity": "SCATTERED"
+    }
+  ],
+  "synthetic_pairs": [
+    {
+      "base_story_id": "synth_story_01",
+      "target_story_id": "synth_story_02",
+      "ground_truth_label": "True Analogy"
+    },
+    {
+      "base_story_id": "synth_story_01",
+      "target_story_id": "synth_story_03",
+      "ground_truth_label": "False Analogy"
+    }
+  ]
+}

@@ -1,0 +1,743 @@
+{
+  "graph_id": "rich_graph_story_target_02",
+  "story_id": "story_target_02",
+  "atomic_events": {
+    "E1": {
+      "event_id": "E1",
+      "text_span": "Karen was a high school student",
+      "sentence_id": 1,
+      "predicate": "be_student",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "state",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 1
+    },
+    "E2": {
+      "event_id": "E2",
+      "text_span": "disliked school",
+      "sentence_id": 1,
+      "predicate": "dislike",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "emotion_reaction",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 2
+    },
+    "E3": {
+      "event_id": "E3",
+      "text_span": "maintained barely passing grades",
+      "sentence_id": 1,
+      "predicate": "maintain_grades",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "state",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 3
+    },
+    "E4": {
+      "event_id": "E4",
+      "text_span": "A few weeks before the end of the term, her father promised to pay for a vacation to Hawaii if she earned top marks",
+      "sentence_id": 2,
+      "predicate": "promise",
+      "participants": [
+        "father",
+        "Karen"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 4
+    },
+    "E5": {
+      "event_id": "E5",
+      "text_span": "if she earned top marks on her final graduation requirements",
+      "sentence_id": 2,
+      "predicate": "earn_top_marks",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "goal",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 5
+    },
+    "E6": {
+      "event_id": "E6",
+      "text_span": "After receiving this exciting promise",
+      "sentence_id": 3,
+      "predicate": "receive_promise",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 6
+    },
+    "E7": {
+      "event_id": "E7",
+      "text_span": "Karen became so obsessed with the prospect of Hawaii",
+      "sentence_id": 3,
+      "predicate": "become_obsessed",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "emotion_reaction",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 7
+    },
+    "E8": {
+      "event_id": "E8",
+      "text_span": "she spent the remaining weeks shopping for summer clothes",
+      "sentence_id": 3,
+      "predicate": "spend_weeks_shopping",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 8
+    },
+    "E9": {
+      "event_id": "E9",
+      "text_span": "making travel itineraries",
+      "sentence_id": 3,
+      "predicate": "make_itineraries",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 9
+    },
+    "E10": {
+      "event_id": "E10",
+      "text_span": "daydreaming about the beach",
+      "sentence_id": 3,
+      "predicate": "daydream",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 10
+    },
+    "E11": {
+      "event_id": "E11",
+      "text_span": "instead of studying for her exams",
+      "sentence_id": 3,
+      "predicate": "study_for_exams",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "action",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 11
+    },
+    "E12": {
+      "event_id": "E12",
+      "text_span": "When exam week arrived",
+      "sentence_id": 4,
+      "predicate": "arrive_exam_week",
+      "participants": [],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 12
+    },
+    "E13": {
+      "event_id": "E13",
+      "text_span": "she was completely unprepared",
+      "sentence_id": 4,
+      "predicate": "be_unprepared",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "state",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 13
+    },
+    "E14": {
+      "event_id": "E14",
+      "text_span": "Karen failed her final tests",
+      "sentence_id": 5,
+      "predicate": "fail_tests",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "outcome",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 14
+    },
+    "E15": {
+      "event_id": "E15",
+      "text_span": "was denied graduation",
+      "sentence_id": 5,
+      "predicate": "deny_graduation",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "outcome",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 15
+    },
+    "E16": {
+      "event_id": "E16",
+      "text_span": "did not receive the trip to Hawaii",
+      "sentence_id": 5,
+      "predicate": "receive_trip",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "outcome",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 16
+    },
+    "E17": {
+      "event_id": "E17",
+      "text_span": "She argued angrily with her father",
+      "sentence_id": 6,
+      "predicate": "argue",
+      "participants": [
+        "Karen",
+        "father"
+      ],
+      "event_type": "action",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 17
+    },
+    "E18": {
+      "event_id": "E18",
+      "text_span": "about the decision",
+      "sentence_id": 6,
+      "predicate": "about_decision",
+      "participants": [],
+      "event_type": "event",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 18
+    },
+    "E19": {
+      "event_id": "E19",
+      "text_span": "the vacation was canceled",
+      "sentence_id": 6,
+      "predicate": "cancel_vacation",
+      "participants": [
+        "vacation"
+      ],
+      "event_type": "outcome",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 19
+    },
+    "E20": {
+      "event_id": "E20",
+      "text_span": "was a high school student who disliked school",
+      "sentence_id": 1,
+      "predicate": "be_student_and_dislike_school",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "state",
+      "polarity": "negative",
+      "explicitness": "strongly_inferred",
+      "confidence": 0.85,
+      "temporal_rank": 1
+    },
+    "E21": {
+      "event_id": "E21",
+      "text_span": "her father promised to pay for a vacation to Hawaii",
+      "sentence_id": 2,
+      "predicate": "provide_vacation",
+      "participants": [
+        "father"
+      ],
+      "event_type": "goal",
+      "polarity": "positive",
+      "explicitness": "strongly_inferred",
+      "confidence": 0.95,
+      "temporal_rank": 4
+    },
+    "E22": {
+      "event_id": "E22",
+      "text_span": "Karen failed her final tests",
+      "sentence_id": 5,
+      "predicate": "fail_tests",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "event",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 14
+    },
+    "E23": {
+      "event_id": "E23",
+      "text_span": "was denied graduation",
+      "sentence_id": 5,
+      "predicate": "deny_graduation",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "event",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 15
+    },
+    "E24": {
+      "event_id": "E24",
+      "text_span": "did not receive the trip to Hawaii",
+      "sentence_id": 5,
+      "predicate": "not_receive_trip",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "outcome",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 16
+    },
+    "E25": {
+      "event_id": "E25",
+      "text_span": "argued angrily with her father",
+      "sentence_id": 6,
+      "predicate": "argue_angrily",
+      "participants": [
+        "Karen",
+        "father"
+      ],
+      "event_type": "emotion_reaction",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 17
+    }
+  },
+  "normalized_events": {
+    "NE1": {
+      "norm_id": "NE1",
+      "predicate_name": "DEFICIT_STATE",
+      "arguments": {
+        "actor": "Karen",
+        "state": "dislikes school and has barely passing grades"
+      },
+      "atomic_event_ids": [
+        "E1",
+        "E2",
+        "E3",
+        "E20"
+      ],
+      "summary_label": "Karen is a student with poor academic engagement and low grades",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE2": {
+      "norm_id": "NE2",
+      "predicate_name": "INTRODUCE_INCENTIVE",
+      "arguments": {
+        "actor": "Karen's father",
+        "object": "vacation to Hawaii",
+        "condition": "if she earns top marks on final graduation requirements"
+      },
+      "atomic_event_ids": [
+        "E4",
+        "E5",
+        "E21"
+      ],
+      "summary_label": "Father promises Hawaii vacation conditional on top marks",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE3": {
+      "norm_id": "NE3",
+      "predicate_name": "RECEIVE_INCENTIVE",
+      "arguments": {
+        "actor": "Karen",
+        "object": "promise of Hawaii vacation"
+      },
+      "atomic_event_ids": [
+        "E6"
+      ],
+      "summary_label": "Karen receives the promise",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE4": {
+      "norm_id": "NE4",
+      "predicate_name": "DEVELOP_OBSESSION",
+      "arguments": {
+        "actor": "Karen",
+        "object": "prospect of Hawaii"
+      },
+      "atomic_event_ids": [
+        "E7"
+      ],
+      "summary_label": "Karen becomes obsessed with Hawaii",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE5": {
+      "norm_id": "NE5",
+      "predicate_name": "NEGLECT_TASK",
+      "arguments": {
+        "actor": "Karen",
+        "task": "studying for exams",
+        "alternative_activity": "shopping, making itineraries, daydreaming"
+      },
+      "atomic_event_ids": [
+        "E8",
+        "E9",
+        "E10",
+        "E11"
+      ],
+      "summary_label": "Karen neglects studying to engage in vacation-related activities",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE6": {
+      "norm_id": "NE6",
+      "predicate_name": "ARRIVAL_EVENT",
+      "arguments": {
+        "event": "exam week"
+      },
+      "atomic_event_ids": [
+        "E12"
+      ],
+      "summary_label": "Exam week arrives",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE7": {
+      "norm_id": "NE7",
+      "predicate_name": "DEFICIT_STATE",
+      "arguments": {
+        "actor": "Karen",
+        "state": "unprepared for exams"
+      },
+      "atomic_event_ids": [
+        "E13"
+      ],
+      "summary_label": "Karen is unprepared for exams",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE8": {
+      "norm_id": "NE8",
+      "predicate_name": "FAIL_CRITERIA",
+      "arguments": {
+        "actor": "Karen",
+        "target": "final tests"
+      },
+      "atomic_event_ids": [
+        "E14",
+        "E22"
+      ],
+      "summary_label": "Karen fails final tests",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE9": {
+      "norm_id": "NE9",
+      "predicate_name": "CONSEQUENCE_ENACTED",
+      "arguments": {
+        "actor": "school",
+        "object": "graduation",
+        "target": "Karen",
+        "outcome": "denied graduation"
+      },
+      "atomic_event_ids": [
+        "E15",
+        "E23"
+      ],
+      "summary_label": "Karen is denied graduation",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE10": {
+      "norm_id": "NE10",
+      "predicate_name": "CONSEQUENCE_ENACTED",
+      "arguments": {
+        "actor": "father",
+        "object": "trip to Hawaii",
+        "target": "Karen",
+        "outcome": "trip not received"
+      },
+      "atomic_event_ids": [
+        "E16",
+        "E24"
+      ],
+      "summary_label": "Karen does not receive the Hawaii trip",
+      "polarity": "negative",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE11": {
+      "norm_id": "NE11",
+      "predicate_name": "CONFLICT",
+      "arguments": {
+        "actor": "Karen",
+        "counterpart": "father",
+        "topic": "decision to cancel vacation"
+      },
+      "atomic_event_ids": [
+        "E17",
+        "E18",
+        "E25"
+      ],
+      "summary_label": "Karen argues angrily with father about the decision",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE12": {
+      "norm_id": "NE12",
+      "predicate_name": "CONSEQUENCE_ENACTED",
+      "arguments": {
+        "actor": "father",
+        "object": "vacation",
+        "target": "Karen",
+        "outcome": "vacation canceled"
+      },
+      "atomic_event_ids": [
+        "E19"
+      ],
+      "summary_label": "Vacation is canceled",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    }
+  },
+  "relations": [
+    {
+      "relation_id": "R1",
+      "source_id": "NE2",
+      "target_id": "NE3",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Father promises Hawaii vacation conditional on top marks; Karen receives the promise.",
+      "provenance_span": "her father promised to pay for a vacation to Hawaii if she earned top marks on her final graduation requirements. After receiving this exciting promise"
+    },
+    {
+      "relation_id": "R2",
+      "source_id": "NE3",
+      "target_id": "NE4",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "After receiving this exciting promise, Karen became so obsessed with the prospect of Hawaii.",
+      "provenance_span": "After receiving this exciting promise, Karen became so obsessed with the prospect of Hawaii"
+    },
+    {
+      "relation_id": "R3",
+      "source_id": "NE4",
+      "target_id": "NE5",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Karen became so obsessed with the prospect of Hawaii that she spent the remaining weeks shopping for summer clothes, making travel itineraries, and daydreaming about the beach instead of studying for her exams.",
+      "provenance_span": "Karen became so obsessed with the prospect of Hawaii that she spent the remaining weeks shopping for summer clothes, making travel itineraries, and daydreaming about the beach instead of studying for her exams."
+    },
+    {
+      "relation_id": "R4",
+      "source_id": "NE5",
+      "target_id": "NE7",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "strongly_inferred",
+      "evidence": "Karen neglected studying to engage in vacation-related activities, leading to being unprepared for exams.",
+      "provenance_span": "instead of studying for her exams. When exam week arrived, she was completely unprepared."
+    },
+    {
+      "relation_id": "R5",
+      "source_id": "NE6",
+      "target_id": "NE7",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Exam week arrives before Karen is unprepared (the state of being unprepared is revealed at exam week).",
+      "provenance_span": "When exam week arrived, she was completely unprepared."
+    },
+    {
+      "relation_id": "R6",
+      "source_id": "NE7",
+      "target_id": "NE8",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Karen was completely unprepared for exams, and as a result failed her final tests.",
+      "provenance_span": "she was completely unprepared. As a result, Karen failed her final tests"
+    },
+    {
+      "relation_id": "R7",
+      "source_id": "NE8",
+      "target_id": "NE9",
+      "relation_type": "RESULTS_IN",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Karen failed her final tests, and was denied graduation.",
+      "provenance_span": "Karen failed her final tests, was denied graduation"
+    },
+    {
+      "relation_id": "R8",
+      "source_id": "NE8",
+      "target_id": "NE10",
+      "relation_type": "RESULTS_IN",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Karen failed her final tests, and did not receive the trip to Hawaii.",
+      "provenance_span": "Karen failed her final tests, was denied graduation, and did not receive the trip to Hawaii."
+    },
+    {
+      "relation_id": "R9",
+      "source_id": "NE9",
+      "target_id": "NE11",
+      "relation_type": "MOTIVATES",
+      "confidence": 0.9,
+      "explicitness": "strongly_inferred",
+      "evidence": "Karen argued angrily with her father about the decision (denial of graduation), indicating the denial motivated the argument.",
+      "provenance_span": "She argued angrily with her father about the decision"
+    },
+    {
+      "relation_id": "R10",
+      "source_id": "NE10",
+      "target_id": "NE12",
+      "relation_type": "RESULTS_IN",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Karen did not receive the trip, and the vacation was canceled.",
+      "provenance_span": "did not receive the trip to Hawaii. She argued angrily with her father about the decision, but the vacation was canceled."
+    },
+    {
+      "relation_id": "R11",
+      "source_id": "NE1",
+      "target_id": "NE2",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Karen's poor academic engagement and low grades existed before the father's promise.",
+      "provenance_span": "Karen was a high school student who disliked school and maintained barely passing grades. A few weeks before the end of the term, her father promised"
+    },
+    {
+      "relation_id": "R12",
+      "source_id": "NE2",
+      "target_id": "NE5",
+      "relation_type": "BEFORE",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "The promise was made before Karen neglected studying.",
+      "provenance_span": "her father promised... After receiving this exciting promise, Karen became so obsessed... instead of studying"
+    }
+  ],
+  "metadata": {
+    "story_length_chars": 740
+  }
+}

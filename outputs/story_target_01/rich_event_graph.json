@@ -1,0 +1,719 @@
+{
+  "graph_id": "rich_graph_story_target_01",
+  "story_id": "story_target_01",
+  "atomic_events": {
+    "E1": {
+      "event_id": "E1",
+      "text_span": "Karen was a high school student",
+      "sentence_id": 1,
+      "predicate": "was a high school student",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "state",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 1
+    },
+    "E2": {
+      "event_id": "E2",
+      "text_span": "was struggling academically",
+      "sentence_id": 1,
+      "predicate": "struggling academically",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "state",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 2
+    },
+    "E3": {
+      "event_id": "E3",
+      "text_span": "She was at risk of not graduating",
+      "sentence_id": 2,
+      "predicate": "at risk of not graduating",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "state",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 3
+    },
+    "E4": {
+      "event_id": "E4",
+      "text_span": "she had neglected her coursework for months",
+      "sentence_id": 2,
+      "predicate": "neglected coursework",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "action",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 4
+    },
+    "E5": {
+      "event_id": "E5",
+      "text_span": "spending her study hours daydreaming about traveling to Hawaii",
+      "sentence_id": 2,
+      "predicate": "daydreaming about traveling to Hawaii",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 5
+    },
+    "E6": {
+      "event_id": "E6",
+      "text_span": "A few weeks before final exams, her grades were far below the graduation requirement",
+      "sentence_id": 3,
+      "predicate": "grades far below graduation requirement",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "state",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 6
+    },
+    "E7": {
+      "event_id": "E7",
+      "text_span": "To encourage her to pass",
+      "sentence_id": 4,
+      "predicate": "encourage her to pass",
+      "participants": [
+        "Karen's father",
+        "Karen"
+      ],
+      "event_type": "goal",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 7
+    },
+    "E8": {
+      "event_id": "E8",
+      "text_span": "her father promised to pay for an all-expenses-paid trip to Hawaii",
+      "sentence_id": 4,
+      "predicate": "promised to pay for trip",
+      "participants": [
+        "Karen's father",
+        "Karen"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 8
+    },
+    "E9": {
+      "event_id": "E9",
+      "text_span": "if she studied diligently",
+      "sentence_id": 4,
+      "predicate": "studied diligently",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "goal",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 9
+    },
+    "E10": {
+      "event_id": "E10",
+      "text_span": "passed all her remaining courses",
+      "sentence_id": 4,
+      "predicate": "passed all remaining courses",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "goal",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 10
+    },
+    "E11": {
+      "event_id": "E11",
+      "text_span": "Karen was thrilled by the offer",
+      "sentence_id": 5,
+      "predicate": "thrilled by the offer",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "emotion_reaction",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 11
+    },
+    "E12": {
+      "event_id": "E12",
+      "text_span": "the cumulative academic deficit was already too severe",
+      "sentence_id": 6,
+      "predicate": "cumulative academic deficit too severe",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "constraint",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 12
+    },
+    "E13": {
+      "event_id": "E13",
+      "text_span": "there was not enough time left in the semester to catch up on the coursework",
+      "sentence_id": 6,
+      "predicate": "not enough time to catch up",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "constraint",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 13
+    },
+    "E14": {
+      "event_id": "E14",
+      "text_span": "Karen failed her final exams",
+      "sentence_id": 7,
+      "predicate": "failed final exams",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "outcome",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 14
+    },
+    "E15": {
+      "event_id": "E15",
+      "text_span": "did not graduate with her class",
+      "sentence_id": 7,
+      "predicate": "did not graduate",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "outcome",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 15
+    },
+    "E16": {
+      "event_id": "E16",
+      "text_span": "did not receive the trip to Hawaii",
+      "sentence_id": 7,
+      "predicate": "did not receive trip",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "outcome",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 16
+    },
+    "E17": {
+      "event_id": "E17",
+      "text_span": "She spent the graduation evening crying in her bedroom",
+      "sentence_id": 8,
+      "predicate": "crying in bedroom",
+      "participants": [
+        "Karen"
+      ],
+      "event_type": "emotion_reaction",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 17
+    },
+    "E18": {
+      "event_id": "E18",
+      "text_span": "her father did not purchase the plane tickets",
+      "sentence_id": 8,
+      "predicate": "did not purchase plane tickets",
+      "participants": [
+        "Karen's father"
+      ],
+      "event_type": "action",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 18
+    }
+  },
+  "normalized_events": {
+    "NE1": {
+      "norm_id": "NE1",
+      "predicate_name": "STUDENT_STATE",
+      "arguments": {
+        "actor": "Karen",
+        "institution": "high school"
+      },
+      "atomic_event_ids": [
+        "E1"
+      ],
+      "summary_label": "Karen is a high school student",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE2": {
+      "norm_id": "NE2",
+      "predicate_name": "ACADEMIC_STRUGGLE",
+      "arguments": {
+        "actor": "Karen"
+      },
+      "atomic_event_ids": [
+        "E2"
+      ],
+      "summary_label": "Karen struggles academically",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE3": {
+      "norm_id": "NE3",
+      "predicate_name": "GRADUATION_RISK",
+      "arguments": {
+        "actor": "Karen",
+        "risk": "not graduating"
+      },
+      "atomic_event_ids": [
+        "E3"
+      ],
+      "summary_label": "Karen is at risk of not graduating",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE4": {
+      "norm_id": "NE4",
+      "predicate_name": "NEGLECT_TASK",
+      "arguments": {
+        "actor": "Karen",
+        "task": "coursework",
+        "duration": "months"
+      },
+      "atomic_event_ids": [
+        "E4"
+      ],
+      "summary_label": "Karen neglects coursework for months",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE5": {
+      "norm_id": "NE5",
+      "predicate_name": "DAYDREAM_STATE",
+      "arguments": {
+        "actor": "Karen",
+        "activity": "daydreaming about traveling to Hawaii",
+        "context": "study hours"
+      },
+      "atomic_event_ids": [
+        "E5"
+      ],
+      "summary_label": "Karen daydreams about Hawaii during study hours",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE6": {
+      "norm_id": "NE6",
+      "predicate_name": "DEFICIT_STATE",
+      "arguments": {
+        "actor": "Karen",
+        "object": "grades",
+        "deficit": "far below graduation requirement",
+        "temporal_marker": "a few weeks before final exams"
+      },
+      "atomic_event_ids": [
+        "E6"
+      ],
+      "summary_label": "Karen's grades are far below graduation requirement",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE7": {
+      "norm_id": "NE7",
+      "predicate_name": "INTRODUCE_INCENTIVE",
+      "arguments": {
+        "actor": "father",
+        "recipient": "Karen",
+        "incentive": "all-expenses-paid trip to Hawaii",
+        "condition": "study diligently and pass all remaining courses",
+        "purpose": "encourage her to pass"
+      },
+      "atomic_event_ids": [
+        "E7",
+        "E8",
+        "E9",
+        "E10"
+      ],
+      "summary_label": "Father promises Hawaii trip if Karen studies and passes courses",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE8": {
+      "norm_id": "NE8",
+      "predicate_name": "POSITIVE_EMOTIONAL_RESPONSE",
+      "arguments": {
+        "actor": "Karen",
+        "emotion": "thrilled",
+        "stimulus": "offer"
+      },
+      "atomic_event_ids": [
+        "E11"
+      ],
+      "summary_label": "Karen is thrilled by the offer",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE9": {
+      "norm_id": "NE9",
+      "predicate_name": "DEFICIT_STATE",
+      "arguments": {
+        "actor": "Karen",
+        "deficit": "cumulative academic deficit too severe"
+      },
+      "atomic_event_ids": [
+        "E12"
+      ],
+      "summary_label": "Cumulative academic deficit is too severe",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE10": {
+      "norm_id": "NE10",
+      "predicate_name": "RESOURCE_SHORTAGE",
+      "arguments": {
+        "resource": "time",
+        "context": "semester to catch up on coursework"
+      },
+      "atomic_event_ids": [
+        "E13"
+      ],
+      "summary_label": "Not enough time left to catch up",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE11": {
+      "norm_id": "NE11",
+      "predicate_name": "FAIL_CRITERIA",
+      "arguments": {
+        "actor": "Karen",
+        "task": "final exams"
+      },
+      "atomic_event_ids": [
+        "E14"
+      ],
+      "summary_label": "Karen fails final exams",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE12": {
+      "norm_id": "NE12",
+      "predicate_name": "FAIL_CRITERIA",
+      "arguments": {
+        "actor": "Karen",
+        "task": "graduation"
+      },
+      "atomic_event_ids": [
+        "E15"
+      ],
+      "summary_label": "Karen does not graduate",
+      "polarity": "negative",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE13": {
+      "norm_id": "NE13",
+      "predicate_name": "CONSEQUENCE_ENACTED",
+      "arguments": {
+        "actor": "Karen",
+        "consequence": "did not receive trip to Hawaii"
+      },
+      "atomic_event_ids": [
+        "E16"
+      ],
+      "summary_label": "Karen does not receive the trip to Hawaii",
+      "polarity": "negative",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE14": {
+      "norm_id": "NE14",
+      "predicate_name": "EMOTIONAL_STATE",
+      "arguments": {
+        "actor": "Karen",
+        "emotion": "crying",
+        "location": "bedroom",
+        "context": "graduation evening"
+      },
+      "atomic_event_ids": [
+        "E17"
+      ],
+      "summary_label": "Karen cries in bedroom on graduation evening",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE15": {
+      "norm_id": "NE15",
+      "predicate_name": "CONSEQUENCE_ENACTED",
+      "arguments": {
+        "actor": "father",
+        "action": "did not purchase plane tickets"
+      },
+      "atomic_event_ids": [
+        "E18"
+      ],
+      "summary_label": "Father does not purchase plane tickets",
+      "polarity": "negative",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    }
+  },
+  "relations": [
+    {
+      "relation_id": "R1",
+      "source_id": "NE4",
+      "target_id": "NE6",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Karen neglected her coursework for months, which directly caused her grades to be far below the graduation requirement.",
+      "provenance_span": "she had neglected her coursework for months... her grades were far below the graduation requirement"
+    },
+    {
+      "relation_id": "R2",
+      "source_id": "NE6",
+      "target_id": "NE3",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Her grades being far below the graduation requirement directly caused her to be at risk of not graduating.",
+      "provenance_span": "her grades were far below the graduation requirement. To encourage her to pass..."
+    },
+    {
+      "relation_id": "R3",
+      "source_id": "NE7",
+      "target_id": "NE8",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "The father's promise of a trip to Hawaii caused Karen to be thrilled.",
+      "provenance_span": "Karen was thrilled by the offer."
+    },
+    {
+      "relation_id": "R4",
+      "source_id": "NE9",
+      "target_id": "NE10",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "The cumulative academic deficit being too severe caused there not to be enough time left to catch up.",
+      "provenance_span": "the cumulative academic deficit was already too severe and there was not enough time left in the semester to catch up"
+    },
+    {
+      "relation_id": "R5",
+      "source_id": "NE10",
+      "target_id": "NE11",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Not having enough time to catch up caused Karen to fail her final exams.",
+      "provenance_span": "there was not enough time left in the semester to catch up on the coursework. Consequently, Karen failed her final exams"
+    },
+    {
+      "relation_id": "R6",
+      "source_id": "NE11",
+      "target_id": "NE12",
+      "relation_type": "RESULTS_IN",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Failing final exams directly resulted in not graduating.",
+      "provenance_span": "Karen failed her final exams, did not graduate with her class"
+    },
+    {
+      "relation_id": "R7",
+      "source_id": "NE12",
+      "target_id": "NE13",
+      "relation_type": "RESULTS_IN",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Not graduating resulted in not receiving the trip to Hawaii.",
+      "provenance_span": "did not graduate with her class, and did not receive the trip to Hawaii"
+    },
+    {
+      "relation_id": "R8",
+      "source_id": "NE12",
+      "target_id": "NE14",
+      "relation_type": "CAUSES",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Not graduating caused Karen to cry in her bedroom on graduation evening.",
+      "provenance_span": "did not graduate with her class... She spent the graduation evening crying in her bedroom"
+    },
+    {
+      "relation_id": "R9",
+      "source_id": "NE13",
+      "target_id": "NE15",
+      "relation_type": "RESULTS_IN",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "Karen not receiving the trip resulted in the father not purchasing plane tickets.",
+      "provenance_span": "did not receive the trip to Hawaii... her father did not purchase the plane tickets"
+    },
+    {
+      "relation_id": "R10",
+      "source_id": "NE4",
+      "target_id": "NE5",
+      "relation_type": "BEFORE",
+      "confidence": 0.8,
+      "explicitness": "strongly_inferred",
+      "evidence": "The narrative describes Karen neglecting coursework and daydreaming during study hours, implying daydreaming occurred during the neglect period, but the temporal order is not strictly causal.",
+      "provenance_span": "she had neglected her coursework for months, spending her study hours daydreaming about traveling to Hawaii"
+    },
+    {
+      "relation_id": "R11",
+      "source_id": "NE7",
+      "target_id": "NE11",
+      "relation_type": "BEFORE",
+      "confidence": 0.9,
+      "explicitness": "explicit",
+      "evidence": "The father's promise occurred before the final exams, but did not cause the failure; the deficit caused the failure.",
+      "provenance_span": "A few weeks before final exams... her father promised... Consequently, Karen failed her final exams"
+    },
+    {
+      "relation_id": "R12",
+      "source_id": "NE8",
+      "target_id": "NE11",
+      "relation_type": "BEFORE",
+      "confidence": 0.9,
+      "explicitness": "explicit",
+      "evidence": "Karen being thrilled occurred before the exams, but did not cause the failure.",
+      "provenance_span": "Karen was thrilled by the offer... Consequently, Karen failed her final exams"
+    },
+    {
+      "relation_id": "R13",
+      "source_id": "NE6",
+      "target_id": "NE9",
+      "relation_type": "BEFORE",
+      "confidence": 0.8,
+      "explicitness": "strongly_inferred",
+      "evidence": "The grades being far below requirement is a state that persisted and is later described as a cumulative deficit, but the narrative does not explicitly state a causal link between the two descriptions.",
+      "provenance_span": "her grades were far below the graduation requirement... the cumulative academic deficit was already too severe"
+    },
+    {
+      "relation_id": "R14",
+      "source_id": "NE7",
+      "target_id": "NE13",
+      "relation_type": "BEFORE",
+      "confidence": 0.9,
+      "explicitness": "explicit",
+      "evidence": "The promise of the trip occurred before the trip was not received, but the promise did not cause the non-receipt; the failure did.",
+      "provenance_span": "her father promised... did not receive the trip to Hawaii"
+    }
+  ],
+  "metadata": {
+    "story_length_chars": 861
+  }
+}

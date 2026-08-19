@@ -1,0 +1,579 @@
+{
+  "graph_id": "rich_graph_story_target_04",
+  "story_id": "story_target_04",
+  "atomic_events": {
+    "E1": {
+      "event_id": "E1",
+      "text_span": "Arthur was a resident in a psychiatric hospital",
+      "sentence_id": 1,
+      "predicate": "was a resident",
+      "participants": [
+        "Arthur",
+        "psychiatric hospital"
+      ],
+      "event_type": "state",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 1
+    },
+    "E2": {
+      "event_id": "E2",
+      "text_span": "who was confined indoors",
+      "sentence_id": 1,
+      "predicate": "was confined",
+      "participants": [
+        "Arthur"
+      ],
+      "event_type": "state",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 2
+    },
+    "E3": {
+      "event_id": "E3",
+      "text_span": "The ward matron announced that fresh gingerbread from the local bakery had arrived for the patients",
+      "sentence_id": 2,
+      "predicate": "announced",
+      "participants": [
+        "ward matron",
+        "gingerbread",
+        "patients"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 3
+    },
+    "E4": {
+      "event_id": "E4",
+      "text_span": "fresh gingerbread from the local bakery had arrived for the patients",
+      "sentence_id": 2,
+      "predicate": "had arrived",
+      "participants": [
+        "gingerbread",
+        "patients"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 4
+    },
+    "E5": {
+      "event_id": "E5",
+      "text_span": "Arthur was asked to help the cleaning staff scrub the recreation hall floors before the dessert was distributed",
+      "sentence_id": 3,
+      "predicate": "was asked to help",
+      "participants": [
+        "Arthur",
+        "cleaning staff"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 5
+    },
+    "E6": {
+      "event_id": "E6",
+      "text_span": "scrub the recreation hall floors",
+      "sentence_id": 3,
+      "predicate": "scrub",
+      "participants": [
+        "Arthur",
+        "cleaning staff",
+        "recreation hall floors"
+      ],
+      "event_type": "goal",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 6
+    },
+    "E7": {
+      "event_id": "E7",
+      "text_span": "before the dessert was distributed",
+      "sentence_id": 3,
+      "predicate": "was distributed",
+      "participants": [
+        "dessert"
+      ],
+      "event_type": "constraint",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 7
+    },
+    "E8": {
+      "event_id": "E8",
+      "text_span": "While working, Arthur became distracted daydreaming about the gingerbread",
+      "sentence_id": 4,
+      "predicate": "became distracted",
+      "participants": [
+        "Arthur",
+        "gingerbread"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 8
+    },
+    "E9": {
+      "event_id": "E9",
+      "text_span": "daydreaming about the gingerbread",
+      "sentence_id": 4,
+      "predicate": "daydreaming",
+      "participants": [
+        "Arthur",
+        "gingerbread"
+      ],
+      "event_type": "state",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 9
+    },
+    "E10": {
+      "event_id": "E10",
+      "text_span": "accidentally spilled a bucket of soapy water across the clean floor",
+      "sentence_id": 4,
+      "predicate": "spilled",
+      "participants": [
+        "Arthur",
+        "bucket of soapy water",
+        "clean floor"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 10
+    },
+    "E11": {
+      "event_id": "E11",
+      "text_span": "the mess was mopped up",
+      "sentence_id": 5,
+      "predicate": "was mopped up",
+      "participants": [
+        "mess"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 11
+    },
+    "E12": {
+      "event_id": "E12",
+      "text_span": "the inspection of the recreation hall was delayed",
+      "sentence_id": 5,
+      "predicate": "was delayed",
+      "participants": [
+        "inspection",
+        "recreation hall"
+      ],
+      "event_type": "outcome",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 12
+    },
+    "E13": {
+      "event_id": "E13",
+      "text_span": "the gingerbread had already been distributed to the other patients",
+      "sentence_id": 5,
+      "predicate": "had been distributed",
+      "participants": [
+        "gingerbread",
+        "other patients"
+      ],
+      "event_type": "event",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 13
+    },
+    "E14": {
+      "event_id": "E14",
+      "text_span": "Arthur was furious",
+      "sentence_id": 6,
+      "predicate": "was furious",
+      "participants": [
+        "Arthur"
+      ],
+      "event_type": "emotion_reaction",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 14
+    },
+    "E15": {
+      "event_id": "E15",
+      "text_span": "slammed the dining hall door",
+      "sentence_id": 6,
+      "predicate": "slammed",
+      "participants": [
+        "Arthur",
+        "dining hall door"
+      ],
+      "event_type": "action",
+      "polarity": "positive",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 15
+    },
+    "E16": {
+      "event_id": "E16",
+      "text_span": "having missed out on the gingerbread",
+      "sentence_id": 6,
+      "predicate": "missed out",
+      "participants": [
+        "Arthur",
+        "gingerbread"
+      ],
+      "event_type": "outcome",
+      "polarity": "negative",
+      "explicitness": "explicit",
+      "confidence": 1.0,
+      "temporal_rank": 16
+    }
+  },
+  "normalized_events": {
+    "NE1": {
+      "norm_id": "NE1",
+      "predicate_name": "DEFICIT_STATE",
+      "arguments": {
+        "actor": "Arthur",
+        "location": "psychiatric hospital",
+        "state": "confined indoors"
+      },
+      "atomic_event_ids": [
+        "E1",
+        "E2"
+      ],
+      "summary_label": "Arthur is a resident confined indoors in a psychiatric hospital",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE2": {
+      "norm_id": "NE2",
+      "predicate_name": "INTRODUCE_INCENTIVE",
+      "arguments": {
+        "actor": "ward matron",
+        "object": "fresh gingerbread",
+        "source": "local bakery",
+        "recipient": "patients"
+      },
+      "atomic_event_ids": [
+        "E3",
+        "E4"
+      ],
+      "summary_label": "Ward matron announces arrival of fresh gingerbread for patients",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE3": {
+      "norm_id": "NE3",
+      "predicate_name": "INITIATE_PLAN",
+      "arguments": {
+        "actor": "Arthur",
+        "task": "scrub recreation hall floors",
+        "helper": "cleaning staff",
+        "condition": "before gingerbread distribution"
+      },
+      "atomic_event_ids": [
+        "E5",
+        "E6",
+        "E7"
+      ],
+      "summary_label": "Arthur is asked to help scrub recreation hall floors before gingerbread distribution",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE4": {
+      "norm_id": "NE4",
+      "predicate_name": "NEGLECT_TASK",
+      "arguments": {
+        "actor": "Arthur",
+        "task": "scrubbing floors",
+        "distraction": "daydreaming about gingerbread"
+      },
+      "atomic_event_ids": [
+        "E8",
+        "E9"
+      ],
+      "summary_label": "Arthur becomes distracted daydreaming about gingerbread while working",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE5": {
+      "norm_id": "NE5",
+      "predicate_name": "ACCIDENTAL_ACTION",
+      "arguments": {
+        "actor": "Arthur",
+        "object": "bucket of soapy water",
+        "location": "clean floor",
+        "result": "spilled water"
+      },
+      "atomic_event_ids": [
+        "E10"
+      ],
+      "summary_label": "Arthur accidentally spills bucket of soapy water across clean floor",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE6": {
+      "norm_id": "NE6",
+      "predicate_name": "CONSEQUENCE_ENACTED",
+      "arguments": {
+        "actor": "cleaning staff",
+        "action": "mopped up mess",
+        "object": "soapy water"
+      },
+      "atomic_event_ids": [
+        "E11"
+      ],
+      "summary_label": "Mess is mopped up",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "INTERVAL"
+      }
+    },
+    "NE7": {
+      "norm_id": "NE7",
+      "predicate_name": "FAIL_CRITERIA",
+      "arguments": {
+        "actor": "inspection",
+        "object": "recreation hall",
+        "reason": "delay due to mess"
+      },
+      "atomic_event_ids": [
+        "E12"
+      ],
+      "summary_label": "Inspection of recreation hall is delayed",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE8": {
+      "norm_id": "NE8",
+      "predicate_name": "RESOURCE_SHORTAGE",
+      "arguments": {
+        "object": "gingerbread",
+        "recipient": "other patients",
+        "excluded": "Arthur"
+      },
+      "atomic_event_ids": [
+        "E13"
+      ],
+      "summary_label": "Gingerbread distributed to other patients, Arthur misses out",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE9": {
+      "norm_id": "NE9",
+      "predicate_name": "EMOTIONAL_STATE",
+      "arguments": {
+        "actor": "Arthur",
+        "emotion": "furious"
+      },
+      "atomic_event_ids": [
+        "E14"
+      ],
+      "summary_label": "Arthur is furious",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "PERSISTENT_STATE"
+      }
+    },
+    "NE10": {
+      "norm_id": "NE10",
+      "predicate_name": "AGGRESSIVE_ACTION",
+      "arguments": {
+        "actor": "Arthur",
+        "object": "dining hall door",
+        "action": "slammed"
+      },
+      "atomic_event_ids": [
+        "E15"
+      ],
+      "summary_label": "Arthur slams dining hall door",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    },
+    "NE11": {
+      "norm_id": "NE11",
+      "predicate_name": "MISS_OPPORTUNITY",
+      "arguments": {
+        "actor": "Arthur",
+        "object": "gingerbread"
+      },
+      "atomic_event_ids": [
+        "E16"
+      ],
+      "summary_label": "Arthur missed out on gingerbread",
+      "polarity": "positive",
+      "confidence": 1.0,
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      }
+    }
+  },
+  "relations": [
+    {
+      "relation_id": "R1",
+      "source_id": "NE4",
+      "target_id": "NE5",
+      "relation_type": "CAUSES",
+      "confidence": 0.95,
+      "explicitness": "explicit",
+      "evidence": "Arthur became distracted daydreaming about the gingerbread while working and accidentally spilled a bucket of soapy water across the clean floor.",
+      "provenance_span": "Arthur became distracted daydreaming about the gingerbread and accidentally spilled a bucket of soapy water across the clean floor."
+    },
+    {
+      "relation_id": "R2",
+      "source_id": "NE5",
+      "target_id": "NE6",
+      "relation_type": "CAUSES",
+      "confidence": 0.9,
+      "explicitness": "explicit",
+      "evidence": "The spill of soapy water necessitated mopping up the mess.",
+      "provenance_span": "By the time the mess was mopped up"
+    },
+    {
+      "relation_id": "R3",
+      "source_id": "NE6",
+      "target_id": "NE7",
+      "relation_type": "CAUSES",
+      "confidence": 0.9,
+      "explicitness": "strongly_inferred",
+      "evidence": "Mopping the mess took time, which delayed the inspection of the recreation hall.",
+      "provenance_span": "By the time the mess was mopped up, the inspection of the recreation hall was delayed"
+    },
+    {
+      "relation_id": "R4",
+      "source_id": "NE7",
+      "target_id": "NE8",
+      "relation_type": "CAUSES",
+      "confidence": 0.85,
+      "explicitness": "strongly_inferred",
+      "evidence": "The delay in inspection meant the gingerbread distribution occurred before Arthur could get any, causing him to miss out.",
+      "provenance_span": "the inspection of the recreation hall was delayed, and the gingerbread had already been distributed to the other patients"
+    },
+    {
+      "relation_id": "R5",
+      "source_id": "NE8",
+      "target_id": "NE9",
+      "relation_type": "CAUSES",
+      "confidence": 0.95,
+      "explicitness": "explicit",
+      "evidence": "Arthur was furious because he missed out on the gingerbread.",
+      "provenance_span": "Arthur was furious and slammed the dining hall door, having missed out on the gingerbread."
+    },
+    {
+      "relation_id": "R6",
+      "source_id": "NE9",
+      "target_id": "NE10",
+      "relation_type": "MOTIVATES",
+      "confidence": 0.9,
+      "explicitness": "explicit",
+      "evidence": "Arthur's fury motivated him to slam the dining hall door.",
+      "provenance_span": "Arthur was furious and slammed the dining hall door"
+    },
+    {
+      "relation_id": "R7",
+      "source_id": "NE8",
+      "target_id": "NE11",
+      "relation_type": "RESULTS_IN",
+      "confidence": 1.0,
+      "explicitness": "explicit",
+      "evidence": "The gingerbread being distributed to other patients directly resulted in Arthur missing out on the gingerbread.",
+      "provenance_span": "the gingerbread had already been distributed to the other patients, having missed out on the gingerbread."
+    },
+    {
+      "relation_id": "R8",
+      "source_id": "NE3",
+      "target_id": "NE4",
+      "relation_type": "BEFORE",
+      "confidence": 0.9,
+      "explicitness": "explicit",
+      "evidence": "Arthur was asked to help scrub floors before he became distracted while working.",
+      "provenance_span": "Arthur was asked to help scrub the recreation hall floors before the dessert was distributed. While working, Arthur became distracted"
+    },
+    {
+      "relation_id": "R9",
+      "source_id": "NE2",
+      "target_id": "NE3",
+      "relation_type": "BEFORE",
+      "confidence": 0.9,
+      "explicitness": "explicit",
+      "evidence": "The announcement of gingerbread occurred before Arthur was asked to help scrub floors.",
+      "provenance_span": "The ward matron announced that fresh gingerbread... Arthur was asked to help scrub"
+    }
+  ],
+  "metadata": {
+    "story_length_chars": 684
+  }
+}

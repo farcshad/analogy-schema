@@ -19,14 +19,12 @@ from analogy_schema.fixtures.mock_responses import (
 
 def test_william_pipeline_vertical_slice():
     # 1. Load canonical story
-    fixture_path = Path(__file__).parent.parent / "analogy_schema" / "fixtures" / "stories" / "william_base.json"
+    fixture_path = Path(__file__).parent.parent / "analogy_schema" / "fixtures" / "stories" / "story_base_01.json"
     with open(fixture_path, "r") as f:
         data = json.load(f)
     story = Story.from_text(
         story_id=data["story_id"],
         text=data["text"],
-        title=data["title"],
-        metadata=data["metadata"]
     )
     
     # 2. Setup MockLLMProvider with registered stage outputs
@@ -61,7 +59,7 @@ def test_william_pipeline_vertical_slice():
     assert len(backbone.nodes) == 6
     assert "NE7" in backbone.pruned_node_ids
     
-    # 7. Check Level 2 Functional Roles and Generic Roles (Atomic descriptions without relational clauses)
+    # 7. Check Level 2 Functional Roles and Generic Roles
     level_2_labels = [node.abstraction.level_2_functional for node in backbone.nodes.values()]
     assert "task neglect" in level_2_labels
     assert "conditional incentive" in level_2_labels
@@ -92,7 +90,7 @@ def test_william_pipeline_vertical_slice():
     
     # 10. Verify Markdown and JSON serialization
     md_output = export_backbone_markdown(backbone)
-    assert "Causal Backbone: william_base" in md_output
+    assert "Causal Backbone: story_base_01" in md_output
     assert "Underlying Rich Relations" in md_output
     assert "task neglect" in md_output
     

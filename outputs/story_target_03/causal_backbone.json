@@ -1,0 +1,342 @@
+{
+  "backbone_id": "backbone_story_target_03",
+  "story_id": "story_target_03",
+  "nodes": {
+    "N2": {
+      "node_id": "N2",
+      "macro_node": {
+        "macro_id": "M2",
+        "label": "task neglect",
+        "source_normalized_ids": [
+          "NE5"
+        ],
+        "source_atomic_ids": [
+          "E6",
+          "E7",
+          "E8",
+          "E9"
+        ],
+        "functional_role": "CAUSAL_ANTECEDENT",
+        "temporal_grounding": {
+          "mention_phase": "PRE_INTERVENTION",
+          "onset_phase": "PRE_INTERVENTION",
+          "holds_at_intervention": true,
+          "temporal_extent": "INTERVAL"
+        },
+        "temporal_order": 2
+      },
+      "abstraction": {
+        "level_0_raw": "Arthur's quarters were completely disorganized because he had spent the preceding days daydreaming instead of tidying up.",
+        "level_1_domain": "neglects cleaning due to daydreaming",
+        "level_2_functional": "task neglect",
+        "level_3_schema": "antecedent neglect"
+      },
+      "functional_role": "CAUSAL_ANTECEDENT",
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "INTERVAL"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "Arthur's quarters were completely disorganized",
+        "Several days before the upcoming inspection",
+        "he had spent the preceding days daydreaming instead of tidying up"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N3": {
+      "node_id": "N3",
+      "macro_node": {
+        "macro_id": "M3",
+        "label": "conditional incentive",
+        "source_normalized_ids": [
+          "NE7"
+        ],
+        "source_atomic_ids": [
+          "E11",
+          "E12"
+        ],
+        "functional_role": "INTERVENTION",
+        "temporal_grounding": {
+          "mention_phase": "AT_INTERVENTION",
+          "onset_phase": "AT_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 3
+      },
+      "abstraction": {
+        "level_0_raw": "Seeking to motivate him, the supervising nurse offered him a box of pastries from the local bakery if he sanitized and organized his quarters completely.",
+        "level_1_domain": "nurse offers pastries conditional on cleaning",
+        "level_2_functional": "conditional incentive",
+        "level_3_schema": "incentive intervention"
+      },
+      "functional_role": "INTERVENTION",
+      "temporal_grounding": {
+        "mention_phase": "AT_INTERVENTION",
+        "onset_phase": "AT_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": true,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "if he sanitized and organized his quarters completely",
+        "the supervising nurse offered him a box of pastries from the local bakery if he sanitized and organized his quarters completely"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N4": {
+      "node_id": "N4",
+      "macro_node": {
+        "macro_id": "M4",
+        "label": "insufficient remaining resources",
+        "source_normalized_ids": [
+          "NE9"
+        ],
+        "source_atomic_ids": [
+          "E14"
+        ],
+        "functional_role": "CONSTRAINT",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "PERSISTENT_STATE"
+        },
+        "temporal_order": 4
+      },
+      "abstraction": {
+        "level_0_raw": "there was insufficient time remaining before the inspection for him to complete the cleaning.",
+        "level_1_domain": "insufficient time to complete cleaning",
+        "level_2_functional": "insufficient remaining resources",
+        "level_3_schema": "resource constraint"
+      },
+      "functional_role": "CONSTRAINT",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "PERSISTENT_STATE"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "there was insufficient time remaining before the inspection for him to complete the cleaning"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N5": {
+      "node_id": "N5",
+      "macro_node": {
+        "macro_id": "M5",
+        "label": "performance deficit",
+        "source_normalized_ids": [
+          "NE2",
+          "NE10"
+        ],
+        "source_atomic_ids": [
+          "E3",
+          "E15"
+        ],
+        "functional_role": "FOCAL_OUTCOME",
+        "temporal_grounding": {
+          "mention_phase": "PRE_INTERVENTION",
+          "onset_phase": "PRE_INTERVENTION",
+          "holds_at_intervention": true,
+          "temporal_extent": "PERSISTENT_STATE"
+        },
+        "temporal_order": 5
+      },
+      "abstraction": {
+        "level_0_raw": "Arthur frequently failed the monthly living-quarters evaluations; he failed the evaluation.",
+        "level_1_domain": "fails living-quarters evaluation",
+        "level_2_functional": "performance deficit",
+        "level_3_schema": "outcome failure"
+      },
+      "functional_role": "FOCAL_OUTCOME",
+      "temporal_grounding": {
+        "mention_phase": "PRE_INTERVENTION",
+        "onset_phase": "PRE_INTERVENTION",
+        "holds_at_intervention": true,
+        "temporal_extent": "PERSISTENT_STATE"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": true,
+      "is_contingent_outcome": false,
+      "provenance_text_spans": [
+        "He frequently failed the monthly living-quarters evaluations",
+        "he failed the evaluation"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    },
+    "N6": {
+      "node_id": "N6",
+      "macro_node": {
+        "macro_id": "M6",
+        "label": "reward withheld",
+        "source_normalized_ids": [
+          "NE11"
+        ],
+        "source_atomic_ids": [
+          "E16",
+          "E19"
+        ],
+        "functional_role": "CONTINGENT_OUTCOME",
+        "temporal_grounding": {
+          "mention_phase": "POST_INTERVENTION",
+          "onset_phase": "POST_INTERVENTION",
+          "holds_at_intervention": false,
+          "temporal_extent": "POINT"
+        },
+        "temporal_order": 6
+      },
+      "abstraction": {
+        "level_0_raw": "Arthur did not receive the pastries; the pastries were withheld.",
+        "level_1_domain": "pastries withheld",
+        "level_2_functional": "reward withheld",
+        "level_3_schema": "contingent consequence"
+      },
+      "functional_role": "CONTINGENT_OUTCOME",
+      "temporal_grounding": {
+        "mention_phase": "POST_INTERVENTION",
+        "onset_phase": "POST_INTERVENTION",
+        "holds_at_intervention": false,
+        "temporal_extent": "POINT"
+      },
+      "is_intervention": false,
+      "is_focal_outcome": false,
+      "is_contingent_outcome": true,
+      "provenance_text_spans": [
+        "the pastries were withheld",
+        "did not receive the pastries"
+      ],
+      "confidence": 1.0,
+      "explicitness": "explicit"
+    }
+  },
+  "explanatory_edges": [
+    {
+      "edge_id": "BE1",
+      "source_id": "N2",
+      "target_id": "N5",
+      "relation_type": "CAUSES",
+      "justification": "Arthur's quarters were disorganized because he daydreamed instead of tidying up; the narrative states 'Consequently, he failed the evaluation' linking the disorganization directly to the failure.",
+      "confidence": 0.9,
+      "explicitness": "strongly_inferred",
+      "underlying_relation_ids": [
+        "R1"
+      ]
+    },
+    {
+      "edge_id": "BE2",
+      "source_id": "N4",
+      "target_id": "N5",
+      "relation_type": "CAUSES",
+      "justification": "The narrative states 'there was insufficient time remaining before the inspection for him to complete the cleaning. Consequently, he failed the evaluation' showing insufficient time directly caused the failure.",
+      "confidence": 0.95,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R2"
+      ]
+    },
+    {
+      "edge_id": "BE3",
+      "source_id": "N5",
+      "target_id": "N6",
+      "relation_type": "RESULTS_IN",
+      "justification": "The narrative states 'he failed the evaluation and did not receive the pastries' showing failure directly resulted in the pastries being withheld.",
+      "confidence": 0.95,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R3"
+      ]
+    }
+  ],
+  "temporal_constraints": [
+    {
+      "edge_id": "BE4",
+      "source_id": "N3",
+      "target_id": "N2",
+      "relation_type": "BEFORE",
+      "justification": "The offer occurs after Arthur's quarters are already disorganized; the narrative describes the disorganization before the offer.",
+      "confidence": 0.9,
+      "explicitness": "explicit",
+      "underlying_relation_ids": [
+        "R7"
+      ]
+    },
+    {
+      "edge_id": "BE5",
+      "source_id": "N2",
+      "target_id": "N4",
+      "relation_type": "BEFORE",
+      "justification": "The disorganization existed before the insufficient time is noted; the narrative implies the disorganization contributed to the time shortage but does not state direct causation.",
+      "confidence": 0.85,
+      "explicitness": "strongly_inferred",
+      "underlying_relation_ids": [
+        "R8"
+      ]
+    }
+  ],
+  "anchors": {
+    "central_problem": "Arthur frequently fails monthly living-quarters evaluations and his quarters are disorganized due to neglect.",
+    "central_goal": "Arthur must sanitize and organize his quarters completely to pass the upcoming inspection.",
+    "intervention_event_ids": [
+      "NE7"
+    ],
+    "focal_outcome_ids": [
+      "NE10"
+    ],
+    "contingent_outcome_ids": [
+      "NE11"
+    ],
+    "downstream_reaction_ids": [
+      "NE12"
+    ],
+    "contracts": [
+      {
+        "intervention_event_id": "NE7",
+        "promised_reward": "a box of pastries from the local bakery",
+        "contingent_requirement": "sanitize and organize his quarters completely",
+        "condition_polarity": "positive"
+      }
+    ],
+    "explanation": "The central problem is Arthur's repeated failure and disorganization. The goal is to pass the inspection by cleaning. The intervention is the nurse's offer of pastries. The focal outcome is failing the evaluation. The contingent outcome is not receiving pastries. The downstream reaction is Arthur's angry outburst."
+  },
+  "pruned_node_ids": [
+    "NE3",
+    "NE12",
+    "NE4",
+    "NE8",
+    "NE6",
+    "NE1"
+  ],
+  "pruned_reasons": {
+    "NE3": "Arthur's frustration with staff is a secondary emotional reaction to chronic failure and does not causally explain the focal episode. Even if he were not frustrated, the sequence of neglect, incentive, time shortage, and failure would still occur unchanged.",
+    "NE4": "Fantasizing about sweets is a background preference that explains motivation for the incentive but is not causally essential. If Arthur did not fantasize, the nurse's offer of pastries (NE7) could still motivate him via general desire for a treat; the outcome does not depend on his specific fantasies.",
+    "NE6": "The nurse seeking to motivate is an internal mental state that is redundant with the actual offer (NE7). The offer itself is the intervention; removing NE6 does not break the causal chain because NE7 implies the intention.",
+    "NE8": "Arthur being ecstatic is an emotional reaction to the offer, not a necessary cause of subsequent events. Even if he were only moderately pleased, he would still attempt to clean; the insufficient time (NE9) and failure (NE10) are independent of his emotional intensity.",
+    "NE12": "Shouting and kicking the door is a downstream emotional outburst after the outcome. It does not causally explain the failure (NE10) or the withholding of pastries (NE11). Removing it does not affect the explanatory backbone of how the problem, intervention, and outcome unfolded.",
+    "NE1": "Pruned during final minimality pass: isolated BACKGROUND node 'restricted inpatient' without explanatory connection to focal outcomes."
+  },
+  "metadata": {
+    "total_backbone_nodes": 5,
+    "total_explanatory_edges": 3,
+    "total_temporal_constraints": 2,
+    "edge_derivation_method": "deterministic_rich_relation_lifting",
+    "validation_warnings": [
+      "Temporal-Causal Inversion: Node N4 (onset=POST_INTERVENTION) is asserted to CAUSES N5 (onset=PRE_INTERVENTION)."
+    ]
+  }
+}

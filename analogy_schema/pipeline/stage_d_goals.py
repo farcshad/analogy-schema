@@ -24,9 +24,10 @@ def run_stage_d_goal_outcome_identification(
     llm: BaseLLMProvider
 ) -> NarrativeAnchors:
     """Stage D: Narrative anchor and contract identification (Synchronous)."""
+    anonymous_story = story.to_llm_input()
     prompt = PromptRegistry.render(
         "goal_outcome",
-        story=story,
+        story=anonymous_story,
         normalized_events=normalized_events
     )
     system_prompt = "You are a narrative anchor analyzer distinguishing focal outcomes from downstream reactions."
@@ -55,9 +56,10 @@ async def run_stage_d_goal_outcome_identification_async(
     llm: BaseLLMProvider
 ) -> NarrativeAnchors:
     """Stage D: Narrative anchor and contract identification (Asynchronous)."""
+    anonymous_story = story.to_llm_input()
     prompt = PromptRegistry.render(
         "goal_outcome",
-        story=story,
+        story=anonymous_story,
         normalized_events=normalized_events
     )
     system_prompt = "You are a narrative anchor analyzer distinguishing focal outcomes from downstream reactions."

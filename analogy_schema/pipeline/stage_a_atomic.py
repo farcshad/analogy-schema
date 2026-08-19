@@ -12,7 +12,8 @@ class AtomicExtractionOutput(BaseModel):
 
 def run_stage_a_atomic_extraction(story: Story, llm: BaseLLMProvider) -> List[AtomicEvent]:
     """Stage A: High-recall atomic event/state extraction (Synchronous)."""
-    prompt = PromptRegistry.render("atomic_extraction", story=story)
+    anonymous_story = story.to_llm_input()
+    prompt = PromptRegistry.render("atomic_extraction", story=anonymous_story)
     system_prompt = "You are a scientific NLP extractor specializing in high-recall causal event extraction."
     
     result = llm.generate_structured(
@@ -30,7 +31,8 @@ def run_stage_a_atomic_extraction(story: Story, llm: BaseLLMProvider) -> List[At
 
 async def run_stage_a_atomic_extraction_async(story: Story, llm: BaseLLMProvider) -> List[AtomicEvent]:
     """Stage A: High-recall atomic event/state extraction (Asynchronous)."""
-    prompt = PromptRegistry.render("atomic_extraction", story=story)
+    anonymous_story = story.to_llm_input()
+    prompt = PromptRegistry.render("atomic_extraction", story=anonymous_story)
     system_prompt = "You are a scientific NLP extractor specializing in high-recall causal event extraction."
     
     result = await llm.agenerate_structured(
